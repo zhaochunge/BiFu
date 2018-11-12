@@ -54,8 +54,8 @@
 {
 //    self.view.backgroundColor = [UIColor whiteColor];
     NSArray *titles = @[@"首页",@"投资",@"借款",@"订单",@"我的"];
-    NSArray *images = @[@"", @"",@"",@"",@""];
-    NSArray *selectedImages = @[@"",  @"",@"",@"",@""];
+    NSArray *images = @[@"首页_未点击状态ICON", @"投资_未点击状态ICON",@"借款-未点击状态icon",@"订单_未点击状态icon",@"我的-未点击状态icon"];
+    NSArray *selectedImages = @[@"首页_点击状态ICON",  @"投资_点击状态ICON",@"借款-点击状态icon",@"订单_点击状态icon",@"我的-点击状态icon"];
     
     HomeViewController * homeVc = [[HomeViewController alloc] init];
     self.homeVC = homeVc;
