@@ -43,6 +43,8 @@
 		1863D11021957CBD00316AFE /* UIView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D10621957CBD00316AFE /* UIView+Size.m */; };
 		1863D11121957CBD00316AFE /* UIColor+ColorChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D10821957CBD00316AFE /* UIColor+ColorChange.m */; };
 		7D78E7055B32D5D7D95CB8AD /* libPods-BiFu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */; };
+		F57304CA219973F3001DFD73 /* HomeTableCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F57304C6219973F3001DFD73 /* HomeTableCellTableViewCell.m */; };
+		F57304CB219973F3001DFD73 /* LIView.m in Sources */ = {isa = PBXBuildFile; fileRef = F57304C9219973F3001DFD73 /* LIView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +139,10 @@
 		1863D10821957CBD00316AFE /* UIColor+ColorChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorChange.m"; sourceTree = "<group>"; };
 		3CD49D46889913383E13325C /* Pods-BiFu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiFu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BiFu/Pods-BiFu.debug.xcconfig"; sourceTree = "<group>"; };
 		F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BiFu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F57304C6219973F3001DFD73 /* HomeTableCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableCellTableViewCell.m; sourceTree = "<group>"; };
+		F57304C7219973F3001DFD73 /* HomeTableCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableCellTableViewCell.h; sourceTree = "<group>"; };
+		F57304C8219973F3001DFD73 /* LIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIView.h; sourceTree = "<group>"; };
+		F57304C9219973F3001DFD73 /* LIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +352,31 @@
 				1863D0E62195796900316AFE /* HomeViewController.m */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		1863D11F21957FE800316AFE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1863D12021957FE800316AFE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1863D12121957FE800316AFE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F57304C7219973F3001DFD73 /* HomeTableCellTableViewCell.h */,
+				F57304C6219973F3001DFD73 /* HomeTableCellTableViewCell.m */,
+				F57304C8219973F3001DFD73 /* LIView.h */,
+				F57304C9219973F3001DFD73 /* LIView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		1FDF5F0E087B23A7481502BC /* Frameworks */ = {
@@ -562,6 +593,7 @@
 				1851C934219960A600B84513 /* RechargeViewController.m in Sources */,
 				1863D0E0219578E200316AFE /* CDTabbarVC.m in Sources */,
 				1851C92521994DF500B84513 /* OrderCell.m in Sources */,
+				F57304CA219973F3001DFD73 /* HomeTableCellTableViewCell.m in Sources */,
 				1863D0B52195785200316AFE /* main.m in Sources */,
 				1851C9222199273B00B84513 /* YXButton.m in Sources */,
 				1863D0A72195785200316AFE /* AppDelegate.m in Sources */,
@@ -571,6 +603,7 @@
 				1851C9282199606D00B84513 /* PayViewController.m in Sources */,
 				1851C92B2199608000B84513 /* ConfirmViewController.m in Sources */,
 				1851C93E2199675600B84513 /* HandleViewController.m in Sources */,
+				F57304CB219973F3001DFD73 /* LIView.m in Sources */,
 				1863D0DE219578E200316AFE /* CDNavigationVC.m in Sources */,
 				1851C937219960B200B84513 /* AllInvViewController.m in Sources */,
 				1863D10E21957CBD00316AFE /* NSString+Size.m in Sources */,
