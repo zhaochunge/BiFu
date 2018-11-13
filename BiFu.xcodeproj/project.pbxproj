@@ -42,6 +42,9 @@
 		1863D10F21957CBD00316AFE /* UIButton+Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D10421957CBD00316AFE /* UIButton+Edge.m */; };
 		1863D11021957CBD00316AFE /* UIView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D10621957CBD00316AFE /* UIView+Size.m */; };
 		1863D11121957CBD00316AFE /* UIColor+ColorChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D10821957CBD00316AFE /* UIColor+ColorChange.m */; };
+		18B23635219A9C6D00E2594C /* WLoanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B23634219A9C6D00E2594C /* WLoanViewController.m */; };
+		18B23638219AB1DE00E2594C /* AssetCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B23637219AB1DE00E2594C /* AssetCenterViewController.m */; };
+		18B2363D219AB55500E2594C /* AssetCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B2363C219AB55500E2594C /* AssetCenterCell.m */; };
 		7D78E7055B32D5D7D95CB8AD /* libPods-BiFu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */; };
 		F5396B8A219A55C900EFBF95 /* LIView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B87219A55C900EFBF95 /* LIView.m */; };
 		F5396B8B219A55C900EFBF95 /* HomeTableCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B89219A55C900EFBF95 /* HomeTableCellTableViewCell.m */; };
@@ -137,6 +140,12 @@
 		1863D10621957CBD00316AFE /* UIView+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Size.m"; sourceTree = "<group>"; };
 		1863D10721957CBD00316AFE /* UIColor+ColorChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorChange.h"; sourceTree = "<group>"; };
 		1863D10821957CBD00316AFE /* UIColor+ColorChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorChange.m"; sourceTree = "<group>"; };
+		18B23633219A9C6D00E2594C /* WLoanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLoanViewController.h; sourceTree = "<group>"; };
+		18B23634219A9C6D00E2594C /* WLoanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLoanViewController.m; sourceTree = "<group>"; };
+		18B23636219AB1DE00E2594C /* AssetCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetCenterViewController.h; sourceTree = "<group>"; };
+		18B23637219AB1DE00E2594C /* AssetCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetCenterViewController.m; sourceTree = "<group>"; };
+		18B2363B219AB55500E2594C /* AssetCenterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetCenterCell.h; sourceTree = "<group>"; };
+		18B2363C219AB55500E2594C /* AssetCenterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetCenterCell.m; sourceTree = "<group>"; };
 		3CD49D46889913383E13325C /* Pods-BiFu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiFu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BiFu/Pods-BiFu.debug.xcconfig"; sourceTree = "<group>"; };
 		F5396B86219A55C900EFBF95 /* LIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIView.h; sourceTree = "<group>"; };
 		F5396B87219A55C900EFBF95 /* LIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIView.m; sourceTree = "<group>"; };
@@ -333,6 +342,7 @@
 			children = (
 				1863D0EB219579DB00316AFE /* LoanViewController.h */,
 				1863D0EC219579DB00316AFE /* LoanViewController.m */,
+				18B23639219AB4FF00E2594C /* VC */,
 			);
 			path = Loan;
 			sourceTree = "<group>";
@@ -354,6 +364,19 @@
 				1863D0E62195796900316AFE /* HomeViewController.m */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		18B23639219AB4FF00E2594C /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				18B23633219A9C6D00E2594C /* WLoanViewController.h */,
+				18B23634219A9C6D00E2594C /* WLoanViewController.m */,
+				18B23636219AB1DE00E2594C /* AssetCenterViewController.h */,
+				18B23637219AB1DE00E2594C /* AssetCenterViewController.m */,
+				18B2363B219AB55500E2594C /* AssetCenterCell.h */,
+				18B2363C219AB55500E2594C /* AssetCenterCell.m */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 		1FDF5F0E087B23A7481502BC /* Frameworks */ = {
@@ -589,14 +612,17 @@
 				1851C934219960A600B84513 /* RechargeViewController.m in Sources */,
 				1863D0E0219578E200316AFE /* CDTabbarVC.m in Sources */,
 				1851C92521994DF500B84513 /* OrderCell.m in Sources */,
+				18B23635219A9C6D00E2594C /* WLoanViewController.m in Sources */,
 				1863D0B52195785200316AFE /* main.m in Sources */,
 				1851C9222199273B00B84513 /* YXButton.m in Sources */,
 				1863D0A72195785200316AFE /* AppDelegate.m in Sources */,
 				1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */,
+				18B23638219AB1DE00E2594C /* AssetCenterViewController.m in Sources */,
 				1863D0DF219578E200316AFE /* CDTabBar.m in Sources */,
 				1863D0E72195796900316AFE /* HomeViewController.m in Sources */,
 				1851C9282199606D00B84513 /* PayViewController.m in Sources */,
 				1851C92B2199608000B84513 /* ConfirmViewController.m in Sources */,
+				18B2363D219AB55500E2594C /* AssetCenterCell.m in Sources */,
 				1851C93E2199675600B84513 /* HandleViewController.m in Sources */,
 				1863D0DE219578E200316AFE /* CDNavigationVC.m in Sources */,
 				F5396B8B219A55C900EFBF95 /* HomeTableCellTableViewCell.m in Sources */,
