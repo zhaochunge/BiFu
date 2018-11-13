@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1851C9222199273B00B84513 /* YXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C9212199273B00B84513 /* YXButton.m */; };
+		1851C92521994DF500B84513 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C92421994DF500B84513 /* OrderCell.m */; };
+		1851C9282199606D00B84513 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C9272199606D00B84513 /* PayViewController.m */; };
+		1851C92B2199608000B84513 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C92A2199608000B84513 /* ConfirmViewController.m */; };
+		1851C92E2199608C00B84513 /* RepayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C92D2199608C00B84513 /* RepayViewController.m */; };
+		1851C9312199609A00B84513 /* InvViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C9302199609A00B84513 /* InvViewController.m */; };
+		1851C934219960A600B84513 /* RechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C933219960A600B84513 /* RechargeViewController.m */; };
+		1851C937219960B200B84513 /* AllInvViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C936219960B200B84513 /* AllInvViewController.m */; };
+		1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C939219960BE00B84513 /* AllLoanViewController.m */; };
+		1851C93E2199675600B84513 /* HandleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C93D2199675600B84513 /* HandleViewController.m */; };
 		1863D0A72195785200316AFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D0A62195785200316AFE /* AppDelegate.m */; };
 		1863D0AA2195785200316AFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D0A92195785200316AFE /* ViewController.m */; };
 		1863D0AD2195785200316AFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1863D0AB2195785200316AFE /* Main.storyboard */; };
@@ -54,6 +64,26 @@
 
 /* Begin PBXFileReference section */
 		1333DAAC088F1EE5842326C4 /* Pods-BiFu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiFu.release.xcconfig"; path = "Pods/Target Support Files/Pods-BiFu/Pods-BiFu.release.xcconfig"; sourceTree = "<group>"; };
+		1851C9202199273B00B84513 /* YXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXButton.h; sourceTree = "<group>"; };
+		1851C9212199273B00B84513 /* YXButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXButton.m; sourceTree = "<group>"; };
+		1851C92321994DF500B84513 /* OrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
+		1851C92421994DF500B84513 /* OrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
+		1851C9262199606D00B84513 /* PayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayViewController.h; sourceTree = "<group>"; };
+		1851C9272199606D00B84513 /* PayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayViewController.m; sourceTree = "<group>"; };
+		1851C9292199608000B84513 /* ConfirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmViewController.h; sourceTree = "<group>"; };
+		1851C92A2199608000B84513 /* ConfirmViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmViewController.m; sourceTree = "<group>"; };
+		1851C92C2199608C00B84513 /* RepayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepayViewController.h; sourceTree = "<group>"; };
+		1851C92D2199608C00B84513 /* RepayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepayViewController.m; sourceTree = "<group>"; };
+		1851C92F2199609A00B84513 /* InvViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvViewController.h; sourceTree = "<group>"; };
+		1851C9302199609A00B84513 /* InvViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvViewController.m; sourceTree = "<group>"; };
+		1851C932219960A600B84513 /* RechargeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RechargeViewController.h; sourceTree = "<group>"; };
+		1851C933219960A600B84513 /* RechargeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RechargeViewController.m; sourceTree = "<group>"; };
+		1851C935219960B200B84513 /* AllInvViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllInvViewController.h; sourceTree = "<group>"; };
+		1851C936219960B200B84513 /* AllInvViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllInvViewController.m; sourceTree = "<group>"; };
+		1851C938219960BE00B84513 /* AllLoanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllLoanViewController.h; sourceTree = "<group>"; };
+		1851C939219960BE00B84513 /* AllLoanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllLoanViewController.m; sourceTree = "<group>"; };
+		1851C93C2199675600B84513 /* HandleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandleViewController.h; sourceTree = "<group>"; };
+		1851C93D2199675600B84513 /* HandleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandleViewController.m; sourceTree = "<group>"; };
 		1863D0A22195785200316AFE /* BiFu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiFu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1863D0A52195785200316AFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1863D0A62195785200316AFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -135,6 +165,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1851C93B219960CC00B84513 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				1851C93C2199675600B84513 /* HandleViewController.h */,
+				1851C93D2199675600B84513 /* HandleViewController.m */,
+				1851C9262199606D00B84513 /* PayViewController.h */,
+				1851C9272199606D00B84513 /* PayViewController.m */,
+				1851C9292199608000B84513 /* ConfirmViewController.h */,
+				1851C92A2199608000B84513 /* ConfirmViewController.m */,
+				1851C92C2199608C00B84513 /* RepayViewController.h */,
+				1851C92D2199608C00B84513 /* RepayViewController.m */,
+				1851C92F2199609A00B84513 /* InvViewController.h */,
+				1851C9302199609A00B84513 /* InvViewController.m */,
+				1851C932219960A600B84513 /* RechargeViewController.h */,
+				1851C933219960A600B84513 /* RechargeViewController.m */,
+				1851C935219960B200B84513 /* AllInvViewController.h */,
+				1851C936219960B200B84513 /* AllInvViewController.m */,
+				1851C938219960BE00B84513 /* AllLoanViewController.h */,
+				1851C939219960BE00B84513 /* AllLoanViewController.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
 		1863D0992195785100316AFE = {
 			isa = PBXGroup;
 			children = (
@@ -217,32 +270,8 @@
 			children = (
 				1863D0F121957A0400316AFE /* MyViewController.h */,
 				1863D0F221957A0400316AFE /* MyViewController.m */,
-				1863D0E22195791E00316AFE /* Controller */,
-				1863D0E32195791E00316AFE /* Model */,
-				1863D0E42195791E00316AFE /* View */,
 			);
 			path = My;
-			sourceTree = "<group>";
-		};
-		1863D0E22195791E00316AFE /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		1863D0E32195791E00316AFE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		1863D0E42195791E00316AFE /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		1863D0F521957CBD00316AFE /* Tools */ = {
@@ -281,34 +310,15 @@
 		1863D11221957FBE00316AFE /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				1851C9202199273B00B84513 /* YXButton.h */,
+				1851C9212199273B00B84513 /* YXButton.m */,
+				1851C92321994DF500B84513 /* OrderCell.h */,
+				1851C92421994DF500B84513 /* OrderCell.m */,
 				1863D0EE219579EE00316AFE /* OrderViewController.h */,
 				1863D0EF219579EE00316AFE /* OrderViewController.m */,
-				1863D11321957FBE00316AFE /* Controller */,
-				1863D11421957FBE00316AFE /* Model */,
-				1863D11521957FBE00316AFE /* View */,
+				1851C93B219960CC00B84513 /* VC */,
 			);
 			path = Order;
-			sourceTree = "<group>";
-		};
-		1863D11321957FBE00316AFE /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		1863D11421957FBE00316AFE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		1863D11521957FBE00316AFE /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		1863D11621957FC800316AFE /* Loan */ = {
@@ -316,32 +326,8 @@
 			children = (
 				1863D0EB219579DB00316AFE /* LoanViewController.h */,
 				1863D0EC219579DB00316AFE /* LoanViewController.m */,
-				1863D11721957FC800316AFE /* Controller */,
-				1863D11821957FC800316AFE /* Model */,
-				1863D11921957FC800316AFE /* View */,
 			);
 			path = Loan;
-			sourceTree = "<group>";
-		};
-		1863D11721957FC800316AFE /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		1863D11821957FC800316AFE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		1863D11921957FC800316AFE /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		1863D11A21957FDD00316AFE /* Invest */ = {
@@ -349,32 +335,8 @@
 			children = (
 				1863D0E8219579C000316AFE /* InvestViewController.h */,
 				1863D0E9219579C000316AFE /* InvestViewController.m */,
-				1863D11B21957FDD00316AFE /* Controller */,
-				1863D11C21957FDD00316AFE /* Model */,
-				1863D11D21957FDD00316AFE /* View */,
 			);
 			path = Invest;
-			sourceTree = "<group>";
-		};
-		1863D11B21957FDD00316AFE /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		1863D11C21957FDD00316AFE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		1863D11D21957FDD00316AFE /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		1863D11E21957FE800316AFE /* Home */ = {
@@ -382,32 +344,8 @@
 			children = (
 				1863D0E52195796900316AFE /* HomeViewController.h */,
 				1863D0E62195796900316AFE /* HomeViewController.m */,
-				1863D11F21957FE800316AFE /* Controller */,
-				1863D12021957FE800316AFE /* Model */,
-				1863D12121957FE800316AFE /* View */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		1863D11F21957FE800316AFE /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		1863D12021957FE800316AFE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		1863D12121957FE800316AFE /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		1FDF5F0E087B23A7481502BC /* Frameworks */ = {
@@ -621,18 +559,28 @@
 				1863D11021957CBD00316AFE /* UIView+Size.m in Sources */,
 				1863D0EA219579C000316AFE /* InvestViewController.m in Sources */,
 				1863D10F21957CBD00316AFE /* UIButton+Edge.m in Sources */,
+				1851C934219960A600B84513 /* RechargeViewController.m in Sources */,
 				1863D0E0219578E200316AFE /* CDTabbarVC.m in Sources */,
+				1851C92521994DF500B84513 /* OrderCell.m in Sources */,
 				1863D0B52195785200316AFE /* main.m in Sources */,
+				1851C9222199273B00B84513 /* YXButton.m in Sources */,
 				1863D0A72195785200316AFE /* AppDelegate.m in Sources */,
+				1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */,
 				1863D0DF219578E200316AFE /* CDTabBar.m in Sources */,
 				1863D0E72195796900316AFE /* HomeViewController.m in Sources */,
+				1851C9282199606D00B84513 /* PayViewController.m in Sources */,
+				1851C92B2199608000B84513 /* ConfirmViewController.m in Sources */,
+				1851C93E2199675600B84513 /* HandleViewController.m in Sources */,
 				1863D0DE219578E200316AFE /* CDNavigationVC.m in Sources */,
+				1851C937219960B200B84513 /* AllInvViewController.m in Sources */,
 				1863D10E21957CBD00316AFE /* NSString+Size.m in Sources */,
 				1863D10A21957CBD00316AFE /* cerTools.m in Sources */,
 				1863D0ED219579DB00316AFE /* LoanViewController.m in Sources */,
+				1851C92E2199608C00B84513 /* RepayViewController.m in Sources */,
 				1863D10C21957CBD00316AFE /* LineBtn.m in Sources */,
 				1863D10D21957CBD00316AFE /* NetTools.m in Sources */,
 				1863D10B21957CBD00316AFE /* CustomAlertView.m in Sources */,
+				1851C9312199609A00B84513 /* InvViewController.m in Sources */,
 				1863D10921957CBD00316AFE /* Base64Verb.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

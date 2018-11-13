@@ -16,8 +16,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     self.view.backgroundColor=[UIColor whiteColor];
+    self.navigationItem.title=@"借款";
+   
+//    [self setupUI];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+}
+
+-(void)setupUI{
+    
+    UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT*0.5)];
+    imgView.backgroundColor=[UIColor redColor];
+    [self.view addSubview:imgView];
+    
 }
 
 - (void)didReceiveMemoryWarning {

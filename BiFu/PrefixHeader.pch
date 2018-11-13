@@ -20,7 +20,7 @@
 #define GARYCOLOR [UIColor colorWithHexString:@"#9fa1a5"]
 #define SafeAreaBottomHeight (HEIGHT == 812.0 ? 34 : 0)
 #define SafeAreaTopHeight (HEIGHT == 812.0 ? 88 : 64)
-
+#import "YXButton.h"
 
 #ifndef UkuleleMaster_PrefixHeader_pch
 #define UkuleleMaster_PrefixHeader_pch
@@ -42,6 +42,7 @@
 #import "cerTools.h"
 //#import "LTView.h"
 //#import "LLBView.h"
+
 #endif
 #endif
 
