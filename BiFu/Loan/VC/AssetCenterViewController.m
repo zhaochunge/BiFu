@@ -8,6 +8,9 @@
 
 #import "AssetCenterViewController.h"
 #import "AssetCenterCell.h"
+#import "ASDetailViewController.h"
+#import "ChongzhiViewController.h"
+#import "TixianViewController.h"
 
 @interface AssetCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableView;
@@ -22,7 +25,20 @@
     self.view.backgroundColor=[UIColor whiteColor];
     self.navigationItem.title=@"资产中心";
     _titleArray=@[@"BTC（比特币）",@"ETC（以太坊）",@"LTC（莱特币）"];
+    UIButton *itemBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    itemBtn.frame=CGRectMake(0, 0, 30, 30);
+    [itemBtn setImage:[UIImage imageNamed:@"记录-ICON"] forState:UIControlStateNormal];
+    [itemBtn addTarget:self action:@selector(itemClick) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:itemBtn];
+    self.navigationItem.rightBarButtonItem =item;
+    
     [self setupTableView];
+}
+
+-(void)itemClick{
+    NSLog(@"记录");
+    ASDetailViewController *detailVC=[ASDetailViewController new];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 -(void)setupTableView{
@@ -45,6 +61,10 @@
     cell.leiLab.text=_titleArray[indexPath.row];
     cell.kmLab.text=@"0";
     cell.dmLab.text=@"0";
+    
+    [cell.tiBtn addTarget:self action:@selector(tiBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [cell.chongBtn addTarget:self action:@selector(chongBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    
     switch (indexPath.row) {
         case 0:{
             cell.yuanLab.backgroundColor=[UIColor orangeColor];
@@ -66,13 +86,39 @@
             break;
     }
     
-    
-    
-    
     return cell;
 }
+
+-(void)tiBtnClick{
+    NSLog(@"提现");
+    TixianViewController *tiVC=[TixianViewController new];
+    [self.navigationController pushViewController:tiVC animated:YES];
+}
+-(void)chongBtnClick{
+    NSLog(@"充值");
+    ChongzhiViewController *chongVC=[ChongzhiViewController new];
+    [self.navigationController pushViewController:chongVC animated:YES];
+    
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 300;
+    return 290;
+}
+- (void)viewWillAppear:(BOOL)animated {
+//    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [self setStatusBarBackgroundColor:[UIColor whiteColor]];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+//    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+}
+- (void)setStatusBarBackgroundColor:(UIColor *)color {
+    
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+        statusBar.backgroundColor = color;
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

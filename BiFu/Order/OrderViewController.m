@@ -38,6 +38,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor cyanColor];
     self.navigationItem.title=@"我的订单";
+    
     _titleArray=@[@[@"待付款",@"待确认",@"待还款",@"待投资"],@[@"待充值",@"全部投资",@"全部借款",@""]];
     _imageArray=@[@[@"待付款",@"待确认",@"待还款",@"待投资"],@[@"待充值",@"全部投资",@"全部借款",@""]];
     _dataArray=[[NSMutableArray alloc]initWithObjects:@"待处理订单",@"Test", nil];
@@ -46,6 +47,7 @@
     [self setupTableView];
     
 }
+
 -(void)setupHeaderView{
     _headerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 250)];
     _headerView.backgroundColor=[UIColor whiteColor];
@@ -163,7 +165,20 @@
 
     return 137;
 }
-
+- (void)setStatusBarBackgroundColor:(UIColor *)color {
+    
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+        statusBar.backgroundColor = color;
+    }
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setStatusBarBackgroundColor:[UIColor whiteColor]];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
