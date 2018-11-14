@@ -21,27 +21,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setStatusBarBackgroundColor:[UIColor colorWithRed:231/255.0 green:145/255.0 blue:144/255.0 alpha:1]];
+    
     self.view.backgroundColor=LINECOLOR;
     [self createHeader];
     [self createFooter];
     [self creatUI];
-    //    1334-20-49=1625
     
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self setStatusBarBackgroundColor:[UIColor colorWithRed:231/255.0 green:145/255.0 blue:144/255.0 alpha:1]];
     
-}
-
-//设置状态栏颜色
-- (void)setStatusBarBackgroundColor:(UIColor *)color {
-    
-    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
-    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
-        statusBar.backgroundColor = color;
-    }
 }
 #pragma mark 尾视图
 -(void)createFooter{

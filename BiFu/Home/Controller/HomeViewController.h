@@ -1,5 +1,5 @@
 //
-//  InvestViewController.h
+//  HomeViewController.h
 //  BiFu
 //
 //  Created by apple on 2018/11/9.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "myBaseVC.h"
 
-@interface InvestViewController : UIViewController
+@interface HomeViewController : myBaseVC
 
 @end

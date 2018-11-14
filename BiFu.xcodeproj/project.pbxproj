@@ -45,6 +45,10 @@
 		7D78E7055B32D5D7D95CB8AD /* libPods-BiFu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */; };
 		F5396B8A219A55C900EFBF95 /* LIView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B87219A55C900EFBF95 /* LIView.m */; };
 		F5396B8B219A55C900EFBF95 /* HomeTableCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B89219A55C900EFBF95 /* HomeTableCellTableViewCell.m */; };
+		F5396B8F219A5AAC00EFBF95 /* myBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B8E219A5AAC00EFBF95 /* myBaseVC.m */; };
+		F5396B95219AA9FC00EFBF95 /* InvestDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B94219AA9FC00EFBF95 /* InvestDetailVC.m */; };
+		F5396B9C219AB41100EFBF95 /* LLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B9B219AB41100EFBF95 /* LLView.m */; };
+		F5396B9F219AC72500EFBF95 /* InvestDetialTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B9E219AC72500EFBF95 /* InvestDetialTableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +146,14 @@
 		F5396B87219A55C900EFBF95 /* LIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIView.m; sourceTree = "<group>"; };
 		F5396B88219A55C900EFBF95 /* HomeTableCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableCellTableViewCell.h; sourceTree = "<group>"; };
 		F5396B89219A55C900EFBF95 /* HomeTableCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableCellTableViewCell.m; sourceTree = "<group>"; };
+		F5396B8D219A5AAC00EFBF95 /* myBaseVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myBaseVC.h; sourceTree = "<group>"; };
+		F5396B8E219A5AAC00EFBF95 /* myBaseVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myBaseVC.m; sourceTree = "<group>"; };
+		F5396B93219AA9FC00EFBF95 /* InvestDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvestDetailVC.h; sourceTree = "<group>"; };
+		F5396B94219AA9FC00EFBF95 /* InvestDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestDetailVC.m; sourceTree = "<group>"; };
+		F5396B9A219AB41100EFBF95 /* LLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLView.h; sourceTree = "<group>"; };
+		F5396B9B219AB41100EFBF95 /* LLView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLView.m; sourceTree = "<group>"; };
+		F5396B9D219AC72500EFBF95 /* InvestDetialTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvestDetialTableCell.h; sourceTree = "<group>"; };
+		F5396B9E219AC72500EFBF95 /* InvestDetialTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestDetialTableCell.m; sourceTree = "<group>"; };
 		F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BiFu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -220,6 +232,7 @@
 		1863D0A42195785200316AFE /* BiFu */ = {
 			isa = PBXGroup;
 			children = (
+				F5396B8C219A5A8300EFBF95 /* Base */,
 				1863D11E21957FE800316AFE /* Home */,
 				1863D11A21957FDD00316AFE /* Invest */,
 				1863D11621957FC800316AFE /* Loan */,
@@ -340,8 +353,8 @@
 		1863D11A21957FDD00316AFE /* Invest */ = {
 			isa = PBXGroup;
 			children = (
-				1863D0E8219579C000316AFE /* InvestViewController.h */,
-				1863D0E9219579C000316AFE /* InvestViewController.m */,
+				F5396B99219AB3FD00EFBF95 /* View */,
+				F5396B92219A5C5E00EFBF95 /* Controller */,
 			);
 			path = Invest;
 			sourceTree = "<group>";
@@ -349,9 +362,8 @@
 		1863D11E21957FE800316AFE /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				F5396B91219A5C0700EFBF95 /* Controller */,
 				F5396B79219A553B00EFBF95 /* View */,
-				1863D0E52195796900316AFE /* HomeViewController.h */,
-				1863D0E62195796900316AFE /* HomeViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -387,6 +399,46 @@
 				F5396B89219A55C900EFBF95 /* HomeTableCellTableViewCell.m */,
 				F5396B86219A55C900EFBF95 /* LIView.h */,
 				F5396B87219A55C900EFBF95 /* LIView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F5396B8C219A5A8300EFBF95 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F5396B8D219A5AAC00EFBF95 /* myBaseVC.h */,
+				F5396B8E219A5AAC00EFBF95 /* myBaseVC.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F5396B91219A5C0700EFBF95 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1863D0E62195796900316AFE /* HomeViewController.m */,
+				1863D0E52195796900316AFE /* HomeViewController.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F5396B92219A5C5E00EFBF95 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1863D0E8219579C000316AFE /* InvestViewController.h */,
+				1863D0E9219579C000316AFE /* InvestViewController.m */,
+				F5396B93219AA9FC00EFBF95 /* InvestDetailVC.h */,
+				F5396B94219AA9FC00EFBF95 /* InvestDetailVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F5396B99219AB3FD00EFBF95 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F5396B9A219AB41100EFBF95 /* LLView.h */,
+				F5396B9B219AB41100EFBF95 /* LLView.m */,
+				F5396B9D219AC72500EFBF95 /* InvestDetialTableCell.h */,
+				F5396B9E219AC72500EFBF95 /* InvestDetialTableCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -582,16 +634,19 @@
 				1863D11121957CBD00316AFE /* UIColor+ColorChange.m in Sources */,
 				F5396B8A219A55C900EFBF95 /* LIView.m in Sources */,
 				1863D0AA2195785200316AFE /* ViewController.m in Sources */,
+				F5396B9C219AB41100EFBF95 /* LLView.m in Sources */,
 				1863D0F0219579EE00316AFE /* OrderViewController.m in Sources */,
 				1863D11021957CBD00316AFE /* UIView+Size.m in Sources */,
 				1863D0EA219579C000316AFE /* InvestViewController.m in Sources */,
 				1863D10F21957CBD00316AFE /* UIButton+Edge.m in Sources */,
 				1851C934219960A600B84513 /* RechargeViewController.m in Sources */,
+				F5396B9F219AC72500EFBF95 /* InvestDetialTableCell.m in Sources */,
 				1863D0E0219578E200316AFE /* CDTabbarVC.m in Sources */,
 				1851C92521994DF500B84513 /* OrderCell.m in Sources */,
 				1863D0B52195785200316AFE /* main.m in Sources */,
 				1851C9222199273B00B84513 /* YXButton.m in Sources */,
 				1863D0A72195785200316AFE /* AppDelegate.m in Sources */,
+				F5396B8F219A5AAC00EFBF95 /* myBaseVC.m in Sources */,
 				1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */,
 				1863D0DF219578E200316AFE /* CDTabBar.m in Sources */,
 				1863D0E72195796900316AFE /* HomeViewController.m in Sources */,
@@ -601,6 +656,7 @@
 				1863D0DE219578E200316AFE /* CDNavigationVC.m in Sources */,
 				F5396B8B219A55C900EFBF95 /* HomeTableCellTableViewCell.m in Sources */,
 				1851C937219960B200B84513 /* AllInvViewController.m in Sources */,
+				F5396B95219AA9FC00EFBF95 /* InvestDetailVC.m in Sources */,
 				1863D10E21957CBD00316AFE /* NSString+Size.m in Sources */,
 				1863D10A21957CBD00316AFE /* cerTools.m in Sources */,
 				1863D0ED219579DB00316AFE /* LoanViewController.m in Sources */,

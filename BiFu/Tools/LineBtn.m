@@ -28,10 +28,11 @@
     
     //设置按钮文字居中
     button.titleLabel.textAlignment = NSTextAlignmentCenter;
+    button.font =[UIFont systemFontOfSize:17];
     //
     [button setTitleColor:buttonTitleColor forState:(UIControlStateNormal)];
     
-    button.line = [[UIView alloc] initWithFrame:CGRectMake(frame.size.width/2-20, button.titleLabel.bottom+15, 40, 1)];
+    button.line = [[UIView alloc] initWithFrame:CGRectMake(frame.size.width/2-10, button.titleLabel.bottom+15, 20, 2)];
 //    button.line.backgroundColor = buttonTitleColor;
     [button addSubview:button.line];
     //返回一个按钮
