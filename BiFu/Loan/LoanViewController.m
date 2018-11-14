@@ -26,6 +26,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [self setStatusBarBackgroundColor:[UIColor colorWithRed:230/255.0 green:74/255.0 blue:74/255.0 alpha:1]];
     [super viewWillAppear:animated];
 }
 
@@ -72,6 +73,13 @@
     NSLog(@"loanBtnClick");
     WLoanViewController *wloanVC=[WLoanViewController new];
     [self.navigationController pushViewController:wloanVC animated:YES];
+}
+- (void)setStatusBarBackgroundColor:(UIColor *)color {
+    
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+        statusBar.backgroundColor = color;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

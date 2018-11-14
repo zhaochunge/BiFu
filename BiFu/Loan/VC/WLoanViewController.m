@@ -22,7 +22,7 @@
     [super viewDidLoad];
     _titleArray=@[@[@"质押数量"],@[@"借款金额"],@[@"借款期限",@"年化利率",@"优惠券"]];
     self.view.backgroundColor=[UIColor whiteColor];
-    self.title=@"我要借款";
+    self.navigationItem.title=@"我要借款";
     [self setupFooterView];
     [self setupTableView];
 }
@@ -180,6 +180,24 @@
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     return nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    //    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [self setStatusBarBackgroundColor:[UIColor whiteColor]];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    //    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+}
+- (void)setStatusBarBackgroundColor:(UIColor *)color {
+    
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+        statusBar.backgroundColor = color;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

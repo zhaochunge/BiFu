@@ -45,6 +45,9 @@
 		18B23635219A9C6D00E2594C /* WLoanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B23634219A9C6D00E2594C /* WLoanViewController.m */; };
 		18B23638219AB1DE00E2594C /* AssetCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B23637219AB1DE00E2594C /* AssetCenterViewController.m */; };
 		18B2363D219AB55500E2594C /* AssetCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B2363C219AB55500E2594C /* AssetCenterCell.m */; };
+		18E7EB41219BA9C5004EDE91 /* ASDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7EB40219BA9C5004EDE91 /* ASDetailViewController.m */; };
+		18E7EB44219BB0E9004EDE91 /* ChongzhiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7EB43219BB0E9004EDE91 /* ChongzhiViewController.m */; };
+		18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7EB46219BB0F5004EDE91 /* TixianViewController.m */; };
 		7D78E7055B32D5D7D95CB8AD /* libPods-BiFu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */; };
 		F5396B8A219A55C900EFBF95 /* LIView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B87219A55C900EFBF95 /* LIView.m */; };
 		F5396B8B219A55C900EFBF95 /* HomeTableCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B89219A55C900EFBF95 /* HomeTableCellTableViewCell.m */; };
@@ -150,6 +153,12 @@
 		18B23637219AB1DE00E2594C /* AssetCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetCenterViewController.m; sourceTree = "<group>"; };
 		18B2363B219AB55500E2594C /* AssetCenterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetCenterCell.h; sourceTree = "<group>"; };
 		18B2363C219AB55500E2594C /* AssetCenterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetCenterCell.m; sourceTree = "<group>"; };
+		18E7EB3F219BA9C5004EDE91 /* ASDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASDetailViewController.h; sourceTree = "<group>"; };
+		18E7EB40219BA9C5004EDE91 /* ASDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASDetailViewController.m; sourceTree = "<group>"; };
+		18E7EB42219BB0E9004EDE91 /* ChongzhiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChongzhiViewController.h; sourceTree = "<group>"; };
+		18E7EB43219BB0E9004EDE91 /* ChongzhiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChongzhiViewController.m; sourceTree = "<group>"; };
+		18E7EB45219BB0F5004EDE91 /* TixianViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TixianViewController.h; sourceTree = "<group>"; };
+		18E7EB46219BB0F5004EDE91 /* TixianViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TixianViewController.m; sourceTree = "<group>"; };
 		3CD49D46889913383E13325C /* Pods-BiFu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiFu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BiFu/Pods-BiFu.debug.xcconfig"; sourceTree = "<group>"; };
 		F5396B86219A55C900EFBF95 /* LIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIView.h; sourceTree = "<group>"; };
 		F5396B87219A55C900EFBF95 /* LIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIView.m; sourceTree = "<group>"; };
@@ -385,6 +394,12 @@
 				18B23634219A9C6D00E2594C /* WLoanViewController.m */,
 				18B23636219AB1DE00E2594C /* AssetCenterViewController.h */,
 				18B23637219AB1DE00E2594C /* AssetCenterViewController.m */,
+				18E7EB3F219BA9C5004EDE91 /* ASDetailViewController.h */,
+				18E7EB40219BA9C5004EDE91 /* ASDetailViewController.m */,
+				18E7EB42219BB0E9004EDE91 /* ChongzhiViewController.h */,
+				18E7EB43219BB0E9004EDE91 /* ChongzhiViewController.m */,
+				18E7EB45219BB0F5004EDE91 /* TixianViewController.h */,
+				18E7EB46219BB0F5004EDE91 /* TixianViewController.m */,
 				18B2363B219AB55500E2594C /* AssetCenterCell.h */,
 				18B2363C219AB55500E2594C /* AssetCenterCell.m */,
 			);
@@ -672,6 +687,7 @@
 				1863D0A72195785200316AFE /* AppDelegate.m in Sources */,
 				F5396B8F219A5AAC00EFBF95 /* myBaseVC.m in Sources */,
 				1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */,
+				18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */,
 				18B23638219AB1DE00E2594C /* AssetCenterViewController.m in Sources */,
 				1863D0DF219578E200316AFE /* CDTabBar.m in Sources */,
 				1863D0E72195796900316AFE /* HomeViewController.m in Sources */,
@@ -688,10 +704,12 @@
 				1863D0ED219579DB00316AFE /* LoanViewController.m in Sources */,
 				1851C92E2199608C00B84513 /* RepayViewController.m in Sources */,
 				1863D10C21957CBD00316AFE /* LineBtn.m in Sources */,
+				18E7EB41219BA9C5004EDE91 /* ASDetailViewController.m in Sources */,
 				1863D10D21957CBD00316AFE /* NetTools.m in Sources */,
 				1863D10B21957CBD00316AFE /* CustomAlertView.m in Sources */,
 				1851C9312199609A00B84513 /* InvViewController.m in Sources */,
 				1863D10921957CBD00316AFE /* Base64Verb.m in Sources */,
+				18E7EB44219BB0E9004EDE91 /* ChongzhiViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

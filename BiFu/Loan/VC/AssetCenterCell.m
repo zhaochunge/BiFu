@@ -18,10 +18,10 @@
 }
 -(void)setupUI{
     
-    UIView *cellView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 300)];
+    UIView *cellView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 290)];
     cellView.backgroundColor=LINECOLOR;
     [self.contentView addSubview:cellView];
-    UIView *miniView=[[UIView alloc]initWithFrame:CGRectMake(30, 15, WIDTH-40, 300-30)];
+    UIView *miniView=[[UIView alloc]initWithFrame:CGRectMake(30, 15, WIDTH-40, 290-30)];
     miniView.backgroundColor=[UIColor whiteColor];
     miniView.layer.cornerRadius=5;
     [cellView addSubview:miniView];
@@ -57,7 +57,19 @@
      @property(nonatomic,strong)UIButton *tiBtn;
      @property(nonatomic,strong)UIButton *chongBtn;
      */
+    _tiBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _tiBtn.frame=CGRectMake(0, line.frame.origin.y+10, miniView.frame.size.width*0.5, 40);
+    [_tiBtn setTitle:@"提现" forState:UIControlStateNormal];
+    [_tiBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _tiBtn.titleLabel.font=[UIFont systemFontOfSize:20];
+    [miniView addSubview:_tiBtn];
     
+    _chongBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _chongBtn.frame=CGRectMake(miniView.frame.size.width*0.5, line.frame.origin.y+10, miniView.frame.size.width*0.5, 40);
+    [_chongBtn setTitle:@"充值" forState:UIControlStateNormal];
+    [_chongBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    _chongBtn.titleLabel.font=[UIFont systemFontOfSize:20];
+    [miniView addSubview:_chongBtn];
     
 }
 - (void)awakeFromNib {
