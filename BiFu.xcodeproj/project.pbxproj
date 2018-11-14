@@ -46,6 +46,14 @@
 		18B23638219AB1DE00E2594C /* AssetCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B23637219AB1DE00E2594C /* AssetCenterViewController.m */; };
 		18B2363D219AB55500E2594C /* AssetCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B2363C219AB55500E2594C /* AssetCenterCell.m */; };
 		7D78E7055B32D5D7D95CB8AD /* libPods-BiFu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */; };
+		F525EE48219BB1AF00AD5ACE /* alertTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE47219BB1AF00AD5ACE /* alertTableCell.m */; };
+		F525EE4B219BF1DA00AD5ACE /* MarketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE4A219BF1DA00AD5ACE /* MarketVC.m */; };
+		F525EE4E219BF97C00AD5ACE /* MarketTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE4D219BF97C00AD5ACE /* MarketTableCell.m */; };
+		F525EE5A219C0FC800AD5ACE /* YzcBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE51219C0FC700AD5ACE /* YzcBar.m */; };
+		F525EE5B219C0FC800AD5ACE /* YzcBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE53219C0FC700AD5ACE /* YzcBarChart.m */; };
+		F525EE5C219C0FC800AD5ACE /* YzcChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE55219C0FC700AD5ACE /* YzcChartView.m */; };
+		F525EE5D219C0FC800AD5ACE /* YzcConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE57219C0FC700AD5ACE /* YzcConst.m */; };
+		F525EE5E219C0FC800AD5ACE /* YzcLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE59219C0FC700AD5ACE /* YzcLabel.m */; };
 		F5396B8A219A55C900EFBF95 /* LIView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B87219A55C900EFBF95 /* LIView.m */; };
 		F5396B8B219A55C900EFBF95 /* HomeTableCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B89219A55C900EFBF95 /* HomeTableCellTableViewCell.m */; };
 		F5396B8F219A5AAC00EFBF95 /* myBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B8E219A5AAC00EFBF95 /* myBaseVC.m */; };
@@ -151,6 +159,22 @@
 		18B2363B219AB55500E2594C /* AssetCenterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetCenterCell.h; sourceTree = "<group>"; };
 		18B2363C219AB55500E2594C /* AssetCenterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetCenterCell.m; sourceTree = "<group>"; };
 		3CD49D46889913383E13325C /* Pods-BiFu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiFu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BiFu/Pods-BiFu.debug.xcconfig"; sourceTree = "<group>"; };
+		F525EE46219BB1AF00AD5ACE /* alertTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = alertTableCell.h; sourceTree = "<group>"; };
+		F525EE47219BB1AF00AD5ACE /* alertTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = alertTableCell.m; sourceTree = "<group>"; };
+		F525EE49219BF1DA00AD5ACE /* MarketVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketVC.h; sourceTree = "<group>"; };
+		F525EE4A219BF1DA00AD5ACE /* MarketVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketVC.m; sourceTree = "<group>"; };
+		F525EE4C219BF97C00AD5ACE /* MarketTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketTableCell.h; sourceTree = "<group>"; };
+		F525EE4D219BF97C00AD5ACE /* MarketTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketTableCell.m; sourceTree = "<group>"; };
+		F525EE50219C0FC700AD5ACE /* YzcBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzcBar.h; sourceTree = "<group>"; };
+		F525EE51219C0FC700AD5ACE /* YzcBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzcBar.m; sourceTree = "<group>"; };
+		F525EE52219C0FC700AD5ACE /* YzcBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzcBarChart.h; sourceTree = "<group>"; };
+		F525EE53219C0FC700AD5ACE /* YzcBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzcBarChart.m; sourceTree = "<group>"; };
+		F525EE54219C0FC700AD5ACE /* YzcChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzcChartView.h; sourceTree = "<group>"; };
+		F525EE55219C0FC700AD5ACE /* YzcChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzcChartView.m; sourceTree = "<group>"; };
+		F525EE56219C0FC700AD5ACE /* YzcConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzcConst.h; sourceTree = "<group>"; };
+		F525EE57219C0FC700AD5ACE /* YzcConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzcConst.m; sourceTree = "<group>"; };
+		F525EE58219C0FC700AD5ACE /* YzcLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzcLabel.h; sourceTree = "<group>"; };
+		F525EE59219C0FC700AD5ACE /* YzcLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzcLabel.m; sourceTree = "<group>"; };
 		F5396B86219A55C900EFBF95 /* LIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIView.h; sourceTree = "<group>"; };
 		F5396B87219A55C900EFBF95 /* LIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIView.m; sourceTree = "<group>"; };
 		F5396B88219A55C900EFBF95 /* HomeTableCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableCellTableViewCell.h; sourceTree = "<group>"; };
@@ -306,6 +330,7 @@
 		1863D0F521957CBD00316AFE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F525EE4F219C0FC700AD5ACE /* YzcChart */,
 				1863D0F621957CBD00316AFE /* Base64Verb.h */,
 				1863D0F721957CBD00316AFE /* Base64Verb.m */,
 				1863D0F821957CBD00316AFE /* cerTools.h */,
@@ -408,6 +433,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F525EE4F219C0FC700AD5ACE /* YzcChart */ = {
+			isa = PBXGroup;
+			children = (
+				F525EE50219C0FC700AD5ACE /* YzcBar.h */,
+				F525EE51219C0FC700AD5ACE /* YzcBar.m */,
+				F525EE52219C0FC700AD5ACE /* YzcBarChart.h */,
+				F525EE53219C0FC700AD5ACE /* YzcBarChart.m */,
+				F525EE54219C0FC700AD5ACE /* YzcChartView.h */,
+				F525EE55219C0FC700AD5ACE /* YzcChartView.m */,
+				F525EE56219C0FC700AD5ACE /* YzcConst.h */,
+				F525EE57219C0FC700AD5ACE /* YzcConst.m */,
+				F525EE58219C0FC700AD5ACE /* YzcLabel.h */,
+				F525EE59219C0FC700AD5ACE /* YzcLabel.m */,
+			);
+			path = YzcChart;
+			sourceTree = "<group>";
+		};
 		F5396B73219A53FE00EFBF95 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +491,8 @@
 			children = (
 				1863D0E8219579C000316AFE /* InvestViewController.h */,
 				1863D0E9219579C000316AFE /* InvestViewController.m */,
+				F525EE49219BF1DA00AD5ACE /* MarketVC.h */,
+				F525EE4A219BF1DA00AD5ACE /* MarketVC.m */,
 				F5396B93219AA9FC00EFBF95 /* InvestDetailVC.h */,
 				F5396B94219AA9FC00EFBF95 /* InvestDetailVC.m */,
 			);
@@ -462,6 +506,10 @@
 				F5396B9B219AB41100EFBF95 /* LLView.m */,
 				F5396B9D219AC72500EFBF95 /* InvestDetialTableCell.h */,
 				F5396B9E219AC72500EFBF95 /* InvestDetialTableCell.m */,
+				F525EE46219BB1AF00AD5ACE /* alertTableCell.h */,
+				F525EE47219BB1AF00AD5ACE /* alertTableCell.m */,
+				F525EE4C219BF97C00AD5ACE /* MarketTableCell.h */,
+				F525EE4D219BF97C00AD5ACE /* MarketTableCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -653,19 +701,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F525EE5E219C0FC800AD5ACE /* YzcLabel.m in Sources */,
 				1863D0F321957A0400316AFE /* MyViewController.m in Sources */,
 				1863D11121957CBD00316AFE /* UIColor+ColorChange.m in Sources */,
 				F5396B8A219A55C900EFBF95 /* LIView.m in Sources */,
 				1863D0AA2195785200316AFE /* ViewController.m in Sources */,
 				F5396B9C219AB41100EFBF95 /* LLView.m in Sources */,
 				1863D0F0219579EE00316AFE /* OrderViewController.m in Sources */,
+				F525EE5D219C0FC800AD5ACE /* YzcConst.m in Sources */,
 				1863D11021957CBD00316AFE /* UIView+Size.m in Sources */,
 				1863D0EA219579C000316AFE /* InvestViewController.m in Sources */,
 				1863D10F21957CBD00316AFE /* UIButton+Edge.m in Sources */,
+				F525EE5B219C0FC800AD5ACE /* YzcBarChart.m in Sources */,
 				1851C934219960A600B84513 /* RechargeViewController.m in Sources */,
 				F5396B9F219AC72500EFBF95 /* InvestDetialTableCell.m in Sources */,
+				F525EE48219BB1AF00AD5ACE /* alertTableCell.m in Sources */,
 				1863D0E0219578E200316AFE /* CDTabbarVC.m in Sources */,
 				1851C92521994DF500B84513 /* OrderCell.m in Sources */,
+				F525EE5A219C0FC800AD5ACE /* YzcBar.m in Sources */,
 				18B23635219A9C6D00E2594C /* WLoanViewController.m in Sources */,
 				1863D0B52195785200316AFE /* main.m in Sources */,
 				1851C9222199273B00B84513 /* YXButton.m in Sources */,
@@ -681,8 +734,10 @@
 				1851C93E2199675600B84513 /* HandleViewController.m in Sources */,
 				1863D0DE219578E200316AFE /* CDNavigationVC.m in Sources */,
 				F5396B8B219A55C900EFBF95 /* HomeTableCellTableViewCell.m in Sources */,
+				F525EE5C219C0FC800AD5ACE /* YzcChartView.m in Sources */,
 				1851C937219960B200B84513 /* AllInvViewController.m in Sources */,
 				F5396B95219AA9FC00EFBF95 /* InvestDetailVC.m in Sources */,
+				F525EE4B219BF1DA00AD5ACE /* MarketVC.m in Sources */,
 				1863D10E21957CBD00316AFE /* NSString+Size.m in Sources */,
 				1863D10A21957CBD00316AFE /* cerTools.m in Sources */,
 				1863D0ED219579DB00316AFE /* LoanViewController.m in Sources */,
@@ -691,6 +746,7 @@
 				1863D10D21957CBD00316AFE /* NetTools.m in Sources */,
 				1863D10B21957CBD00316AFE /* CustomAlertView.m in Sources */,
 				1851C9312199609A00B84513 /* InvViewController.m in Sources */,
+				F525EE4E219BF97C00AD5ACE /* MarketTableCell.m in Sources */,
 				1863D10921957CBD00316AFE /* Base64Verb.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

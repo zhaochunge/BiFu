@@ -10,6 +10,7 @@
 #import "HomeTableCellTableViewCell.h"
 #import "LineBtn.h"
 #import "InvestDetailVC.h"
+#import "MarketVC.h"
 
 @interface InvestViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UIScrollView *scrollView;
@@ -23,14 +24,29 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self navBtn];
+    [self rightItem];
     self.view.backgroundColor = [UIColor orangeColor];
     [self createScroll];
     [self createTable];
 }
+-(void)rightItem{
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame = CGRectMake(0, 0, 30, 30);
+    [rightBtn setImage:[UIImage imageNamed:@"趋势_ICON"] forState:(UIControlStateNormal)];
+    [rightBtn addTarget:self action:@selector(rightBtn:) forControlEvents:(UIControlEventTouchUpInside)];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    self.navigationItem.rightBarButtonItem =item;
+    _topView.userInteractionEnabled = NO;
+}
+#pragma mark 行情跳转
+-(void)rightBtn:(UIButton *)btn{
+    MarketVC *vc = [MarketVC new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 -(void)createTable{
     self.rataTable = [UITableView new];
     for (NSInteger i = 0; i<3; i++) {
-        UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(i*WIDTH, 0, WIDTH, HEIGHT-SafeAreaBottomHeight-SafeAreaTopHeight)];
+        UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(i*WIDTH, 0, WIDTH, HEIGHT-SafeAreaBottomHeight-SafeAreaTopHeight-50)];
         table.delegate = self;
         table.dataSource = self;
         table.tag = 8080+i;
