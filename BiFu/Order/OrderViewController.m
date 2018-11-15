@@ -55,7 +55,8 @@
         for (int j=0; j<4; j++) {
             
            YXButton*btn=[YXButton buttonWithType:UIButtonTypeCustom];
-//            btn.titleLabel.adjustsFontSizeToFitWidth=YES;
+//            btn.titleLabel.backgroundColor=[UIColor redColor];
+            btn.titleLabel.adjustsFontSizeToFitWidth=YES;
             btn.frame=CGRectMake(WIDTH/4.0*j,10+(WIDTH/4.0)*i, WIDTH/4.0, WIDTH/4.0);
             [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", _imageArray[i][j]]] forState:UIControlStateNormal];
             [btn setTitle:[NSString stringWithFormat:@"%@", _titleArray[i][j]] forState:UIControlStateNormal];
