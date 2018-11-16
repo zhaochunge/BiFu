@@ -7,14 +7,12 @@
 //
 
 #import "MyViewController.h"
-<<<<<<< HEAD
 #import "AssetCenterViewController.h"
 #import "TotalMoneyVC.h"
 #define kTableHeaderViewHeight      450  //tableHeaderView的高度
-=======
 #import "AboutViewController.h"
 #import "ShareAppViewController.h"
->>>>>>> e8916643aaf99c1701aba703a04771348a880b75
+
 
 #define kTableViewUpHeight          200  //tableView整体上移高度
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -106,7 +104,7 @@
     [white addSubview:img];
     //
     self.userId =[UILabel new];
-    _userId.frame = CGRectMake(15, 0, 70, 20);
+    _userId.frame = CGRectMake(20, 0, 70, 20);
     [img addSubview:_userId];
     _userId.textColor =[UIColor colorWithRed:228/255.0 green:147/255.0 blue:144/255.0 alpha:1];
     _userId.font =[UIFont systemFontOfSize:14];
