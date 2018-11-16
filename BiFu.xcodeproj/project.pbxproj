@@ -17,6 +17,10 @@
 		1851C937219960B200B84513 /* AllInvViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C936219960B200B84513 /* AllInvViewController.m */; };
 		1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C939219960BE00B84513 /* AllLoanViewController.m */; };
 		1851C93E2199675600B84513 /* HandleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C93D2199675600B84513 /* HandleViewController.m */; };
+		1853699F219D558800E26FDB /* LeeDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853699B219D558800E26FDB /* LeeDatePickerView.m */; };
+		185369A0219D558800E26FDB /* LeeDatePickerHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853699E219D558800E26FDB /* LeeDatePickerHeadView.m */; };
+		185369A4219D577C00E26FDB /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185369A3219D577C00E26FDB /* AboutViewController.m */; };
+		185369AA219D57B700E26FDB /* ShareAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185369A9219D57B700E26FDB /* ShareAppViewController.m */; };
 		1863D0A72195785200316AFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D0A62195785200316AFE /* AppDelegate.m */; };
 		1863D0AA2195785200316AFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D0A92195785200316AFE /* ViewController.m */; };
 		1863D0AD2195785200316AFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1863D0AB2195785200316AFE /* Main.storyboard */; };
@@ -112,6 +116,14 @@
 		1851C939219960BE00B84513 /* AllLoanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllLoanViewController.m; sourceTree = "<group>"; };
 		1851C93C2199675600B84513 /* HandleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandleViewController.h; sourceTree = "<group>"; };
 		1851C93D2199675600B84513 /* HandleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandleViewController.m; sourceTree = "<group>"; };
+		1853699A219D558800E26FDB /* LeeDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeDatePickerView.h; sourceTree = "<group>"; };
+		1853699B219D558800E26FDB /* LeeDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeDatePickerView.m; sourceTree = "<group>"; };
+		1853699D219D558800E26FDB /* LeeDatePickerHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeDatePickerHeadView.h; sourceTree = "<group>"; };
+		1853699E219D558800E26FDB /* LeeDatePickerHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeDatePickerHeadView.m; sourceTree = "<group>"; };
+		185369A2219D577C00E26FDB /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		185369A3219D577C00E26FDB /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		185369A8219D57B700E26FDB /* ShareAppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareAppViewController.h; sourceTree = "<group>"; };
+		185369A9219D57B700E26FDB /* ShareAppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareAppViewController.m; sourceTree = "<group>"; };
 		1863D0A22195785200316AFE /* BiFu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiFu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1863D0A52195785200316AFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1863D0A62195785200316AFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -272,6 +284,30 @@
 			path = VC;
 			sourceTree = "<group>";
 		};
+		18536999219D558800E26FDB /* LeeDatePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				1853699A219D558800E26FDB /* LeeDatePickerView.h */,
+				1853699B219D558800E26FDB /* LeeDatePickerView.m */,
+				1853699D219D558800E26FDB /* LeeDatePickerHeadView.h */,
+				1853699E219D558800E26FDB /* LeeDatePickerHeadView.m */,
+			);
+			name = LeeDatePickerView;
+			path = "../../../../../Downloads/LeeDatePickerView-master/LeeDatePickerView/LeeDatePickerView";
+			sourceTree = "<group>";
+		};
+		185369A1219D576600E26FDB /* Section=1 */ = {
+			isa = PBXGroup;
+			children = (
+				185369A2219D577C00E26FDB /* AboutViewController.h */,
+				185369A3219D577C00E26FDB /* AboutViewController.m */,
+				185369A8219D57B700E26FDB /* ShareAppViewController.h */,
+				185369A9219D57B700E26FDB /* ShareAppViewController.m */,
+			);
+			name = "Section=1";
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		1863D0992195785100316AFE = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +393,7 @@
 				F53D89A0219D62D800023EB0 /* controller */,
 				1863D0F121957A0400316AFE /* MyViewController.h */,
 				1863D0F221957A0400316AFE /* MyViewController.m */,
+				185369A1219D576600E26FDB /* Section=1 */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -441,6 +478,7 @@
 		18B23639219AB4FF00E2594C /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				18536999219D558800E26FDB /* LeeDatePickerView */,
 				18B23633219A9C6D00E2594C /* WLoanViewController.h */,
 				18B23634219A9C6D00E2594C /* WLoanViewController.m */,
 				18B23636219AB1DE00E2594C /* AssetCenterViewController.h */,
@@ -793,12 +831,14 @@
 				1863D0E0219578E200316AFE /* CDTabbarVC.m in Sources */,
 				1851C92521994DF500B84513 /* OrderCell.m in Sources */,
 				F53D8990219CFE0B00023EB0 /* LLSegmentBar.m in Sources */,
+				185369A0219D558800E26FDB /* LeeDatePickerHeadView.m in Sources */,
 				F525EE5A219C0FC800AD5ACE /* YzcBar.m in Sources */,
 				18B23635219A9C6D00E2594C /* WLoanViewController.m in Sources */,
 				1863D0B52195785200316AFE /* main.m in Sources */,
 				1851C9222199273B00B84513 /* YXButton.m in Sources */,
 				F53D8996219CFE9200023EB0 /* RateVC.m in Sources */,
 				1863D0A72195785200316AFE /* AppDelegate.m in Sources */,
+				185369A4219D577C00E26FDB /* AboutViewController.m in Sources */,
 				F5396B8F219A5AAC00EFBF95 /* myBaseVC.m in Sources */,
 				1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */,
 				18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */,
@@ -825,11 +865,13 @@
 				18E7EB41219BA9C5004EDE91 /* ASDetailViewController.m in Sources */,
 				1863D10D21957CBD00316AFE /* NetTools.m in Sources */,
 				1863D10B21957CBD00316AFE /* CustomAlertView.m in Sources */,
+				185369AA219D57B700E26FDB /* ShareAppViewController.m in Sources */,
 				1851C9312199609A00B84513 /* InvViewController.m in Sources */,
 				F525EE4E219BF97C00AD5ACE /* MarketTableCell.m in Sources */,
 				1863D10921957CBD00316AFE /* Base64Verb.m in Sources */,
 				F53D8992219CFE0B00023EB0 /* LLSegmentBarVC.m in Sources */,
 				18E7EB44219BB0E9004EDE91 /* ChongzhiViewController.m in Sources */,
+				1853699F219D558800E26FDB /* LeeDatePickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

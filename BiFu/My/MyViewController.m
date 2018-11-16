@@ -7,9 +7,14 @@
 //
 
 #import "MyViewController.h"
+<<<<<<< HEAD
 #import "AssetCenterViewController.h"
 #import "TotalMoneyVC.h"
 #define kTableHeaderViewHeight      450  //tableHeaderView的高度
+=======
+#import "AboutViewController.h"
+#import "ShareAppViewController.h"
+>>>>>>> e8916643aaf99c1701aba703a04771348a880b75
 
 #define kTableViewUpHeight          200  //tableView整体上移高度
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -248,6 +253,32 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    switch (indexPath.section) {
+        case 0:{
+            
+            break;
+        }
+        case 1:{
+            switch (indexPath.row) {
+                case 0:{//关于我们
+                    AboutViewController *aboutVC=[AboutViewController new];
+                    [self.navigationController pushViewController:aboutVC animated:YES];
+                    break;
+                }
+                case 1:{//分享APP
+                    ShareAppViewController *shareVC=[ShareAppViewController new];
+                    [self.navigationController pushViewController:shareVC animated:YES];
+                    break;
+                }
+                default:
+                    break;
+            }
+            
+            break;
+        }
+        default:
+            break;
+    }
     
     NSLog(@"点我啦");
 }
