@@ -7,13 +7,12 @@
 //
 
 #import "MyViewController.h"
-
 #import "AssetCenterViewController.h"
 #import "TotalMoneyVC.h"
 #define kTableHeaderViewHeight      450  //tableHeaderView的高度
-
 #import "AboutViewController.h"
 #import "ShareAppViewController.h"
+#import "MyCardVC.h"
 #import "HelpViewController.h"
 #import "RecordViewController.h"
 #import "PayStyleViewController.h"
@@ -109,7 +108,7 @@
     [white addSubview:img];
     //
     self.userId =[UILabel new];
-    _userId.frame = CGRectMake(15, 0, 70, 20);
+    _userId.frame = CGRectMake(20, 0, 70, 20);
     [img addSubview:_userId];
     _userId.textColor =[UIColor colorWithRed:228/255.0 green:147/255.0 blue:144/255.0 alpha:1];
     _userId.font =[UIFont systemFontOfSize:14];
@@ -155,7 +154,8 @@
         [self.navigationController pushViewController:acVC animated:YES];
     }else if (btn.tag == 2324){
         //我的卡券
-        
+        MyCardVC *vc =[MyCardVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (btn.tag == 2325){
         //我的邀请
     }else{
@@ -261,7 +261,7 @@
             switch (indexPath.row) {
                 case 0:{
                     
-                    break;
+                    break; 
                 }
                 case 1:{
                     PayStyleViewController *psVC=[PayStyleViewController new];
