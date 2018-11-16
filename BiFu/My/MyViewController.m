@@ -13,13 +13,6 @@
 #import "AboutViewController.h"
 #import "ShareAppViewController.h"
 
-
-#import "AssetCenterViewController.h"
-#import "TotalMoneyVC.h"
-#define kTableHeaderViewHeight      450  //tableHeaderView的高度
-
-#import "AboutViewController.h"
-#import "ShareAppViewController.h"
 #import "HelpViewController.h"
 
 #define kTableViewUpHeight          200  //tableView整体上移高度
