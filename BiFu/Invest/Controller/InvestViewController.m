@@ -7,27 +7,44 @@
 //
 
 #import "InvestViewController.h"
-#import "HomeTableCellTableViewCell.h"
-#import "LineBtn.h"
-#import "InvestDetailVC.h"
 #import "MarketVC.h"
-
-@interface InvestViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
-@property(nonatomic,strong)UIScrollView *scrollView;
-@property(nonatomic,strong)UITableView *rataTable;
-@property(nonatomic,strong)UIView *topView;
+#import "LLSegmentBarVC.h"
+#import "RateVC.h"
+#import "PeriodVC.h"
+#import "MoneyCountVC.h"
+@interface InvestViewController ()
+@property (nonatomic,weak) LLSegmentBarVC * segmentVC;
 @end
 
 @implementation InvestViewController
-
+- (LLSegmentBarVC *)segmentVC{
+    if (!_segmentVC) {
+        LLSegmentBarVC *vc = [[LLSegmentBarVC alloc]init];
+        // 添加到到控制器
+        [self addChildViewController:vc];
+        _segmentVC = vc;
+    }
+    return _segmentVC;
+}
+-(void)setupUI{
+    self.segmentVC.segmentBar.frame = CGRectMake(50, 0, WIDTH-100, 35);
+    self.navigationItem.titleView = self.segmentVC.segmentBar;
+    self.segmentVC.view.frame = self.view.bounds;
+    [self.view addSubview:self.segmentVC.view];
+    NSArray *items = @[@"利率", @"金额", @"周期"];
+    RateVC *rate = [[RateVC alloc] init];
+    MoneyCountVC *money = [[MoneyCountVC alloc] init];
+    PeriodVC *period = [[PeriodVC alloc] init];
+    [self.segmentVC setUpWithItems:items childVCs:@[rate,money,period]];
+    [self.segmentVC.segmentBar updateWithConfig:^(LLSegmentBarConfig *config) {
+        config.itemNormalColor([UIColor blackColor]).itemSelectColor(REDCOLOR).indicatorColor(REDCOLOR);
+    }];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self navBtn];
     [self rightItem];
-    self.view.backgroundColor = [UIColor orangeColor];
-    [self createScroll];
-    [self createTable];
+    [self setupUI];
 }
 -(void)rightItem{
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -36,120 +53,22 @@
     [rightBtn addTarget:self action:@selector(rightBtn:) forControlEvents:(UIControlEventTouchUpInside)];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem =item;
-    _topView.userInteractionEnabled = NO;
+    
 }
 #pragma mark 行情跳转
 -(void)rightBtn:(UIButton *)btn{
     MarketVC *vc = [MarketVC new];
     [self.navigationController pushViewController:vc animated:YES];
 }
--(void)createTable{
-    self.rataTable = [UITableView new];
-    for (NSInteger i = 0; i<3; i++) {
-        UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(i*WIDTH, 0, WIDTH, HEIGHT-SafeAreaBottomHeight-SafeAreaTopHeight-50)];
-        table.delegate = self;
-        table.dataSource = self;
-        table.tag = 8080+i;
-        [table registerClass:[HomeTableCellTableViewCell class] forCellReuseIdentifier:@"reuse"];
-        [_scrollView addSubview:table];
-        table.bounces = YES;
-    }
-   
-}
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    HomeTableCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuse" forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.title.text = @"哈DB231244";
-    cell.present.text = @"23.4%";
-    cell.type.text = @"高利率";
-    cell.moneyCount.text = @"987664";
-    cell.dateCount.text = @"7天";
-    cell.rate.text =@"年化利率";
-    cell.moneyTitle.text = @"借款金额(元)";
-    cell.dateTitle.text = @"借款期限";
-    return cell;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 130;
-}
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    InvestDetailVC *vc = [InvestDetailVC new];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-#pragma mark底部滑动
--(void)createScroll{
-    self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    _scrollView.backgroundColor = [UIColor lightGrayColor];
-    _scrollView.contentSize = CGSizeMake(WIDTH*3, 0);
-    _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.scrollView.showsHorizontalScrollIndicator = NO;
-    self.scrollView.showsVerticalScrollIndicator = NO;
-//    self.scrollView.contentOffset = CGPointMake(0, 0);
-    self.scrollView.pagingEnabled = YES;
-//    _scrollView.bounces = false ;
-    _scrollView.delegate = self;
-    [self.view addSubview:_scrollView];
-    
-}
-#pragma mark 联动
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    for (int i = 0; i<3; i++) {
-        LineBtn *button = [self.navigationController.navigationBar viewWithTag:i+777];
-        button.line.backgroundColor = [UIColor whiteColor];
-        [button setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
-    }
-    LineBtn *button;
-    if (scrollView.contentOffset.x==WIDTH) {
-        button = [self.navigationController.navigationBar viewWithTag:778];
-    }else if (scrollView.contentOffset.x==0){
-        button = [self.navigationController.navigationBar viewWithTag:777];
-    }else{
-        button = [self.navigationController.navigationBar viewWithTag:779];
-    }
-    button.line.backgroundColor = [UIColor redColor];
-    [button setTitleColor:[UIColor redColor] forState:(UIControlStateNormal)];
-}
-#pragma mark 创建顶部按钮
--(void)navBtn{
-    NSArray *arr = @[@"利率",@"金额",@"周期"];
-    self.topView = [UIView new];
-    self.topView.frame = CGRectMake(0, 0, WIDTH, 40);
-    for (int i = 0; i<3; i++) {
-        LineBtn *btn = [LineBtn buttonWithType:UIButtonTypeSystem Frame:CGRectMake(WIDTH/5*(i+1), 0, WIDTH/5, 40) ButtonTitle:arr[i] ButtonBackGroundColor:[UIColor whiteColor] ButtonBackgroundImage:nil ButtonTitleColor:[UIColor blackColor]];
-        btn.tag = 777+i;
-        if (i == 0) {
-            btn.line.backgroundColor = [UIColor redColor];
-            [btn setTitleColor:[UIColor redColor] forState:(UIControlStateNormal)];
-        }
-        [btn addTarget:self action:@selector(action:) forControlEvents:(UIControlEventTouchUpInside)];
-        [_topView addSubview:btn];
 
-    }
-    [self.navigationController.navigationBar addSubview:_topView];
-}
-
-#pragma mark 头部按钮点击
--(void)action:(LineBtn *)btn{
-    for (int i = 0; i<3; i++) {
-        LineBtn *button = [self.navigationController.navigationBar viewWithTag:i+777];
-        button.line.backgroundColor = [UIColor whiteColor];
-        [button setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
-    }
-    btn.line.backgroundColor = [UIColor redColor];
-    [btn setTitleColor:[UIColor redColor] forState:(UIControlStateNormal)];
-    self.scrollView.contentOffset= CGPointMake((btn.tag-777)*WIDTH, 0);
-}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setStatusBarBackgroundColor:[UIColor whiteColor]];
-    self.topView.hidden = NO;
+   
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.topView.hidden = YES;
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

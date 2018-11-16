@@ -68,6 +68,14 @@
 		F5396B95219AA9FC00EFBF95 /* InvestDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B94219AA9FC00EFBF95 /* InvestDetailVC.m */; };
 		F5396B9C219AB41100EFBF95 /* LLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B9B219AB41100EFBF95 /* LLView.m */; };
 		F5396B9F219AC72500EFBF95 /* InvestDetialTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5396B9E219AC72500EFBF95 /* InvestDetialTableCell.m */; };
+		F53D8990219CFE0B00023EB0 /* LLSegmentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D8989219CFE0B00023EB0 /* LLSegmentBar.m */; };
+		F53D8991219CFE0B00023EB0 /* LLSegmentBarConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D898B219CFE0B00023EB0 /* LLSegmentBarConfig.m */; };
+		F53D8992219CFE0B00023EB0 /* LLSegmentBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D898D219CFE0B00023EB0 /* LLSegmentBarVC.m */; };
+		F53D8993219CFE0B00023EB0 /* UIView+LLSegmentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D898F219CFE0B00023EB0 /* UIView+LLSegmentBar.m */; };
+		F53D8996219CFE9200023EB0 /* RateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D8995219CFE9200023EB0 /* RateVC.m */; };
+		F53D8999219CFEC700023EB0 /* MoneyCountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D8998219CFEC700023EB0 /* MoneyCountVC.m */; };
+		F53D899C219CFF0100023EB0 /* PeriodVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D899B219CFF0100023EB0 /* PeriodVC.m */; };
+		F53D89A3219D62F100023EB0 /* TotalMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D89A2219D62F100023EB0 /* TotalMoneyVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +219,22 @@
 		F5396B9B219AB41100EFBF95 /* LLView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLView.m; sourceTree = "<group>"; };
 		F5396B9D219AC72500EFBF95 /* InvestDetialTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvestDetialTableCell.h; sourceTree = "<group>"; };
 		F5396B9E219AC72500EFBF95 /* InvestDetialTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestDetialTableCell.m; sourceTree = "<group>"; };
+		F53D8988219CFE0B00023EB0 /* LLSegmentBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSegmentBar.h; sourceTree = "<group>"; };
+		F53D8989219CFE0B00023EB0 /* LLSegmentBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSegmentBar.m; sourceTree = "<group>"; };
+		F53D898A219CFE0B00023EB0 /* LLSegmentBarConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSegmentBarConfig.h; sourceTree = "<group>"; };
+		F53D898B219CFE0B00023EB0 /* LLSegmentBarConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSegmentBarConfig.m; sourceTree = "<group>"; };
+		F53D898C219CFE0B00023EB0 /* LLSegmentBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLSegmentBarVC.h; sourceTree = "<group>"; };
+		F53D898D219CFE0B00023EB0 /* LLSegmentBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLSegmentBarVC.m; sourceTree = "<group>"; };
+		F53D898E219CFE0B00023EB0 /* UIView+LLSegmentBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LLSegmentBar.h"; sourceTree = "<group>"; };
+		F53D898F219CFE0B00023EB0 /* UIView+LLSegmentBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LLSegmentBar.m"; sourceTree = "<group>"; };
+		F53D8994219CFE9200023EB0 /* RateVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RateVC.h; sourceTree = "<group>"; };
+		F53D8995219CFE9200023EB0 /* RateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateVC.m; sourceTree = "<group>"; };
+		F53D8997219CFEC700023EB0 /* MoneyCountVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoneyCountVC.h; sourceTree = "<group>"; };
+		F53D8998219CFEC700023EB0 /* MoneyCountVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoneyCountVC.m; sourceTree = "<group>"; };
+		F53D899A219CFF0100023EB0 /* PeriodVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeriodVC.h; sourceTree = "<group>"; };
+		F53D899B219CFF0100023EB0 /* PeriodVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeriodVC.m; sourceTree = "<group>"; };
+		F53D89A1219D62F100023EB0 /* TotalMoneyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TotalMoneyVC.h; sourceTree = "<group>"; };
+		F53D89A2219D62F100023EB0 /* TotalMoneyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TotalMoneyVC.m; sourceTree = "<group>"; };
 		F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BiFu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -378,6 +402,7 @@
 		1863D0E12195791E00316AFE /* My */ = {
 			isa = PBXGroup;
 			children = (
+				F53D89A0219D62D800023EB0 /* controller */,
 				1863D0F121957A0400316AFE /* MyViewController.h */,
 				1863D0F221957A0400316AFE /* MyViewController.m */,
 				185369AB219D69CA00E26FDB /* Section=0 */,
@@ -389,6 +414,7 @@
 		1863D0F521957CBD00316AFE /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F53D8987219CFE0B00023EB0 /* LLSegment */,
 				F525EE4F219C0FC700AD5ACE /* YzcChart */,
 				1863D0F621957CBD00316AFE /* Base64Verb.h */,
 				1863D0F721957CBD00316AFE /* Base64Verb.m */,
@@ -557,6 +583,12 @@
 			children = (
 				1863D0E8219579C000316AFE /* InvestViewController.h */,
 				1863D0E9219579C000316AFE /* InvestViewController.m */,
+				F53D8994219CFE9200023EB0 /* RateVC.h */,
+				F53D8995219CFE9200023EB0 /* RateVC.m */,
+				F53D8997219CFEC700023EB0 /* MoneyCountVC.h */,
+				F53D8998219CFEC700023EB0 /* MoneyCountVC.m */,
+				F53D899A219CFF0100023EB0 /* PeriodVC.h */,
+				F53D899B219CFF0100023EB0 /* PeriodVC.m */,
 				F525EE49219BF1DA00AD5ACE /* MarketVC.h */,
 				F525EE4A219BF1DA00AD5ACE /* MarketVC.m */,
 				F5396B93219AA9FC00EFBF95 /* InvestDetailVC.h */,
@@ -578,6 +610,30 @@
 				F525EE4D219BF97C00AD5ACE /* MarketTableCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F53D8987219CFE0B00023EB0 /* LLSegment */ = {
+			isa = PBXGroup;
+			children = (
+				F53D8988219CFE0B00023EB0 /* LLSegmentBar.h */,
+				F53D8989219CFE0B00023EB0 /* LLSegmentBar.m */,
+				F53D898A219CFE0B00023EB0 /* LLSegmentBarConfig.h */,
+				F53D898B219CFE0B00023EB0 /* LLSegmentBarConfig.m */,
+				F53D898C219CFE0B00023EB0 /* LLSegmentBarVC.h */,
+				F53D898D219CFE0B00023EB0 /* LLSegmentBarVC.m */,
+				F53D898E219CFE0B00023EB0 /* UIView+LLSegmentBar.h */,
+				F53D898F219CFE0B00023EB0 /* UIView+LLSegmentBar.m */,
+			);
+			path = LLSegment;
+			sourceTree = "<group>";
+		};
+		F53D89A0219D62D800023EB0 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F53D89A1219D62F100023EB0 /* TotalMoneyVC.h */,
+				F53D89A2219D62F100023EB0 /* TotalMoneyVC.m */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -767,6 +823,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F53D89A3219D62F100023EB0 /* TotalMoneyVC.m in Sources */,
 				F525EE5E219C0FC800AD5ACE /* YzcLabel.m in Sources */,
 				1863D0F321957A0400316AFE /* MyViewController.m in Sources */,
 				1863D11121957CBD00316AFE /* UIColor+ColorChange.m in Sources */,
@@ -777,18 +834,22 @@
 				F525EE5D219C0FC800AD5ACE /* YzcConst.m in Sources */,
 				1863D11021957CBD00316AFE /* UIView+Size.m in Sources */,
 				1863D0EA219579C000316AFE /* InvestViewController.m in Sources */,
+				F53D8993219CFE0B00023EB0 /* UIView+LLSegmentBar.m in Sources */,
 				1863D10F21957CBD00316AFE /* UIButton+Edge.m in Sources */,
 				F525EE5B219C0FC800AD5ACE /* YzcBarChart.m in Sources */,
 				1851C934219960A600B84513 /* RechargeViewController.m in Sources */,
+				F53D899C219CFF0100023EB0 /* PeriodVC.m in Sources */,
 				F5396B9F219AC72500EFBF95 /* InvestDetialTableCell.m in Sources */,
 				F525EE48219BB1AF00AD5ACE /* alertTableCell.m in Sources */,
 				1863D0E0219578E200316AFE /* CDTabbarVC.m in Sources */,
 				1851C92521994DF500B84513 /* OrderCell.m in Sources */,
+				F53D8990219CFE0B00023EB0 /* LLSegmentBar.m in Sources */,
 				185369A0219D558800E26FDB /* LeeDatePickerHeadView.m in Sources */,
 				F525EE5A219C0FC800AD5ACE /* YzcBar.m in Sources */,
 				18B23635219A9C6D00E2594C /* WLoanViewController.m in Sources */,
 				1863D0B52195785200316AFE /* main.m in Sources */,
 				1851C9222199273B00B84513 /* YXButton.m in Sources */,
+				F53D8996219CFE9200023EB0 /* RateVC.m in Sources */,
 				1863D0A72195785200316AFE /* AppDelegate.m in Sources */,
 				185369A4219D577C00E26FDB /* AboutViewController.m in Sources */,
 				F5396B8F219A5AAC00EFBF95 /* myBaseVC.m in Sources */,
@@ -805,9 +866,11 @@
 				F5396B8B219A55C900EFBF95 /* HomeTableCellTableViewCell.m in Sources */,
 				F525EE5C219C0FC800AD5ACE /* YzcChartView.m in Sources */,
 				1851C937219960B200B84513 /* AllInvViewController.m in Sources */,
+				F53D8991219CFE0B00023EB0 /* LLSegmentBarConfig.m in Sources */,
 				F5396B95219AA9FC00EFBF95 /* InvestDetailVC.m in Sources */,
 				F525EE4B219BF1DA00AD5ACE /* MarketVC.m in Sources */,
 				1863D10E21957CBD00316AFE /* NSString+Size.m in Sources */,
+				F53D8999219CFEC700023EB0 /* MoneyCountVC.m in Sources */,
 				1863D10A21957CBD00316AFE /* cerTools.m in Sources */,
 				1863D0ED219579DB00316AFE /* LoanViewController.m in Sources */,
 				1851C92E2199608C00B84513 /* RepayViewController.m in Sources */,
@@ -820,6 +883,7 @@
 				1851C9312199609A00B84513 /* InvViewController.m in Sources */,
 				F525EE4E219BF97C00AD5ACE /* MarketTableCell.m in Sources */,
 				1863D10921957CBD00316AFE /* Base64Verb.m in Sources */,
+				F53D8992219CFE0B00023EB0 /* LLSegmentBarVC.m in Sources */,
 				18E7EB44219BB0E9004EDE91 /* ChongzhiViewController.m in Sources */,
 				1853699F219D558800E26FDB /* LeeDatePickerView.m in Sources */,
 			);
