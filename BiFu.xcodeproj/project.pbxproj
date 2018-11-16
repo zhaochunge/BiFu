@@ -21,6 +21,7 @@
 		185369A0219D558800E26FDB /* LeeDatePickerHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1853699E219D558800E26FDB /* LeeDatePickerHeadView.m */; };
 		185369A4219D577C00E26FDB /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185369A3219D577C00E26FDB /* AboutViewController.m */; };
 		185369AA219D57B700E26FDB /* ShareAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185369A9219D57B700E26FDB /* ShareAppViewController.m */; };
+		185369AE219D69E100E26FDB /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185369AD219D69E100E26FDB /* HelpViewController.m */; };
 		1863D0A72195785200316AFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D0A62195785200316AFE /* AppDelegate.m */; };
 		1863D0AA2195785200316AFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D0A92195785200316AFE /* ViewController.m */; };
 		1863D0AD2195785200316AFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1863D0AB2195785200316AFE /* Main.storyboard */; };
@@ -116,6 +117,8 @@
 		185369A3219D577C00E26FDB /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		185369A8219D57B700E26FDB /* ShareAppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareAppViewController.h; sourceTree = "<group>"; };
 		185369A9219D57B700E26FDB /* ShareAppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareAppViewController.m; sourceTree = "<group>"; };
+		185369AC219D69E100E26FDB /* HelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		185369AD219D69E100E26FDB /* HelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		1863D0A22195785200316AFE /* BiFu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiFu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1863D0A52195785200316AFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1863D0A62195785200316AFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -284,6 +287,15 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		185369AB219D69CA00E26FDB /* Section=0 */ = {
+			isa = PBXGroup;
+			children = (
+				185369AC219D69E100E26FDB /* HelpViewController.h */,
+				185369AD219D69E100E26FDB /* HelpViewController.m */,
+			);
+			path = "Section=0";
+			sourceTree = "<group>";
+		};
 		1863D0992195785100316AFE = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +380,7 @@
 			children = (
 				1863D0F121957A0400316AFE /* MyViewController.h */,
 				1863D0F221957A0400316AFE /* MyViewController.m */,
+				185369AB219D69CA00E26FDB /* Section=0 */,
 				185369A1219D576600E26FDB /* Section=1 */,
 			);
 			path = My;
@@ -799,6 +812,7 @@
 				1863D0ED219579DB00316AFE /* LoanViewController.m in Sources */,
 				1851C92E2199608C00B84513 /* RepayViewController.m in Sources */,
 				1863D10C21957CBD00316AFE /* LineBtn.m in Sources */,
+				185369AE219D69E100E26FDB /* HelpViewController.m in Sources */,
 				18E7EB41219BA9C5004EDE91 /* ASDetailViewController.m in Sources */,
 				1863D10D21957CBD00316AFE /* NetTools.m in Sources */,
 				1863D10B21957CBD00316AFE /* CustomAlertView.m in Sources */,
