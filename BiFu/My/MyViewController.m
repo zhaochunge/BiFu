@@ -7,14 +7,14 @@
 //
 
 #import "MyViewController.h"
-<<<<<<< HEAD
+
 #import "AssetCenterViewController.h"
 #import "TotalMoneyVC.h"
 #define kTableHeaderViewHeight      450  //tableHeaderView的高度
-=======
+
 #import "AboutViewController.h"
 #import "ShareAppViewController.h"
->>>>>>> e8916643aaf99c1701aba703a04771348a880b75
+#import "HelpViewController.h"
 
 #define kTableViewUpHeight          200  //tableView整体上移高度
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -255,7 +255,27 @@
     
     switch (indexPath.section) {
         case 0:{
-            
+            switch (indexPath.row) {
+                case 0:{
+                    
+                    break;
+                }
+                case 1:{
+                    
+                    break;
+                }
+                case 2:{
+                    
+                    break;
+                }
+                case 3:{
+                    HelpViewController *helpVC=[HelpViewController new];
+                    [self.navigationController pushViewController:helpVC animated:YES];
+                    break;
+                }
+                default:
+                    break;
+            }
             break;
         }
         case 1:{
