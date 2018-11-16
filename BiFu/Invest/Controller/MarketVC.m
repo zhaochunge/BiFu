@@ -217,6 +217,7 @@
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.pagingEnabled = YES;
     _scrollView.delegate = self;
+    _scrollView.bounces = NO;
     [self.view addSubview:_scrollView];
     
 }
@@ -228,9 +229,9 @@
         [button setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
     }
     LineBtn *button;
-    if (scrollView.contentOffset.x==WIDTH) {
+    if (_scrollView.contentOffset.x==WIDTH) {
         button = [self.view viewWithTag:667];
-    }else if (scrollView.contentOffset.x==0){
+    }else if (_scrollView.contentOffset.x==0){
         button = [self.view viewWithTag:666];
     }else{
         button = [self.view viewWithTag:668];
