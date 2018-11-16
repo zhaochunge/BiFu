@@ -12,7 +12,7 @@
 #define kTableHeaderViewHeight      450  //tableHeaderView的高度
 #import "AboutViewController.h"
 #import "ShareAppViewController.h"
-
+#import "MyCardVC.h"
 #import "HelpViewController.h"
 
 #define kTableViewUpHeight          200  //tableView整体上移高度
@@ -151,7 +151,8 @@
         [self.navigationController pushViewController:acVC animated:YES];
     }else if (btn.tag == 2324){
         //我的卡券
-        
+        MyCardVC *vc =[MyCardVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (btn.tag == 2325){
         //我的邀请
     }else{
@@ -257,7 +258,7 @@
             switch (indexPath.row) {
                 case 0:{
                     
-                    break;
+                    break; 
                 }
                 case 1:{
                     
