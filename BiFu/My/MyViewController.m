@@ -14,6 +14,9 @@
 #import "ShareAppViewController.h"
 #import "MyCardVC.h"
 #import "HelpViewController.h"
+#import "RecordViewController.h"
+#import "PayStyleViewController.h"
+
 
 #define kTableViewUpHeight          200  //tableView整体上移高度
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -261,11 +264,13 @@
                     break; 
                 }
                 case 1:{
-                    
+                    PayStyleViewController *psVC=[PayStyleViewController new];
+                    [self.navigationController pushViewController:psVC animated:YES];
                     break;
                 }
                 case 2:{
-                    
+                    RecordViewController *recordVC=[RecordViewController new];
+                    [self.navigationController pushViewController:recordVC animated:YES];
                     break;
                 }
                 case 3:{

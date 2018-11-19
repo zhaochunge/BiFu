@@ -18,10 +18,18 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
     self.navigationItem.title=@"关于我们";
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame = CGRectMake(0, 0, 30, 30);
+    [rightBtn setImage:[UIImage imageNamed:@"返回"] forState:(UIControlStateNormal)];
+    [rightBtn addTarget:self action:@selector(leftBtn:) forControlEvents:(UIControlEventTouchUpInside)];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    self.navigationItem.leftBarButtonItem =item;
     
     [self setupUI];
 }
-
+-(void)leftBtn:(UIButton *)btn{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)setupUI{
     
     UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(WIDTH/2.0-45, 120, 90, 90)];
