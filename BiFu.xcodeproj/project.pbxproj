@@ -55,6 +55,9 @@
 		18F0769F219EA5A900B42D98 /* PayStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0769E219EA5A900B42D98 /* PayStyleViewController.m */; };
 		18F076A5219EBA4400B42D98 /* LeeDatePickerHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F076A2219EBA4400B42D98 /* LeeDatePickerHeadView.m */; };
 		18F076A6219EBA4400B42D98 /* LeeDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F076A4219EBA4400B42D98 /* LeeDatePickerView.m */; };
+		18FFD17A21A248FC00669E2B /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FFD17921A248FC00669E2B /* CardViewController.m */; };
+		18FFD17D21A2491500669E2B /* AliPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FFD17C21A2491500669E2B /* AliPayViewController.m */; };
+		18FFD18021A2492A00669E2B /* WeChatPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FFD17F21A2492A00669E2B /* WeChatPayViewController.m */; };
 		7D78E7055B32D5D7D95CB8AD /* libPods-BiFu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */; };
 		F525EE48219BB1AF00AD5ACE /* alertTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE47219BB1AF00AD5ACE /* alertTableCell.m */; };
 		F525EE4B219BF1DA00AD5ACE /* MarketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE4A219BF1DA00AD5ACE /* MarketVC.m */; };
@@ -202,6 +205,12 @@
 		18F076A2219EBA4400B42D98 /* LeeDatePickerHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeDatePickerHeadView.m; sourceTree = "<group>"; };
 		18F076A3219EBA4400B42D98 /* LeeDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeDatePickerView.h; sourceTree = "<group>"; };
 		18F076A4219EBA4400B42D98 /* LeeDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeDatePickerView.m; sourceTree = "<group>"; };
+		18FFD17821A248FC00669E2B /* CardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
+		18FFD17921A248FC00669E2B /* CardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
+		18FFD17B21A2491500669E2B /* AliPayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AliPayViewController.h; sourceTree = "<group>"; };
+		18FFD17C21A2491500669E2B /* AliPayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AliPayViewController.m; sourceTree = "<group>"; };
+		18FFD17E21A2492A00669E2B /* WeChatPayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeChatPayViewController.h; sourceTree = "<group>"; };
+		18FFD17F21A2492A00669E2B /* WeChatPayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatPayViewController.m; sourceTree = "<group>"; };
 		3CD49D46889913383E13325C /* Pods-BiFu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiFu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BiFu/Pods-BiFu.debug.xcconfig"; sourceTree = "<group>"; };
 		F525EE46219BB1AF00AD5ACE /* alertTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = alertTableCell.h; sourceTree = "<group>"; };
 		F525EE47219BB1AF00AD5ACE /* alertTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = alertTableCell.m; sourceTree = "<group>"; };
@@ -332,6 +341,7 @@
 				18F0769B219E970C00B42D98 /* RecordViewController.m */,
 				18F0769D219EA5A900B42D98 /* PayStyleViewController.h */,
 				18F0769E219EA5A900B42D98 /* PayStyleViewController.m */,
+				18FFD17721A248C500669E2B /* Pay */,
 			);
 			path = "Section=0";
 			sourceTree = "<group>";
@@ -536,6 +546,19 @@
 			);
 			name = LeeDatePickerView;
 			path = "../../../../../Downloads/LeeDatePickerView-master/LeeDatePickerView/LeeDatePickerView";
+			sourceTree = "<group>";
+		};
+		18FFD17721A248C500669E2B /* Pay */ = {
+			isa = PBXGroup;
+			children = (
+				18FFD17821A248FC00669E2B /* CardViewController.h */,
+				18FFD17921A248FC00669E2B /* CardViewController.m */,
+				18FFD17B21A2491500669E2B /* AliPayViewController.h */,
+				18FFD17C21A2491500669E2B /* AliPayViewController.m */,
+				18FFD17E21A2492A00669E2B /* WeChatPayViewController.h */,
+				18FFD17F21A2492A00669E2B /* WeChatPayViewController.m */,
+			);
+			path = Pay;
 			sourceTree = "<group>";
 		};
 		1FDF5F0E087B23A7481502BC /* Frameworks */ = {
@@ -908,9 +931,12 @@
 				18B23635219A9C6D00E2594C /* WLoanViewController.m in Sources */,
 				1863D0B52195785200316AFE /* main.m in Sources */,
 				1851C9222199273B00B84513 /* YXButton.m in Sources */,
+				18FFD18021A2492A00669E2B /* WeChatPayViewController.m in Sources */,
 				F53D8996219CFE9200023EB0 /* RateVC.m in Sources */,
 				1863D0A72195785200316AFE /* AppDelegate.m in Sources */,
 				185369A4219D577C00E26FDB /* AboutViewController.m in Sources */,
+				18FFD17A21A248FC00669E2B /* CardViewController.m in Sources */,
+				18FFD17D21A2491500669E2B /* AliPayViewController.m in Sources */,
 				F5396B8F219A5AAC00EFBF95 /* myBaseVC.m in Sources */,
 				1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */,
 				18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */,
