@@ -33,6 +33,11 @@
 //        titleLab.font=[UIFont systemFontOfSize:20];
         titleLab.text=_titleArray[i];
         [self.view addSubview:titleLab];
+        
+        UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
+        
+        
+        
     }
     
 }
