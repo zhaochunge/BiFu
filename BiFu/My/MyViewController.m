@@ -16,6 +16,9 @@
 #import "HelpViewController.h"
 #import "RecordViewController.h"
 #import "PayStyleViewController.h"
+#import "SettingVC.h"
+#import "myInterviewVC.h"
+#import "customerVC.h"
 
 
 #define kTableViewUpHeight          200  //tableView整体上移高度
@@ -158,8 +161,12 @@
         [self.navigationController pushViewController:vc animated:YES];
     }else if (btn.tag == 2325){
         //我的邀请
+        myInterviewVC *vc =[myInterviewVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }else{
         //客户服务
+        customerVC *vc = [customerVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -173,34 +180,34 @@
 
 #pragma mark - Others （其他）
 - (CGRect)calculateFrameWithOffY:(CGFloat)offy {
-    
+
     CGFloat upDistance = offy + 64;
-    
+
     //1.navigationBar透明度计算
     CGFloat alphaScale = 0.0;
-    
+
     CGFloat criticalHeight = kTableHeaderViewHeight - kTableViewUpHeight;
-    
+
     if (upDistance <= criticalHeight) {
         alphaScale = (upDistance-20) / criticalHeight;
     } else {
         alphaScale = 1.0;
     }
-    
+
     [_navigationBackgroundView setAlpha:alphaScale];
-    
-    
-    
-    
+
+
+
+
     //2.缩放比例计算
     CGFloat zoomScale = -offy / self.tableView.frame.size.height + 1;
-    
+
     CGRect rect = [_tableView.tableHeaderView viewWithTag:1000].frame;
     if (offy < 0) {
         rect.size.width = self.view.frame.size.width * zoomScale;
         rect.size.height = kTableHeaderViewHeight * zoomScale;
     }
-    
+
     return rect;
 }
 
@@ -235,7 +242,6 @@
     navigationBackgroundView.backgroundColor = REDCOLOR;
     
     navigationBackgroundView.alpha = 0.0;
-    
     UIView *uiBarBackground = self.navigationController.navigationBar.subviews.firstObject;
     
     [uiBarBackground addSubview:navigationBackgroundView];
@@ -342,14 +348,15 @@
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame = CGRectMake(0, 0, 30, 30);
     [rightBtn setImage:[UIImage imageNamed:@"设置"] forState:(UIControlStateNormal)];
-    [rightBtn addTarget:self action:@selector(rightBtn:) forControlEvents:(UIControlEventTouchUpInside)];
+    [rightBtn addTarget:self action:@selector(leftBtn:) forControlEvents:(UIControlEventTouchUpInside)];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     self.navigationItem.leftBarButtonItem =item;
     
 }
 #pragma mark 设置点击
 -(void)leftBtn:(UIButton *)btn{
-    
+    SettingVC *vc =[SettingVC new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
