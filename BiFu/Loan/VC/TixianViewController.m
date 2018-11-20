@@ -13,6 +13,8 @@
 @property(nonatomic,strong)UIView *footerView;
 @property(nonatomic,strong)NSArray *titleArray;
 
+
+
 @end
 
 @implementation TixianViewController

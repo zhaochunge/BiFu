@@ -23,5 +23,8 @@
 @property(nonatomic,strong)UILabel *mhuanLab;
 @property(nonatomic,strong)UILabel *mnewsLab;
 
+@property(nonatomic,strong)UIButton *cancelBtn;
+@property(nonatomic,strong)UIButton *payBtn;
+
 
 @end

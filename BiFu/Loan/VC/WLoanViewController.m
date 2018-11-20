@@ -8,11 +8,14 @@
 
 #import "WLoanViewController.h"
 
-@interface WLoanViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface WLoanViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)UIView *footerView;
 @property(nonatomic,strong)NSArray *titleArray;
+
+@property(nonatomic,strong)UITextField *numTF;
+@property(nonatomic,strong)UITextField *sumTF;
 
 @end
 
@@ -78,17 +81,21 @@
     
     switch (indexPath.section) {
         case 0:{
-            UITextField *numTF=[[UITextField alloc]initWithFrame:CGRectMake(WIDTH/2.0, 10, WIDTH/2.0-10, 20)];
-            numTF.placeholder=@"请输入不少于0.01";
-            numTF.textAlignment=NSTextAlignmentRight;
-            [cell addSubview:numTF];
+            _numTF=[[UITextField alloc]initWithFrame:CGRectMake(WIDTH/2.0, 10, WIDTH/2.0-10, 20)];
+            _numTF.placeholder=@"请输入不少于0.01";
+            _numTF.textAlignment=NSTextAlignmentRight;
+            _numTF.delegate=self;
+            _numTF.returnKeyType=UIReturnKeyDone;
+            [cell addSubview:_numTF];
             break;
         }
         case 1:{
-            UITextField *sumTF=[[UITextField alloc]initWithFrame:CGRectMake(WIDTH/2.0, 10, WIDTH/2.0-10, 20)];
-            sumTF.placeholder=@"请输入100的整倍数";
-            sumTF.textAlignment=NSTextAlignmentRight;
-            [cell addSubview:sumTF];
+            _sumTF=[[UITextField alloc]initWithFrame:CGRectMake(WIDTH/2.0, 10, WIDTH/2.0-10, 20)];
+            _sumTF.placeholder=@"请输入100的整倍数";
+            _sumTF.textAlignment=NSTextAlignmentRight;
+            _sumTF.delegate=self;
+            _sumTF.returnKeyType=UIReturnKeyDone;
+            [cell addSubview:_sumTF];
             break;
         }
         case 2:{
@@ -120,6 +127,12 @@
     
     return cell;
 }
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 -(UIButton *)buttonWithFrame:(CGRect)frame title:(NSString *)title{
     UIButton *button=[UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.frame=frame;

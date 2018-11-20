@@ -54,8 +54,7 @@
     for (int i=0; i<2; i++) {
         for (int j=0; j<4; j++) {
             
-           YXButton*btn=[YXButton buttonWithType:UIButtonTypeCustom];
-//            btn.titleLabel.backgroundColor=[UIColor redColor];
+            YXButton*btn=[YXButton buttonWithType:UIButtonTypeCustom];
             btn.titleLabel.adjustsFontSizeToFitWidth=YES;
             btn.frame=CGRectMake(WIDTH/4.0*j,10+(WIDTH/4.0)*i, WIDTH/4.0, WIDTH/4.0);
             [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", _imageArray[i][j]]] forState:UIControlStateNormal];
@@ -71,7 +70,6 @@
     lab.text=@"待处理订单";
     lab.textColor=[UIColor darkGrayColor];
     [_headerView addSubview:lab];
-    
     
 }
 -(void)setupFooterView{
@@ -90,7 +88,18 @@
     cell.numLab.text=@"DB28374645129283";
     cell.huanLab.text=@"10月18日";
     cell.mnewsLab.text=@"6";
+    [cell.cancelBtn addTarget:self action:@selector(cancelBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.payBtn addTarget:self action:@selector(payBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
+}
+#pragma mark cancelBtn
+-(void)cancelBtnClick:(UIButton *)button{
+    NSLog(@"取消");
+}
+#pragma mark payBtn
+-(void)payBtnClick:(UIButton *)button{
+    NSLog(@"支付");
 }
 #pragma mark 去各个页面
 -(void)btnClick:(UIButton *)button{
@@ -165,7 +174,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    return 137;
+    return 137+40;
 }
 - (void)setStatusBarBackgroundColor:(UIColor *)color {
     

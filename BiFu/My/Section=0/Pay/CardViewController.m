@@ -8,7 +8,7 @@
 
 #import "CardViewController.h"
 
-@interface CardViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface CardViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSArray *titleArray;
 @property(nonatomic,strong)UIView *footView;
@@ -81,6 +81,8 @@
         //TF
         _nameTF=[[UITextField alloc]initWithFrame:CGRectMake(80, 10, WIDTH-100, 30)];
         _nameTF.placeholder=@"姓名";
+        _nameTF.delegate=self;
+        _nameTF.returnKeyType=UIReturnKeyDone;
         [cell addSubview:_nameTF];
     }else if(indexPath.section==2){
         if (indexPath.row==0) {
@@ -88,18 +90,24 @@
             _cardNumTF=[[UITextField alloc]initWithFrame:CGRectMake(100, 10, WIDTH-120, 30)];
             _cardNumTF.placeholder=@"请填写银行卡";
             _cardNumTF.textAlignment=NSTextAlignmentRight;
+            _cardNumTF.delegate=self;
+            _cardNumTF.returnKeyType=UIReturnKeyDone;
             [cell addSubview:_cardNumTF];
         }else if (indexPath.row==1){
             //TF
             _bankTF=[[UITextField alloc]initWithFrame:CGRectMake(100, 10, WIDTH-120, 30)];
             _bankTF.placeholder=@"如：中国银行";
             _bankTF.textAlignment=NSTextAlignmentRight;
+            _bankTF.delegate=self;
+            _bankTF.returnKeyType=UIReturnKeyDone;
             [cell addSubview:_bankTF];
         }else{
             //TF
             _aBankTF=[[UITextField alloc]initWithFrame:CGRectMake(100, 10, WIDTH-120, 30)];
             _aBankTF.placeholder=@"如：大连中山银行";
             _aBankTF.textAlignment=NSTextAlignmentRight;
+            _aBankTF.delegate=self;
+            _aBankTF.returnKeyType=UIReturnKeyDone;
             [cell addSubview:_aBankTF];
         }
     }else{
@@ -113,6 +121,8 @@
         
         _verCodeTF=[[UITextField alloc]initWithFrame:CGRectMake(120, 10, WIDTH-220, 30)];
         _verCodeTF.placeholder=@"验证码";
+        _verCodeTF.delegate=self;
+        _verCodeTF.returnKeyType=UIReturnKeyDone;
         [cell addSubview:_verCodeTF];
         
     }
@@ -125,6 +135,15 @@
     
     
     
+}
+
+//-(void)textFieldDidBeginEditing:(UITextField *)textField{
+//    
+//}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
