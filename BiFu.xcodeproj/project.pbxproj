@@ -53,8 +53,6 @@
 		18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7EB46219BB0F5004EDE91 /* TixianViewController.m */; };
 		18F0769C219E970C00B42D98 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0769B219E970C00B42D98 /* RecordViewController.m */; };
 		18F0769F219EA5A900B42D98 /* PayStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0769E219EA5A900B42D98 /* PayStyleViewController.m */; };
-		18F076A5219EBA4400B42D98 /* LeeDatePickerHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F076A2219EBA4400B42D98 /* LeeDatePickerHeadView.m */; };
-		18F076A6219EBA4400B42D98 /* LeeDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F076A4219EBA4400B42D98 /* LeeDatePickerView.m */; };
 		7D78E7055B32D5D7D95CB8AD /* libPods-BiFu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */; };
 		F525EE48219BB1AF00AD5ACE /* alertTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE47219BB1AF00AD5ACE /* alertTableCell.m */; };
 		F525EE4B219BF1DA00AD5ACE /* MarketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE4A219BF1DA00AD5ACE /* MarketVC.m */; };
@@ -84,6 +82,13 @@
 		F53D8999219CFEC700023EB0 /* MoneyCountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D8998219CFEC700023EB0 /* MoneyCountVC.m */; };
 		F53D899C219CFF0100023EB0 /* PeriodVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D899B219CFF0100023EB0 /* PeriodVC.m */; };
 		F53D89A3219D62F100023EB0 /* TotalMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D89A2219D62F100023EB0 /* TotalMoneyVC.m */; };
+		F56A8DF121A23BC400659418 /* LeeDatePickerHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DED21A23BC400659418 /* LeeDatePickerHeadView.m */; };
+		F56A8DF221A23BC400659418 /* LeeDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DEF21A23BC400659418 /* LeeDatePickerView.m */; };
+		F56A8DF521A2418A00659418 /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DF421A2418A00659418 /* SettingVC.m */; };
+		F56A8DF821A2479600659418 /* myInterviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DF721A2479600659418 /* myInterviewVC.m */; };
+		F56A8DFB21A286F100659418 /* customerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DFA21A286F100659418 /* customerVC.m */; };
+		F56A8DFE21A28A9500659418 /* CustomerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DFD21A28A9500659418 /* CustomerTableCell.m */; };
+		F56A8E0121A28AC400659418 /* CustomerTilCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8E0021A28AC400659418 /* CustomerTilCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,10 +203,6 @@
 		18F0769B219E970C00B42D98 /* RecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
 		18F0769D219EA5A900B42D98 /* PayStyleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayStyleViewController.h; sourceTree = "<group>"; };
 		18F0769E219EA5A900B42D98 /* PayStyleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayStyleViewController.m; sourceTree = "<group>"; };
-		18F076A1219EBA4400B42D98 /* LeeDatePickerHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeDatePickerHeadView.h; sourceTree = "<group>"; };
-		18F076A2219EBA4400B42D98 /* LeeDatePickerHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeDatePickerHeadView.m; sourceTree = "<group>"; };
-		18F076A3219EBA4400B42D98 /* LeeDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeDatePickerView.h; sourceTree = "<group>"; };
-		18F076A4219EBA4400B42D98 /* LeeDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeDatePickerView.m; sourceTree = "<group>"; };
 		3CD49D46889913383E13325C /* Pods-BiFu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiFu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BiFu/Pods-BiFu.debug.xcconfig"; sourceTree = "<group>"; };
 		F525EE46219BB1AF00AD5ACE /* alertTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = alertTableCell.h; sourceTree = "<group>"; };
 		F525EE47219BB1AF00AD5ACE /* alertTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = alertTableCell.m; sourceTree = "<group>"; };
@@ -260,6 +261,20 @@
 		F53D89A1219D62F100023EB0 /* TotalMoneyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TotalMoneyVC.h; sourceTree = "<group>"; };
 		F53D89A2219D62F100023EB0 /* TotalMoneyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TotalMoneyVC.m; sourceTree = "<group>"; };
 		F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BiFu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F56A8DEC21A23BC400659418 /* LeeDatePickerHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeDatePickerHeadView.h; sourceTree = "<group>"; };
+		F56A8DED21A23BC400659418 /* LeeDatePickerHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeDatePickerHeadView.m; sourceTree = "<group>"; };
+		F56A8DEE21A23BC400659418 /* LeeDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeDatePickerView.h; sourceTree = "<group>"; };
+		F56A8DEF21A23BC400659418 /* LeeDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeDatePickerView.m; sourceTree = "<group>"; };
+		F56A8DF321A2418A00659418 /* SettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingVC.h; sourceTree = "<group>"; };
+		F56A8DF421A2418A00659418 /* SettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingVC.m; sourceTree = "<group>"; };
+		F56A8DF621A2479600659418 /* myInterviewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myInterviewVC.h; sourceTree = "<group>"; };
+		F56A8DF721A2479600659418 /* myInterviewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myInterviewVC.m; sourceTree = "<group>"; };
+		F56A8DF921A286F100659418 /* customerVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = customerVC.h; sourceTree = "<group>"; };
+		F56A8DFA21A286F100659418 /* customerVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = customerVC.m; sourceTree = "<group>"; };
+		F56A8DFC21A28A9500659418 /* CustomerTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerTableCell.h; sourceTree = "<group>"; };
+		F56A8DFD21A28A9500659418 /* CustomerTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerTableCell.m; sourceTree = "<group>"; };
+		F56A8DFF21A28AC400659418 /* CustomerTilCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerTilCell.h; sourceTree = "<group>"; };
+		F56A8E0021A28AC400659418 /* CustomerTilCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerTilCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -481,6 +496,7 @@
 		1863D11621957FC800316AFE /* Loan */ = {
 			isa = PBXGroup;
 			children = (
+				F56A8DEB21A23BC400659418 /* LeeDatePickerView */,
 				1863D0EB219579DB00316AFE /* LoanViewController.h */,
 				1863D0EC219579DB00316AFE /* LoanViewController.m */,
 				18B23639219AB4FF00E2594C /* VC */,
@@ -509,7 +525,6 @@
 		18B23639219AB4FF00E2594C /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				18F076A0219EBA4400B42D98 /* LeeDatePickerView */,
 				18B23633219A9C6D00E2594C /* WLoanViewController.h */,
 				18B23634219A9C6D00E2594C /* WLoanViewController.m */,
 				18B23636219AB1DE00E2594C /* AssetCenterViewController.h */,
@@ -524,18 +539,6 @@
 				18B2363C219AB55500E2594C /* AssetCenterCell.m */,
 			);
 			path = VC;
-			sourceTree = "<group>";
-		};
-		18F076A0219EBA4400B42D98 /* LeeDatePickerView */ = {
-			isa = PBXGroup;
-			children = (
-				18F076A1219EBA4400B42D98 /* LeeDatePickerHeadView.h */,
-				18F076A2219EBA4400B42D98 /* LeeDatePickerHeadView.m */,
-				18F076A3219EBA4400B42D98 /* LeeDatePickerView.h */,
-				18F076A4219EBA4400B42D98 /* LeeDatePickerView.m */,
-			);
-			name = LeeDatePickerView;
-			path = "../../../../../Downloads/LeeDatePickerView-master/LeeDatePickerView/LeeDatePickerView";
 			sourceTree = "<group>";
 		};
 		1FDF5F0E087B23A7481502BC /* Frameworks */ = {
@@ -586,6 +589,10 @@
 			children = (
 				F5342E3A219E6E7900853EA1 /* CardTableCell.h */,
 				F5342E3B219E6E7900853EA1 /* CardTableCell.m */,
+				F56A8DFC21A28A9500659418 /* CustomerTableCell.h */,
+				F56A8DFD21A28A9500659418 /* CustomerTableCell.m */,
+				F56A8DFF21A28AC400659418 /* CustomerTilCell.h */,
+				F56A8E0021A28AC400659418 /* CustomerTilCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -688,8 +695,33 @@
 				F5342E2D219E637E00853EA1 /* UnusedVC.m */,
 				F5342E2F219E63B400853EA1 /* ExpiredVC.h */,
 				F5342E30219E63B400853EA1 /* ExpiredVC.m */,
+				F56A8DF321A2418A00659418 /* SettingVC.h */,
+				F56A8DF421A2418A00659418 /* SettingVC.m */,
+				F56A8DF621A2479600659418 /* myInterviewVC.h */,
+				F56A8DF721A2479600659418 /* myInterviewVC.m */,
+				F56A8DF921A286F100659418 /* customerVC.h */,
+				F56A8DFA21A286F100659418 /* customerVC.m */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		F56A8DEB21A23BC400659418 /* LeeDatePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				F56A8DEC21A23BC400659418 /* LeeDatePickerHeadView.h */,
+				F56A8DED21A23BC400659418 /* LeeDatePickerHeadView.m */,
+				F56A8DEE21A23BC400659418 /* LeeDatePickerView.h */,
+				F56A8DEF21A23BC400659418 /* LeeDatePickerView.m */,
+				F56A8DF021A23BC400659418 /* View */,
+			);
+			path = LeeDatePickerView;
+			sourceTree = "<group>";
+		};
+		F56A8DF021A23BC400659418 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -886,21 +918,24 @@
 				F5396B8A219A55C900EFBF95 /* LIView.m in Sources */,
 				1863D0AA2195785200316AFE /* ViewController.m in Sources */,
 				F5396B9C219AB41100EFBF95 /* LLView.m in Sources */,
+				F56A8E0121A28AC400659418 /* CustomerTilCell.m in Sources */,
 				1863D0F0219579EE00316AFE /* OrderViewController.m in Sources */,
 				F525EE5D219C0FC800AD5ACE /* YzcConst.m in Sources */,
 				1863D11021957CBD00316AFE /* UIView+Size.m in Sources */,
 				1863D0EA219579C000316AFE /* InvestViewController.m in Sources */,
+				F56A8DF121A23BC400659418 /* LeeDatePickerHeadView.m in Sources */,
 				F53D8993219CFE0B00023EB0 /* UIView+LLSegmentBar.m in Sources */,
 				1863D10F21957CBD00316AFE /* UIButton+Edge.m in Sources */,
 				F525EE5B219C0FC800AD5ACE /* YzcBarChart.m in Sources */,
 				1851C934219960A600B84513 /* RechargeViewController.m in Sources */,
+				F56A8DFB21A286F100659418 /* customerVC.m in Sources */,
 				18F0769C219E970C00B42D98 /* RecordViewController.m in Sources */,
 				F53D899C219CFF0100023EB0 /* PeriodVC.m in Sources */,
 				F5342E3C219E6E7900853EA1 /* CardTableCell.m in Sources */,
 				F5396B9F219AC72500EFBF95 /* InvestDetialTableCell.m in Sources */,
 				F525EE48219BB1AF00AD5ACE /* alertTableCell.m in Sources */,
 				1863D0E0219578E200316AFE /* CDTabbarVC.m in Sources */,
-				18F076A6219EBA4400B42D98 /* LeeDatePickerView.m in Sources */,
+				F56A8DF821A2479600659418 /* myInterviewVC.m in Sources */,
 				1851C92521994DF500B84513 /* OrderCell.m in Sources */,
 				F53D8990219CFE0B00023EB0 /* LLSegmentBar.m in Sources */,
 				18F0769F219EA5A900B42D98 /* PayStyleViewController.m in Sources */,
@@ -913,6 +948,7 @@
 				185369A4219D577C00E26FDB /* AboutViewController.m in Sources */,
 				F5396B8F219A5AAC00EFBF95 /* myBaseVC.m in Sources */,
 				1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */,
+				F56A8DFE21A28A9500659418 /* CustomerTableCell.m in Sources */,
 				18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */,
 				18B23638219AB1DE00E2594C /* AssetCenterViewController.m in Sources */,
 				1863D0DF219578E200316AFE /* CDTabBar.m in Sources */,
@@ -930,6 +966,7 @@
 				F525EE4B219BF1DA00AD5ACE /* MarketVC.m in Sources */,
 				1863D10E21957CBD00316AFE /* NSString+Size.m in Sources */,
 				F53D8999219CFEC700023EB0 /* MoneyCountVC.m in Sources */,
+				F56A8DF221A23BC400659418 /* LeeDatePickerView.m in Sources */,
 				1863D10A21957CBD00316AFE /* cerTools.m in Sources */,
 				1863D0ED219579DB00316AFE /* LoanViewController.m in Sources */,
 				1851C92E2199608C00B84513 /* RepayViewController.m in Sources */,
@@ -939,11 +976,11 @@
 				1863D10D21957CBD00316AFE /* NetTools.m in Sources */,
 				F5342E31219E63B400853EA1 /* ExpiredVC.m in Sources */,
 				1863D10B21957CBD00316AFE /* CustomAlertView.m in Sources */,
+				F56A8DF521A2418A00659418 /* SettingVC.m in Sources */,
 				F5342E38219E6A8400853EA1 /* DCNavTabBarController.m in Sources */,
 				185369AA219D57B700E26FDB /* ShareAppViewController.m in Sources */,
 				1851C9312199609A00B84513 /* InvViewController.m in Sources */,
 				F525EE4E219BF97C00AD5ACE /* MarketTableCell.m in Sources */,
-				18F076A5219EBA4400B42D98 /* LeeDatePickerHeadView.m in Sources */,
 				1863D10921957CBD00316AFE /* Base64Verb.m in Sources */,
 				F53D8992219CFE0B00023EB0 /* LLSegmentBarVC.m in Sources */,
 				F5342E2E219E637E00853EA1 /* UnusedVC.m in Sources */,
