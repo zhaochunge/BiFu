@@ -47,7 +47,7 @@
     [self setupTableView];
     
 }
-
+#pragma mark headerView
 -(void)setupHeaderView{
     _headerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 250)];
     _headerView.backgroundColor=[UIColor whiteColor];
@@ -78,6 +78,7 @@
     
     
 }
+#pragma mark cell
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     OrderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderCell" forIndexPath:indexPath];
@@ -91,7 +92,7 @@
     cell.mnewsLab.text=@"6";
     return cell;
 }
-
+#pragma mark 去各个页面
 -(void)btnClick:(UIButton *)button{
     
     NSInteger tag=button.tag;
@@ -138,7 +139,7 @@
     
     
 }
-
+#pragma mark 点cell
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -158,7 +159,7 @@
     _tableView.tableFooterView = _footerView;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
-
+#pragma mark 数据条数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 3;
 }

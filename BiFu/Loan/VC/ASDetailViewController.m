@@ -41,7 +41,7 @@
     [self setupTableView];
     [self setupMiniView];
 }
-
+#pragma mark 条件选择弹出的小TableView
 -(void)setupMiniView{
     _curView=[[UIView alloc]initWithFrame:CGRectMake(0, 40, WIDTH, 200)];
     _curView.backgroundColor=[UIColor whiteColor];
@@ -71,7 +71,7 @@
     _timeView.hidden=YES;
     
 }
-
+#pragma mark 无数据时
 -(void)setupBackView{
     _backView=[[UIView alloc]initWithFrame:CGRectMake(0, 40, WIDTH, HEIGHT-106)];
     _backView.backgroundColor=[UIColor whiteColor];
@@ -87,6 +87,7 @@
     [_backView addSubview:lab];
     
 }
+#pragma mark line
 -(void)setupLineView{
     
     _lineView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 40)];
@@ -110,7 +111,7 @@
         
     }
 }
-
+#pragma mark 小View不同时
 -(void)buttonClick:(UIButton *)btn{
 
     BOOL isSelected=btn.selected;
@@ -162,7 +163,7 @@
     }
     
 }
-
+#pragma mark button.title
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (tableView.tag==230) {
@@ -187,7 +188,7 @@
     [_tableView registerClass:[HomeTableCellTableViewCell class] forCellReuseIdentifier:@"ASDetailCell"];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
-
+#pragma mark cell
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView.tag==230) {
         UITableViewCell *cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"curCell"];
@@ -224,13 +225,16 @@
     }
     
 }
-
+#pragma mark table数据条数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (tableView.tag==230) {
+#pragma 币种
         return 4;
     }else if (tableView.tag==231){
+#pragma 类型
         return 7;
     }else{
+#pragma 符合条件数据
         return 5;
     }
 }

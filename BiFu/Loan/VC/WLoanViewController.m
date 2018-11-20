@@ -27,6 +27,7 @@
     [self setupTableView];
 }
 
+#pragma mark footerView
 -(void)setupFooterView{
     _footerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 250)];
     UILabel *lixiLab=[self labelWithFrame:CGRectMake(20, 0, WIDTH/2.0, 30) text:@"利息"];
@@ -66,10 +67,11 @@
     [_footerView addSubview:loanBtn];
 }
 
+#pragma mark 下一步
 -(void)nextBtnClick{
     NSLog(@"下一步");
 }
-
+#pragma mark cell
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"wloanCell"];
     cell.textLabel.text=_titleArray[indexPath.section][indexPath.row];
@@ -152,6 +154,9 @@
     label.textColor=[UIColor darkGrayColor];
     return label;
 }
+
+#pragma mark cell间footer
+
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     switch (section) {
         case 0:{

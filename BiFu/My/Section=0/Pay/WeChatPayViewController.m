@@ -9,6 +9,7 @@
 #import "WeChatPayViewController.h"
 
 @interface WeChatPayViewController ()
+@property(nonatomic,strong)UIScrollView *scrollView;
 
 @end
 
@@ -25,7 +26,16 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     self.navigationItem.leftBarButtonItem =item;
     
+    [self setupScrollView];
+    
 }
+
+-(void)setupScrollView{
+    
+    
+    
+}
+
 -(void)leftBtn{
     [self.navigationController popViewControllerAnimated:YES];
 }
