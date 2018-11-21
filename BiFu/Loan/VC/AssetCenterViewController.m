@@ -34,7 +34,7 @@
     
     [self setupTableView];
 }
-
+#pragma mark 去资产详情
 -(void)itemClick{
     NSLog(@"记录");
     ASDetailViewController *detailVC=[ASDetailViewController new];
@@ -54,7 +54,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 3;
 }
-
+#pragma mark cell
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     AssetCenterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"assetCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -89,11 +89,13 @@
     return cell;
 }
 
+#pragma mark 提现
 -(void)tiBtnClick{
     NSLog(@"提现");
     TixianViewController *tiVC=[TixianViewController new];
     [self.navigationController pushViewController:tiVC animated:YES];
 }
+#pragma mark 充值
 -(void)chongBtnClick{
     NSLog(@"充值");
     ChongzhiViewController *chongVC=[ChongzhiViewController new];

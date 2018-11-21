@@ -24,6 +24,7 @@
    
     [self setupUI];
 }
+#pragma mark 颜色
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [self setStatusBarBackgroundColor:[UIColor colorWithRed:230/255.0 green:74/255.0 blue:74/255.0 alpha:1]];
@@ -34,7 +35,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
 }
-
+#pragma mark
 -(void)setupUI{
     
     UIImageView *imgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];

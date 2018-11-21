@@ -8,12 +8,15 @@
 
 #import "AliPayViewController.h"
 
-@interface AliPayViewController ()
+@interface AliPayViewController ()<UITextFieldDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property(nonatomic,strong)UIScrollView *scrollView;
 @property(nonatomic,strong)UITextField *nameTF;
 @property(nonatomic,strong)UITextField *accountTF;
 @property(nonatomic,strong)UITextField *verCodeTF;
+
+@property(nonatomic,strong)YXButton *button;
+@property(nonatomic,strong)UIImage *image;
 
 @end
 
@@ -80,6 +83,8 @@
     
     _nameTF=[[UITextField alloc]initWithFrame:CGRectMake(100, 10, WIDTH-120, 30)];
     _nameTF.placeholder=@"请输入姓名";
+    _nameTF.delegate=self;
+    _nameTF.returnKeyType=UIReturnKeyDone;
     [sView addSubview:_nameTF];
     
 }
@@ -96,26 +101,73 @@
     _accountTF=[[UITextField alloc]initWithFrame:CGRectMake(110, 10, WIDTH-130, 30)];
     _accountTF.placeholder=@"请填写支付宝账号";
     _accountTF.textAlignment=NSTextAlignmentRight;
+    _accountTF.delegate=self;
+    _accountTF.returnKeyType=UIReturnKeyDone;
     [tView addSubview:_accountTF];
 }
 
 -(void)setupButton{
     
-    YXButton *button=[YXButton buttonWithType:UIButtonTypeRoundedRect];
-    button.frame=CGRectMake(WIDTH/2.0-60, 220, 120, 160);
-    button.backgroundColor=[UIColor whiteColor];
-    button.layer.masksToBounds=YES;
-    button.layer.cornerRadius=5;
-    button.layer.borderWidth=1;
-    button.layer.borderColor=[UIColor lightGrayColor].CGColor;
-    [button setTitle:@"点击上传收款码" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [button setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    button.titleLabel.font=[UIFont systemFontOfSize:16];
-    [_scrollView addSubview:button];
+    _button=[YXButton buttonWithType:UIButtonTypeCustom];
+    _button.frame=CGRectMake(WIDTH/2.0-60, 220, 120, 160);
+    _button.backgroundColor=[UIColor whiteColor];
+    _button.layer.masksToBounds=YES;
+    _button.layer.cornerRadius=5;
+    _button.layer.borderWidth=1;
+    _button.layer.borderColor=[UIColor lightGrayColor].CGColor;
+    [_button setTitle:@"点击上传收款码" forState:UIControlStateNormal];
+    [_button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [_button setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    _button.titleLabel.font=[UIFont systemFontOfSize:16];
+    [_button addTarget:self action:@selector(uploadPicButton) forControlEvents:UIControlEventTouchUpInside];
+    [_scrollView addSubview:_button];
+    
+}
+-(void)uploadPicButton{
+    UIActionSheet *menu=[[UIActionSheet alloc] initWithTitle:@"上传图片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照上传",@"从相册上传", nil];
+    menu.actionSheetStyle=UIActionSheetStyleBlackTranslucent;
+    [menu showInView:self.view];
+}
+
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if(buttonIndex==0){
+        NSLog(@"拍照");
+        [self snapImage];
+    }else if(buttonIndex==1){
+        NSLog(@"相册");
+        [self pickImage];
+    }
+}
+- (void)snapImage{
+    UIImagePickerController *ipc=[[UIImagePickerController alloc] init];
+    ipc.sourceType=UIImagePickerControllerSourceTypeCamera;
+    ipc.delegate=self;
+    ipc.allowsEditing=NO;
+    [self presentViewController:ipc animated:YES completion:nil];
     
 }
 
+- (void)pickImage{
+    
+    UIImagePickerController *ipc=[[UIImagePickerController alloc] init];
+    ipc.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
+    ipc.delegate=self;
+    ipc.allowsEditing=NO;
+    [self presentViewController:ipc animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    self.image=info[UIImagePickerControllerOriginalImage];
+    [_button setImage:self.image forState:UIControlStateNormal];
+    _button.imageView.center=CGPointMake(_button.frame.size.width/2.0, _button.frame.size.height/2.0);
+#pragma mark 上传
+    //    [self upLoad];
+    
+}
 -(void)setupFoView{
     UIView *foView=[[UIView alloc]initWithFrame:CGRectMake(0, 400, WIDTH, 50)];
     foView.backgroundColor=[UIColor whiteColor];
@@ -132,8 +184,24 @@
     
     _verCodeTF=[[UITextField alloc]initWithFrame:CGRectMake(120, 10, WIDTH-220, 30)];
     _verCodeTF.placeholder=@"验证码";
+    _verCodeTF.delegate=self;
+    _verCodeTF.returnKeyType=UIReturnKeyDone;
     [foView addSubview:_verCodeTF];
     
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    if ([textField isEqual:_verCodeTF]) {
+        _scrollView.frame=CGRectMake(0, -100, WIDTH, HEIGHT);
+    }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    if ([textField isEqual:_verCodeTF]) {
+        _scrollView.frame=CGRectMake(0, 0, WIDTH, HEIGHT);
+    }
+    return YES;
 }
 
 -(void)setupCheckButton{
@@ -152,6 +220,14 @@
 
 -(void)leftBtn{
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

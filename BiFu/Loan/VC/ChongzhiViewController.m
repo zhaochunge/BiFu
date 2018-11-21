@@ -46,17 +46,18 @@
     titleLab.textAlignment=NSTextAlignmentCenter;
     titleLab.font=[UIFont systemFontOfSize:20];
     [upView addSubview:titleLab];
-    ///////////////////
+#pragma mark 字符串：BTC充值地址
     _zifuLab=[[UILabel alloc]initWithFrame:CGRectMake(0, titleLab.frame.origin.y+titleLab.frame.size.height+5,upView.frame.size.width , 20)];
     _zifuLab.text=@"jsnivndalieuhgjekn,s9835y8";
     _zifuLab.textColor=[UIColor lightGrayColor];
     _zifuLab.textAlignment=NSTextAlignmentCenter;
     [upView addSubview:_zifuLab];
+#pragma mark 二维码
     _imgView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@""]];
     _imgView.frame=CGRectMake(upView.frame.size.width*0.5-HEIGHT*0.06, _zifuLab.frame.origin.y+40, HEIGHT*0.12, HEIGHT*0.12);
     _imgView.backgroundColor=[UIColor lightGrayColor];
     [upView addSubview:_imgView];
-    ///////////////
+    
     UIButton *updateBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
     updateBtn.frame=CGRectMake(0, 1, midView.frame.size.width*0.5, midView.frame.size.height);
     [updateBtn setTitle:@"刷新" forState:UIControlStateNormal];
@@ -72,7 +73,7 @@
     copyBtn.titleLabel.font=[UIFont systemFontOfSize:20];
     [copyBtn addTarget:self action:@selector(copyBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [midView addSubview:copyBtn];
-    
+#pragma 温馨提示
     UILabel *tipLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 10, 150, 30)];
     tipLab.text=@"温馨提示";
     tipLab.textColor=[UIColor darkGrayColor];
@@ -90,11 +91,11 @@
     
     
 }
-
+#pragma mark 刷新
 -(void)updateBtnClick{
     NSLog(@"刷新");
 }
-
+#pragma mark 复制
 -(void)copyBtnClick{
     NSLog(@"复制");
 }

@@ -13,6 +13,8 @@
 @property(nonatomic,strong)UIView *footerView;
 @property(nonatomic,strong)NSArray *titleArray;
 
+
+
 @end
 
 @implementation TixianViewController
@@ -25,6 +27,7 @@
     [self setupFooterView];
     [self setupTableView];
 }
+#pragma mark footer
 -(void)setupFooterView{
     _footerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 300)];
     _footerView.backgroundColor=LINECOLOR;
@@ -57,6 +60,7 @@
     tipsLab.text=@"●请务必确认手机安全，防止信息被篡改或泄漏。\n\n●最小提币数额为0.001BTC。";
     [miniView addSubview:tipsLab];
 }
+#pragma mark 确认
 -(void)checkBtnClick{
     NSLog(@"确认");
 }
@@ -68,7 +72,7 @@
     [self.view addSubview:_tableView];
     _tableView.tableFooterView=_footerView;
 }
-
+#pragma mark cell
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tixianCell"];
     cell.textLabel.text=_titleArray[indexPath.section][indexPath.row];
@@ -107,6 +111,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
+#pragma mark 小footerView
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     switch (section) {
         case 0:{

@@ -47,15 +47,14 @@
     [self setupTableView];
     
 }
-
+#pragma mark headerView
 -(void)setupHeaderView{
     _headerView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 250)];
     _headerView.backgroundColor=[UIColor whiteColor];
     for (int i=0; i<2; i++) {
         for (int j=0; j<4; j++) {
             
-           YXButton*btn=[YXButton buttonWithType:UIButtonTypeCustom];
-//            btn.titleLabel.backgroundColor=[UIColor redColor];
+            YXButton*btn=[YXButton buttonWithType:UIButtonTypeCustom];
             btn.titleLabel.adjustsFontSizeToFitWidth=YES;
             btn.frame=CGRectMake(WIDTH/4.0*j,10+(WIDTH/4.0)*i, WIDTH/4.0, WIDTH/4.0);
             [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", _imageArray[i][j]]] forState:UIControlStateNormal];
@@ -72,12 +71,12 @@
     lab.textColor=[UIColor darkGrayColor];
     [_headerView addSubview:lab];
     
-    
 }
 -(void)setupFooterView{
     
     
 }
+#pragma mark cell
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     OrderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderCell" forIndexPath:indexPath];
@@ -89,9 +88,20 @@
     cell.numLab.text=@"DB28374645129283";
     cell.huanLab.text=@"10月18日";
     cell.mnewsLab.text=@"6";
+    [cell.cancelBtn addTarget:self action:@selector(cancelBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.payBtn addTarget:self action:@selector(payBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
-
+#pragma mark cancelBtn
+-(void)cancelBtnClick:(UIButton *)button{
+    NSLog(@"取消");
+}
+#pragma mark payBtn
+-(void)payBtnClick:(UIButton *)button{
+    NSLog(@"支付");
+}
+#pragma mark 去各个页面
 -(void)btnClick:(UIButton *)button{
     
     NSInteger tag=button.tag;
@@ -138,7 +148,7 @@
     
     
 }
-
+#pragma mark 点cell
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -158,13 +168,13 @@
     _tableView.tableFooterView = _footerView;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
-
+#pragma mark 数据条数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 3;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    return 137;
+    return 137+40;
 }
 - (void)setStatusBarBackgroundColor:(UIColor *)color {
     

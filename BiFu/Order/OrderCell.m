@@ -19,12 +19,17 @@
 
 -(void)setupUI{
     
-    UIView *cellView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 137)];
+    UIView *cellView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, WIDTH, 137+40)];
     cellView.backgroundColor=LINECOLOR;
     [self.contentView addSubview:cellView];
-    UIView *miniView=[[UIView alloc]initWithFrame:CGRectMake(10, 10, WIDTH-20, 137-20)];
+    UIView *miniView=[[UIView alloc]initWithFrame:CGRectMake(10, 10, WIDTH-20, 137-20+40)];
     miniView.backgroundColor=[UIColor whiteColor];
+    miniView.layer.cornerRadius=5;
     [cellView addSubview:miniView];
+    
+    UILabel *line=[[UILabel alloc]initWithFrame:CGRectMake(0, 137-20, WIDTH-20, 1)];
+    line.backgroundColor=LINECOLOR;
+    [miniView addSubview:line];
     
     _mnumLab=[[UILabel alloc]initWithFrame:CGRectMake(20, 10, 20, 20)];
     _mnumLab.backgroundColor=[UIColor orangeColor];
@@ -71,6 +76,23 @@
     _mnewsLab.layer.masksToBounds=YES;
     _mnewsLab.textColor=[UIColor whiteColor];
     [miniView addSubview:_mnewsLab];
+    
+    _cancelBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _cancelBtn.frame=CGRectMake(WIDTH*0.4, line.frame.origin.y+8, WIDTH/4.0-15, 25);
+    _cancelBtn.backgroundColor=[UIColor darkGrayColor];
+    [_cancelBtn setTitle:@"取消订单" forState:UIControlStateNormal];
+    _cancelBtn.layer.cornerRadius=5;
+    [_cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [miniView addSubview:_cancelBtn];
+    
+    _payBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _payBtn.frame=CGRectMake(WIDTH*0.7, line.frame.origin.y+8, WIDTH/4.0-15, 25);
+    _payBtn.backgroundColor=[UIColor redColor];
+    [_payBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _payBtn.layer.cornerRadius=5;
+    [_payBtn setTitle:@"立即支付" forState:UIControlStateNormal];
+    [miniView addSubview:_payBtn];
+    
     
 }
 
