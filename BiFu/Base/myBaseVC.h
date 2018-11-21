@@ -13,4 +13,5 @@
 - (void)setStatusBarBackgroundColor:(UIColor *)color;
 //返回按钮
 -(void)leftItem;
+-(void)leftItemBlack;
 @end

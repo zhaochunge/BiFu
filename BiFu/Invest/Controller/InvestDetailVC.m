@@ -59,6 +59,7 @@
 #pragma mark 初始化
 -(void)initView{
     self.navigationItem.title = @"投资详情";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     CGRect rect3 = [@"3.确认投资后,请务必仔细核实收款信息,尽快完成付款." boundingRectWithSize:CGSizeMake(WIDTH -40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil];
     CGRect rect2 = [@"2当日取消投资超过5次将被限制投资操作,需等24小时后方可继续操作." boundingRectWithSize:CGSizeMake(WIDTH -40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil];
     CGRect rect1 = [@"1.平台暂不支持债权转让功能,确认投资后中途不可退出." boundingRectWithSize:CGSizeMake(WIDTH -40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil];

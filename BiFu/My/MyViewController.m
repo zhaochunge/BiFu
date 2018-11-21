@@ -19,6 +19,7 @@
 #import "SettingVC.h"
 #import "myInterviewVC.h"
 #import "customerVC.h"
+#import "AccouentSafeVC.h"
 
 
 #define kTableViewUpHeight          200  //tableView整体上移高度
@@ -266,7 +267,8 @@
         case 0:{
             switch (indexPath.row) {
                 case 0:{
-                    
+                    AccouentSafeVC *vc =[AccouentSafeVC new];
+                    [self.navigationController pushViewController:vc animated:YES];
                     break; 
                 }
                 case 1:{
