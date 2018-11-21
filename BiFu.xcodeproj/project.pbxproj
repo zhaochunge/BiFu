@@ -53,8 +53,6 @@
 		18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7EB46219BB0F5004EDE91 /* TixianViewController.m */; };
 		18F0769C219E970C00B42D98 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0769B219E970C00B42D98 /* RecordViewController.m */; };
 		18F0769F219EA5A900B42D98 /* PayStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0769E219EA5A900B42D98 /* PayStyleViewController.m */; };
-		18F076A5219EBA4400B42D98 /* LeeDatePickerHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F076A2219EBA4400B42D98 /* LeeDatePickerHeadView.m */; };
-		18F076A6219EBA4400B42D98 /* LeeDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F076A4219EBA4400B42D98 /* LeeDatePickerView.m */; };
 		18FFD17A21A248FC00669E2B /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FFD17921A248FC00669E2B /* CardViewController.m */; };
 		18FFD17D21A2491500669E2B /* AliPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FFD17C21A2491500669E2B /* AliPayViewController.m */; };
 		18FFD18021A2492A00669E2B /* WeChatPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FFD17F21A2492A00669E2B /* WeChatPayViewController.m */; };
@@ -94,6 +92,10 @@
 		F56A8DFB21A286F100659418 /* customerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DFA21A286F100659418 /* customerVC.m */; };
 		F56A8DFE21A28A9500659418 /* CustomerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DFD21A28A9500659418 /* CustomerTableCell.m */; };
 		F56A8E0121A28AC400659418 /* CustomerTilCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8E0021A28AC400659418 /* CustomerTilCell.m */; };
+		F5C9907A21A3931600F755FC /* AccouentSafeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9907921A3931600F755FC /* AccouentSafeVC.m */; };
+		F5C9907D21A3940700F755FC /* SafeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9907C21A3940700F755FC /* SafeTableCell.m */; };
+		F5C9908021A3B49200F755FC /* CheckSecondTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9907F21A3B49200F755FC /* CheckSecondTableCell.m */; };
+		F5C9908421A3B75200F755FC /* ChangeLoginPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9908321A3B75200F755FC /* ChangeLoginPwdVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,10 +210,6 @@
 		18F0769B219E970C00B42D98 /* RecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
 		18F0769D219EA5A900B42D98 /* PayStyleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayStyleViewController.h; sourceTree = "<group>"; };
 		18F0769E219EA5A900B42D98 /* PayStyleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayStyleViewController.m; sourceTree = "<group>"; };
-		18F076A1219EBA4400B42D98 /* LeeDatePickerHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeDatePickerHeadView.h; sourceTree = "<group>"; };
-		18F076A2219EBA4400B42D98 /* LeeDatePickerHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeDatePickerHeadView.m; sourceTree = "<group>"; };
-		18F076A3219EBA4400B42D98 /* LeeDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeDatePickerView.h; sourceTree = "<group>"; };
-		18F076A4219EBA4400B42D98 /* LeeDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeDatePickerView.m; sourceTree = "<group>"; };
 		18FFD17821A248FC00669E2B /* CardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
 		18FFD17921A248FC00669E2B /* CardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
 		18FFD17B21A2491500669E2B /* AliPayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AliPayViewController.h; sourceTree = "<group>"; };
@@ -290,6 +288,14 @@
 		F56A8DFD21A28A9500659418 /* CustomerTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerTableCell.m; sourceTree = "<group>"; };
 		F56A8DFF21A28AC400659418 /* CustomerTilCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerTilCell.h; sourceTree = "<group>"; };
 		F56A8E0021A28AC400659418 /* CustomerTilCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerTilCell.m; sourceTree = "<group>"; };
+		F5C9907821A3931600F755FC /* AccouentSafeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccouentSafeVC.h; sourceTree = "<group>"; };
+		F5C9907921A3931600F755FC /* AccouentSafeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccouentSafeVC.m; sourceTree = "<group>"; };
+		F5C9907B21A3940700F755FC /* SafeTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafeTableCell.h; sourceTree = "<group>"; };
+		F5C9907C21A3940700F755FC /* SafeTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeTableCell.m; sourceTree = "<group>"; };
+		F5C9907E21A3B49200F755FC /* CheckSecondTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckSecondTableCell.h; sourceTree = "<group>"; };
+		F5C9907F21A3B49200F755FC /* CheckSecondTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckSecondTableCell.m; sourceTree = "<group>"; };
+		F5C9908221A3B75200F755FC /* ChangeLoginPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeLoginPwdVC.h; sourceTree = "<group>"; };
+		F5C9908321A3B75200F755FC /* ChangeLoginPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeLoginPwdVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,6 +362,7 @@
 		185369AB219D69CA00E26FDB /* Section=0 */ = {
 			isa = PBXGroup;
 			children = (
+				F5C9908121A3B72500F755FC /* Safe */,
 				185369AC219D69E100E26FDB /* HelpViewController.h */,
 				185369AD219D69E100E26FDB /* HelpViewController.m */,
 				18F0769A219E970C00B42D98 /* RecordViewController.h */,
@@ -363,6 +370,8 @@
 				18F0769D219EA5A900B42D98 /* PayStyleViewController.h */,
 				18F0769E219EA5A900B42D98 /* PayStyleViewController.m */,
 				18FFD17721A248C500669E2B /* Pay */,
+				F5C9907821A3931600F755FC /* AccouentSafeVC.h */,
+				F5C9907921A3931600F755FC /* AccouentSafeVC.m */,
 			);
 			path = "Section=0";
 			sourceTree = "<group>";
@@ -557,18 +566,6 @@
 			path = VC;
 			sourceTree = "<group>";
 		};
-		18F076A0219EBA4400B42D98 /* LeeDatePickerView */ = {
-			isa = PBXGroup;
-			children = (
-				18F076A1219EBA4400B42D98 /* LeeDatePickerHeadView.h */,
-				18F076A2219EBA4400B42D98 /* LeeDatePickerHeadView.m */,
-				18F076A3219EBA4400B42D98 /* LeeDatePickerView.h */,
-				18F076A4219EBA4400B42D98 /* LeeDatePickerView.m */,
-			);
-			name = LeeDatePickerView;
-			path = "../../../../../Downloads/LeeDatePickerView-master/LeeDatePickerView/LeeDatePickerView";
-			sourceTree = "<group>";
-		};
 		18FFD17721A248C500669E2B /* Pay */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +631,10 @@
 				F56A8DFD21A28A9500659418 /* CustomerTableCell.m */,
 				F56A8DFF21A28AC400659418 /* CustomerTilCell.h */,
 				F56A8E0021A28AC400659418 /* CustomerTilCell.m */,
+				F5C9907B21A3940700F755FC /* SafeTableCell.h */,
+				F5C9907C21A3940700F755FC /* SafeTableCell.m */,
+				F5C9907E21A3B49200F755FC /* CheckSecondTableCell.h */,
+				F5C9907F21A3B49200F755FC /* CheckSecondTableCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -763,6 +764,15 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F5C9908121A3B72500F755FC /* Safe */ = {
+			isa = PBXGroup;
+			children = (
+				F5C9908221A3B75200F755FC /* ChangeLoginPwdVC.h */,
+				F5C9908321A3B75200F755FC /* ChangeLoginPwdVC.m */,
+			);
+			path = Safe;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -967,6 +977,7 @@
 				F56A8DF121A23BC400659418 /* LeeDatePickerHeadView.m in Sources */,
 				F53D8993219CFE0B00023EB0 /* UIView+LLSegmentBar.m in Sources */,
 				1863D10F21957CBD00316AFE /* UIButton+Edge.m in Sources */,
+				F5C9908421A3B75200F755FC /* ChangeLoginPwdVC.m in Sources */,
 				F525EE5B219C0FC800AD5ACE /* YzcBarChart.m in Sources */,
 				1851C934219960A600B84513 /* RechargeViewController.m in Sources */,
 				F56A8DFB21A286F100659418 /* customerVC.m in Sources */,
@@ -991,6 +1002,7 @@
 				18FFD17A21A248FC00669E2B /* CardViewController.m in Sources */,
 				18FFD17D21A2491500669E2B /* AliPayViewController.m in Sources */,
 				F5396B8F219A5AAC00EFBF95 /* myBaseVC.m in Sources */,
+				F5C9908021A3B49200F755FC /* CheckSecondTableCell.m in Sources */,
 				1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */,
 				F56A8DFE21A28A9500659418 /* CustomerTableCell.m in Sources */,
 				18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */,
@@ -1005,6 +1017,7 @@
 				F5396B8B219A55C900EFBF95 /* HomeTableCellTableViewCell.m in Sources */,
 				F525EE5C219C0FC800AD5ACE /* YzcChartView.m in Sources */,
 				1851C937219960B200B84513 /* AllInvViewController.m in Sources */,
+				F5C9907A21A3931600F755FC /* AccouentSafeVC.m in Sources */,
 				F53D8991219CFE0B00023EB0 /* LLSegmentBarConfig.m in Sources */,
 				F5396B95219AA9FC00EFBF95 /* InvestDetailVC.m in Sources */,
 				F525EE4B219BF1DA00AD5ACE /* MarketVC.m in Sources */,
@@ -1013,6 +1026,7 @@
 				F56A8DF221A23BC400659418 /* LeeDatePickerView.m in Sources */,
 				1863D10A21957CBD00316AFE /* cerTools.m in Sources */,
 				1863D0ED219579DB00316AFE /* LoanViewController.m in Sources */,
+				F5C9907D21A3940700F755FC /* SafeTableCell.m in Sources */,
 				1851C92E2199608C00B84513 /* RepayViewController.m in Sources */,
 				1863D10C21957CBD00316AFE /* LineBtn.m in Sources */,
 				185369AE219D69E100E26FDB /* HelpViewController.m in Sources */,

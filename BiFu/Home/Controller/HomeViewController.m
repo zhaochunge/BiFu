@@ -9,6 +9,8 @@
 #import "HomeViewController.h"
 #import "LIView.h"
 #import "HomeTableCellTableViewCell.h"
+#import "InvestDetailVC.h"
+#import "InvestViewController.h"
 
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *table;
@@ -30,9 +32,14 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self setStatusBarBackgroundColor:[UIColor colorWithRed:231/255.0 green:145/255.0 blue:144/255.0 alpha:1]];
-    
+}
+-(void)viewDidAppear:(BOOL)animated{
+     [self setStatusBarBackgroundColor:[UIColor colorWithRed:231/255.0 green:145/255.0 blue:144/255.0 alpha:1]];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 #pragma mark 尾视图
 -(void)createFooter{
@@ -155,7 +162,8 @@
 }
 #pragma mark 热门推荐 更多点击
 -(void)moreClick:(UIButton *)btn{
-    
+    InvestViewController *vc =[InvestViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark 创建table
 -(void)creatUI{
@@ -181,6 +189,10 @@
     cell.moneyTitle.text = @"借款金额(元)";
     cell.dateTitle.text = @"借款期限";
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    InvestDetailVC *vc = [InvestDetailVC new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 5;

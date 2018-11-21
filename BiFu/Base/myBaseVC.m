@@ -37,6 +37,14 @@
 -(void)leftBtn:(UIButton *)btn{
     [self.navigationController popViewControllerAnimated:YES];
 }
+-(void)leftItemBlack{
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame = CGRectMake(0, 0, 30, 30);
+    [rightBtn setImage:[UIImage imageNamed:@"返回"] forState:(UIControlStateNormal)];
+    [rightBtn addTarget:self action:@selector(leftBtn:) forControlEvents:(UIControlEventTouchUpInside)];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    self.navigationItem.leftBarButtonItem =item;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
