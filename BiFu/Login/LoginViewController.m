@@ -7,8 +7,11 @@
 //
 
 #import "LoginViewController.h"
+#import "ForgotViewController.h"
+#import "ZhuceViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController ()<UITextFieldDelegate>
+
 @property(nonatomic,strong)UITextField *nameTF;
 @property(nonatomic,strong)UITextField *pwdTF;
 
@@ -18,10 +21,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    self.view.backgroundColor=[UIColor yellowColor];
     [self setupUI];
+}
+
+#pragma mark 登录
+-(void)loginButtonClick{
+    NSLog(@"loginButtonClick");
     
+    
+}
+#pragma mark 忘记密码
+-(void)forgotBtnClick{
+    NSLog(@"forgot");
+    
+    ForgotViewController *forgotVC=[ForgotViewController new];
+    [self presentViewController:forgotVC animated:YES completion:^{
+        
+    }];
+    
+}
+#pragma mark 注册
+-(void)zhuceBtnClick{
+    NSLog(@"zhuce");
+    ZhuceViewController *zhuceVC=[ZhuceViewController new];
+    [self presentViewController:zhuceVC animated:YES completion:^{
+        
+    }];
 }
 
 -(void)setupUI{
@@ -37,32 +62,35 @@
     
     UIButton *xBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     xBtn.frame=CGRectMake(WIDTH-50, 30, 30, 20);
-    [xBtn setTitle:@"X" forState:UIControlStateNormal];
-    [xBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    xBtn.titleLabel.font=[UIFont systemFontOfSize:19 weight:2];
+    [xBtn setImage:[UIImage imageNamed:@"login_close.png"] forState:UIControlStateNormal];
     [xBtn addTarget:self action:@selector(xBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [imgView addSubview:xBtn];
     
-    _nameTF=[[UITextField alloc]initWithFrame:CGRectMake(70, HEIGHT*0.5-5, WIDTH-80, 30)];
+    ////////
+    _nameTF=[[UITextField alloc]initWithFrame:CGRectMake(70, HEIGHT*0.5-30, WIDTH-80, 30)];
     _nameTF.text=@"请输入用户名";
+    _nameTF.delegate=self;
+    _nameTF.returnKeyType=UIReturnKeyDone;
     _nameTF.textColor=[UIColor lightGrayColor];
     [imgView addSubview:_nameTF];
     _nameTF.leftViewMode=UITextFieldViewModeAlways;
-    UIImageView *nameImg=[[UIImageView alloc]initWithFrame:CGRectMake(40, HEIGHT*0.5, 20, 20)];
+    UIImageView *nameImg=[[UIImageView alloc]initWithFrame:CGRectMake(40, HEIGHT*0.5-25, 20, 20)];
     nameImg.image=[UIImage imageNamed:@"account-icon"];
     [imgView addSubview:nameImg];
-    UILabel *line1=[[UILabel alloc]initWithFrame:CGRectMake(40, _nameTF.frame.origin.y+40, WIDTH-80, 1)];
+    UILabel *line1=[[UILabel alloc]initWithFrame:CGRectMake(40, _nameTF.frame.origin.y+30, WIDTH-80, 1)];
     line1.backgroundColor=[UIColor lightGrayColor];
     [imgView addSubview:line1];
 
-    _pwdTF=[[UITextField alloc]initWithFrame:CGRectMake(70, HEIGHT*0.5+60, WIDTH-80, 30)];
+    _pwdTF=[[UITextField alloc]initWithFrame:CGRectMake(70, HEIGHT*0.5+60-25, WIDTH-80, 30)];
     _pwdTF.text=@"请输入密码";
+    _pwdTF.delegate=self;
+    _pwdTF.returnKeyType=UIReturnKeyDone;
     _pwdTF.textColor=[UIColor lightGrayColor];
     [imgView addSubview:_pwdTF];
-    UIImageView *pwdImg=[[UIImageView alloc]initWithFrame:CGRectMake(40, HEIGHT*0.5+60, 20, 20)];
+    UIImageView *pwdImg=[[UIImageView alloc]initWithFrame:CGRectMake(40, HEIGHT*0.5+60-25, 20, 20)];
     pwdImg.image=[UIImage imageNamed:@"password-icon"];
     [imgView addSubview:pwdImg];
-    UILabel *line2=[[UILabel alloc]initWithFrame:CGRectMake(40, _pwdTF.frame.origin.y+40, WIDTH-80, 1)];
+    UILabel *line2=[[UILabel alloc]initWithFrame:CGRectMake(40, _pwdTF.frame.origin.y+31, WIDTH-80, 1)];
     line2.backgroundColor=[UIColor lightGrayColor];
     [imgView addSubview:line2];
     
@@ -80,6 +108,7 @@
     forgotBtn.frame=CGRectMake(WIDTH/2.0-50, loginBtn.frame.origin.y+loginBtn.frame.size.height+10, 100, 30);
     [forgotBtn setTitle:@"忘记密码？" forState:UIControlStateNormal];
     [forgotBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [forgotBtn addTarget:self action:@selector(forgotBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [imgView addSubview:forgotBtn];
     
     UILabel *line3=[[UILabel alloc]initWithFrame:CGRectMake(40, HEIGHT-50, WIDTH-80, 1)];
@@ -87,16 +116,20 @@
     [imgView addSubview:line3];
     
     UIButton *zhuceBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    zhuceBtn.frame=CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+    zhuceBtn.frame=CGRectMake(50, HEIGHT-49, WIDTH-100, 40);
+    [zhuceBtn setTitle:@"没有账号？免费注册" forState:UIControlStateNormal];
+    [zhuceBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [zhuceBtn addTarget:self action:@selector(zhuceBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    zhuceBtn.titleLabel.font=[UIFont systemFontOfSize:18];
+    [imgView addSubview:zhuceBtn];
     
 }
 
--(void)loginButtonClick{
-    NSLog(@"loginButtonClick");
-    
-    
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
-
+#pragma mark XBtn
 -(void)xBtnClick{
     [self dismissViewControllerAnimated:YES completion:^{
         

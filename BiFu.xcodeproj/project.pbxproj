@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1820226E21A79808006C97DF /* ForgotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820226D21A79808006C97DF /* ForgotViewController.m */; };
+		1820227121A7CC83006C97DF /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820227021A7CC83006C97DF /* FindViewController.m */; };
+		1820227421A7DED9006C97DF /* ZhuceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820227321A7DED9006C97DF /* ZhuceViewController.m */; };
 		18353B9821A4E62B00DFC6C0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18353B9721A4E62B00DFC6C0 /* LoginViewController.m */; };
 		1851C9222199273B00B84513 /* YXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C9212199273B00B84513 /* YXButton.m */; };
 		1851C92521994DF500B84513 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C92421994DF500B84513 /* OrderCell.m */; };
@@ -124,6 +127,12 @@
 
 /* Begin PBXFileReference section */
 		1333DAAC088F1EE5842326C4 /* Pods-BiFu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiFu.release.xcconfig"; path = "Pods/Target Support Files/Pods-BiFu/Pods-BiFu.release.xcconfig"; sourceTree = "<group>"; };
+		1820226C21A79808006C97DF /* ForgotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgotViewController.h; sourceTree = "<group>"; };
+		1820226D21A79808006C97DF /* ForgotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgotViewController.m; sourceTree = "<group>"; };
+		1820226F21A7CC83006C97DF /* FindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
+		1820227021A7CC83006C97DF /* FindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindViewController.m; sourceTree = "<group>"; };
+		1820227221A7DED9006C97DF /* ZhuceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZhuceViewController.h; sourceTree = "<group>"; };
+		1820227321A7DED9006C97DF /* ZhuceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhuceViewController.m; sourceTree = "<group>"; };
 		18353B9621A4E62B00DFC6C0 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		18353B9721A4E62B00DFC6C0 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		1851C9202199273B00B84513 /* YXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXButton.h; sourceTree = "<group>"; };
@@ -349,6 +358,12 @@
 			children = (
 				18353B9621A4E62B00DFC6C0 /* LoginViewController.h */,
 				18353B9721A4E62B00DFC6C0 /* LoginViewController.m */,
+				1820226C21A79808006C97DF /* ForgotViewController.h */,
+				1820226D21A79808006C97DF /* ForgotViewController.m */,
+				1820226F21A7CC83006C97DF /* FindViewController.h */,
+				1820227021A7CC83006C97DF /* FindViewController.m */,
+				1820227221A7DED9006C97DF /* ZhuceViewController.h */,
+				1820227321A7DED9006C97DF /* ZhuceViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1031,6 +1046,7 @@
 				F525EE48219BB1AF00AD5ACE /* alertTableCell.m in Sources */,
 				1863D0E0219578E200316AFE /* CDTabbarVC.m in Sources */,
 				F56A8DF821A2479600659418 /* myInterviewVC.m in Sources */,
+				1820227121A7CC83006C97DF /* FindViewController.m in Sources */,
 				1851C92521994DF500B84513 /* OrderCell.m in Sources */,
 				F53D8990219CFE0B00023EB0 /* LLSegmentBar.m in Sources */,
 				18F0769F219EA5A900B42D98 /* PayStyleViewController.m in Sources */,
@@ -1051,6 +1067,7 @@
 				F554797421A659E500AFE48B /* InterviewTableCell.m in Sources */,
 				1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */,
 				F56A8DFE21A28A9500659418 /* CustomerTableCell.m in Sources */,
+				1820226E21A79808006C97DF /* ForgotViewController.m in Sources */,
 				18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */,
 				18B23638219AB1DE00E2594C /* AssetCenterViewController.m in Sources */,
 				1863D0DF219578E200316AFE /* CDTabBar.m in Sources */,
@@ -1060,6 +1077,7 @@
 				18B2363D219AB55500E2594C /* AssetCenterCell.m in Sources */,
 				1851C93E2199675600B84513 /* HandleViewController.m in Sources */,
 				1863D0DE219578E200316AFE /* CDNavigationVC.m in Sources */,
+				1820227421A7DED9006C97DF /* ZhuceViewController.m in Sources */,
 				F5396B8B219A55C900EFBF95 /* HomeTableCellTableViewCell.m in Sources */,
 				F525EE5C219C0FC800AD5ACE /* YzcChartView.m in Sources */,
 				1851C937219960B200B84513 /* AllInvViewController.m in Sources */,

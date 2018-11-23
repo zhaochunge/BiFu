@@ -57,14 +57,16 @@
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     if (item.tag==263) {
         //在这里进行其他的操作。
-        NSLog(@"item.tag==3");
-        
-        LoginViewController *loginVC=[LoginViewController new];
-        [self presentViewController:loginVC animated:YES completion:^{
+        if (0) {
             
-        }];
-        
-        
+            
+            
+        }else{
+            LoginViewController *loginVC=[LoginViewController new];
+            [self presentViewController:loginVC animated:YES completion:^{
+                
+            }];
+        }
     }
 //    else if (item.tag==264){
 //        NSLog(@"item.tag=4");
