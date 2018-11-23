@@ -39,6 +39,7 @@
     [self.table registerClass:[SafeTableCell class] forCellReuseIdentifier:@"safeReuse"];
     [self.table registerClass:[CheckSecondTableCell class] forCellReuseIdentifier:@"checkReuse"];
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==2) {
         return 2;
@@ -56,11 +57,17 @@
         return 50;
     }
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return CGFLOAT_MIN;
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return [[UIView alloc] init];
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     return [[UIView alloc] init];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -82,8 +89,6 @@
             cell.textLabel.text = self.labArr[indexPath.section];
             cell.detailTextLabel.text = self.sprArr[indexPath.section];
         }
-        
-        
         if (indexPath.section!=1) {
            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }

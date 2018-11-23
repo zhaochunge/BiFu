@@ -86,6 +86,12 @@
 		F53D8999219CFEC700023EB0 /* MoneyCountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D8998219CFEC700023EB0 /* MoneyCountVC.m */; };
 		F53D899C219CFF0100023EB0 /* PeriodVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D899B219CFF0100023EB0 /* PeriodVC.m */; };
 		F53D89A3219D62F100023EB0 /* TotalMoneyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F53D89A2219D62F100023EB0 /* TotalMoneyVC.m */; };
+		F554796B21A63A1400AFE48B /* NoticeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F554796A21A63A1400AFE48B /* NoticeListVC.m */; };
+		F554796E21A63D5F00AFE48B /* NoticeListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F554796D21A63D5F00AFE48B /* NoticeListTableCell.m */; };
+		F554797121A646A200AFE48B /* NoticeDetialVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F554797021A646A200AFE48B /* NoticeDetialVC.m */; };
+		F554797421A659E500AFE48B /* InterviewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F554797321A659E500AFE48B /* InterviewTableCell.m */; };
+		F554797721A67AB500AFE48B /* InterviewNowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F554797621A67AB500AFE48B /* InterviewNowVC.m */; };
+		F554797921A67BEB00AFE48B /* WechatIMG4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F554797821A67BEB00AFE48B /* WechatIMG4.jpeg */; };
 		F56A8DF121A23BC400659418 /* LeeDatePickerHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DED21A23BC400659418 /* LeeDatePickerHeadView.m */; };
 		F56A8DF221A23BC400659418 /* LeeDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DEF21A23BC400659418 /* LeeDatePickerView.m */; };
 		F56A8DF521A2418A00659418 /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DF421A2418A00659418 /* SettingVC.m */; };
@@ -276,6 +282,17 @@
 		F53D899B219CFF0100023EB0 /* PeriodVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeriodVC.m; sourceTree = "<group>"; };
 		F53D89A1219D62F100023EB0 /* TotalMoneyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TotalMoneyVC.h; sourceTree = "<group>"; };
 		F53D89A2219D62F100023EB0 /* TotalMoneyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TotalMoneyVC.m; sourceTree = "<group>"; };
+		F554796921A63A1400AFE48B /* NoticeListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeListVC.h; sourceTree = "<group>"; };
+		F554796A21A63A1400AFE48B /* NoticeListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeListVC.m; sourceTree = "<group>"; };
+		F554796C21A63D5F00AFE48B /* NoticeListTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeListTableCell.h; sourceTree = "<group>"; };
+		F554796D21A63D5F00AFE48B /* NoticeListTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeListTableCell.m; sourceTree = "<group>"; };
+		F554796F21A646A200AFE48B /* NoticeDetialVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeDetialVC.h; sourceTree = "<group>"; };
+		F554797021A646A200AFE48B /* NoticeDetialVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeDetialVC.m; sourceTree = "<group>"; };
+		F554797221A659E500AFE48B /* InterviewTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterviewTableCell.h; sourceTree = "<group>"; };
+		F554797321A659E500AFE48B /* InterviewTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterviewTableCell.m; sourceTree = "<group>"; };
+		F554797521A67AB500AFE48B /* InterviewNowVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterviewNowVC.h; sourceTree = "<group>"; };
+		F554797621A67AB500AFE48B /* InterviewNowVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterviewNowVC.m; sourceTree = "<group>"; };
+		F554797821A67BEB00AFE48B /* WechatIMG4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG4.jpeg; sourceTree = "<group>"; };
 		F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BiFu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56A8DEC21A23BC400659418 /* LeeDatePickerHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeDatePickerHeadView.h; sourceTree = "<group>"; };
 		F56A8DED21A23BC400659418 /* LeeDatePickerHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeDatePickerHeadView.m; sourceTree = "<group>"; };
@@ -431,6 +448,7 @@
 				1863D0AB2195785200316AFE /* Main.storyboard */,
 				1863D0AE2195785200316AFE /* Assets.xcassets */,
 				1863D0B02195785200316AFE /* LaunchScreen.storyboard */,
+				F554797821A67BEB00AFE48B /* WechatIMG4.jpeg */,
 				1863D0B32195785200316AFE /* Info.plist */,
 				1863D0B42195785200316AFE /* main.m */,
 			);
@@ -648,6 +666,8 @@
 				F5C9907C21A3940700F755FC /* SafeTableCell.m */,
 				F5C9907E21A3B49200F755FC /* CheckSecondTableCell.h */,
 				F5C9907F21A3B49200F755FC /* CheckSecondTableCell.m */,
+				F554797221A659E500AFE48B /* InterviewTableCell.h */,
+				F554797321A659E500AFE48B /* InterviewTableCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -666,6 +686,8 @@
 				F5396B89219A55C900EFBF95 /* HomeTableCellTableViewCell.m */,
 				F5396B86219A55C900EFBF95 /* LIView.h */,
 				F5396B87219A55C900EFBF95 /* LIView.m */,
+				F554796C21A63D5F00AFE48B /* NoticeListTableCell.h */,
+				F554796D21A63D5F00AFE48B /* NoticeListTableCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -684,6 +706,10 @@
 			children = (
 				1863D0E62195796900316AFE /* HomeViewController.m */,
 				1863D0E52195796900316AFE /* HomeViewController.h */,
+				F554796921A63A1400AFE48B /* NoticeListVC.h */,
+				F554796A21A63A1400AFE48B /* NoticeListVC.m */,
+				F554796F21A646A200AFE48B /* NoticeDetialVC.h */,
+				F554797021A646A200AFE48B /* NoticeDetialVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -754,6 +780,8 @@
 				F56A8DF421A2418A00659418 /* SettingVC.m */,
 				F56A8DF621A2479600659418 /* myInterviewVC.h */,
 				F56A8DF721A2479600659418 /* myInterviewVC.m */,
+				F554797521A67AB500AFE48B /* InterviewNowVC.h */,
+				F554797621A67AB500AFE48B /* InterviewNowVC.m */,
 				F56A8DF921A286F100659418 /* customerVC.h */,
 				F56A8DFA21A286F100659418 /* customerVC.m */,
 			);
@@ -897,6 +925,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F554797921A67BEB00AFE48B /* WechatIMG4.jpeg in Resources */,
 				1863D0B22195785200316AFE /* LaunchScreen.storyboard in Resources */,
 				1863D0AF2195785200316AFE /* Assets.xcassets in Resources */,
 				1863D0AD2195785200316AFE /* Main.storyboard in Resources */,
@@ -979,6 +1008,7 @@
 				F525EE5E219C0FC800AD5ACE /* YzcLabel.m in Sources */,
 				1863D0F321957A0400316AFE /* MyViewController.m in Sources */,
 				1863D11121957CBD00316AFE /* UIColor+ColorChange.m in Sources */,
+				F554796B21A63A1400AFE48B /* NoticeListVC.m in Sources */,
 				F5396B8A219A55C900EFBF95 /* LIView.m in Sources */,
 				1863D0AA2195785200316AFE /* ViewController.m in Sources */,
 				F5396B9C219AB41100EFBF95 /* LLView.m in Sources */,
@@ -1010,6 +1040,7 @@
 				18353B9821A4E62B00DFC6C0 /* LoginViewController.m in Sources */,
 				1851C9222199273B00B84513 /* YXButton.m in Sources */,
 				18FFD18021A2492A00669E2B /* WeChatPayViewController.m in Sources */,
+				F554797121A646A200AFE48B /* NoticeDetialVC.m in Sources */,
 				F53D8996219CFE9200023EB0 /* RateVC.m in Sources */,
 				1863D0A72195785200316AFE /* AppDelegate.m in Sources */,
 				185369A4219D577C00E26FDB /* AboutViewController.m in Sources */,
@@ -1017,6 +1048,7 @@
 				18FFD17D21A2491500669E2B /* AliPayViewController.m in Sources */,
 				F5396B8F219A5AAC00EFBF95 /* myBaseVC.m in Sources */,
 				F5C9908021A3B49200F755FC /* CheckSecondTableCell.m in Sources */,
+				F554797421A659E500AFE48B /* InterviewTableCell.m in Sources */,
 				1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */,
 				F56A8DFE21A28A9500659418 /* CustomerTableCell.m in Sources */,
 				18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */,
@@ -1041,6 +1073,7 @@
 				1863D10A21957CBD00316AFE /* cerTools.m in Sources */,
 				1863D0ED219579DB00316AFE /* LoanViewController.m in Sources */,
 				F5C9907D21A3940700F755FC /* SafeTableCell.m in Sources */,
+				F554796E21A63D5F00AFE48B /* NoticeListTableCell.m in Sources */,
 				1851C92E2199608C00B84513 /* RepayViewController.m in Sources */,
 				1863D10C21957CBD00316AFE /* LineBtn.m in Sources */,
 				185369AE219D69E100E26FDB /* HelpViewController.m in Sources */,
@@ -1057,6 +1090,7 @@
 				F53D8992219CFE0B00023EB0 /* LLSegmentBarVC.m in Sources */,
 				F5342E2E219E637E00853EA1 /* UnusedVC.m in Sources */,
 				F5342E2B219E636700853EA1 /* UsedVC.m in Sources */,
+				F554797721A67AB500AFE48B /* InterviewNowVC.m in Sources */,
 				F5342E24219E5C6600853EA1 /* MyCardVC.m in Sources */,
 				18E7EB44219BB0E9004EDE91 /* ChongzhiViewController.m in Sources */,
 			);
