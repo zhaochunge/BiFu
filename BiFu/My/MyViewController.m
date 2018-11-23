@@ -112,7 +112,7 @@
     [white addSubview:img];
     //
     self.userId =[UILabel new];
-    _userId.frame = CGRectMake(20, 0, 70, 20);
+    _userId.frame = CGRectMake(22, 0, 70, 20);
     [img addSubview:_userId];
     _userId.textColor =[UIColor colorWithRed:228/255.0 green:147/255.0 blue:144/255.0 alpha:1];
     _userId.font =[UIFont systemFontOfSize:14];
@@ -266,7 +266,7 @@
     switch (indexPath.section) {
         case 0:{
             switch (indexPath.row) {
-                case 0:{
+                case 0:{//账户安全
                     AccouentSafeVC *vc =[AccouentSafeVC new];
                     [self.navigationController pushViewController:vc animated:YES];
                     break; 

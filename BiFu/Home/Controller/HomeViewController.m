@@ -11,6 +11,7 @@
 #import "HomeTableCellTableViewCell.h"
 #import "InvestDetailVC.h"
 #import "InvestViewController.h"
+#import "NoticeListVC.h"
 
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *table;
@@ -36,10 +37,12 @@
     [self setStatusBarBackgroundColor:[UIColor colorWithRed:231/255.0 green:145/255.0 blue:144/255.0 alpha:1]];
 }
 -(void)viewDidAppear:(BOOL)animated{
-     [self setStatusBarBackgroundColor:[UIColor colorWithRed:231/255.0 green:145/255.0 blue:144/255.0 alpha:1]];
+    [super viewDidAppear:animated];
+    [self setStatusBarBackgroundColor:[UIColor colorWithRed:231/255.0 green:145/255.0 blue:144/255.0 alpha:1]];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self setStatusBarBackgroundColor:[UIColor whiteColor]];
 }
 #pragma mark 尾视图
 -(void)createFooter{
@@ -155,9 +158,9 @@
 #pragma mark 公告展开
 -(void) labelTouchUpInside:(UITapGestureRecognizer *)recognizer{
     
-    UILabel *label=(UILabel*)recognizer.view;
-    
-    NSLog(@"%@被点击了",label.text);
+//    UILabel *label=(UILabel*)recognizer.view;
+    NoticeListVC *vc = [NoticeListVC new];
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 #pragma mark 热门推荐 更多点击
