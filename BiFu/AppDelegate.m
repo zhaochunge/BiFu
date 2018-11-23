@@ -13,6 +13,7 @@
 
 @interface AppDelegate ()
 
+
 @end
 
 @implementation AppDelegate
@@ -34,6 +35,22 @@
     return YES;
 }
 
+//-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+//    if (tabBarController.tabBar.selectedItem.tag==3) {
+//        NSLog(@"item.tag==33333");
+//        return NO;
+//    }else{
+//        NSLog(@"item.tag==32222");
+//        return YES;
+//    }
+//}
+//
+//- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+//    if (item.tag==3) {
+//        //在这里进行其他的操作。
+//        NSLog(@"item.tag==3");
+//    }
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

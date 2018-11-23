@@ -16,7 +16,10 @@
 #import "OrderViewController.h"
 #import "MyViewController.h"
 
-@interface CDTabbarVC ()
+#import "LoginViewController.h"
+
+@interface CDTabbarVC ()<UITabBarControllerDelegate,UITabBarDelegate>
+
 @property (nonatomic, strong) HomeViewController *homeVC;
 @property (nonatomic, strong) InvestViewController *investVC;
 @property (nonatomic, strong) LoanViewController *loanVC;
@@ -32,6 +35,40 @@
     [self InitView];
     [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
 //    [self InitMiddleView];
+    
+    self.delegate=self;
+    self.tabBarController.tabBar.delegate=self;
+    
+}
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    if (tabBarController.tabBar.selectedItem.tag==263) {
+        NSLog(@"item.tag==33333");
+        return NO;
+    }else{
+        NSLog(@"item.tag==0000000");
+        return YES;
+    }
+//    else if (tabBarController.tabBar.selectedItem.tag==264){
+//        NSLog(@"item.tag==4444444");
+//        return NO;
+//    }
+}
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    if (item.tag==263) {
+        //在这里进行其他的操作。
+        NSLog(@"item.tag==3");
+        
+        LoginViewController *loginVC=[LoginViewController new];
+        [self presentViewController:loginVC animated:YES completion:^{
+            
+        }];
+        
+        
+    }
+//    else if (item.tag==264){
+//        NSLog(@"item.tag=4");
+//    }
 }
 //
 //- (void)InitMiddleView
@@ -44,11 +81,6 @@
 //        [self presentViewController:nav animated:YES completion:nil];
 //    }];
 //}
-- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
-{
-    //NSLog(@" --- %@", item.title);
-   
-}
 
 - (void)InitView
 {
@@ -72,13 +104,15 @@
     for (int i = 0; i < viewControllers.count; i++)
     {
         UIViewController *childVc = viewControllers[i];
-        [self setVC:childVc title:titles[i] image:images[i] selectedImage:selectedImages[i]];
+        [self setVC:childVc title:titles[i] image:images[i] selectedImage:selectedImages[i] tag:260+i];
     }
 }
 
-- (void)setVC:(UIViewController *)VC title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage
+
+- (void)setVC:(UIViewController *)VC title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage tag:(NSInteger)tag
 {
     VC.tabBarItem.title = title;
+    VC.tabBarItem.tag=tag;
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 //    dict[NSForegroundColorAttributeName] = [UIColor blackColor];
     dict[NSFontAttributeName] = [UIFont systemFontOfSize:10];
