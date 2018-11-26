@@ -65,7 +65,7 @@
     [xBtn setImage:[UIImage imageNamed:@"login_close.png"] forState:UIControlStateNormal];
     [xBtn addTarget:self action:@selector(xBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [imgView addSubview:xBtn];
-    
+
     ////////
     _nameTF=[[UITextField alloc]initWithFrame:CGRectMake(70, HEIGHT*0.5-30, WIDTH-80, 30)];
     _nameTF.text=@"请输入用户名";
