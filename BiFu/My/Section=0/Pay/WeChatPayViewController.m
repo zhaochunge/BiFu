@@ -113,10 +113,11 @@
     _button.layer.masksToBounds=YES;
     _button.layer.cornerRadius=5;
     _button.layer.borderWidth=1;
+    _button.titleLabel.adjustsFontSizeToFitWidth=YES;
     _button.layer.borderColor=[UIColor lightGrayColor].CGColor;
     [_button setTitle:@"点击上传收款码" forState:UIControlStateNormal];
     [_button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [_button setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [_button setImage:[UIImage imageNamed:@"上传-icon"] forState:UIControlStateNormal];
     [_button addTarget:self action:@selector(uploadPicButton) forControlEvents:UIControlEventTouchUpInside];
     _button.titleLabel.font=[UIFont systemFontOfSize:16];
     [_scrollView addSubview:_button];
