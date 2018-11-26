@@ -18,7 +18,7 @@
 {
     [super viewDidLoad];
     self.navigationBar.translucent = NO;
-//    [self.navigationBar setBarTintColor:NAVCOLOR];
+//  
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     
 

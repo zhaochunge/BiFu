@@ -9,6 +9,9 @@
 #import "AccouentSafeVC.h"
 #import "SafeTableCell.h"
 #import "CheckSecondTableCell.h"
+#import "ChangeLoginPwdVC.h"
+#import "ResetCapitalVC.h"
+#import "GoogleCheckVC.h"
 
 @interface AccouentSafeVC ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *table;
@@ -105,11 +108,17 @@
     if (indexPath.section==2) {
         if (indexPath.row ==0) {
             //登录密码
+            ChangeLoginPwdVC *vc =[ChangeLoginPwdVC new];
+            [self.navigationController pushViewController:vc animated:YES];
         }else{
             //资金密码
+            ResetCapitalVC *vc =[ResetCapitalVC new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }else if (indexPath.section == 3){
         //谷歌验证
+        GoogleCheckVC *vc = [GoogleCheckVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.section == 4){
         //登录二次验证
     }else{
