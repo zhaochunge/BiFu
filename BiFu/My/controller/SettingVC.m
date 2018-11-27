@@ -40,7 +40,7 @@
 }
 #pragma mark 退出按钮点击
 -(void)exit:(UIButton *)btn{
-    
+    [self data];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 4;
@@ -70,7 +70,25 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)data{
+    NSString *url=@"http://bfd.app0411.com/api/user/logout?";
+    NSURLSession *session=[NSURLSession sharedSession];
+    NSURL *url2=[NSURL URLWithString:url];
+    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
+    request.HTTPMethod=@"GET";
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *token = [ user objectForKey:@"token"];
+    
 
+    [request setValue:token forHTTPHeaderField:@"token"];
+    NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    
+        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"dict:%@",dict);
+    }];
+    [dataTask resume];
+    
+}
 /*
 #pragma mark - Navigation
 
