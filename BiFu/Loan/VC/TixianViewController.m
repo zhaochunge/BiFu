@@ -8,7 +8,7 @@
 
 #import "TixianViewController.h"
 
-@interface TixianViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface TixianViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)UIView *footerView;
 @property(nonatomic,strong)NSArray *titleArray;
@@ -80,6 +80,8 @@
         case 0:{
             UITextField *addressTF=[[UITextField alloc]initWithFrame:CGRectMake(100, 15, WIDTH-120, 20)];
             addressTF.placeholder=@"粘贴或输入提现地址";
+            addressTF.delegate=self;
+            addressTF.returnKeyType=UIReturnKeyDone;
             addressTF.textAlignment=NSTextAlignmentRight;
             [cell addSubview:addressTF];
             
@@ -92,6 +94,8 @@
             [cell addSubview:btcLab];
             UITextField *numTF=[[UITextField alloc]initWithFrame:CGRectMake(100, 15, WIDTH-120-50, 20)];
             numTF.placeholder=@"6";
+            numTF.delegate=self;
+            numTF.returnKeyType=UIReturnKeyDone;
             numTF.textAlignment=NSTextAlignmentRight;
             [cell addSubview:numTF];
             break;
@@ -104,8 +108,11 @@
             break;
     }
     
-    
     return cell;
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

@@ -11,6 +11,7 @@
 		1820227121A7CC83006C97DF /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820227021A7CC83006C97DF /* FindViewController.m */; };
 		1820227421A7DED9006C97DF /* ZhuceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820227321A7DED9006C97DF /* ZhuceViewController.m */; };
 		18353B9821A4E62B00DFC6C0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18353B9721A4E62B00DFC6C0 /* LoginViewController.m */; };
+		1850774921ABCE820093B283 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850774721ABCE820093B283 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1851C9222199273B00B84513 /* YXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C9212199273B00B84513 /* YXButton.m */; };
 		1851C92521994DF500B84513 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C92421994DF500B84513 /* OrderCell.m */; };
 		1851C9282199606D00B84513 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C9272199606D00B84513 /* PayViewController.m */; };
@@ -135,6 +136,9 @@
 		1820227321A7DED9006C97DF /* ZhuceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhuceViewController.m; sourceTree = "<group>"; };
 		18353B9621A4E62B00DFC6C0 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		18353B9721A4E62B00DFC6C0 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		1850774621ABCE820093B283 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		1850774721ABCE820093B283 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		1850774821ABCE820093B283 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		1851C9202199273B00B84513 /* YXButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXButton.h; sourceTree = "<group>"; };
 		1851C9212199273B00B84513 /* YXButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXButton.m; sourceTree = "<group>"; };
 		1851C92321994DF500B84513 /* OrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
@@ -356,6 +360,7 @@
 		18353B9521A4E5E100DFC6C0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				1850774521ABCE820093B283 /* Base64 */,
 				18353B9621A4E62B00DFC6C0 /* LoginViewController.h */,
 				18353B9721A4E62B00DFC6C0 /* LoginViewController.m */,
 				1820226C21A79808006C97DF /* ForgotViewController.h */,
@@ -366,6 +371,16 @@
 				1820227321A7DED9006C97DF /* ZhuceViewController.m */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		1850774521ABCE820093B283 /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				1850774621ABCE820093B283 /* GTMBase64.h */,
+				1850774721ABCE820093B283 /* GTMBase64.m */,
+				1850774821ABCE820093B283 /* GTMDefines.h */,
+			);
+			path = Base64;
 			sourceTree = "<group>";
 		};
 		1851C93B219960CC00B84513 /* VC */ = {
@@ -1068,6 +1083,7 @@
 				1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */,
 				F56A8DFE21A28A9500659418 /* CustomerTableCell.m in Sources */,
 				1820226E21A79808006C97DF /* ForgotViewController.m in Sources */,
+				1850774921ABCE820093B283 /* GTMBase64.m in Sources */,
 				18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */,
 				18B23638219AB1DE00E2594C /* AssetCenterViewController.m in Sources */,
 				1863D0DF219578E200316AFE /* CDTabBar.m in Sources */,
