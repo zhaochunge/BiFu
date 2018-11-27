@@ -43,7 +43,15 @@
 -(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
     if (tabBarController.tabBar.selectedItem.tag==263) {
         NSLog(@"item.tag==33333");
-        return NO;
+        if (0) {//zhanghao+mima=1
+            return YES;
+        }else{
+            LoginViewController *loginVC=[LoginViewController new];
+            [self presentViewController:loginVC animated:YES completion:^{
+            }];
+            return NO;
+        }
+        
     }else{
         NSLog(@"item.tag==0000000");
         return YES;
@@ -55,22 +63,7 @@
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
-    if (item.tag==263) {
-        //在这里进行其他的操作。
-        if (0) {
-            
-            
-            
-        }else{
-            LoginViewController *loginVC=[LoginViewController new];
-            [self presentViewController:loginVC animated:YES completion:^{
-                
-            }];
-        }
-    }
-//    else if (item.tag==264){
-//        NSLog(@"item.tag=4");
-//    }
+
 }
 //
 //- (void)InitMiddleView

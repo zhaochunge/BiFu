@@ -29,6 +29,24 @@
 #pragma mark 获取验证码
 -(void)verBtnClick{
     NSLog(@"ver");
+    NSString *url=@"http://bfd.app0411.com/api/sms/send";
+    NSURLSession *session=[NSURLSession sharedSession];
+    NSURL *url2=[NSURL URLWithString:url];
+    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
+    request.HTTPMethod=@"POST";
+    request.HTTPBody=[[NSString stringWithFormat:@"mobile=%@&event=%@&type=JSON",[NSString stringWithFormat:@"%@",@"13074116296"],[NSString stringWithFormat:@"%@",@"mobilelogin"]] dataUsingEncoding:NSUTF8StringEncoding];//_nameTF.text,_pwdTF.text
+    
+    NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSLog(@"data:%@",data);
+        NSLog(@"response:%@",response);
+        NSLog(@"error:%@",error);
+        //        NSData *data64=[GTMBase64 decodeData:data];
+        //        NSLog(@"data64:%@",data64);
+        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"dict:%@",dict);
+        
+    }];
+    [dataTask resume];
 }
 
 #pragma mark 下一步
@@ -60,7 +78,8 @@
     [backView addSubview:titleLab];
     
     _phoneTF=[[UITextField alloc]initWithFrame:CGRectMake(40, 200, WIDTH-80, 30)];
-    _phoneTF.text=@"请输入手机号";
+    _phoneTF.placeholder=@"请输入手机号";
+    [_phoneTF setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     _phoneTF.textColor=[UIColor lightGrayColor];
     _phoneTF.delegate=self;
     _phoneTF.returnKeyType=UIReturnKeyDone;
@@ -78,7 +97,8 @@
     [backView addSubview:_verBtn];
     
     _verCodeTF=[[UITextField alloc]initWithFrame:CGRectMake(40, _verBtn.frame.origin.y, WIDTH-160, 30)];
-    _verCodeTF.text=@"请输入验证码";
+    _verCodeTF.placeholder=@"请输入验证码";
+    [_verCodeTF setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     _verCodeTF.textColor=[UIColor lightGrayColor];
     _verCodeTF.delegate=self;
     _verCodeTF.returnKeyType=UIReturnKeyDone;

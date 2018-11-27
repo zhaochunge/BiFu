@@ -42,7 +42,8 @@
     [backView addSubview:titleLab];
     
     _nePwdTF=[[UITextField alloc]initWithFrame:CGRectMake(40, 200, WIDTH-80, 30)];
-    _nePwdTF.text=@"请输入新密码";
+    _nePwdTF.placeholder=@"请输入新密码";
+    [_nePwdTF setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
     _nePwdTF.textColor=[UIColor lightGrayColor];
     _nePwdTF.delegate=self;
     _nePwdTF.returnKeyType=UIReturnKeyDone;
@@ -52,7 +53,8 @@
     [backView addSubview:line1];
     
     _reNewPwdTF=[[UITextField alloc]initWithFrame:CGRectMake(40, line1.frame.origin.y+30, WIDTH-160, 30)];
-    _reNewPwdTF.text=@"请再次输入密码";
+    _reNewPwdTF.placeholder=@"请再次输入密码";
+    [_reNewPwdTF setValue:[UIColor lightGrayColor] forKeyPath:@"placeholderLabel.textColor"];
     _reNewPwdTF.textColor=[UIColor lightGrayColor];
     _reNewPwdTF.delegate=self;
     _reNewPwdTF.returnKeyType=UIReturnKeyDone;
@@ -74,10 +76,16 @@
     
 }
 
+#pragma mark 确认Btn
 -(void)checkBtnClick{
     NSLog(@"checkBtnClick");
     
-    
+    if ([self respondsToSelector:@selector(presentingViewController)]){
+        [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+    else {
+        [self.parentViewController.parentViewController dismissViewControllerAnimated:YES completion:nil];
+    }
     
     
 }
