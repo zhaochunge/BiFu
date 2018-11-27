@@ -12,11 +12,13 @@
 #import "ChangeLoginPwdVC.h"
 #import "ResetCapitalVC.h"
 #import "GoogleCheckVC.h"
+#import "ShowAnimationView.h"
 
 @interface AccouentSafeVC ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *table;
 @property(nonatomic,strong)NSArray *labArr;
 @property(nonatomic,strong)NSArray *sprArr;
+@property(nonatomic,strong)ShowAnimationView *backView;
 @end
 
 @implementation AccouentSafeVC
@@ -24,7 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor =[UIColor redColor];
     [self leftItemBlack];
     self.navigationItem.title = @"账户安全";
     self.labArr =@[@"账户安全",@"用户名",@[@"登录密码",@"资金密码"],@"谷歌验证",@"登录二次验证",@"身份验证"];
@@ -121,9 +122,64 @@
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.section == 4){
         //登录二次验证
+        [self creView];
+        
     }else{
         //身份认证
+        
     }
+}
+-(void)creView{
+    self.backView =[[ShowAnimationView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    UILabel *title = [UILabel new];
+    title.frame = CGRectMake(0, 0, self.backView.contentView.width-70, 80);
+    title.text = @"登录时是否选择进行手机验证";
+    title.textColor =[UIColor whiteColor];
+    title.textAlignment = YES;
+    [self.backView.contentView addSubview:title];
+    UIButton *close =[UIButton buttonWithType:UIButtonTypeCustom];
+    close.frame = CGRectMake(self.backView.contentView.width-30, 10, 15, 15);
+    [close setBackgroundImage:[UIImage imageNamed:@"关闭-icon"] forState:(UIControlStateNormal)];
+    [close addTarget:self action:@selector(close:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.backView.contentView addSubview:close];
+    UITextField *text =[UITextField new];
+    text.frame = CGRectMake(50, 150, 150, 40);
+    text.placeholder = @"请输入验证码";
+    [self.backView.contentView addSubview:text];
+    UIButton *code =[UIButton buttonWithType:UIButtonTypeCustom];
+    code.frame = CGRectMake(self.backView.contentView.width-140, 150, 120, 40);
+    [code setTitle:@"获取验证码" forState:(UIControlStateNormal)];
+    [code setTitleColor:[UIColor redColor] forState:(UIControlStateNormal)];
+    code.layer.cornerRadius = 5;
+    code.layer.masksToBounds = YES;
+    code.layer.borderWidth = 1;
+    code.layer.borderColor =[UIColor redColor].CGColor;
+    [code addTarget:self action:@selector(code:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.backView.contentView addSubview:code];
+    UIButton *clBtn =[UIButton buttonWithType:UIButtonTypeSystem];
+    clBtn.frame = CGRectMake(20, 230, self.backView.contentView.width-40, 40);
+    [clBtn setTitle:@"关闭二级验证" forState:(UIControlStateNormal)];
+    [clBtn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+    clBtn.backgroundColor = [UIColor colorWithRed:210/255.0 green:87/255.0 blue:80/255.0 alpha:1];
+    [clBtn addTarget:self action:@selector(up:) forControlEvents:(UIControlEventTouchUpInside)];
+    clBtn.layer.cornerRadius = 5;
+    clBtn.layer.masksToBounds = YES;
+    [self.backView.contentView addSubview:clBtn];
+    [self.backView showView];
+    
+    
+}
+#pragma mark 关闭点击
+-(void)close:(UIButton *)btn{
+    [self.backView dispear];
+}
+#pragma mark 关闭二级验证
+-(void)up:(UIButton *)btn{
+    
+}
+#pragma mark 验证码
+-(void)code:(UIButton *)btn{
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

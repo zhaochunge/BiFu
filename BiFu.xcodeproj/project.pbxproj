@@ -95,6 +95,8 @@
 		F554797421A659E500AFE48B /* InterviewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F554797321A659E500AFE48B /* InterviewTableCell.m */; };
 		F554797721A67AB500AFE48B /* InterviewNowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F554797621A67AB500AFE48B /* InterviewNowVC.m */; };
 		F554797921A67BEB00AFE48B /* WechatIMG4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F554797821A67BEB00AFE48B /* WechatIMG4.jpeg */; };
+		F56754ED21AD11EC0060A369 /* IdentityCheckVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F56754EC21AD11EC0060A369 /* IdentityCheckVC.m */; };
+		F56754F021AD1EC10060A369 /* ShowAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56754EF21AD1EC10060A369 /* ShowAnimationView.m */; };
 		F56A397A21AB7A8000B39E13 /* LLTTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A397921AB7A8000B39E13 /* LLTTableCell.m */; };
 		F56A397D21AB80AB00B39E13 /* LTTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A397C21AB80AB00B39E13 /* LTTableCell.m */; };
 		F56A398021AB82B600B39E13 /* LTView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A397F21AB82B500B39E13 /* LTView.m */; };
@@ -308,6 +310,10 @@
 		F554797621A67AB500AFE48B /* InterviewNowVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterviewNowVC.m; sourceTree = "<group>"; };
 		F554797821A67BEB00AFE48B /* WechatIMG4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG4.jpeg; sourceTree = "<group>"; };
 		F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BiFu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F56754EB21AD11EC0060A369 /* IdentityCheckVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IdentityCheckVC.h; sourceTree = "<group>"; };
+		F56754EC21AD11EC0060A369 /* IdentityCheckVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IdentityCheckVC.m; sourceTree = "<group>"; };
+		F56754EE21AD1EC10060A369 /* ShowAnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowAnimationView.h; sourceTree = "<group>"; };
+		F56754EF21AD1EC10060A369 /* ShowAnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowAnimationView.m; sourceTree = "<group>"; };
 		F56A397821AB7A8000B39E13 /* LLTTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLTTableCell.h; sourceTree = "<group>"; };
 		F56A397921AB7A8000B39E13 /* LLTTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLTTableCell.m; sourceTree = "<group>"; };
 		F56A397B21AB80AB00B39E13 /* LTTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTTableCell.h; sourceTree = "<group>"; };
@@ -846,12 +852,16 @@
 				F56A398221AB941B00B39E13 /* ResetCapitalVC.m */,
 				F56A398421AB98E000B39E13 /* GoogleCheckVC.h */,
 				F56A398521AB98E000B39E13 /* GoogleCheckVC.m */,
+				F56754EB21AD11EC0060A369 /* IdentityCheckVC.h */,
+				F56754EC21AD11EC0060A369 /* IdentityCheckVC.m */,
 				F56A397821AB7A8000B39E13 /* LLTTableCell.h */,
 				F56A397921AB7A8000B39E13 /* LLTTableCell.m */,
 				F56A397B21AB80AB00B39E13 /* LTTableCell.h */,
 				F56A397C21AB80AB00B39E13 /* LTTableCell.m */,
 				F56A397E21AB82B500B39E13 /* LTView.h */,
 				F56A397F21AB82B500B39E13 /* LTView.m */,
+				F56754EE21AD1EC10060A369 /* ShowAnimationView.h */,
+				F56754EF21AD1EC10060A369 /* ShowAnimationView.m */,
 			);
 			path = Safe;
 			sourceTree = "<group>";
@@ -1062,6 +1072,7 @@
 				F53D8993219CFE0B00023EB0 /* UIView+LLSegmentBar.m in Sources */,
 				1863D10F21957CBD00316AFE /* UIButton+Edge.m in Sources */,
 				F5C9908421A3B75200F755FC /* ChangeLoginPwdVC.m in Sources */,
+				F56754F021AD1EC10060A369 /* ShowAnimationView.m in Sources */,
 				F525EE5B219C0FC800AD5ACE /* YzcBarChart.m in Sources */,
 				1851C934219960A600B84513 /* RechargeViewController.m in Sources */,
 				F56A8DFB21A286F100659418 /* customerVC.m in Sources */,
@@ -1095,6 +1106,7 @@
 				1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */,
 				F56A8DFE21A28A9500659418 /* CustomerTableCell.m in Sources */,
 				1820226E21A79808006C97DF /* ForgotViewController.m in Sources */,
+				F56754ED21AD11EC0060A369 /* IdentityCheckVC.m in Sources */,
 				18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */,
 				18B23638219AB1DE00E2594C /* AssetCenterViewController.m in Sources */,
 				1863D0DF219578E200316AFE /* CDTabBar.m in Sources */,
@@ -1305,10 +1317,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KATC9LYYJ3;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BiFu/PrefixHeader.pch";
 				INFOPLIST_FILE = BiFu/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yljx.BiFu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1322,10 +1334,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KATC9LYYJ3;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BiFu/PrefixHeader.pch";
 				INFOPLIST_FILE = BiFu/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yljx.BiFu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
