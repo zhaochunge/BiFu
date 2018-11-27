@@ -96,6 +96,11 @@
 		F554797421A659E500AFE48B /* InterviewTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F554797321A659E500AFE48B /* InterviewTableCell.m */; };
 		F554797721A67AB500AFE48B /* InterviewNowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F554797621A67AB500AFE48B /* InterviewNowVC.m */; };
 		F554797921A67BEB00AFE48B /* WechatIMG4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F554797821A67BEB00AFE48B /* WechatIMG4.jpeg */; };
+		F56A397A21AB7A8000B39E13 /* LLTTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A397921AB7A8000B39E13 /* LLTTableCell.m */; };
+		F56A397D21AB80AB00B39E13 /* LTTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A397C21AB80AB00B39E13 /* LTTableCell.m */; };
+		F56A398021AB82B600B39E13 /* LTView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A397F21AB82B500B39E13 /* LTView.m */; };
+		F56A398321AB941B00B39E13 /* ResetCapitalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A398221AB941B00B39E13 /* ResetCapitalVC.m */; };
+		F56A398621AB98E000B39E13 /* GoogleCheckVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A398521AB98E000B39E13 /* GoogleCheckVC.m */; };
 		F56A8DF121A23BC400659418 /* LeeDatePickerHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DED21A23BC400659418 /* LeeDatePickerHeadView.m */; };
 		F56A8DF221A23BC400659418 /* LeeDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DEF21A23BC400659418 /* LeeDatePickerView.m */; };
 		F56A8DF521A2418A00659418 /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DF421A2418A00659418 /* SettingVC.m */; };
@@ -307,6 +312,16 @@
 		F554797621A67AB500AFE48B /* InterviewNowVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterviewNowVC.m; sourceTree = "<group>"; };
 		F554797821A67BEB00AFE48B /* WechatIMG4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WechatIMG4.jpeg; sourceTree = "<group>"; };
 		F55CA07A6721AC0C296A6906 /* libPods-BiFu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BiFu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F56A397821AB7A8000B39E13 /* LLTTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLTTableCell.h; sourceTree = "<group>"; };
+		F56A397921AB7A8000B39E13 /* LLTTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLTTableCell.m; sourceTree = "<group>"; };
+		F56A397B21AB80AB00B39E13 /* LTTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTTableCell.h; sourceTree = "<group>"; };
+		F56A397C21AB80AB00B39E13 /* LTTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTTableCell.m; sourceTree = "<group>"; };
+		F56A397E21AB82B500B39E13 /* LTView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTView.h; sourceTree = "<group>"; };
+		F56A397F21AB82B500B39E13 /* LTView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTView.m; sourceTree = "<group>"; };
+		F56A398121AB941B00B39E13 /* ResetCapitalVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetCapitalVC.h; sourceTree = "<group>"; };
+		F56A398221AB941B00B39E13 /* ResetCapitalVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetCapitalVC.m; sourceTree = "<group>"; };
+		F56A398421AB98E000B39E13 /* GoogleCheckVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleCheckVC.h; sourceTree = "<group>"; };
+		F56A398521AB98E000B39E13 /* GoogleCheckVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleCheckVC.m; sourceTree = "<group>"; };
 		F56A8DEC21A23BC400659418 /* LeeDatePickerHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeDatePickerHeadView.h; sourceTree = "<group>"; };
 		F56A8DED21A23BC400659418 /* LeeDatePickerHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeeDatePickerHeadView.m; sourceTree = "<group>"; };
 		F56A8DEE21A23BC400659418 /* LeeDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeeDatePickerView.h; sourceTree = "<group>"; };
@@ -842,6 +857,16 @@
 			children = (
 				F5C9908221A3B75200F755FC /* ChangeLoginPwdVC.h */,
 				F5C9908321A3B75200F755FC /* ChangeLoginPwdVC.m */,
+				F56A398121AB941B00B39E13 /* ResetCapitalVC.h */,
+				F56A398221AB941B00B39E13 /* ResetCapitalVC.m */,
+				F56A398421AB98E000B39E13 /* GoogleCheckVC.h */,
+				F56A398521AB98E000B39E13 /* GoogleCheckVC.m */,
+				F56A397821AB7A8000B39E13 /* LLTTableCell.h */,
+				F56A397921AB7A8000B39E13 /* LLTTableCell.m */,
+				F56A397B21AB80AB00B39E13 /* LTTableCell.h */,
+				F56A397C21AB80AB00B39E13 /* LTTableCell.m */,
+				F56A397E21AB82B500B39E13 /* LTView.h */,
+				F56A397F21AB82B500B39E13 /* LTView.m */,
 			);
 			path = Safe;
 			sourceTree = "<group>";
@@ -1047,6 +1072,7 @@
 				F525EE5D219C0FC800AD5ACE /* YzcConst.m in Sources */,
 				1863D11021957CBD00316AFE /* UIView+Size.m in Sources */,
 				1863D0EA219579C000316AFE /* InvestViewController.m in Sources */,
+				F56A398321AB941B00B39E13 /* ResetCapitalVC.m in Sources */,
 				F56A8DF121A23BC400659418 /* LeeDatePickerHeadView.m in Sources */,
 				F53D8993219CFE0B00023EB0 /* UIView+LLSegmentBar.m in Sources */,
 				1863D10F21957CBD00316AFE /* UIButton+Edge.m in Sources */,
@@ -1071,6 +1097,7 @@
 				18353B9821A4E62B00DFC6C0 /* LoginViewController.m in Sources */,
 				1851C9222199273B00B84513 /* YXButton.m in Sources */,
 				18FFD18021A2492A00669E2B /* WeChatPayViewController.m in Sources */,
+				F56A398621AB98E000B39E13 /* GoogleCheckVC.m in Sources */,
 				F554797121A646A200AFE48B /* NoticeDetialVC.m in Sources */,
 				F53D8996219CFE9200023EB0 /* RateVC.m in Sources */,
 				1863D0A72195785200316AFE /* AppDelegate.m in Sources */,
@@ -1101,6 +1128,7 @@
 				F53D8991219CFE0B00023EB0 /* LLSegmentBarConfig.m in Sources */,
 				F5396B95219AA9FC00EFBF95 /* InvestDetailVC.m in Sources */,
 				F525EE4B219BF1DA00AD5ACE /* MarketVC.m in Sources */,
+				F56A397A21AB7A8000B39E13 /* LLTTableCell.m in Sources */,
 				1863D10E21957CBD00316AFE /* NSString+Size.m in Sources */,
 				F53D8999219CFEC700023EB0 /* MoneyCountVC.m in Sources */,
 				F56A8DF221A23BC400659418 /* LeeDatePickerView.m in Sources */,
@@ -1114,12 +1142,14 @@
 				18E7EB41219BA9C5004EDE91 /* ASDetailViewController.m in Sources */,
 				1863D10D21957CBD00316AFE /* NetTools.m in Sources */,
 				F5342E31219E63B400853EA1 /* ExpiredVC.m in Sources */,
+				F56A398021AB82B600B39E13 /* LTView.m in Sources */,
 				1863D10B21957CBD00316AFE /* CustomAlertView.m in Sources */,
 				F56A8DF521A2418A00659418 /* SettingVC.m in Sources */,
 				F5342E38219E6A8400853EA1 /* DCNavTabBarController.m in Sources */,
 				185369AA219D57B700E26FDB /* ShareAppViewController.m in Sources */,
 				1851C9312199609A00B84513 /* InvViewController.m in Sources */,
 				F525EE4E219BF97C00AD5ACE /* MarketTableCell.m in Sources */,
+				F56A397D21AB80AB00B39E13 /* LTTableCell.m in Sources */,
 				1863D10921957CBD00316AFE /* Base64Verb.m in Sources */,
 				F53D8992219CFE0B00023EB0 /* LLSegmentBarVC.m in Sources */,
 				F5342E2E219E637E00853EA1 /* UnusedVC.m in Sources */,
