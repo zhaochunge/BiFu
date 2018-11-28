@@ -34,7 +34,11 @@
     NSURL *url2=[NSURL URLWithString:url];
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
     request.HTTPMethod=@"POST";
+
     request.HTTPBody=[[NSString stringWithFormat:@"account=%@&password=%@&type=JSON",[NSString stringWithFormat:@"%@",_nameTF.text],[NSString stringWithFormat:@"%@",_pwdTF.text]] dataUsingEncoding:NSUTF8StringEncoding];
+
+    request.HTTPBody=[[NSString stringWithFormat:@"account=%@&password=%@&type=JSON",[NSString stringWithFormat:@"%@",@"user01"],[NSString stringWithFormat:@"%@",@"a123456789"]] dataUsingEncoding:NSUTF8StringEncoding];//_nameTF.text,_pwdTF.text
+
 
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 //        NSLog(@"data:%@",data);
@@ -44,6 +48,13 @@
 //        NSLog(@"data64:%@",data64);
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"dict:%@",dict);
+        //将NSString 对象存储到 NSUserDefaults 中
+     
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        [user setObject:dict[@"data"][@"userinfo"][@"token"] forKey:@"token"];
+        
+
+        ;
         if ([dict[@"code"] isEqual:@1]) {
             NSLog(@"code=1");
             
