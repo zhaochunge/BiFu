@@ -34,7 +34,7 @@
     NSURL *url2=[NSURL URLWithString:url];
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
     request.HTTPMethod=@"POST";
-    request.HTTPBody=[[NSString stringWithFormat:@"account=%@&password=%@&type=JSON",[NSString stringWithFormat:@"%@",@"user01"],[NSString stringWithFormat:@"%@",@"a123456"]] dataUsingEncoding:NSUTF8StringEncoding];//_nameTF.text,_pwdTF.text
+    request.HTTPBody=[[NSString stringWithFormat:@"account=%@&password=%@&type=JSON",[NSString stringWithFormat:@"%@",_nameTF.text],[NSString stringWithFormat:@"%@",_pwdTF.text]] dataUsingEncoding:NSUTF8StringEncoding];
 
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 //        NSLog(@"data:%@",data);
@@ -47,7 +47,6 @@
         if ([dict[@"code"] isEqual:@1]) {
             NSLog(@"code=1");
             
-            
             [self dismissViewControllerAnimated:YES completion:^{
                 AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                 
@@ -55,7 +54,6 @@
                 
                 [tabViewController setSelectedIndex:3];
             }];
-
         }
         
     }];
