@@ -13,6 +13,7 @@
 #import "ResetCapitalVC.h"
 #import "GoogleCheckVC.h"
 #import "ShowAnimationView.h"
+#import "IdentityCheckVC.h"
 
 @interface AccouentSafeVC ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *table;
@@ -126,6 +127,8 @@
         
     }else{
         //身份认证
+        IdentityCheckVC *vc =[IdentityCheckVC new];
+        [self.navigationController pushViewController:vc animated:YES];
         
     }
 }
