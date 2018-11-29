@@ -15,6 +15,7 @@
 @interface AssetCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSArray *titleArray;
+@property(nonatomic,strong)NSMutableDictionary *dataDict;
 
 @end
 
@@ -25,6 +26,7 @@
     self.view.backgroundColor=[UIColor whiteColor];
     self.navigationItem.title=@"资产中心";
     _titleArray=@[@"BTC（比特币）",@"ETC（以太坊）",@"LTC（莱特币）"];
+    _dataDict=[NSMutableDictionary dictionary];
     UIButton *itemBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     itemBtn.frame=CGRectMake(0, 0, 30, 30);
     [itemBtn setImage:[UIImage imageNamed:@"记录-ICON"] forState:UIControlStateNormal];
@@ -33,7 +35,36 @@
     self.navigationItem.rightBarButtonItem =item;
     
     [self setupTableView];
+    [self loadData];
 }
+
+-(void)loadData{
+    
+    NSString *url=@"http://bfd.app0411.com/api/user/user_assets";
+    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+    NSString *token=[user objectForKey:@"token"];
+    NSURLSession *session=[NSURLSession sharedSession];
+    NSURL *url2=[NSURL URLWithString:url];
+    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
+    request.HTTPMethod=@"POST";
+    request.HTTPBody=[[NSString stringWithFormat:@"token=%@&type=JSON",[NSString stringWithFormat:@"%@",token]] dataUsingEncoding:NSUTF8StringEncoding];
+    NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        //        NSLog(@"data:%@",data);
+        //        NSLog(@"response:%@",response);
+        //        NSLog(@"error:%@",error);
+        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"dict:%@",dict);
+        _dataDict=dict[@"data"][@"assets"];
+        NSLog(@"dataDict:%@",_dataDict);
+        dispatch_sync(dispatch_get_main_queue(), ^(){
+            
+            [_tableView reloadData];
+        });
+    }];
+    [dataTask resume];
+    
+}
+
 #pragma mark 去资产详情
 -(void)itemClick{
     NSLog(@"记录");
@@ -59,8 +90,6 @@
     AssetCenterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"assetCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.leiLab.text=_titleArray[indexPath.row];
-    cell.kmLab.text=@"0";
-    cell.dmLab.text=@"0";
     
     [cell.tiBtn addTarget:self action:@selector(tiBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [cell.chongBtn addTarget:self action:@selector(chongBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -69,17 +98,22 @@
         case 0:{
             cell.yuanLab.backgroundColor=[UIColor orangeColor];
             cell.leiLab.textColor=[UIColor orangeColor];
-            
+            cell.kmLab.text=[NSString stringWithFormat:@"%@",_dataDict[@"btc"]];
+            cell.dmLab.text=[NSString stringWithFormat:@"%@",_dataDict[@"btc_freez"]];
             break;
         }
         case 1:{
             cell.yuanLab.backgroundColor=[UIColor blueColor];
             cell.leiLab.textColor=[UIColor blueColor];
+            cell.kmLab.text=[NSString stringWithFormat:@"%@",_dataDict[@"eth"]];
+            cell.dmLab.text=[NSString stringWithFormat:@"%@",_dataDict[@"eth_freez"]];
             break;
         }
         case 2:{
             cell.yuanLab.backgroundColor=[UIColor lightGrayColor];
             cell.leiLab.textColor=[UIColor lightGrayColor];
+            cell.kmLab.text=[NSString stringWithFormat:@"%@",_dataDict[@"ltc"]];
+            cell.dmLab.text=[NSString stringWithFormat:@"%@",_dataDict[@"ltc_freez"]];
             break;
         }
         default:

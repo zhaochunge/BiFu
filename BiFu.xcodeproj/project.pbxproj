@@ -58,6 +58,7 @@
 		18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7EB46219BB0F5004EDE91 /* TixianViewController.m */; };
 		18F0769C219E970C00B42D98 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0769B219E970C00B42D98 /* RecordViewController.m */; };
 		18F0769F219EA5A900B42D98 /* PayStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0769E219EA5A900B42D98 /* PayStyleViewController.m */; };
+		18F6D09321AE712E00344145 /* ErViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F6D09221AE712E00344145 /* ErViewController.m */; };
 		18FFD17A21A248FC00669E2B /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FFD17921A248FC00669E2B /* CardViewController.m */; };
 		18FFD17D21A2491500669E2B /* AliPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FFD17C21A2491500669E2B /* AliPayViewController.m */; };
 		18FFD18021A2492A00669E2B /* WeChatPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FFD17F21A2492A00669E2B /* WeChatPayViewController.m */; };
@@ -239,6 +240,8 @@
 		18F0769B219E970C00B42D98 /* RecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
 		18F0769D219EA5A900B42D98 /* PayStyleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayStyleViewController.h; sourceTree = "<group>"; };
 		18F0769E219EA5A900B42D98 /* PayStyleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayStyleViewController.m; sourceTree = "<group>"; };
+		18F6D09121AE712E00344145 /* ErViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErViewController.h; sourceTree = "<group>"; };
+		18F6D09221AE712E00344145 /* ErViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ErViewController.m; sourceTree = "<group>"; };
 		18FFD17821A248FC00669E2B /* CardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
 		18FFD17921A248FC00669E2B /* CardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
 		18FFD17B21A2491500669E2B /* AliPayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AliPayViewController.h; sourceTree = "<group>"; };
@@ -384,6 +387,8 @@
 				1850774521ABCE820093B283 /* Base64 */,
 				18353B9621A4E62B00DFC6C0 /* LoginViewController.h */,
 				18353B9721A4E62B00DFC6C0 /* LoginViewController.m */,
+				18F6D09121AE712E00344145 /* ErViewController.h */,
+				18F6D09221AE712E00344145 /* ErViewController.m */,
 				1820226C21A79808006C97DF /* ForgotViewController.h */,
 				1820226D21A79808006C97DF /* ForgotViewController.m */,
 				1820226F21A7CC83006C97DF /* FindViewController.h */,
@@ -1093,6 +1098,7 @@
 				F56A8DFB21A286F100659418 /* customerVC.m in Sources */,
 				18F0769C219E970C00B42D98 /* RecordViewController.m in Sources */,
 				F53D899C219CFF0100023EB0 /* PeriodVC.m in Sources */,
+				18F6D09321AE712E00344145 /* ErViewController.m in Sources */,
 				F5342E3C219E6E7900853EA1 /* CardTableCell.m in Sources */,
 				F5396B9F219AC72500EFBF95 /* InvestDetialTableCell.m in Sources */,
 				F525EE48219BB1AF00AD5ACE /* alertTableCell.m in Sources */,

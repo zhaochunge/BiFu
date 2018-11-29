@@ -7,13 +7,17 @@
 //
 
 #import "ForgotViewController.h"
-#import "FindViewController.h"
+//#import "FindViewController.h"//
+#import "AppDelegate.h"
 
 @interface ForgotViewController ()<UITextFieldDelegate>
 
 @property(nonatomic,strong)UITextField *phoneTF;
 @property(nonatomic,strong)UITextField *verCodeTF;
 @property(nonatomic,strong)UIButton *verBtn;
+
+@property(nonatomic,strong)UITextField *pwdTF;
+@property(nonatomic,strong)UITextField *repwdTF;
 
 @end
 
@@ -29,12 +33,17 @@
 #pragma mark 获取验证码
 -(void)verBtnClick{
     NSLog(@"ver");
+    [self getVerData];
+    [self openCountdown];
+}
+
+-(void)getVerData{
     NSString *url=@"http://bfd.app0411.com/api/sms/send";
     NSURLSession *session=[NSURLSession sharedSession];
     NSURL *url2=[NSURL URLWithString:url];
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
     request.HTTPMethod=@"POST";
-    request.HTTPBody=[[NSString stringWithFormat:@"mobile=%@&event=%@&type=JSON",[NSString stringWithFormat:@"%@",@"13074116296"],[NSString stringWithFormat:@"%@",@"mobilelogin"]] dataUsingEncoding:NSUTF8StringEncoding];//_nameTF.text,_pwdTF.text
+    request.HTTPBody=[[NSString stringWithFormat:@"mobile=%@&event=%@&type=JSON",[NSString stringWithFormat:@"%@",_phoneTF.text],[NSString stringWithFormat:@"%@",@"resetpwd"]] dataUsingEncoding:NSUTF8StringEncoding];
     
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSLog(@"data:%@",data);
@@ -49,13 +58,85 @@
     [dataTask resume];
 }
 
+-(void)openCountdown{
+    __block NSInteger time = 59; //倒计时时间
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+    
+    dispatch_source_set_event_handler(_timer, ^{
+        
+        if(time <= 0){ //倒计时结束，关闭
+            
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //设置按钮的样式
+                [_verBtn setTitle:@"重新发送" forState:UIControlStateNormal];
+                [_verBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                _verBtn.userInteractionEnabled = YES;
+            });
+            
+        }else{
+            
+            int seconds = time % 60;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //设置按钮显示读秒效果
+                [_verBtn setTitle:[NSString stringWithFormat:@"%.2d s", seconds] forState:UIControlStateNormal];
+                [_verBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                _verBtn.userInteractionEnabled = NO;
+            });
+            time--;
+        }
+    });
+    dispatch_resume(_timer);
+}
+
 #pragma mark 下一步
 -(void)nextBtnClick{
     NSLog(@"next");
-    FindViewController *findVC=[FindViewController new];
-    [self presentViewController:findVC animated:YES completion:^{
-        
+    NSString *url=@"http://bfd.app0411.com/api/user/register";
+    NSURLSession *session=[NSURLSession sharedSession];
+    NSURL *url2=[NSURL URLWithString:url];
+    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
+    request.HTTPMethod=@"POST";
+    request.HTTPBody=[[NSString stringWithFormat:@"mobile=%@&newpassword=%@&renewpassword=%@&captcha=%@&type=JSON",
+                       [NSString stringWithFormat:@"%@",_phoneTF.text],
+                       [NSString stringWithFormat:@"%@",_pwdTF.text],
+                       [NSString stringWithFormat:@"%@",_repwdTF.text],
+                       [NSString stringWithFormat:@"%@",_verCodeTF.text]] dataUsingEncoding:NSUTF8StringEncoding];
+    NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSLog(@"data:%@",data);
+        NSLog(@"response:%@",response);
+        NSLog(@"error:%@",error);
+        //        NSData *data64=[GTMBase64 decodeData:data];
+        //        NSLog(@"data64:%@",data64);
+        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);
+        if ([dict[@"code"] isEqual:@1]) {
+            NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+            NSString *token=dict[@"data"][@"userinfo"][@"token"];
+            [user setObject:token forKey:@"token"];
+            NSLog(@"token:%@",token);
+
+            [self dismissViewControllerAnimated:YES completion:^{
+                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                UITabBarController *tabViewController = (UITabBarController *) appDelegate.window.rootViewController;
+                [tabViewController setSelectedIndex:3];
+            }];
+        }
     }];
+    [dataTask resume];
+    
+    
+    
+//    FindViewController *findVC=[FindViewController new];
+//    [self presentViewController:findVC animated:YES completion:^{
+//
+//    }];
 }
 
 -(void)setupUI{
@@ -88,10 +169,10 @@
     line1.backgroundColor=[UIColor lightGrayColor];
     [backView addSubview:line1];
     
-    _verBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _verBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     _verBtn.frame=CGRectMake(WIDTH-120, line1.frame.origin.y+30, 80, 30);
-//    _verBtn.backgroundColor=[UIColor purpleColor];
     [_verBtn addTarget:self action:@selector(verBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    _verBtn.titleLabel.font=[UIFont systemFontOfSize:15];
     [_verBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
     [_verBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [backView addSubview:_verBtn];
@@ -107,8 +188,33 @@
     line2.backgroundColor=[UIColor lightGrayColor];
     [backView addSubview:line2];
     
+    _pwdTF=[[UITextField alloc]initWithFrame:CGRectMake(40, line2.frame.origin.y+30, WIDTH-80, 30)];
+    _pwdTF.placeholder=@"请输入密码";
+    [_pwdTF setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    _pwdTF.textColor=[UIColor lightGrayColor];
+    _pwdTF.delegate=self;
+    _pwdTF.returnKeyType=UIReturnKeyDone;
+    _pwdTF.secureTextEntry=YES;
+    [backView addSubview:_pwdTF];
+    UILabel *line3=[[UILabel alloc]initWithFrame:CGRectMake(40, _pwdTF.frame.origin.y+31, WIDTH-80, 1)];
+    line3.backgroundColor=[UIColor lightGrayColor];
+    [backView addSubview:line3];
+    
+    _repwdTF=[[UITextField alloc]initWithFrame:CGRectMake(40, line3.frame.origin.y+30, WIDTH-80, 30)];
+    _repwdTF.placeholder=@"请再次输入密码";
+    [_repwdTF setValue:[UIColor lightGrayColor] forKeyPath:@"_placeholderLabel.textColor"];
+    _repwdTF.textColor=[UIColor lightGrayColor];
+    _repwdTF.delegate=self;
+    _repwdTF.returnKeyType=UIReturnKeyDone;
+    _repwdTF.secureTextEntry=YES;
+    [backView addSubview:_repwdTF];
+    UILabel *line4=[[UILabel alloc]initWithFrame:CGRectMake(40, _repwdTF.frame.origin.y+30, WIDTH-80, 1)];
+    line4.backgroundColor=[UIColor lightGrayColor];
+    [backView addSubview:line4];
+    
+    
     UIButton *nextBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    nextBtn.frame=CGRectMake(40, line2.frame.origin.y+50, WIDTH-80, 45);
+    nextBtn.frame=CGRectMake(40, line4.frame.origin.y+50, WIDTH-80, 45);
     nextBtn.backgroundColor=[UIColor colorWithRed:230/255.0 green:71/255.0 blue:72/255.0 alpha:1];
     nextBtn.titleLabel.font=[UIFont systemFontOfSize:19 weight:2];
     [nextBtn setTitle:@"下一步" forState:UIControlStateNormal];

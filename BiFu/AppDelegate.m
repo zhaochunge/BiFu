@@ -28,7 +28,7 @@
 
     self.window.rootViewController = vc;
     
-    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+
     
     [self.window makeKeyAndVisible];
     

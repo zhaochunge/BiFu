@@ -85,6 +85,10 @@
     
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"dict:%@",dict);
+        ///////
+        if ([dict[@"code"] isEqual:@1]) {
+            [user setObject:@"" forKey:@"token"];
+        }
     }];
     [dataTask resume];
     
