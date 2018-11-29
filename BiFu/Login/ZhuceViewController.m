@@ -168,8 +168,7 @@
     NSURL *url2=[NSURL URLWithString:url];
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
     request.HTTPMethod=@"POST";
-    request.HTTPBody=[[NSString stringWithFormat:@"username=%@&password=%@&duplicate_password=%@&mobile=%@&captcha=%@&type=JSON",[NSString stringWithFormat:@"%@",@"username"],[NSString stringWithFormat:@"%@",@"password"],[NSString stringWithFormat:@"%@",@"duplicate_password"],[NSString stringWithFormat:@"%@",@"mobile"],[NSString stringWithFormat:@"%@",@"captcha"]] dataUsingEncoding:NSUTF8StringEncoding];//用户名+密码+密码+手机号+验证码
-    
+    request.HTTPBody=[[NSString stringWithFormat:@"username=%@&password=%@&repassword=%@&mobile=%@&captcha=%@&type=JSON",[NSString stringWithFormat:@"%@",_usernameTF.text],[NSString stringWithFormat:@"%@",_pwdTF.text],[NSString stringWithFormat:@"%@",_repwdTF.text],[NSString stringWithFormat:@"%@",_telTF.text],[NSString stringWithFormat:@"%@",_verTF.text]] dataUsingEncoding:NSUTF8StringEncoding];//用户名+密码+密码+手机号+验证码
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSLog(@"data:%@",data);
         NSLog(@"response:%@",response);
@@ -179,6 +178,13 @@
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"dict:%@",dict);
         if ([dict[@"code"] isEqual:@1]) {
+            
+            NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+            NSString *token=dict[@"data"][@"userinfo"][@"token"];
+            [user setObject:token forKey:@"token"];
+            NSLog(@"token:%@",token);
+            
+            
             [self dismissViewControllerAnimated:YES completion:^{
                 AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                 
@@ -200,7 +206,7 @@
     NSURL *url2=[NSURL URLWithString:url];
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
     request.HTTPMethod=@"POST";
-    request.HTTPBody=[[NSString stringWithFormat:@"username=%@&event=%@&type=JSON",[NSString stringWithFormat:@"%@",@"username"],[NSString stringWithFormat:@"%@",@"register"]] dataUsingEncoding:NSUTF8StringEncoding];
+    request.HTTPBody=[[NSString stringWithFormat:@"username=%@&event=%@&type=JSON",[NSString stringWithFormat:@"%@",_telTF.text],[NSString stringWithFormat:@"%@",@"register"]] dataUsingEncoding:NSUTF8StringEncoding];
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 //        NSLog(@"data:%@",data);
 //        NSLog(@"response:%@",response);
