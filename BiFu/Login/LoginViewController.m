@@ -30,16 +30,16 @@
 #pragma mark 登录
 -(void)loginButtonClick{
     NSLog(@"loginButtonClick");
-    
-    NSString *url=@"http://bfd.app0411.com/api/user/login";
+    NSString *url=[NSString stringWithFormat:@"%@%@",BASE_URL,@"user/login"];
+    NSLog(@"url:%@",url);
+//    NSString *url=@"http://bfd.app0411.com/api/user/login";
     NSURLSession *session=[NSURLSession sharedSession];
     NSURL *url2=[NSURL URLWithString:url];
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
     request.HTTPMethod=@"POST";
 
     request.HTTPBody=[[NSString stringWithFormat:@"account=%@&password=%@&type=JSON",[NSString stringWithFormat:@"%@",_nameTF.text],[NSString stringWithFormat:@"%@",_pwdTF.text]] dataUsingEncoding:NSUTF8StringEncoding];
-
-    request.HTTPBody=[[NSString stringWithFormat:@"account=%@&password=%@&type=JSON",[NSString stringWithFormat:@"%@",@"user01"],[NSString stringWithFormat:@"%@",@"a123456789"]] dataUsingEncoding:NSUTF8StringEncoding];//_nameTF.text,_pwdTF.text
+//    request.HTTPBody=[[NSString stringWithFormat:@"account=%@&password=%@&type=JSON",[NSString stringWithFormat:@"%@",@"user01"],[NSString stringWithFormat:@"%@",@"a123456789"]] dataUsingEncoding:NSUTF8StringEncoding];//_nameTF.text,_pwdTF.text
 
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSLog(@"data:%@",data);
@@ -51,7 +51,6 @@
         NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);
         NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
         [user setObject:dict[@"data"][@"userinfo"][@"token"] forKey:@"token"];
-        
         
             if ([dict[@"code"] isEqual:@1]) {
                 

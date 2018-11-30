@@ -8,6 +8,7 @@
 
 #import "ErViewController.h"
 #import "AppDelegate.h"
+#import "CDTabbarVC.h"
 
 @interface ErViewController ()<UITextFieldDelegate>
 @property(nonatomic,strong)UITextField *verTF;
@@ -96,13 +97,22 @@
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);
         
-//        if ([dict[@"code"] isEqual:@1]) {
-//            [self dismissViewControllerAnimated:YES completion:^{
-//                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//                UITabBarController *tabViewController = (UITabBarController *) appDelegate.window.rootViewController;
-//                [tabViewController setSelectedIndex:3];
-//            }];
-//        }
+        dispatch_sync(dispatch_get_main_queue(), ^(){
+            
+            if ([self respondsToSelector:@selector(presentingViewController)]){
+                [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:^{
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    CDTabbarVC *tabViewController=(CDTabbarVC *)appDelegate.window.rootViewController;
+                    [tabViewController setSelectedIndex:3];
+                }];
+            }else {
+                [self.parentViewController.parentViewController dismissViewControllerAnimated:YES completion:^{
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    CDTabbarVC *tabViewController=(CDTabbarVC *)appDelegate.window.rootViewController;
+                    [tabViewController setSelectedIndex:3];
+                }];
+            }
+        });
     }];
     [dataTask resume];
     
@@ -120,7 +130,7 @@
     NSURL *url2=[NSURL URLWithString:url];
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
     request.HTTPMethod=@"POST";
-    request.HTTPBody=[[NSString stringWithFormat:@"username=%@&event=%@&type=JSON",[NSString stringWithFormat:@"%@",_verTF.text],[NSString stringWithFormat:@"%@",@"mobilelogin"]] dataUsingEncoding:NSUTF8StringEncoding];
+    request.HTTPBody=[[NSString stringWithFormat:@"username=%@&event=%@&type=JSON",[NSString stringWithFormat:@"%@",_verTF.text],[NSString stringWithFormat:@"%@",@"secondaryVerify"]] dataUsingEncoding:NSUTF8StringEncoding];
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);

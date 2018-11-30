@@ -9,6 +9,7 @@
 #import "ForgotViewController.h"
 //#import "FindViewController.h"//
 #import "AppDelegate.h"
+#import "CDTabbarVC.h"
 
 @interface ForgotViewController ()<UITextFieldDelegate>
 
@@ -46,11 +47,6 @@
     request.HTTPBody=[[NSString stringWithFormat:@"mobile=%@&event=%@&type=JSON",[NSString stringWithFormat:@"%@",_phoneTF.text],[NSString stringWithFormat:@"%@",@"resetpwd"]] dataUsingEncoding:NSUTF8StringEncoding];
     
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSLog(@"data:%@",data);
-        NSLog(@"response:%@",response);
-        NSLog(@"error:%@",error);
-        //        NSData *data64=[GTMBase64 decodeData:data];
-        //        NSLog(@"data64:%@",data64);
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"dict:%@",dict);
         
@@ -109,11 +105,6 @@
                        [NSString stringWithFormat:@"%@",_repwdTF.text],
                        [NSString stringWithFormat:@"%@",_verCodeTF.text]] dataUsingEncoding:NSUTF8StringEncoding];
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSLog(@"data:%@",data);
-        NSLog(@"response:%@",response);
-        NSLog(@"error:%@",error);
-        //        NSData *data64=[GTMBase64 decodeData:data];
-        //        NSLog(@"data64:%@",data64);
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);
         if ([dict[@"code"] isEqual:@1]) {
@@ -122,11 +113,19 @@
             [user setObject:token forKey:@"token"];
             NSLog(@"token:%@",token);
 
-            [self dismissViewControllerAnimated:YES completion:^{
-                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                UITabBarController *tabViewController = (UITabBarController *) appDelegate.window.rootViewController;
-                [tabViewController setSelectedIndex:3];
-            }];
+            if ([self respondsToSelector:@selector(presentingViewController)]){
+                [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:^{
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    CDTabbarVC *tabViewController=(CDTabbarVC *)appDelegate.window.rootViewController;
+                    [tabViewController setSelectedIndex:3];
+                }];
+            }else {
+                [self.parentViewController.parentViewController dismissViewControllerAnimated:YES completion:^{
+                    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    CDTabbarVC *tabViewController=(CDTabbarVC *)appDelegate.window.rootViewController;
+                    [tabViewController setSelectedIndex:3];
+                }];
+            }
         }
     }];
     [dataTask resume];

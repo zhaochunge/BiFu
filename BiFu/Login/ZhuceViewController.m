@@ -8,6 +8,7 @@
 
 #import "ZhuceViewController.h"
 #import "AppDelegate.h"
+#import "CDTabbarVC.h"
 
 @interface ZhuceViewController ()<UITextFieldDelegate>
 
@@ -171,31 +172,37 @@
     NSURL *url2=[NSURL URLWithString:url];
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
     request.HTTPMethod=@"POST";
-    request.HTTPBody=[[NSString stringWithFormat:@"username=%@&password=%@&repassword=%@&mobile=%@&captcha=%@&type=JSON",[NSString stringWithFormat:@"%@",_usernameTF.text],[NSString stringWithFormat:@"%@",_pwdTF.text],[NSString stringWithFormat:@"%@",_repwdTF.text],[NSString stringWithFormat:@"%@",_telTF.text],[NSString stringWithFormat:@"%@",_verTF.text]] dataUsingEncoding:NSUTF8StringEncoding];//用户名+密码+密码+手机号+验证码
+    request.HTTPBody=[[NSString stringWithFormat:@"username=%@&password=%@&repassword=%@&mobile=%@&captcha=%@&type=JSON",
+                       [NSString stringWithFormat:@"%@",_usernameTF.text],
+                       [NSString stringWithFormat:@"%@",_pwdTF.text],
+                       [NSString stringWithFormat:@"%@",_repwdTF.text],
+                       [NSString stringWithFormat:@"%@",_telTF.text],
+                       [NSString stringWithFormat:@"%@",_verTF.text]] dataUsingEncoding:NSUTF8StringEncoding];
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSLog(@"data:%@",data);
-        NSLog(@"response:%@",response);
-        NSLog(@"error:%@",error);
-        //        NSData *data64=[GTMBase64 decodeData:data];
-        //        NSLog(@"data64:%@",data64);
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);
         if ([dict[@"code"] isEqual:@1]) {
-            
             NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
             NSString *token=dict[@"data"][@"userinfo"][@"token"];
             [user setObject:token forKey:@"token"];
             NSLog(@"token:%@",token);
-            
-            [self dismissViewControllerAnimated:YES completion:^{
-                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            dispatch_sync(dispatch_get_main_queue(), ^(){
                 
-                UITabBarController *tabViewController = (UITabBarController *) appDelegate.window.rootViewController;
-                
-                [tabViewController setSelectedIndex:3];
-            }];
+                if ([self respondsToSelector:@selector(presentingViewController)]){
+                    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:^{
+                        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                        CDTabbarVC *tabViewController=(CDTabbarVC *)appDelegate.window.rootViewController;
+                        [tabViewController setSelectedIndex:3];
+                    }];
+                }else {
+                    [self.parentViewController.parentViewController dismissViewControllerAnimated:YES completion:^{
+                        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                        CDTabbarVC *tabViewController=(CDTabbarVC *)appDelegate.window.rootViewController;
+                        [tabViewController setSelectedIndex:3];
+                    }];
+                }
+            });
         }
-        
     }];
     [dataTask resume];
     
@@ -213,7 +220,7 @@
     NSURL *url2=[NSURL URLWithString:url];
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
     request.HTTPMethod=@"POST";
-    request.HTTPBody=[[NSString stringWithFormat:@"username=%@&event=%@&type=JSON",[NSString stringWithFormat:@"%@",_telTF.text],[NSString stringWithFormat:@"%@",@"register"]] dataUsingEncoding:NSUTF8StringEncoding];
+    request.HTTPBody=[[NSString stringWithFormat:@"mobile=%@&event=%@&type=JSON",[NSString stringWithFormat:@"%@",_telTF.text],[NSString stringWithFormat:@"%@",@"register"]] dataUsingEncoding:NSUTF8StringEncoding];
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         //        NSLog(@"data:%@",data);
         //        NSLog(@"response:%@",response);
