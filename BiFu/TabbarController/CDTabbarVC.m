@@ -41,9 +41,12 @@
     
 }
 -(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    
     if (tabBarController.tabBar.selectedItem.tag==263) {
-        NSLog(@"item.tag==33333");
-        if (0) {//zhanghao+mima=1
+//        NSLog(@"item.tag==33333");c07ad878-98d7-4775-ba93-3dc16efac88f
+        NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+        NSString *token=[user objectForKey:@"token"];
+        if (token.length) {
             return YES;
         }else{
             LoginViewController *loginVC=[LoginViewController new];
@@ -51,14 +54,22 @@
             }];
             return NO;
         }
-        
     }else{
         NSLog(@"item.tag==0000000");
         return YES;
     }
 //    else if (tabBarController.tabBar.selectedItem.tag==264){
-//        NSLog(@"item.tag==4444444");
-//        return NO;
+//        //        NSLog(@"item.tag==4444444");
+//        NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+//        NSString *token=[user objectForKey:@"token"];
+//        if (token.length) {
+//            return YES;
+//        }else{
+//            LoginViewController *loginVC=[LoginViewController new];
+//            [self presentViewController:loginVC animated:YES completion:^{
+//            }];
+//            return NO;
+//        }
 //    }
 }
 

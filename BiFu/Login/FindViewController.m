@@ -47,6 +47,7 @@
     _nePwdTF.textColor=[UIColor lightGrayColor];
     _nePwdTF.delegate=self;
     _nePwdTF.returnKeyType=UIReturnKeyDone;
+    _nePwdTF.secureTextEntry=YES;
     [backView addSubview:_nePwdTF];
     UILabel *line1=[[UILabel alloc]initWithFrame:CGRectMake(40, _nePwdTF.frame.origin.y+30, WIDTH-80, 1)];
     line1.backgroundColor=[UIColor lightGrayColor];
@@ -58,6 +59,7 @@
     _reNewPwdTF.textColor=[UIColor lightGrayColor];
     _reNewPwdTF.delegate=self;
     _reNewPwdTF.returnKeyType=UIReturnKeyDone;
+    _reNewPwdTF.secureTextEntry=YES;
     [backView addSubview:_reNewPwdTF];
     UILabel *line2=[[UILabel alloc]initWithFrame:CGRectMake(40, _reNewPwdTF.frame.origin.y+30, WIDTH-80, 1)];
     line2.backgroundColor=[UIColor lightGrayColor];
@@ -82,8 +84,7 @@
     
     if ([self respondsToSelector:@selector(presentingViewController)]){
         [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    }
-    else {
+    }else {
         [self.parentViewController.parentViewController dismissViewControllerAnimated:YES completion:nil];
     }
     

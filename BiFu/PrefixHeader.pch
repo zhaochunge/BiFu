@@ -29,12 +29,7 @@
 #ifdef __OBJC__
 /** 第三方  */
 
-
-
-
-
-
-
+#define BASE_URL @"http://bfd.app0411.com/api/"
 
 #import "Masonry.h"
 #import "AFNetworking.h"

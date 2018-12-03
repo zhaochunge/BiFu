@@ -8,6 +8,7 @@
 
 #import "ZhuceViewController.h"
 #import "AppDelegate.h"
+#import "CDTabbarVC.h"
 
 @interface ZhuceViewController ()<UITextFieldDelegate>
 
@@ -54,6 +55,7 @@
     _usernameTF=[[UITextField alloc]initWithFrame:CGRectMake(40, 170, WIDTH-80, 30)];
     _usernameTF.placeholder=@"请输入用户名";
     [_usernameTF setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    _usernameTF.textColor=[UIColor whiteColor];
     _usernameTF.delegate=self;
     _usernameTF.returnKeyType=UIReturnKeyDone;
     [backView addSubview:_usernameTF];
@@ -98,6 +100,7 @@
     _pwdTF.placeholder=@"请输入密码";
     _pwdTF.textColor=[UIColor whiteColor];
     _pwdTF.delegate=self;
+    _pwdTF.secureTextEntry=YES;
     [_pwdTF setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     _pwdTF.returnKeyType=UIReturnKeyDone;
     [backView addSubview:_pwdTF];
@@ -109,6 +112,7 @@
     _repwdTF.placeholder=@"请再次输入密码";
     _repwdTF.textColor=[UIColor whiteColor];
     _repwdTF.delegate=self;
+    _repwdTF.secureTextEntry=YES;
     [_repwdTF setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
     _repwdTF.returnKeyType=UIReturnKeyDone;
     [backView addSubview:_repwdTF];
@@ -168,32 +172,37 @@
     NSURL *url2=[NSURL URLWithString:url];
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
     request.HTTPMethod=@"POST";
-    request.HTTPBody=[[NSString stringWithFormat:@"username=%@&password=%@&repassword=%@&mobile=%@&captcha=%@&type=JSON",[NSString stringWithFormat:@"%@",_usernameTF.text],[NSString stringWithFormat:@"%@",_pwdTF.text],[NSString stringWithFormat:@"%@",_repwdTF.text],[NSString stringWithFormat:@"%@",_telTF.text],[NSString stringWithFormat:@"%@",_verTF.text]] dataUsingEncoding:NSUTF8StringEncoding];//用户名+密码+密码+手机号+验证码
+    request.HTTPBody=[[NSString stringWithFormat:@"username=%@&password=%@&repassword=%@&mobile=%@&captcha=%@&type=JSON",
+                       [NSString stringWithFormat:@"%@",_usernameTF.text],
+                       [NSString stringWithFormat:@"%@",_pwdTF.text],
+                       [NSString stringWithFormat:@"%@",_repwdTF.text],
+                       [NSString stringWithFormat:@"%@",_telTF.text],
+                       [NSString stringWithFormat:@"%@",_verTF.text]] dataUsingEncoding:NSUTF8StringEncoding];
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSLog(@"data:%@",data);
-        NSLog(@"response:%@",response);
-        NSLog(@"error:%@",error);
-        //        NSData *data64=[GTMBase64 decodeData:data];
-        //        NSLog(@"data64:%@",data64);
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"dict:%@",dict);
+        NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);
         if ([dict[@"code"] isEqual:@1]) {
-            
             NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
             NSString *token=dict[@"data"][@"userinfo"][@"token"];
             [user setObject:token forKey:@"token"];
             NSLog(@"token:%@",token);
-            
-            
-            [self dismissViewControllerAnimated:YES completion:^{
-                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            dispatch_sync(dispatch_get_main_queue(), ^(){
                 
-                UITabBarController *tabViewController = (UITabBarController *) appDelegate.window.rootViewController;
-                
-                [tabViewController setSelectedIndex:3];
-            }];
+                if ([self respondsToSelector:@selector(presentingViewController)]){
+                    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:^{
+                        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                        CDTabbarVC *tabViewController=(CDTabbarVC *)appDelegate.window.rootViewController;
+                        [tabViewController setSelectedIndex:3];
+                    }];
+                }else {
+                    [self.parentViewController.parentViewController dismissViewControllerAnimated:YES completion:^{
+                        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                        CDTabbarVC *tabViewController=(CDTabbarVC *)appDelegate.window.rootViewController;
+                        [tabViewController setSelectedIndex:3];
+                    }];
+                }
+            });
         }
-        
     }];
     [dataTask resume];
     
@@ -201,22 +210,64 @@
 #pragma mark 获取验证码
 -(void)verButtonClick{
     NSLog(@"ver");
+    [self getVerData];
+    [self openCountdown];
+    
+}
+-(void)getVerData{
     NSString *url=@"http://bfd.app0411.com/api/sms/send";
     NSURLSession *session=[NSURLSession sharedSession];
     NSURL *url2=[NSURL URLWithString:url];
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
     request.HTTPMethod=@"POST";
-    request.HTTPBody=[[NSString stringWithFormat:@"username=%@&event=%@&type=JSON",[NSString stringWithFormat:@"%@",_telTF.text],[NSString stringWithFormat:@"%@",@"register"]] dataUsingEncoding:NSUTF8StringEncoding];
+    request.HTTPBody=[[NSString stringWithFormat:@"mobile=%@&event=%@&type=JSON",[NSString stringWithFormat:@"%@",_telTF.text],[NSString stringWithFormat:@"%@",@"register"]] dataUsingEncoding:NSUTF8StringEncoding];
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//        NSLog(@"data:%@",data);
-//        NSLog(@"response:%@",response);
-//        NSLog(@"error:%@",error);
+        //        NSLog(@"data:%@",data);
+        //        NSLog(@"response:%@",response);
+        //        NSLog(@"error:%@",error);
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"dict:%@",dict);
+        NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);
         
     }];
     [dataTask resume];
+
+}
+
+-(void)openCountdown{
+    __block NSInteger time = 59; //倒计时时间
     
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+    
+    dispatch_source_set_event_handler(_timer, ^{
+        
+        if(time <= 0){ //倒计时结束，关闭
+            
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //设置按钮的样式
+                [_verBtn setTitle:@"重新发送" forState:UIControlStateNormal];
+                [_verBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                _verBtn.userInteractionEnabled = YES;
+            });
+            
+        }else{
+            
+            int seconds = time % 60;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //设置按钮显示读秒效果
+                [_verBtn setTitle:[NSString stringWithFormat:@"%.2d s", seconds] forState:UIControlStateNormal];
+                [_verBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                _verBtn.userInteractionEnabled = NO;
+            });
+            time--;
+        }
+    });
+    dispatch_resume(_timer);
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
