@@ -11,6 +11,7 @@
 @interface SettingVC ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *table;
 @property(nonatomic,strong)NSArray *dataArr;
+@property(nonatomic,strong)UIButton *btn;
 @end
 
 @implementation SettingVC
@@ -30,13 +31,13 @@
     self.table.dataSource =self;
     [self.view addSubview:_table];
     [self.table registerClass:[UITableViewCell class] forCellReuseIdentifier:@"tabReuse"];
-    UIButton *btn =[UIButton buttonWithType:UIButtonTypeSystem];
-    btn.frame = CGRectMake(0, 10, WIDTH, 50);
-    [btn setTitle:@"安全退出" forState:(UIControlStateNormal)];
-    [btn setTitleColor:REDCOLOR forState:(UIControlStateNormal)];
-    [btn addTarget:self action:@selector(exit:) forControlEvents:(UIControlEventTouchUpInside)];
-    btn.backgroundColor =[UIColor whiteColor];
-    self.table.tableFooterView = btn;
+    self.btn =[UIButton buttonWithType:UIButtonTypeSystem];
+    self.btn.frame = CGRectMake(0, 10, WIDTH, 50);
+    [self.btn setTitle:@"安全退出" forState:(UIControlStateNormal)];
+    [self.btn setTitleColor:REDCOLOR forState:(UIControlStateNormal)];
+    [self.btn addTarget:self action:@selector(exit:) forControlEvents:(UIControlEventTouchUpInside)];
+    self.btn.backgroundColor =[UIColor whiteColor];
+    self.table.tableFooterView = self.btn;
 }
 #pragma mark 退出按钮点击
 -(void)exit:(UIButton *)btn{
@@ -71,26 +72,19 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)data{
-    NSString *url=@"http://bfd.app0411.com/api/user/logout?";
-    NSURLSession *session=[NSURLSession sharedSession];
-    NSURL *url2=[NSURL URLWithString:url];
-    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
-    request.HTTPMethod=@"GET";
+    NSString *url=[NSString stringWithFormat:@"%@user/logout",BASE_URL];
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSString *token = [ user objectForKey:@"token"];
-    
-
-    [request setValue:token forHTTPHeaderField:@"token"];
-    NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-    
-        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"dict:%@",dict);
-        ///////
-        if ([dict[@"code"] isEqual:@1]) {
-            [user setObject:@"" forKey:@"token"];
-        }
+    NSString *token = [user objectForKey:@"token"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"%@",responseObject);
+        [user setObject:@"" forKey:@"token"];
+        [self showMessage:@"已退出登录"];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+        [self showMessage:@"退出失败"];
     }];
-    [dataTask resume];
     
 }
 /*

@@ -34,6 +34,7 @@
 #import "Masonry.h"
 #import "AFNetworking.h"
 #import "MMProgressHUD.h"
+#import "MBProgressHUD.h"
 
 //工具类
 #import "Base64Verb.h"

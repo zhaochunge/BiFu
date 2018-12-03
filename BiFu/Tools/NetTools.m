@@ -10,34 +10,41 @@
 
 @implementation NetTools
 
-+(void)post:(NSString *)url parameters:(NSDictionary *)dic success:(void(^)(id responseObject))success failure:(void(^)(NSError* error))failure{
-//    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
-//    sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    [sessionManager POST:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-//        if (success) {
-//            success(responseObject);
-//        }
-//
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        if (failure) {
-//            failure(error);
-//        }
-//    }];
++(void)post:(NSString *)url parameters:(NSDictionary *)dic header:(NSString *)header success:(void(^)(id responseObject))success failure:(void(^)(NSError* error))failure{
+    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    if (header.length>0) {
+      [sessionManager.requestSerializer setValue:header forHTTPHeaderField:@"token"];
+    }
+    [sessionManager POST:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 }
 
-+(void)get:(NSString *)url parameters:(NSDictionary *)dic success:(void(^)(id responseObject))success failure:(void(^)(NSError* error))failure{
-//    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
-//    sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    [sessionManager GET:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-//        if (success) {
-//            success(responseObject);
-//        }
-//
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        if (failure) {
-//            failure(error);
-//        }
-//    }];
++(void)get:(NSString *)url parameters:(NSDictionary *)dic header:(NSString *)header success:(void(^)(id responseObject))success failure:(void(^)(NSError* error))failure{
+    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    if (header.length>0) {
+        [sessionManager.requestSerializer setValue:header forHTTPHeaderField:@"token"];
+    }
+    [sessionManager GET:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        
+        if (success) {
+            success(responseObject);
+        }
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
 }
 
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {

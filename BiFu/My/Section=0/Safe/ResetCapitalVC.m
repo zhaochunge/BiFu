@@ -72,7 +72,7 @@
     bac4.frame= CGRectMake(0, bac3.bottom+10, WIDTH, 50);
     bac4.backgroundColor =[UIColor whiteColor];
     [self.view addSubview:bac4];
-    self.code = [[LTView alloc] initWithFrame:CGRectMake(0, 10, WIDTH-150, 30)];
+    self.code = [[LTView alloc] initWithFrame:CGRectMake(0, 10, WIDTH-120, 30)];
     self.code.titleLab.text = @"手机验证码";
     self.code.pwd.placeholder = @"请输入验证码";
     self.code.pwd.secureTextEntry = NO;
@@ -80,7 +80,7 @@
     self.codeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.codeBtn setTitle:@"获取验证码" forState:(UIControlStateNormal)];
     [bac4 addSubview:_codeBtn];
-    self.codeBtn.frame = CGRectMake(self.code.right, 10, 150, 30);
+    self.codeBtn.frame = CGRectMake(self.code.right, 10, 120, 30);
     [_codeBtn setTitleColor:REDCOLOR forState:(UIControlStateNormal)];
     [_codeBtn addTarget:self action:@selector(CodeAction:) forControlEvents:(UIControlEventTouchUpInside)];
     //
