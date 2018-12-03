@@ -169,14 +169,14 @@
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"驾驶证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.typeBtn setTitle:@"驾驶证" forState:(UIControlStateNormal)];
     }];
-    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"护照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self.typeBtn setTitle:@"护照" forState:(UIControlStateNormal)];
-    }];
+//    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"护照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        [self.typeBtn setTitle:@"护照" forState:(UIControlStateNormal)];
+//    }];
     UIAlertAction *canle = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
     }];
     [alertController addAction:action];
     [alertController addAction:action1];
-    [alertController addAction:action2];
+//    [alertController addAction:action2];
     [alertController addAction:canle];
     [self presentViewController:alertController animated:YES completion:nil];
 }
