@@ -9,7 +9,7 @@
 #import "IdentityCheckVC.h"
 #import "LTView.h"
 
-@interface IdentityCheckVC()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface IdentityCheckVC()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 
 @property(nonatomic,strong) UIImagePickerController *imagePicker; //声明全局的UIImagePickerController
 @property(nonatomic,strong)UIScrollView *scroll;
@@ -22,6 +22,12 @@
 @property(nonatomic,strong)UIImageView *bac3;
 @property(nonatomic,strong)UIImageView *bac5;
 @property(nonatomic,copy)NSString *imgflag;
+@property(nonatomic,copy)NSString *cardType;
+@property(nonatomic,copy)NSString *zhengURL;
+@property(nonatomic,copy)NSString *fanURL;
+@property(nonatomic,copy)NSString *shouURL;
+@property(nonatomic,strong)UIImage *myImg;
+@property(nonatomic,copy)NSString *imgStr;
 @end
 
 @implementation IdentityCheckVC
@@ -30,6 +36,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title= @"身份认证";
+    self.cardType = @"idcard";
     [self leftItemBlack];
     [self bottomScroll];
     [self createView];
@@ -51,7 +58,7 @@
     self.typeBtn =[UIButton buttonWithType:UIButtonTypeSystem];
     self.typeBtn.frame = CGRectMake(WIDTH-95, title.bottom, 70, 30);
     [self.typeBtn setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
-    [self.typeBtn setTitle:@"请选择" forState:(UIControlStateNormal)];
+    [self.typeBtn setTitle:@"身份证" forState:(UIControlStateNormal)];
     [self.typeBtn addTarget:self action:@selector(typeChoose:) forControlEvents:(UIControlEventTouchUpInside)];
     [bac1 addSubview:self.typeBtn];
     UIImageView *img =[UIImageView new];
@@ -66,6 +73,8 @@
     self.nameView =[[LTView alloc] initWithFrame:CGRectMake(0, 10, WIDTH, 30)];
     self.nameView.titleLab.text = @"姓名";
     self.nameView.pwd.placeholder = @"请填写您的真实姓名";
+    self.nameView.pwd.delegate = self;
+    self.nameView.pwd.secureTextEntry = NO;
     [bac2 addSubview:self.nameView];
     UIView *line =[UIView new];
     line.backgroundColor = LINECOLOR;
@@ -74,6 +83,9 @@
     self.numView =[[LTView alloc] initWithFrame:CGRectMake(0, line.bottom+10, WIDTH, 30)];
     self.numView.titleLab.text = @"证件号码";
     self.numView.pwd.placeholder = @"请填写您的证件号码";
+    self.numView.pwd.secureTextEntry = NO;
+    self.numView.pwd.delegate = self;
+    self.numView.pwd.keyboardType = UIKeyboardTypeNumberPad;
     [bac2 addSubview:self.numView];
     
     //
@@ -133,15 +145,17 @@
     bac6.frame= CGRectMake(0, shou.bottom+20, WIDTH, 50);
     bac6.backgroundColor =[UIColor whiteColor];
     [_scroll addSubview:bac6];
-    self.code = [[LTView alloc] initWithFrame:CGRectMake(0, 10, WIDTH-150, 30)];
+    self.code = [[LTView alloc] initWithFrame:CGRectMake(0, 10, WIDTH-130, 30)];
     self.code.titleLab.text = @"手机验证码";
     self.code.pwd.placeholder = @"请输入验证码";
     self.code.pwd.secureTextEntry = NO;
+    self.code.pwd.keyboardType = UIKeyboardTypeNumberPad;
+    self.code.pwd.delegate = self;
     [bac6 addSubview:self.code];
     self.codeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.codeBtn setTitle:@"获取验证码" forState:(UIControlStateNormal)];
     [bac6 addSubview:_codeBtn];
-    self.codeBtn.frame = CGRectMake(self.code.right, 10, 150, 30);
+    self.codeBtn.frame = CGRectMake(self.code.right, 10, 130, 30);
     [_codeBtn setTitleColor:REDCOLOR forState:(UIControlStateNormal)];
     [_codeBtn addTarget:self action:@selector(CodeAction:) forControlEvents:(UIControlEventTouchUpInside)];
     //
@@ -158,70 +172,54 @@
 }
 #pragma mark 确定点击
 -(void)sure:(UIButton *)btn{
-    
+    if (self.cardType.length==0) {
+        [self showMessage:@"请选择证件类型"];
+    }else if(self.nameView.pwd.text.length==0){
+        
+    }
+    [self updata];
 }
 #pragma mark 证件类型选择
 -(void)typeChoose:(UIButton *)btn{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NULL message:NULL preferredStyle:(UIAlertControllerStyleActionSheet)];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"身份证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.typeBtn setTitle:@"身份证" forState:(UIControlStateNormal)];
+        self.cardType = @"idcard";
     }];
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"驾驶证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.typeBtn setTitle:@"驾驶证" forState:(UIControlStateNormal)];
-    }];
-    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"护照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self.typeBtn setTitle:@"护照" forState:(UIControlStateNormal)];
+        self.cardType = @"dl";
     }];
     UIAlertAction *canle = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
     }];
     [alertController addAction:action];
     [alertController addAction:action1];
-    [alertController addAction:action2];
     [alertController addAction:canle];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 #pragma mark 获取验证码
 -(void)CodeAction:(UIButton *)btn{
-    [self openCountdown];
+    [self openCountdown:btn];
+    [self getCode];
     
 }
-// 开启倒计时效果
--(void)openCountdown{
+#pragma mark 验证码数据请求
+-(void)getCode{
+    NSString *url=[NSString stringWithFormat:@"%@sms/send",BASE_URL];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *mobile = [user objectForKey:@"mobile"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSDictionary *dic = @{@"mobile":[NSString stringWithFormat:@"%@",mobile],@"event":@"realnameAuth"};
     
-    __block NSInteger time = 59; //倒计时时间
-    
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    
-    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
-    
-    dispatch_source_set_event_handler(_timer, ^{
-        
-        if(time <= 0){ //倒计时结束，关闭
-            
-            dispatch_source_cancel(_timer);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                //设置按钮的样式
-                [self.codeBtn setTitle:@"重新发送" forState:UIControlStateNormal];
-                [self.codeBtn setTitleColor:NAVCOLOR forState:UIControlStateNormal];
-                self.codeBtn.userInteractionEnabled = YES;
-            });
-            
-        }else{
-            
-            int seconds = time % 60;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                //设置按钮显示读秒效果
-                [self.codeBtn setTitle:[NSString stringWithFormat:@"重新发送(%.2d)", seconds] forState:UIControlStateNormal];
-                [self.codeBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-                self.codeBtn.userInteractionEnabled = NO;
-            });
-            time--;
+    [manager POST:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"-------%@",responseObject);
+        if([responseObject[@"code"] isEqual:@1]){
+            [self showMessage:@"已发送"];
         }
-    });
-    dispatch_resume(_timer);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self showMessage:@"发送失败"];
+        NSLog(@"%@",error);
+    }];
 }
 
 -(void)bottomScroll{
@@ -231,6 +229,7 @@
     self.scroll.contentSize=CGSizeMake(0, 620+WIDTH/2*3);
     self.scroll.backgroundColor =[UIColor colorWithRed:245/255.0 green:246/255.0 blue:247/255.0 alpha:1];
 }
+
 #pragma mark 上传身份证点击
 - (void)doTap:(id)sender{
     UITapGestureRecognizer *tap = (UITapGestureRecognizer*)sender;
@@ -286,51 +285,81 @@
     }else if ([self.imgflag isEqualToString:@"shou"]){
         self.bac5.image = image;
     }
-    self.imgflag= @"";
+    self.myImg = image;
+    [self uploadImg];
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 //当用户取消选择的时候，调用该方法
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:^{}];
 }
-//- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-//    if (actionSheet.tag == 2550) {
-//        NSUInteger sourceType = 0;
-//        // 判断系统是否支持相机
-//        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-//        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-//            imagePickerController.delegate = self; //设置代理
-//            imagePickerController.allowsEditing = YES;
-//            imagePickerController.sourceType = sourceType; //图片来源
-//            if (buttonIndex == 0) {
-//                return;
-//            }else if (buttonIndex == 1) {
-//                //拍照
-//                sourceType = UIImagePickerControllerSourceTypeCamera;
-//                imagePickerController.sourceType = sourceType;
-//                [self presentViewController:imagePickerController animated:YES completion:nil];
-//            }else if (buttonIndex == 2){
-//                //相册
-//                sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//                imagePickerController.sourceType = sourceType;
-//                [self presentViewController:imagePickerController animated:YES completion:nil];
-//            }
-//        }else {
-//            sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//            imagePickerController.sourceType = sourceType;
-//            [self presentViewController:imagePickerController animated:YES completion:nil];
-//        }
-//    }
-//}
-//
-//#pragma mark -实现图片选择器代理-（上传图片的网络请求也是在这个方法里面进行，这里我不再介绍具体怎么上传图片）
-//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-//    [picker dismissViewControllerAnimated:YES completion:^{}];
-//    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage]; //通过key值获取到图片
-//    self.bac4.image = image;
-//    //上传图片到服务器--在这里进行图片上传的网络请求，这里不再介绍
-//
-//}
+#pragma mark 上传图片
+-(void)uploadImg{
+    [self loadAnimate:@"上传中"];
+    NSString *url=[NSString stringWithFormat:@"%@index/upload",BASE_URL];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *token = [user objectForKey:@"token"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    // 设置时间格式
+    formatter.dateFormat = @"yyyyMMddHHmmss";
+    NSString *str = [formatter stringFromDate:[NSDate date]];
+    NSDictionary *dic = @{@"name":[NSString stringWithFormat:@"%@.jpg",str]};
+    [manager POST:url parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        NSData *data = UIImagePNGRepresentation(self.myImg);
+        NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
+        //上传
+        [formData appendPartWithFileData:data name:@"file" fileName:fileName mimeType:@"image/png"];
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        self.hud.hidden = YES;
+        NSLog(@"**********%@",responseObject);
+        if([responseObject[@"code"] isEqual:@1]){
+            [self showMessage:@"图片上传成功"];
+            if([self.imgflag isEqualToString:@"zheng"]){
+                self.zhengURL=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"url"]];
+            }else if([self.imgflag isEqualToString:@"fan"]){
+                self.fanURL=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"url"]];
+            }else if([self.imgflag isEqualToString:@"shou"]){
+                self.shouURL=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"url"]];
+            }
+//            self.imgflag= @"";
+            NSLog(@"%@------%@",self.imgflag,self.zhengURL);
+        }else{
+            [self showMessage:@"图片上传失败"];
+        }
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+        self.hud.hidden = YES;
+    }];
+}
+#pragma mark 数据上传
+-(void)updata{
+    [self loadAnimate:@"数据上传中"];
+    NSString *url=[NSString stringWithFormat:@"%@user/realnameAuth",BASE_URL];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *token = [ user objectForKey:@"token"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    NSDictionary *dic = @{@"realname":self.nameView.pwd.text,@"authtype":self.cardType,@"certificate_number":self.numView.pwd.text,@"idcard_frontage":self.zhengURL,@"idcard_back":self.fanURL,@"idcard_hand":self.shouURL,@"captcha":self.code.pwd.text};
+    NSLog(@"---------%@",dic);
+    [manager GET:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        self.hud.hidden = YES;
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"code"] isEqual:@1]) {
+            [self showMessage:@"已提交"];
+        }else{
+            [self showMessage:responseObject[@"msg"]];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        self.hud.hidden = YES;
+        NSLog(@"%@",error);
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

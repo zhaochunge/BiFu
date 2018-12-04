@@ -20,6 +20,7 @@
 @property(nonatomic,strong)NSArray *labArr;
 @property(nonatomic,strong)NSArray *sprArr;
 @property(nonatomic,strong)ShowAnimationView *backView;
+@property(nonatomic,strong)UITextField *codeFiled;
 @end
 
 @implementation AccouentSafeVC
@@ -145,10 +146,10 @@
     [close setBackgroundImage:[UIImage imageNamed:@"关闭-icon"] forState:(UIControlStateNormal)];
     [close addTarget:self action:@selector(close:) forControlEvents:(UIControlEventTouchUpInside)];
     [self.backView.contentView addSubview:close];
-    UITextField *text =[UITextField new];
-    text.frame = CGRectMake(50, 150, 150, 40);
-    text.placeholder = @"请输入验证码";
-    [self.backView.contentView addSubview:text];
+    self.codeFiled =[UITextField new];
+    self.codeFiled.frame = CGRectMake(50, 150, 150, 40);
+    self.codeFiled.placeholder = @"请输入验证码";
+    [self.backView.contentView addSubview:self.codeFiled];
     UIButton *code =[UIButton buttonWithType:UIButtonTypeCustom];
     code.frame = CGRectMake(self.backView.contentView.width-140, 150, 120, 40);
     [code setTitle:@"获取验证码" forState:(UIControlStateNormal)];
@@ -178,12 +179,52 @@
 }
 #pragma mark 关闭二级验证
 -(void)up:(UIButton *)btn{
-    
+    if (self.codeFiled.text.length==0) {
+        [self showMessage:@"请输入验证码"];
+    }else{
+        [self updata];
+    }
 }
 #pragma mark 验证码
 -(void)code:(UIButton *)btn{
-    
+    [self getCode];
 }
+#pragma mark 验证码数据请求
+-(void)getCode{
+    NSString *url=[NSString stringWithFormat:@"%@sms/send",BASE_URL];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *mobile = [user objectForKey:@"mobile"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSDictionary *dic = @{@"mobile":[NSString stringWithFormat:@"%@",mobile],@"event":@"offSecondaryVerify"};
+    [manager POST:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"-------%@",responseObject);
+        if([responseObject[@"code"] isEqual:@1]){
+            [self showMessage:@"已发送"];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self showMessage:@"发送失败"];
+        NSLog(@"%@",error);
+    }];
+}
+-(void)updata{
+    NSString *url=[NSString stringWithFormat:@"%@user/offSecondaryVerify",BASE_URL];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *token = [ user objectForKey:@"token"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    NSDictionary *dic =@{@"captcha":self.codeFiled.text};
+    [manager POST:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        if ([responseObject[@"code"] isEqual:@1]) {
+            [self showMessage:@"已关闭二次验证"];
+        }else{
+            [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

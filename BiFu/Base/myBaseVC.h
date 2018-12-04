@@ -14,4 +14,9 @@
 //返回按钮
 -(void)leftItem;
 -(void)leftItemBlack;
+-(void)showMessage:(NSString *)str;
+-(void)loadAnimate:(NSString *)str;
+-(void)openCountdown:(UIButton *)btn;
+@property (nonatomic,strong) MBProgressHUD* hud;//弹出提示
+@property(nonatomic ,strong) UITextField * firstResponderTextF;//记录将要编辑的输入框
 @end

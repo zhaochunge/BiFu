@@ -43,7 +43,13 @@
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);
+
         
+
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        [user setObject:dict[@"data"][@"userinfo"][@"token"] forKey:@"token"];
+        [user setObject:dict[@"data"][@"userinfo"][@"mobile"] forKey:@"mobile"];
+
             if ([dict[@"code"] isEqual:@1]) {
                 NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
                 [user setObject:dict[@"data"][@"userinfo"][@"token"] forKey:@"token"];
