@@ -69,6 +69,7 @@
     self.code = [[LTView alloc] initWithFrame:CGRectMake(0, 10, WIDTH-120, 30)];
     self.code.titleLab.text = @"手机验证码";
     self.code.pwd.placeholder = @"请输入验证码";
+    self.code.pwd.keyboardType = UIKeyboardTypeNumberPad;
     self.code.pwd.delegate = self;
     self.code.pwd.secureTextEntry = NO;
     [bac3 addSubview:self.code];
@@ -117,128 +118,81 @@
 
 #pragma mark 提交数据
 -(void)getData{
+    [self loadAnimate:@"数据提交中"];
     NSString *url=[NSString stringWithFormat:@"%@user/changepwd?",BASE_URL];
-    NSURLSession *session=[NSURLSession sharedSession];
-    NSURL *url2=[NSURL URLWithString:url];
-    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
-    request.HTTPMethod=@"POST";
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSString *token = [ user objectForKey:@"token"];
     NSString *mobile = [user objectForKey:@"mobile"];
-    [request setValue:token forHTTPHeaderField:@"token"];
-    request.HTTPBody=[[NSString stringWithFormat:@"mobile=%@&oldpassword=%@&newpassword=%@&renewpassword=%@&captcha=%@",[NSString stringWithFormat:@"%@",mobile],[NSString stringWithFormat:@"%@",self.old.pwd.text],[NSString stringWithFormat:@"%@",self.pwdNew.pwd.text],[NSString stringWithFormat:@"%@",self.repeat.pwd.text],[NSString stringWithFormat:@"%@",self.code.pwd.text]] dataUsingEncoding:NSUTF8StringEncoding];
-    NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        if([dict[@"code"] isEqual:@1]){
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    NSDictionary *dic = @{@"mobile":mobile,@"oldpassword":self.old.pwd.text,@"newpassword":self.pwdNew.pwd.text,@"renewpassword":self.repeat.pwd.text,@"captcha":self.code.pwd.text};
+    [manager POST:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        self.hud.hidden = YES;
+        NSLog(@"%@",responseObject);
+        if([responseObject[@"code"] isEqual:@1]){
             [self showMessage:@"密码修改成功"];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
-            [self showMessage:@"修改失败,请确认所填信息是否正确"];
+            [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
         }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self showMessage:@"失败"];
+        NSLog(@"%@",error);
     }];
-    [dataTask resume];
-    
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-//    [request setHTTPMethod:@"POST"];
-//    [request setHTTPBody:[[NSString stringWithFormat:@"mobile=%@&oldpassword=%@&newpassword=%@&renewpassword=%@&captcha=%@",[NSString stringWithFormat:@"%@",mobile],[NSString stringWithFormat:@"%@",self.old.pwd.text],[NSString stringWithFormat:@"%@",self.pwdNew.pwd.text],[NSString stringWithFormat:@"%@",self.repeat.pwd.text],[NSString stringWithFormat:@"%@",self.code.pwd.text]] dataUsingEncoding:NSUTF8StringEncoding]];
-//    [request setValue:token forHTTPHeaderField:@"token"];
-//    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-//
-//        NSLog(@"%@", responseObject);
-//    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-//        NSLog(@"%@",error);
-//    }];
-//    [op start];
-    
-    
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
-//
-//    NSDictionary *dic = @{@"mobile":mobile,@"oldpassword":self.old.pwd.text,@"newpassword":self.pwdNew.pwd.text,@"renewpassword":self.repeat.pwd.text,@"captcha":self.code.pwd.text};
-//    [manager POST:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-//        NSLog(@"%@",responseObject);
-//        if([responseObject[@"code"] isEqual:@"1"]){
-//            [self showMessage:@"密码修改成功"];
-//            [self.navigationController popViewControllerAnimated:YES];
-//        }else{
-//            [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
-//        }
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        [self showMessage:@"失败"];
-//        NSLog(@"%@",error);
-//    }];
-    
+    //    NSURLSession *session=[NSURLSession sharedSession];
+    //    NSURL *url2=[NSURL URLWithString:url];
+    //    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
+    //    request.HTTPMethod=@"POST";
+    //    [request setValue:token forHTTPHeaderField:@"token"];
+    //    request.HTTPBody=[[NSString stringWithFormat:@"mobile=%@&oldpassword=%@&newpassword=%@&renewpassword=%@&captcha=%@",[NSString stringWithFormat:@"%@",mobile],[NSString stringWithFormat:@"%@",self.old.pwd.text],[NSString stringWithFormat:@"%@",self.pwdNew.pwd.text],[NSString stringWithFormat:@"%@",self.repeat.pwd.text],[NSString stringWithFormat:@"%@",self.code.pwd.text]] dataUsingEncoding:NSUTF8StringEncoding];
+    //    NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    //        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    //        if([dict[@"code"] isEqual:@1]){
+    //            [self showMessage:@"密码修改成功"];
+    //            [self.navigationController popViewControllerAnimated:YES];
+    //        }else{
+    //            [self showMessage:@"修改失败,请确认所填信息是否正确"];
+    //        }
+    //    }];
+    //    [dataTask resume];
 }
 #pragma mark 验证码数据请求
 -(void)getCode{
+    [self loadAnimate:@"正在发送验证码"];
     NSString *url=[NSString stringWithFormat:@"%@sms/send",BASE_URL];
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSString *mobile = [user objectForKey:@"mobile"];
-//    NSURLSession *session=[NSURLSession sharedSession];
-//    NSURL *url2=[NSURL URLWithString:url];
-//    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
-//    request.HTTPMethod=@"POST";
-//    request.HTTPBody=[[NSString stringWithFormat:@"mobile=%@&event=changepwd",[NSString stringWithFormat:@"%@",mobile]] dataUsingEncoding:NSUTF8StringEncoding];
-//    NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-//        if([dict[@"code"] isEqual:@1]){
-//            [self showMessage:@"密码修改成功"];
-//            [self.navigationController popViewControllerAnimated:YES];
-//        }else{
-//            [self showMessage:@"修改失败,请确认所填信息是否正确"];
-//        }
-//    }];
-//    [dataTask resume];
-    /////////
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSDictionary *dic = @{@"mobile":[NSString stringWithFormat:@"%@",mobile],@"event":@"changepwd"};
     
    [manager POST:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+       self.hud.hidden = YES;
        NSLog(@"-------%@",responseObject);
-       if([responseObject[@"code"] isEqual:@"1"]){
+       if([responseObject[@"code"] isEqual:@1]){
            [self showMessage:@"已发送"];
        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self showMessage:@"发送失败"];
         NSLog(@"%@",error);
+        self.hud.hidden = YES;
     }];
-    
-    
-    ////////
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-//    [request setHTTPMethod:@"POST"];
-//    [request setHTTPBody:[[NSString stringWithFormat:@"mobile=%@&event=changepwd",[NSString stringWithFormat:@"%@",mobile]] dataUsingEncoding:NSUTF8StringEncoding]];
-//    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-////        NSDictionary *dic = [NetTools dictionaryWithJsonString:[NSString stringWithFormat:@"%@",responseObject]];
-////        [self dictionaryWithJsonString:responseObject];
-//        NSLog(@"%@", responseObject);
-//        NSLog(@"----------%@", [self dictionaryWithJsonString:[NSString stringWithFormat:@"%@",responseObject]]);
-//        NSLog(@"+++++++%@", [self dictionaryWithJsonString:[NSString stringWithFormat:@"%@",operation]]);
-//    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-//        NSLog(@"%@",error);
-//    }];
-//    [op start];
+    //    NSURLSession *session=[NSURLSession sharedSession];
+    //    NSURL *url2=[NSURL URLWithString:url];
+    //    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
+    //    request.HTTPMethod=@"POST";
+    //    request.HTTPBody=[[NSString stringWithFormat:@"mobile=%@&event=changepwd",[NSString stringWithFormat:@"%@",mobile]] dataUsingEncoding:NSUTF8StringEncoding];
+    //    NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    //        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    //        if([dict[@"code"] isEqual:@1]){
+    //            [self showMessage:@"密码修改成功"];
+    //            [self.navigationController popViewControllerAnimated:YES];
+    //        }else{
+    //            [self showMessage:@"修改失败,请确认所填信息是否正确"];
+    //        }
+    //    }];
+    //    [dataTask resume];
 }
--(NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
-{
-    if (jsonString == nil) {
-        return nil;
-    }
-    
-    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *err;
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                        options:NSJSONReadingMutableContainers
-                                                          error:&err];
-    if(err)
-    {
-        NSLog(@"json解析失败：%@",err);
-        return nil;
-    }
-    return dic;
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

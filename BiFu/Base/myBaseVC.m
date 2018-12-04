@@ -58,6 +58,15 @@
         [HUD hideAnimated:YES afterDelay:1];
     });
 }
+-(void)loadAnimate:(NSString *)str{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.view addSubview:self.hud];
+        [self.hud showAnimated:YES];
+        self.hud.label.text = str;
+        self.hud.mode = MBProgressHUDModeIndeterminate;
+    });
+}
 // 开启倒计时效果
 -(void)openCountdown:(UIButton *)btn{
     

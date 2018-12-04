@@ -14,6 +14,7 @@
 @property(nonatomic,strong)LTView *pwd;
 @property(nonatomic,strong)LTView *code;
 @property(nonatomic,strong)UILabel *keyLab;
+@property(nonatomic,strong)UIImageView *img;
 @end
 
 @implementation GoogleCheckVC
@@ -34,6 +35,7 @@
     // Do any additional setup after loading the view.
     [self leftItem];
     self.navigationItem.title = @"谷歌验证";
+    [self getData];
     [self createScroll];
     [self topView];
     [self bottomView];
@@ -69,7 +71,7 @@
     self.keyLab.frame = CGRectMake(h/2-100, title.bottom, 200, h/10);
     self.keyLab.textAlignment = YES;
     self.keyLab.textColor =[UIColor lightGrayColor];
-    self.keyLab.text = @"adjkshflasjfhsas";
+//    self.keyLab.text = @"adjkshflasjfhsas";
     [backView addSubview:self.keyLab];
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(self.keyLab.right, title.bottom+h/20-10, 20, 20);
@@ -77,10 +79,10 @@
     [btn addTarget:self action:@selector(copy:) forControlEvents:(UIControlEventTouchUpInside)];
     [backView addSubview:btn];
     
-    UIImageView *img =[UIImageView new];
-    img.frame = CGRectMake(h/2-h/20*3, self.keyLab.bottom+10, h/10*3, h/10*3);
-    [backView addSubview:img];
-    img.backgroundColor =[UIColor redColor];
+    self.img =[UIImageView new];
+    self.img.frame = CGRectMake(h/2-h/20*3, self.keyLab.bottom+10, h/10*3, h/10*3);
+    [backView addSubview:self.img];
+    self.img.backgroundColor =[UIColor redColor];
     //
     self.code =[[LTView alloc] initWithFrame:CGRectMake(5, h-h/5, h-10, h/5)];
     self.code.titleLab.text = @"谷歌验证码";
@@ -106,6 +108,7 @@
     [subBtn setTitle:@"绑定" forState:(UIControlStateNormal)];
     subBtn.layer.cornerRadius = 20;
     subBtn.layer.masksToBounds = YES;
+    [subBtn addTarget:self action:@selector(bang) forControlEvents:(UIControlEventTouchUpInside)];
     //查看绑定流程
     UIButton *bigbtn =[UIButton buttonWithType:UIButtonTypeSystem];
     bigbtn.frame = CGRectMake(WIDTH/2-50, HEIGHT-SafeAreaTopHeight-80, 100, 55);
@@ -237,28 +240,72 @@
 
     [self.scroll setContentOffset:CGPointMake(0,HEIGHT) animated:YES];
 }
+#pragma mark 绑定按钮
+-(void)bang{
+    if(self.pwd.pwd.text.length==0){
+        [self showMessage:@"请输入资金密码"];
+    }else if (self.code.pwd.text.length ==0){
+        [self showMessage:@"请输入谷歌验证码"];
+    }else{
+        [self updata];
+    }
+}
 -(void)copy:(UIButton *)btn{
     UIPasteboard *pab = [UIPasteboard generalPasteboard];
     pab.string = self.keyLab.text;
     if (pab == nil) {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"复制失败" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
-        [alert show];
-        //定时器
-        [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(dismissAlert:) userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert, @"alert", @"testing ", @"key" ,nil] repeats:NO];
+        [self showMessage:@"复制失败"];
     }else
     {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:nil message:@"已复制" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
-        [alert show];
-        //定时器
-        [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(dismissAlert:) userInfo:[NSDictionary dictionaryWithObjectsAndKeys:alert, @"alert", @"testing ", @"key" ,nil] repeats:NO];
+        [self showMessage:@"已复制"];
     }
 }
 
-//alert 自动消失
--(void) dismissAlert:(NSTimer *)timer{
-    UIAlertView *alert = [[timer userInfo] objectForKey:@"alert"];
-    [alert dismissWithClickedButtonIndex:0 animated:YES];
+-(void)getData{
+    [self loadAnimate:@"加载中"];
+    NSString *url=[NSString stringWithFormat:@"%@user/getGoogleAuthInfo",BASE_URL];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *token = [ user objectForKey:@"token"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        self.hud.hidden = YES;
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"code"] isEqual:@1]) {
+            self.keyLab.text =[NSString stringWithFormat:@"%@",responseObject[@"data"][@"secret"]] ;
+            self.img.image =[UIImage imageNamed:[NSString stringWithFormat:@"%@",responseObject[@"data"][@"QRCodeUrl"]]];
+        }else{
+            [self showMessage:responseObject[@"msg"]];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+        self.hud.hidden = YES;
+    }];
 }
+
+-(void)updata{
+    [self loadAnimate:@"正在绑定"];
+    NSString *url=[NSString stringWithFormat:@"%@user/bindGoogleAuth",BASE_URL];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *token = [ user objectForKey:@"token"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    NSDictionary *dic =@{@"password":self.pwd.pwd.text,@"captcha":self.code.pwd.text};
+    [manager POST:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        self.hud.hidden = YES;
+        if ([responseObject[@"code"] isEqual:@1]) {
+            [self showMessage:@"绑定成功"];
+        }else{
+            [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+        }
+
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+        self.hud.hidden = YES;
+    }];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
