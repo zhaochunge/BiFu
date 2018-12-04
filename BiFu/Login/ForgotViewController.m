@@ -47,8 +47,10 @@
     request.HTTPBody=[[NSString stringWithFormat:@"mobile=%@&event=%@&type=JSON",[NSString stringWithFormat:@"%@",_phoneTF.text],[NSString stringWithFormat:@"%@",@"resetpwd"]] dataUsingEncoding:NSUTF8StringEncoding];
     
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"dict:%@",dict);
+        
         
     }];
     [dataTask resume];
@@ -126,6 +128,8 @@
                     [tabViewController setSelectedIndex:3];
                 }];
             }
+        }else{
+            NSLog(@"code=0.msg:%@",dict[@"msg"]);
         }
     }];
     [dataTask resume];

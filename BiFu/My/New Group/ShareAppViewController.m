@@ -48,6 +48,25 @@
 
 -(void)downBtnClick{
     NSLog(@"下载");
+    
+    NSString *url=@"http://bfd.app0411.com/api/index/get_app_config";
+    NSURLSession *session=[NSURLSession sharedSession];
+    NSURL *url2=[NSURL URLWithString:url];
+    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
+    request.HTTPMethod=@"POST";
+    request.HTTPBody=[[NSString stringWithFormat:@"type=JSON"] dataUsingEncoding:NSUTF8StringEncoding];
+    NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        NSLog(@"response:%@",response);
+//        NSLog(@"error:%@",error);
+        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);
+        NSString *downUrl=dict[@"data"][@"config"][@"cndurl"];
+        NSLog(@"downUrl:%@",downUrl);
+       
+        
+    }];
+    [dataTask resume];
+    
 }
 
 -(void)btnClick{

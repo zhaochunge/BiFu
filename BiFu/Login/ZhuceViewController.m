@@ -202,6 +202,8 @@
                     }];
                 }
             });
+        }else{
+            NSLog(@"code=0.msg:%@",dict[@"msg"]);
         }
     }];
     [dataTask resume];

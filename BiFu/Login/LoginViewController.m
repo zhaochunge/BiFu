@@ -39,35 +39,28 @@
     request.HTTPMethod=@"POST";
 
     request.HTTPBody=[[NSString stringWithFormat:@"account=%@&password=%@&type=JSON",[NSString stringWithFormat:@"%@",_nameTF.text],[NSString stringWithFormat:@"%@",_pwdTF.text]] dataUsingEncoding:NSUTF8StringEncoding];
-//    request.HTTPBody=[[NSString stringWithFormat:@"account=%@&password=%@&type=JSON",[NSString stringWithFormat:@"%@",@"user01"],[NSString stringWithFormat:@"%@",@"a123456789"]] dataUsingEncoding:NSUTF8StringEncoding];//_nameTF.text,_pwdTF.text
 
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSLog(@"data:%@",data);
-        NSLog(@"response:%@",response);
-        NSLog(@"error:%@",error);
-//        NSData *data64=[GTMBase64 decodeData:data];
-//        NSLog(@"data64:%@",data64);
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);
-        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-        [user setObject:dict[@"data"][@"userinfo"][@"token"] forKey:@"token"];
         
             if ([dict[@"code"] isEqual:@1]) {
-                
+                NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+                [user setObject:dict[@"data"][@"userinfo"][@"token"] forKey:@"token"];
                 if (dict[@"data"][@"userinfo"][@"is_secondaryVerify"]) {//1
                     [self dismissViewControllerAnimated:YES completion:^{
                         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
                         UITabBarController *tabViewController = (UITabBarController *) appDelegate.window.rootViewController;
                         [tabViewController setSelectedIndex:3];
-                        
                     }];
                     }else{//is_secondaryVerify==0，跳
                         ErViewController *erVC=[ErViewController new];
                         [self presentViewController:erVC animated:YES completion:^{
-                            
                         }];
                     }
-        }
+            }else{
+                NSLog(@"code=0.msg:%@",dict[@"msg"]);
+            }
     }];
     [dataTask resume];
 }
