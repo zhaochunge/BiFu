@@ -26,7 +26,12 @@
     self.view.backgroundColor=[UIColor whiteColor];
     self.navigationItem.title=@"资产中心";
     _titleArray=@[@"BTC（比特币）",@"ETC（以太坊）",@"LTC（莱特币）"];
-    _dataDict=[NSMutableDictionary dictionary];
+//    _dataDict=[NSMutableDictionary dictionary];
+    _dataDict=[NSMutableDictionary dictionaryWithDictionary:@{
+                                                       @"btc":@"0",@"btc_freez":@"0",
+                                                       @"eth":@"0",@"eth_freez":@"0",
+                                                       @"ltc":@"0",@"ltc_freez":@"0"
+                                                       }];
     UIButton *itemBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     itemBtn.frame=CGRectMake(0, 0, 30, 30);
     [itemBtn setImage:[UIImage imageNamed:@"记录-ICON"] forState:UIControlStateNormal];
@@ -43,28 +48,35 @@
     NSString *url=@"http://bfd.app0411.com/api/user/user_assets";
     NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
     NSString *token=[user objectForKey:@"token"];
+    NSLog(@"token28681a8b-e90c-42ae-a1f8-39525970c99f:%@",token);
     NSURLSession *session=[NSURLSession sharedSession];
     NSURL *url2=[NSURL URLWithString:url];
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
-    request.HTTPMethod=@"POST";
+    request.HTTPMethod=@"POST";//GET
+//    [request setValue:token forHTTPHeaderField:@"token"];//tou
+    
     request.HTTPBody=[[NSString stringWithFormat:@"token=%@&type=JSON",[NSString stringWithFormat:@"%@",token]] dataUsingEncoding:NSUTF8StringEncoding];
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         //        NSLog(@"data:%@",data);
         //        NSLog(@"response:%@",response);
         //        NSLog(@"error:%@",error);
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-        NSLog(@"dict:%@",dict);
-        _dataDict=dict[@"data"][@"assets"];
+        NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);
+        
+        if (dict[@"data"][@"assets"]) {
+            NSLog(@"isEmpty");
+        }else{
+            _dataDict=dict[@"data"][@"assets"];
+            NSLog(@"dataDict:%@",_dataDict);
+            dispatch_sync(dispatch_get_main_queue(), ^(){
+                [_tableView reloadData];
+            });
+        }
         NSLog(@"dataDict:%@",_dataDict);
-        dispatch_sync(dispatch_get_main_queue(), ^(){
-            
-            [_tableView reloadData];
-        });
     }];
     [dataTask resume];
-    
 }
-
+//yichiduolejiutouhunyanhuadeweinanshou,shamaobinga,nanshoua,woditian...yunhuhu
 #pragma mark 去资产详情
 -(void)itemClick{
     NSLog(@"记录");
