@@ -53,6 +53,7 @@
             [self presentViewController:loginVC animated:YES completion:^{
             }];
             return NO;
+//            return YES;
         }
     }else{
         NSLog(@"item.tag==0000000");

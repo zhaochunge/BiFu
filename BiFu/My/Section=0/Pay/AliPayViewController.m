@@ -14,9 +14,11 @@
 @property(nonatomic,strong)UITextField *nameTF;
 @property(nonatomic,strong)UITextField *accountTF;
 @property(nonatomic,strong)UITextField *verCodeTF;
+@property(nonatomic,strong)UIButton *verBtn;
 
 @property(nonatomic,strong)YXButton *button;
 @property(nonatomic,strong)UIImage *image;
+@property(nonatomic,strong)NSString *qrcode;
 
 @end
 
@@ -144,7 +146,7 @@
     UIImagePickerController *ipc=[[UIImagePickerController alloc] init];
     ipc.sourceType=UIImagePickerControllerSourceTypeCamera;
     ipc.delegate=self;
-    ipc.allowsEditing=NO;
+    ipc.allowsEditing=YES;
     [self presentViewController:ipc animated:YES completion:nil];
     
 }
@@ -154,21 +156,68 @@
     UIImagePickerController *ipc=[[UIImagePickerController alloc] init];
     ipc.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
     ipc.delegate=self;
-    ipc.allowsEditing=NO;
+    ipc.allowsEditing=YES;
     [self presentViewController:ipc animated:YES completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
-{
-    
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    self.image=info[UIImagePickerControllerOriginalImage];
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+//{
+//
+//    [picker dismissViewControllerAnimated:YES completion:nil];
+//    self.image=info[UIImagePickerControllerOriginalImage];
+//    [_button setImage:self.image forState:UIControlStateNormal];
+//    _button.imageView.center=CGPointMake(_button.frame.size.width/2.0, _button.frame.size.height/2.0);
+//#pragma mark 上传
+//        [self upLoad];
+//
+//}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo{
+    self.image = image;
     [_button setImage:self.image forState:UIControlStateNormal];
     _button.imageView.center=CGPointMake(_button.frame.size.width/2.0, _button.frame.size.height/2.0);
-#pragma mark 上传
-    //    [self upLoad];
-    
+    [self upLoad];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
+
+-(void)upLoad{
+    NSLog(@"upLoad");
+    [MMProgressHUD setPresentationStyle:MMProgressHUDPresentationStyleShrink];
+    //将加载栏显示
+    [MMProgressHUD showDeterminateProgressWithTitle:nil status:@"上传中..."];
+    
+    NSString *url=[NSString stringWithFormat:@"%@index/upload",BASE_URL];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *token = [user objectForKey:@"token"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyyMMddHHmmss";
+    NSString *str = [formatter stringFromDate:[NSDate date]];
+    NSDictionary *dic = @{@"name":[NSString stringWithFormat:@"%@.jpg",str]};
+    [manager POST:url parameters:dic constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        NSData *data = UIImagePNGRepresentation(self.image);
+        NSString *fileName = [NSString stringWithFormat:@"%@.png", str];
+        //上传
+        [formData appendPartWithFileData:data name:@"file" fileName:fileName mimeType:@"image/png"];
+        NSLog(@"~~~~~~~~~~~~");
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        
+        NSLog(@"**********%@",responseObject);
+        if([responseObject[@"code"] isEqual:@1]){
+
+            self.qrcode=[NSString stringWithFormat:@"%@",responseObject[@"data"][@"url"]];
+            NSLog(@"qrcode:%@",self.qrcode);
+            [MMProgressHUD dismissWithSuccess:@"图片上传成功"];
+        }else{
+            [MMProgressHUD dismissWithError:@"图片上传失败"];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error:%@",error);
+        [MMProgressHUD dismissWithError:@"网络错误"];
+    }];
+}
+
 -(void)setupFoView{
     UIView *foView=[[UIView alloc]initWithFrame:CGRectMake(0, 400, WIDTH, 50)];
     foView.backgroundColor=[UIColor whiteColor];
@@ -177,11 +226,13 @@
     vLab.text=@"手机验证码";
     [foView addSubview:vLab];
     
-    UIButton *vBtn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    vBtn.frame=CGRectMake(WIDTH-100, 10, 80, 30);
-    [vBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
-    [vBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [foView addSubview:vBtn];
+    _verBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    _verBtn.frame=CGRectMake(WIDTH-100, 10, 80, 30);
+    [_verBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
+    [_verBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [_verBtn addTarget:self action:@selector(verButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    _verBtn.titleLabel.font=[UIFont systemFontOfSize:15];
+    [foView addSubview:_verBtn];
     
     _verCodeTF=[[UITextField alloc]initWithFrame:CGRectMake(120, 10, WIDTH-220, 30)];
     _verCodeTF.placeholder=@"验证码";
@@ -190,6 +241,68 @@
     [foView addSubview:_verCodeTF];
     
 }
+
+#pragma mark 发送验证码
+-(void)verButtonClick{
+    NSLog(@"ver");
+    [self getVerData];
+    [self openCountdown];
+    
+}
+-(void)getVerData{
+    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+    NSString *mobile=[user objectForKey:@"mobile"];
+    NSLog(@"mobile:%@",mobile);
+    NSString *url=[NSString stringWithFormat:@"%@.sms/send",BASE_URL];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSDictionary *dic=@{@"mobile":mobile,
+                        @"event":@"payMethod"};
+    [manager POST:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"%@,msg:%@",responseObject,responseObject[@"msg"]);
+     
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+    }];
+    
+}
+
+-(void)openCountdown{
+    __block NSInteger time = 59; //倒计时时间
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+    
+    dispatch_source_set_event_handler(_timer, ^{
+        
+        if(time <= 0){ //倒计时结束，关闭
+            
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //设置按钮的样式
+                [_verBtn setTitle:@"重新发送" forState:UIControlStateNormal];
+                [_verBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                _verBtn.userInteractionEnabled = YES;
+            });
+            
+        }else{
+            
+            int seconds = time % 60;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //设置按钮显示读秒效果
+                [_verBtn setTitle:[NSString stringWithFormat:@"%.2d s", seconds] forState:UIControlStateNormal];
+                [_verBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                _verBtn.userInteractionEnabled = NO;
+            });
+            time--;
+        }
+    });
+    dispatch_resume(_timer);
+}
+
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     if ([textField isEqual:_verCodeTF]) {
@@ -215,8 +328,35 @@
     [button setTitle:@"确认" forState:UIControlStateNormal];
     button.titleLabel.font=[UIFont systemFontOfSize:18 weight:2];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(checkButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:button];
     
+}
+#pragma mark 确认
+-(void)checkButtonClick{
+    NSLog(@"确认");
+    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+    NSString *mobile=[user objectForKey:@"mobile"];
+    NSString *token=[user objectForKey:@"token"];
+    NSLog(@"mobile:%@",mobile);
+    NSString *url=[NSString stringWithFormat:@"%@user/payMethod",BASE_URL];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    NSDictionary *dic=@{@"type":@"alipay",
+                        @"captcha":_verCodeTF.text,
+                        @"name":_nameTF.text,
+                        @"account":_accountTF.text,
+                        @"qrcode":self.qrcode
+                        };
+    [manager POST:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        
+        NSLog(@"%@",responseObject);
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+    }];
+//    taikopalei
 }
 
 -(void)leftBtn{

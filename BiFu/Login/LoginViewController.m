@@ -44,10 +44,6 @@
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);
 
-//        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-//        [user setObject:dict[@"data"][@"userinfo"][@"token"] forKey:@"token"];
-//        [user setObject:dict[@"data"][@"userinfo"][@"mobile"] forKey:@"mobile"];
-
             if ([dict[@"code"] isEqual:@1]) {
                 NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
                 [user setObject:dict[@"data"][@"userinfo"][@"token"] forKey:@"token"];

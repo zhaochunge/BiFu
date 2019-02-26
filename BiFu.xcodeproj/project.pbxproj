@@ -25,6 +25,15 @@
 		185369A4219D577C00E26FDB /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185369A3219D577C00E26FDB /* AboutViewController.m */; };
 		185369AA219D57B700E26FDB /* ShareAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185369A9219D57B700E26FDB /* ShareAppViewController.m */; };
 		185369AE219D69E100E26FDB /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185369AD219D69E100E26FDB /* HelpViewController.m */; };
+		185578692223769500D72B6B /* PDisposalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185578682223769500D72B6B /* PDisposalViewController.m */; };
+		1855786C222376CA00D72B6B /* PRepaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855786B222376CA00D72B6B /* PRepaymentViewController.m */; };
+		1855786F222376EB00D72B6B /* ReimbursementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855786E222376EB00D72B6B /* ReimbursementViewController.m */; };
+		185578722223770400D72B6B /* CancelledViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185578712223770400D72B6B /* CancelledViewController.m */; };
+		185578762223828F00D72B6B /* PDisposalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185578752223828F00D72B6B /* PDisposalTableViewCell.m */; };
+		185578792223B3BF00D72B6B /* PRepaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185578782223B3BF00D72B6B /* PRepaymentCell.m */; };
+		1855787C2223B81500D72B6B /* ReimbursementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855787B2223B81500D72B6B /* ReimbursementCell.m */; };
+		1855787F2223BB8300D72B6B /* CancelledCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855787E2223BB8300D72B6B /* CancelledCell.m */; };
+		185578822223BE3600D72B6B /* NailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185578812223BE3600D72B6B /* NailViewController.m */; };
 		1863D0A72195785200316AFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D0A62195785200316AFE /* AppDelegate.m */; };
 		1863D0AA2195785200316AFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D0A92195785200316AFE /* ViewController.m */; };
 		1863D0AD2195785200316AFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1863D0AB2195785200316AFE /* Main.storyboard */; };
@@ -50,6 +59,7 @@
 		1863D10F21957CBD00316AFE /* UIButton+Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D10421957CBD00316AFE /* UIButton+Edge.m */; };
 		1863D11021957CBD00316AFE /* UIView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D10621957CBD00316AFE /* UIView+Size.m */; };
 		1863D11121957CBD00316AFE /* UIColor+ColorChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D10821957CBD00316AFE /* UIColor+ColorChange.m */; };
+		18687D162224D312008C9B58 /* LoanOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18687D152224D312008C9B58 /* LoanOrderViewController.m */; };
 		18B23635219A9C6D00E2594C /* WLoanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B23634219A9C6D00E2594C /* WLoanViewController.m */; };
 		18B23638219AB1DE00E2594C /* AssetCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B23637219AB1DE00E2594C /* AssetCenterViewController.m */; };
 		18B2363D219AB55500E2594C /* AssetCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B2363C219AB55500E2594C /* AssetCenterCell.m */; };
@@ -173,6 +183,24 @@
 		185369A9219D57B700E26FDB /* ShareAppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareAppViewController.m; sourceTree = "<group>"; };
 		185369AC219D69E100E26FDB /* HelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		185369AD219D69E100E26FDB /* HelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		185578672223769500D72B6B /* PDisposalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDisposalViewController.h; sourceTree = "<group>"; };
+		185578682223769500D72B6B /* PDisposalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDisposalViewController.m; sourceTree = "<group>"; };
+		1855786A222376CA00D72B6B /* PRepaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PRepaymentViewController.h; sourceTree = "<group>"; };
+		1855786B222376CA00D72B6B /* PRepaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRepaymentViewController.m; sourceTree = "<group>"; };
+		1855786D222376EB00D72B6B /* ReimbursementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReimbursementViewController.h; sourceTree = "<group>"; };
+		1855786E222376EB00D72B6B /* ReimbursementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReimbursementViewController.m; sourceTree = "<group>"; };
+		185578702223770400D72B6B /* CancelledViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CancelledViewController.h; sourceTree = "<group>"; };
+		185578712223770400D72B6B /* CancelledViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CancelledViewController.m; sourceTree = "<group>"; };
+		185578742223828F00D72B6B /* PDisposalTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDisposalTableViewCell.h; sourceTree = "<group>"; };
+		185578752223828F00D72B6B /* PDisposalTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDisposalTableViewCell.m; sourceTree = "<group>"; };
+		185578772223B3BF00D72B6B /* PRepaymentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PRepaymentCell.h; sourceTree = "<group>"; };
+		185578782223B3BF00D72B6B /* PRepaymentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRepaymentCell.m; sourceTree = "<group>"; };
+		1855787A2223B81500D72B6B /* ReimbursementCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReimbursementCell.h; sourceTree = "<group>"; };
+		1855787B2223B81500D72B6B /* ReimbursementCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReimbursementCell.m; sourceTree = "<group>"; };
+		1855787D2223BB8300D72B6B /* CancelledCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CancelledCell.h; sourceTree = "<group>"; };
+		1855787E2223BB8300D72B6B /* CancelledCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CancelledCell.m; sourceTree = "<group>"; };
+		185578802223BE3600D72B6B /* NailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NailViewController.h; sourceTree = "<group>"; };
+		185578812223BE3600D72B6B /* NailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NailViewController.m; sourceTree = "<group>"; };
 		1863D0A22195785200316AFE /* BiFu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiFu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1863D0A52195785200316AFE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1863D0A62195785200316AFE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -224,6 +252,8 @@
 		1863D10621957CBD00316AFE /* UIView+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Size.m"; sourceTree = "<group>"; };
 		1863D10721957CBD00316AFE /* UIColor+ColorChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorChange.h"; sourceTree = "<group>"; };
 		1863D10821957CBD00316AFE /* UIColor+ColorChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorChange.m"; sourceTree = "<group>"; };
+		18687D142224D312008C9B58 /* LoanOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoanOrderViewController.h; sourceTree = "<group>"; };
+		18687D152224D312008C9B58 /* LoanOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoanOrderViewController.m; sourceTree = "<group>"; };
 		18B23633219A9C6D00E2594C /* WLoanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLoanViewController.h; sourceTree = "<group>"; };
 		18B23634219A9C6D00E2594C /* WLoanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLoanViewController.m; sourceTree = "<group>"; };
 		18B23636219AB1DE00E2594C /* AssetCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetCenterViewController.h; sourceTree = "<group>"; };
@@ -428,6 +458,8 @@
 				1851C936219960B200B84513 /* AllInvViewController.m */,
 				1851C938219960BE00B84513 /* AllLoanViewController.h */,
 				1851C939219960BE00B84513 /* AllLoanViewController.m */,
+				185578732223824D00D72B6B /* Cell */,
+				18557863222374E600D72B6B /* DetailVC */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -459,6 +491,36 @@
 				F5C9907921A3931600F755FC /* AccouentSafeVC.m */,
 			);
 			path = "Section=0";
+			sourceTree = "<group>";
+		};
+		18557863222374E600D72B6B /* DetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				185578672223769500D72B6B /* PDisposalViewController.h */,
+				185578682223769500D72B6B /* PDisposalViewController.m */,
+				1855786A222376CA00D72B6B /* PRepaymentViewController.h */,
+				1855786B222376CA00D72B6B /* PRepaymentViewController.m */,
+				1855786D222376EB00D72B6B /* ReimbursementViewController.h */,
+				1855786E222376EB00D72B6B /* ReimbursementViewController.m */,
+				185578702223770400D72B6B /* CancelledViewController.h */,
+				185578712223770400D72B6B /* CancelledViewController.m */,
+			);
+			path = DetailVC;
+			sourceTree = "<group>";
+		};
+		185578732223824D00D72B6B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				185578742223828F00D72B6B /* PDisposalTableViewCell.h */,
+				185578752223828F00D72B6B /* PDisposalTableViewCell.m */,
+				185578772223B3BF00D72B6B /* PRepaymentCell.h */,
+				185578782223B3BF00D72B6B /* PRepaymentCell.m */,
+				1855787A2223B81500D72B6B /* ReimbursementCell.h */,
+				1855787B2223B81500D72B6B /* ReimbursementCell.m */,
+				1855787D2223BB8300D72B6B /* CancelledCell.h */,
+				1855787E2223BB8300D72B6B /* CancelledCell.m */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		1863D0992195785100316AFE = {
@@ -600,6 +662,10 @@
 				1851C92421994DF500B84513 /* OrderCell.m */,
 				1863D0EE219579EE00316AFE /* OrderViewController.h */,
 				1863D0EF219579EE00316AFE /* OrderViewController.m */,
+				18687D142224D312008C9B58 /* LoanOrderViewController.h */,
+				18687D152224D312008C9B58 /* LoanOrderViewController.m */,
+				185578802223BE3600D72B6B /* NailViewController.h */,
+				185578812223BE3600D72B6B /* NailViewController.m */,
 				1851C93B219960CC00B84513 /* VC */,
 			);
 			path = Order;
@@ -1075,6 +1141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F53D89A3219D62F100023EB0 /* TotalMoneyVC.m in Sources */,
+				1855787F2223BB8300D72B6B /* CancelledCell.m in Sources */,
 				F525EE5E219C0FC800AD5ACE /* YzcLabel.m in Sources */,
 				1863D0F321957A0400316AFE /* MyViewController.m in Sources */,
 				1863D11121957CBD00316AFE /* UIColor+ColorChange.m in Sources */,
@@ -1082,12 +1149,15 @@
 				F5396B8A219A55C900EFBF95 /* LIView.m in Sources */,
 				1863D0AA2195785200316AFE /* ViewController.m in Sources */,
 				F5396B9C219AB41100EFBF95 /* LLView.m in Sources */,
+				185578692223769500D72B6B /* PDisposalViewController.m in Sources */,
 				F56A8E0121A28AC400659418 /* CustomerTilCell.m in Sources */,
 				1863D0F0219579EE00316AFE /* OrderViewController.m in Sources */,
 				F525EE5D219C0FC800AD5ACE /* YzcConst.m in Sources */,
 				1863D11021957CBD00316AFE /* UIView+Size.m in Sources */,
+				185578762223828F00D72B6B /* PDisposalTableViewCell.m in Sources */,
 				1863D0EA219579C000316AFE /* InvestViewController.m in Sources */,
 				F56A398321AB941B00B39E13 /* ResetCapitalVC.m in Sources */,
+				185578722223770400D72B6B /* CancelledViewController.m in Sources */,
 				F56A8DF121A23BC400659418 /* LeeDatePickerHeadView.m in Sources */,
 				F53D8993219CFE0B00023EB0 /* UIView+LLSegmentBar.m in Sources */,
 				1863D10F21957CBD00316AFE /* UIButton+Edge.m in Sources */,
@@ -1106,6 +1176,7 @@
 				F56A8DF821A2479600659418 /* myInterviewVC.m in Sources */,
 				1820227121A7CC83006C97DF /* FindViewController.m in Sources */,
 				1851C92521994DF500B84513 /* OrderCell.m in Sources */,
+				1855786F222376EB00D72B6B /* ReimbursementViewController.m in Sources */,
 				F53D8990219CFE0B00023EB0 /* LLSegmentBar.m in Sources */,
 				18F0769F219EA5A900B42D98 /* PayStyleViewController.m in Sources */,
 				F525EE5A219C0FC800AD5ACE /* YzcBar.m in Sources */,
@@ -1121,6 +1192,7 @@
 				185369A4219D577C00E26FDB /* AboutViewController.m in Sources */,
 				18FFD17A21A248FC00669E2B /* CardViewController.m in Sources */,
 				18FFD17D21A2491500669E2B /* AliPayViewController.m in Sources */,
+				185578822223BE3600D72B6B /* NailViewController.m in Sources */,
 				F5396B8F219A5AAC00EFBF95 /* myBaseVC.m in Sources */,
 				F5C9908021A3B49200F755FC /* CheckSecondTableCell.m in Sources */,
 				F554797421A659E500AFE48B /* InterviewTableCell.m in Sources */,
@@ -1129,6 +1201,7 @@
 				1820226E21A79808006C97DF /* ForgotViewController.m in Sources */,
 				F56754ED21AD11EC0060A369 /* IdentityCheckVC.m in Sources */,
 				1850774921ABCE820093B283 /* GTMBase64.m in Sources */,
+				1855786C222376CA00D72B6B /* PRepaymentViewController.m in Sources */,
 				18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */,
 				18B23638219AB1DE00E2594C /* AssetCenterViewController.m in Sources */,
 				1863D0DF219578E200316AFE /* CDTabBar.m in Sources */,
@@ -1143,6 +1216,7 @@
 				F525EE5C219C0FC800AD5ACE /* YzcChartView.m in Sources */,
 				1851C937219960B200B84513 /* AllInvViewController.m in Sources */,
 				F5C9907A21A3931600F755FC /* AccouentSafeVC.m in Sources */,
+				185578792223B3BF00D72B6B /* PRepaymentCell.m in Sources */,
 				F53D8991219CFE0B00023EB0 /* LLSegmentBarConfig.m in Sources */,
 				F5396B95219AA9FC00EFBF95 /* InvestDetailVC.m in Sources */,
 				F525EE4B219BF1DA00AD5ACE /* MarketVC.m in Sources */,
@@ -1164,10 +1238,12 @@
 				1863D10B21957CBD00316AFE /* CustomAlertView.m in Sources */,
 				F56A8DF521A2418A00659418 /* SettingVC.m in Sources */,
 				F5342E38219E6A8400853EA1 /* DCNavTabBarController.m in Sources */,
+				18687D162224D312008C9B58 /* LoanOrderViewController.m in Sources */,
 				185369AA219D57B700E26FDB /* ShareAppViewController.m in Sources */,
 				1851C9312199609A00B84513 /* InvViewController.m in Sources */,
 				F525EE4E219BF97C00AD5ACE /* MarketTableCell.m in Sources */,
 				F56A397D21AB80AB00B39E13 /* LTTableCell.m in Sources */,
+				1855787C2223B81500D72B6B /* ReimbursementCell.m in Sources */,
 				1863D10921957CBD00316AFE /* Base64Verb.m in Sources */,
 				F53D8992219CFE0B00023EB0 /* LLSegmentBarVC.m in Sources */,
 				F5342E2E219E637E00853EA1 /* UnusedVC.m in Sources */,
@@ -1339,7 +1415,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 33KYMS62D8;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BiFu/PrefixHeader.pch";
 				INFOPLIST_FILE = BiFu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
@@ -1356,7 +1432,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 33KYMS62D8;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BiFu/PrefixHeader.pch";
 				INFOPLIST_FILE = BiFu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;

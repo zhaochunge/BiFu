@@ -43,11 +43,35 @@
     self.navigationItem.rightBarButtonItem =item2;
     
     [self setupUI];
-    
+    [self loadData];
 }
 
 -(void)rightBtn{
     NSLog(@"+++++");
+}
+
+#pragma mark loadData
+-(void)loadData{
+    
+    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+    NSString *token=[user objectForKey:@"token"];
+    NSLog(@"token:%@",token);
+    
+    NSString *url=[NSString stringWithFormat:@"%@user/getPayMethod",BASE_URL];
+    NSLog(@"url:%@",url);
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json", @"text/json", nil];
+//    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    NSDictionary *dic=@{@"token":token};
+    [manager GET:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        
+        NSLog(@"%@",responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+    }];
+   
 }
 
 -(void)leftBtn:(UIButton *)btn{

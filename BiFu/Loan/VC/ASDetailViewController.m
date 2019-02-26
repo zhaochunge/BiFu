@@ -188,6 +188,7 @@
     [_tableView registerClass:[HomeTableCellTableViewCell class] forCellReuseIdentifier:@"ASDetailCell"];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
+//、、、、、、、、
 #pragma mark cell
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView.tag==230) {
