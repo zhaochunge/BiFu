@@ -38,12 +38,6 @@
     _contentView = [[UIView alloc] init];
     _contentView.frame = CGRectMake(20, self.frame.size.height/2-200, self.frame.size.width - 40, 300);
     _contentView.backgroundColor=[UIColor whiteColor];
-    _contentView.layer.cornerRadius = 15;
-    _contentView.layer.masksToBounds = YES;
-    UIImageView *img =[UIImageView new];
-    img.frame =CGRectMake(0, 0, _contentView.width, 300);
-    img.image =[UIImage imageNamed:@"锁头"];
-    [_contentView addSubview:img];
     [self addSubview:_contentView];
     /*可以继续在其中添加一些View 虾米的*/
     

@@ -37,7 +37,7 @@
         make.right.mas_offset(@-15);
         make.top.mas_offset(@5);
         make.bottom.mas_offset(@-5);
-        make.width.mas_equalTo(self.contentView.width/2);
+        make.width.mas_equalTo(self.contentView.width/3*2);
     }];
 }
 - (void)awakeFromNib {

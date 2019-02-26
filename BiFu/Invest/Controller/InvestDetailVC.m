@@ -10,6 +10,7 @@
 #import "LLView.h"
 #import "InvestDetialTableCell.h"
 #import "alertTableCell.h"
+#import "OrderDetialVC.h"
 
 @interface InvestDetailVC ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UILabel *present;
@@ -33,6 +34,10 @@
 @property(nonatomic,assign)BOOL bowSpr;
 @property(nonatomic,assign)BOOL mesSpr;
 @property(nonatomic,assign)BOOL selected;
+//@property(nonatomic,strong)NSMutableArray *dataArr;
+@property(nonatomic,strong)NSArray *orderArr;
+@property(nonatomic,strong)NSArray *borrowArr;
+@property(nonatomic,strong)NSDictionary *dicData;
 @end
 
 @implementation InvestDetailVC
@@ -40,7 +45,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-   
+    self.orderArr = @[@"订单号",@"利息",@"实际转账(借款金额-利息)",@"付款方式",@"质押数量",@"质押率",@"平仓价",@"发标时间"];
+    self.borrowArr = @[@"借款用户",@"性别/年龄",@"地区",@"注册时间",@"认证等级",@"共发布借款次数",@"近半年有无逾期还款",@"胜/败诉记录",@"质押地址"];
+    [self getData];
     [self initView];
     [self leftItem];
     
@@ -73,7 +80,7 @@
 -(void)createScroll{
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     _scrollView.backgroundColor = LINECOLOR;
-    _scrollView.contentSize = CGSizeMake(0, 180+370+15+370+15+_h+150+40+40+40);
+    _scrollView.contentSize = CGSizeMake(0, 180+370+15+370+15+_h+150+40+40+40+40);
     _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
@@ -99,7 +106,11 @@
 }
 #pragma mark 立即投资
 -(void)investAction:(UIButton *)btn{
-    
+    OrderDetialVC *vc = [OrderDetialVC new];
+    vc.sn = self.sn;
+    vc.money = self.money;
+    vc.term = self.term;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark 订单模块创建
 -(void)createOrder{
@@ -116,7 +127,7 @@
 }
 #pragma mark 借款人模块创建
 -(void)createBorrower{
-    self.borrowTable=[[UITableView alloc] initWithFrame:CGRectMake(10, _orderTable.bottom+15, WIDTH-20, 370) style:(UITableViewStylePlain)];
+    self.borrowTable=[[UITableView alloc] initWithFrame:CGRectMake(10, _orderTable.bottom+15, WIDTH-20, 410) style:(UITableViewStylePlain)];
     self.borrowTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.borrowTable registerClass:[InvestDetialTableCell class] forCellReuseIdentifier:@"borrowerReuse"];
     [self.scrollView addSubview:_borrowTable];
@@ -143,8 +154,13 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(tableView==self.messageTable){
         return 1;
-    }else{
+    }
+    if(tableView == self.orderTable){
         return 8;
+    }
+   
+    else{
+        return 9;
     }
     
 }
@@ -152,17 +168,71 @@
     
     if (tableView == self.orderTable) {
         InvestDetialTableCell *cell=[tableView dequeueReusableCellWithIdentifier:@"orderReuse" forIndexPath:indexPath];
-        cell.titleLab.text = @"订单号";
-        cell.mesLab.text =@"DAFS213124214";
+        cell.titleLab.text = self.orderArr[indexPath.row];
+        if (indexPath.row == 0) {
+            cell.mesLab.text =[NSString stringWithFormat:@"%@",self.dicData[@"deals"][@"sn"]];
+        }else if (indexPath.row == 1){
+             cell.mesLab.text =[NSString stringWithFormat:@"%@",self.dicData[@"deals"][@"interest"]];
+             cell.mesLab.textColor = REDCOLOR;
+        }else if (indexPath.row == 2){
+             cell.mesLab.text =[NSString stringWithFormat:@"%@",self.dicData[@"deals"][@"arrival_amount"]];
+            cell.mesLab.textColor = REDCOLOR;
+        }else if (indexPath.row == 3){
+            
+            NSString *type = @"";
+            for (NSString *str in self.dicData[@"user"][@"pay_method"]) {
+                if ([str isEqualToString:@"alipay"]) {
+                    type = [NSString stringWithFormat:@"%@ 支付宝",type];
+                }
+                if ([str isEqualToString:@"wechat"]) {
+                    type = [NSString stringWithFormat:@"%@ 微信",type];
+                }
+            }
+            cell.mesLab.text = type;
+        }else if (indexPath.row == 4){
+            cell.mesLab.text =[NSString stringWithFormat:@"%@%@",self.dicData[@"deals"][@"pledge_amount"],self.dicData[@"deals"][@"type"]];
+        }else if (indexPath.row == 5){
+            NSNumber *rate = self.dicData[@"deals"][@"pledge_rate"];
+            NSString *rat = [NSString stringWithFormat:@"%@",rate];
+            if (rat.length>5) {
+                rat = [rat substringToIndex:5];
+            }
+            cell.mesLab.text =[NSString stringWithFormat:@"%@%%",rat];
+        }else if (indexPath.row == 6){
+            cell.mesLab.text =[NSString stringWithFormat:@"%@元",self.dicData[@"deals"][@"closing_line"]];
+        }else if (indexPath.row == 7){
+            cell.mesLab.text =[NSString stringWithFormat:@"%@",self.dicData[@"deals"][@"issuing_time"]];
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor =[UIColor whiteColor];
         return cell;
-    }else if (tableView == self.borrowTable){
+    }
+    else if (tableView == self.borrowTable){
         InvestDetialTableCell *cell=[tableView dequeueReusableCellWithIdentifier:@"borrowerReuse" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor =[UIColor whiteColor];
-        cell.titleLab.text = @"借款用户";
-        cell.mesLab.text = @"账啊擦";
+        cell.titleLab.text = self.borrowArr[indexPath.row];
+        if (indexPath.row == 0) {
+            cell.mesLab.text =[NSString stringWithFormat:@"%@",SafeValue(self.dicData[@"user"][@"realname"])];
+        }else if (indexPath.row == 1){
+            cell.mesLab.text =[NSString stringWithFormat:@"%@%@",SafeValue(self.dicData[@"user"][@"gender"]),SafeValue(self.dicData[@"age"])];
+            cell.mesLab.textColor = REDCOLOR;
+        }else if (indexPath.row == 2){
+            cell.mesLab.text =[NSString stringWithFormat:@"%@",SafeValue(self.dicData[@"user"][@"region"])];
+            cell.mesLab.textColor = REDCOLOR;
+        }else if (indexPath.row == 3){
+            cell.mesLab.text =[NSString stringWithFormat:@"%@",SafeValue(self.dicData[@"user"][@"createtime"])];
+        }else if (indexPath.row == 4){
+            cell.mesLab.text =[NSString stringWithFormat:@"%@",SafeValue(self.dicData[@"user"][@"auth"])];
+        }else if (indexPath.row == 5){
+            cell.mesLab.text =[NSString stringWithFormat:@"%@",SafeValue(self.dicData[@"user"][@"loan"])];
+        }else if (indexPath.row == 6){
+            cell.mesLab.text =[NSString stringWithFormat:@"%@",SafeValue(self.dicData[@"user"][@"overdue"])];
+        }else if (indexPath.row == 7){
+            cell.mesLab.text =[NSString stringWithFormat:@"%@/%@",SafeValue(self.dicData[@"user"][@"recover"]),SafeValue(self.dicData[@"user"][@"lose_lawsuit"])];
+        }else{
+            //            cell.mesLab.text =[NSString stringWithFormat:@"%@",self.dicData[@"deals"][@""]];
+        }
         return cell;
     }else{
         alertTableCell *cell=[tableView dequeueReusableCellWithIdentifier:@"messageReuse" forIndexPath:indexPath];
@@ -285,7 +355,7 @@
 -(void)reloadView{
     CGFloat h1,h2,h3;
     h1 = _orderSpr?370:50;
-    h2 = _bowSpr ? 370:50;
+    h2 = _bowSpr ? 410:50;
     h3 = _mesSpr ? _h+150:50;
     _orderTable.frame = CGRectMake(10, _header.bottom-40, WIDTH-20, h1);
     _borrowTable.frame = CGRectMake(10, _orderTable.bottom+15, WIDTH-20, h2);
@@ -309,7 +379,7 @@
     _present.font =[UIFont systemFontOfSize:34];
     _present.textColor =[UIColor whiteColor];
     [_header addSubview:_present];
-    _present.text = @"10%";
+    _present.text = [NSString stringWithFormat:@"%@%%",self.dicData[@"deals"][@"rate"]];
     //
     UILabel *rate =[UILabel new];
     rate.frame = CGRectMake(0, _present.bottom+10, WIDTH, 30);
@@ -318,10 +388,13 @@
     [_header addSubview:rate];
     rate.text =@"年化利率";
     //
+    NSArray * titleArr = @[@"币种",@"借款金额",@"借款期限"];
+    NSArray *labArr = @[@"",self.money,self.term];
     for (int i = 0; i<3; i++) {
         LLView *view = [[LLView alloc] initWithFrame:CGRectMake(WIDTH/3*i, rate.bottom, WIDTH/3, 60)];
-        view.countLab.text = @"BTC";
-        view.titleLab.text = @"币种";
+        view.countLab.text = [NSString stringWithFormat:@"%@",labArr[i]];
+        view.titleLab.text = titleArr[i];
+        view.tag = i+2121;
         [_header addSubview:view];
     }
     
@@ -333,7 +406,36 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [self setStatusBarBackgroundColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
+}
+
+-(void)getData{
+    [self loadAnimate:@"数据加载中"];
+    NSString *url=[NSString stringWithFormat:@"%@invest/deals?",BASE_URL];
+   
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+ 
+    NSDictionary *dic = @{@"sn":self.sn};
+    NSLog(@"%@",self.sn);
+    [manager GET:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        self.hud.hidden = YES;
+        if([responseObject[@"code"] isEqual:@1]){
+            
+            self.dicData = responseObject[@"data"];
+            _present.text = [NSString stringWithFormat:@"%@%%",self.dicData[@"deals"][@"rate"]];
+            LLView *view = [self.view viewWithTag:2121];
+            view.countLab.text = [NSString stringWithFormat:@"%@",self.dicData[@"deals"][@"type"]];
+            [self.orderTable reloadData];
+            [self.borrowTable reloadData];
+            [self.messageTable reloadData];
+        }else{
+            [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
