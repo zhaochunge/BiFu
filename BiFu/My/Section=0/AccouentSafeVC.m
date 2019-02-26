@@ -135,6 +135,12 @@
 }
 -(void)creView{
     self.backView =[[ShowAnimationView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.backView.contentView.layer.cornerRadius = 15;
+    self.backView.layer.masksToBounds = YES;
+    UIImageView *img =[UIImageView new];
+    img.frame =CGRectMake(0, 0, self.backView.contentView.width, 300);
+    img.image =[UIImage imageNamed:@"锁头"];
+    [self.backView.contentView addSubview:img];
     UILabel *title = [UILabel new];
     title.frame = CGRectMake(0, 0, self.backView.contentView.width-70, 80);
     title.text = @"登录时是否选择进行手机验证";

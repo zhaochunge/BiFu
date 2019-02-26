@@ -132,7 +132,7 @@ static const CGFloat mHeaderHeight = 40;
         _backView.opaque = NO;
         _backView.backgroundColor     = [UIColor whiteColor];
         _backView.layer.shadowOffset  = CGSizeMake(1, 1);
-        _backView.layer.shadowRadius  = 2.0;
+        _backView.layer.shadowRadius  = 2.0  ;
         _backView.layer.shadowColor   = [UIColor grayColor].CGColor;
         _backView.layer.shadowOpacity = 0.8;
         [_backView.layer setMasksToBounds:NO];

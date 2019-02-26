@@ -81,6 +81,9 @@
 		F525EE5C219C0FC800AD5ACE /* YzcChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE55219C0FC700AD5ACE /* YzcChartView.m */; };
 		F525EE5D219C0FC800AD5ACE /* YzcConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE57219C0FC700AD5ACE /* YzcConst.m */; };
 		F525EE5E219C0FC800AD5ACE /* YzcLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F525EE59219C0FC700AD5ACE /* YzcLabel.m */; };
+		F530C87921CCBC4800BD482D /* OrderDetialVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F530C87821CCBC4800BD482D /* OrderDetialVC.m */; };
+		F530C87C21CCD6EB00BD482D /* LLLIView.m in Sources */ = {isa = PBXBuildFile; fileRef = F530C87B21CCD6EB00BD482D /* LLLIView.m */; };
+		F53341BA2223D02E00256906 /* NullValue.m in Sources */ = {isa = PBXBuildFile; fileRef = F53341B92223D02E00256906 /* NullValue.m */; };
 		F5342E24219E5C6600853EA1 /* MyCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F5342E23219E5C6600853EA1 /* MyCardVC.m */; };
 		F5342E2B219E636700853EA1 /* UsedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F5342E2A219E636700853EA1 /* UsedVC.m */; };
 		F5342E2E219E637E00853EA1 /* UnusedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F5342E2D219E637E00853EA1 /* UnusedVC.m */; };
@@ -121,6 +124,8 @@
 		F56A8DFB21A286F100659418 /* customerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DFA21A286F100659418 /* customerVC.m */; };
 		F56A8DFE21A28A9500659418 /* CustomerTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8DFD21A28A9500659418 /* CustomerTableCell.m */; };
 		F56A8E0121A28AC400659418 /* CustomerTilCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F56A8E0021A28AC400659418 /* CustomerTilCell.m */; };
+		F589A47921D0A0FF0004F092 /* ThreeTitleTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F589A47821D0A0FF0004F092 /* ThreeTitleTableCell.m */; };
+		F589A47C21D0A8930004F092 /* OrderMsgTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F589A47B21D0A8930004F092 /* OrderMsgTableCell.m */; };
 		F5C9907A21A3931600F755FC /* AccouentSafeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9907921A3931600F755FC /* AccouentSafeVC.m */; };
 		F5C9907D21A3940700F755FC /* SafeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9907C21A3940700F755FC /* SafeTableCell.m */; };
 		F5C9908021A3B49200F755FC /* CheckSecondTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C9907F21A3B49200F755FC /* CheckSecondTableCell.m */; };
@@ -295,6 +300,12 @@
 		F525EE57219C0FC700AD5ACE /* YzcConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzcConst.m; sourceTree = "<group>"; };
 		F525EE58219C0FC700AD5ACE /* YzcLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzcLabel.h; sourceTree = "<group>"; };
 		F525EE59219C0FC700AD5ACE /* YzcLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzcLabel.m; sourceTree = "<group>"; };
+		F530C87721CCBC4800BD482D /* OrderDetialVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetialVC.h; sourceTree = "<group>"; };
+		F530C87821CCBC4800BD482D /* OrderDetialVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetialVC.m; sourceTree = "<group>"; };
+		F530C87A21CCD6EB00BD482D /* LLLIView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLLIView.h; sourceTree = "<group>"; };
+		F530C87B21CCD6EB00BD482D /* LLLIView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LLLIView.m; sourceTree = "<group>"; };
+		F53341B82223D02E00256906 /* NullValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NullValue.h; sourceTree = "<group>"; };
+		F53341B92223D02E00256906 /* NullValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NullValue.m; sourceTree = "<group>"; };
 		F5342E22219E5C6600853EA1 /* MyCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCardVC.h; sourceTree = "<group>"; };
 		F5342E23219E5C6600853EA1 /* MyCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCardVC.m; sourceTree = "<group>"; };
 		F5342E29219E636700853EA1 /* UsedVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsedVC.h; sourceTree = "<group>"; };
@@ -375,6 +386,10 @@
 		F56A8DFD21A28A9500659418 /* CustomerTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerTableCell.m; sourceTree = "<group>"; };
 		F56A8DFF21A28AC400659418 /* CustomerTilCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerTilCell.h; sourceTree = "<group>"; };
 		F56A8E0021A28AC400659418 /* CustomerTilCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerTilCell.m; sourceTree = "<group>"; };
+		F589A47721D0A0FF0004F092 /* ThreeTitleTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreeTitleTableCell.h; sourceTree = "<group>"; };
+		F589A47821D0A0FF0004F092 /* ThreeTitleTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreeTitleTableCell.m; sourceTree = "<group>"; };
+		F589A47A21D0A8930004F092 /* OrderMsgTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderMsgTableCell.h; sourceTree = "<group>"; };
+		F589A47B21D0A8930004F092 /* OrderMsgTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderMsgTableCell.m; sourceTree = "<group>"; };
 		F5C9907821A3931600F755FC /* AccouentSafeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccouentSafeVC.h; sourceTree = "<group>"; };
 		F5C9907921A3931600F755FC /* AccouentSafeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccouentSafeVC.m; sourceTree = "<group>"; };
 		F5C9907B21A3940700F755FC /* SafeTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafeTableCell.h; sourceTree = "<group>"; };
@@ -633,6 +648,8 @@
 				1863D0FD21957CBD00316AFE /* LineBtn.m */,
 				1863D0FE21957CBD00316AFE /* NetTools.h */,
 				1863D0FF21957CBD00316AFE /* NetTools.m */,
+				F53341B82223D02E00256906 /* NullValue.h */,
+				F53341B92223D02E00256906 /* NullValue.m */,
 				1863D10021957CBD00316AFE /* TabbarCustom */,
 				1863D10721957CBD00316AFE /* UIColor+ColorChange.h */,
 				1863D10821957CBD00316AFE /* UIColor+ColorChange.m */,
@@ -851,6 +868,8 @@
 				F525EE4A219BF1DA00AD5ACE /* MarketVC.m */,
 				F5396B93219AA9FC00EFBF95 /* InvestDetailVC.h */,
 				F5396B94219AA9FC00EFBF95 /* InvestDetailVC.m */,
+				F530C87721CCBC4800BD482D /* OrderDetialVC.h */,
+				F530C87821CCBC4800BD482D /* OrderDetialVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -860,12 +879,18 @@
 			children = (
 				F5396B9A219AB41100EFBF95 /* LLView.h */,
 				F5396B9B219AB41100EFBF95 /* LLView.m */,
+				F530C87A21CCD6EB00BD482D /* LLLIView.h */,
+				F530C87B21CCD6EB00BD482D /* LLLIView.m */,
 				F5396B9D219AC72500EFBF95 /* InvestDetialTableCell.h */,
 				F5396B9E219AC72500EFBF95 /* InvestDetialTableCell.m */,
 				F525EE46219BB1AF00AD5ACE /* alertTableCell.h */,
 				F525EE47219BB1AF00AD5ACE /* alertTableCell.m */,
 				F525EE4C219BF97C00AD5ACE /* MarketTableCell.h */,
 				F525EE4D219BF97C00AD5ACE /* MarketTableCell.m */,
+				F589A47721D0A0FF0004F092 /* ThreeTitleTableCell.h */,
+				F589A47821D0A0FF0004F092 /* ThreeTitleTableCell.m */,
+				F589A47A21D0A8930004F092 /* OrderMsgTableCell.h */,
+				F589A47B21D0A8930004F092 /* OrderMsgTableCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1187,6 +1212,7 @@
 				18FFD18021A2492A00669E2B /* WeChatPayViewController.m in Sources */,
 				F56A398621AB98E000B39E13 /* GoogleCheckVC.m in Sources */,
 				F554797121A646A200AFE48B /* NoticeDetialVC.m in Sources */,
+				F589A47921D0A0FF0004F092 /* ThreeTitleTableCell.m in Sources */,
 				F53D8996219CFE9200023EB0 /* RateVC.m in Sources */,
 				1863D0A72195785200316AFE /* AppDelegate.m in Sources */,
 				185369A4219D577C00E26FDB /* AboutViewController.m in Sources */,
@@ -1209,8 +1235,10 @@
 				1851C9282199606D00B84513 /* PayViewController.m in Sources */,
 				1851C92B2199608000B84513 /* ConfirmViewController.m in Sources */,
 				18B2363D219AB55500E2594C /* AssetCenterCell.m in Sources */,
+				F530C87921CCBC4800BD482D /* OrderDetialVC.m in Sources */,
 				1851C93E2199675600B84513 /* HandleViewController.m in Sources */,
 				1863D0DE219578E200316AFE /* CDNavigationVC.m in Sources */,
+				F589A47C21D0A8930004F092 /* OrderMsgTableCell.m in Sources */,
 				1820227421A7DED9006C97DF /* ZhuceViewController.m in Sources */,
 				F5396B8B219A55C900EFBF95 /* HomeTableCellTableViewCell.m in Sources */,
 				F525EE5C219C0FC800AD5ACE /* YzcChartView.m in Sources */,
@@ -1233,8 +1261,10 @@
 				185369AE219D69E100E26FDB /* HelpViewController.m in Sources */,
 				18E7EB41219BA9C5004EDE91 /* ASDetailViewController.m in Sources */,
 				1863D10D21957CBD00316AFE /* NetTools.m in Sources */,
+				F53341BA2223D02E00256906 /* NullValue.m in Sources */,
 				F5342E31219E63B400853EA1 /* ExpiredVC.m in Sources */,
 				F56A398021AB82B600B39E13 /* LTView.m in Sources */,
+				F530C87C21CCD6EB00BD482D /* LLLIView.m in Sources */,
 				1863D10B21957CBD00316AFE /* CustomAlertView.m in Sources */,
 				F56A8DF521A2418A00659418 /* SettingVC.m in Sources */,
 				F5342E38219E6A8400853EA1 /* DCNavTabBarController.m in Sources */,
