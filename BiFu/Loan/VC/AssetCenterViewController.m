@@ -40,7 +40,7 @@
     self.navigationItem.rightBarButtonItem =item;
     
     [self setupTableView];
-    [self loadData];
+    [self loadData]; 
 }
 
 -(void)loadData{

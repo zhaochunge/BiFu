@@ -96,7 +96,8 @@
 #pragma mark 下一步
 -(void)nextBtnClick{
     NSLog(@"next");
-    NSString *url=@"http://bfd.app0411.com/api/user/register";
+//    NSString *url=@"http://bfd.app0411.com/api/user/register";
+    NSString *url=@"http://bfd.app0411.com/api/user/resetpwd";
     NSURLSession *session=[NSURLSession sharedSession];
     NSURL *url2=[NSURL URLWithString:url];
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url2];
@@ -105,15 +106,15 @@
                        [NSString stringWithFormat:@"%@",_phoneTF.text],
                        [NSString stringWithFormat:@"%@",_pwdTF.text],
                        [NSString stringWithFormat:@"%@",_repwdTF.text],
-                       [NSString stringWithFormat:@"%@",_verCodeTF.text]] dataUsingEncoding:NSUTF8StringEncoding];
+                       [NSString stringWithFormat:@"%@",_verCodeTF.text]] dataUsingEncoding:NSUTF8StringEncoding];////
     NSURLSessionDataTask *dataTask=[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"dict:%@,msg:%@",dict,dict[@"msg"]);
         if ([dict[@"code"] isEqual:@1]) {
-            NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
-            NSString *token=dict[@"data"][@"userinfo"][@"token"];
-            [user setObject:token forKey:@"token"];
-            NSLog(@"token:%@",token);
+//            NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+//            NSString *token=dict[@"data"][@"userinfo"][@"token"];
+//            [user setObject:token forKey:@"token"];
+//            NSLog(@"token:%@",token);
 
             if ([self respondsToSelector:@selector(presentingViewController)]){
                 [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:^{

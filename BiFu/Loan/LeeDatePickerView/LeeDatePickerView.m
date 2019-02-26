@@ -175,6 +175,7 @@ static CGFloat selectPickerTimerInterval = 0.1; // pickerview 滚动 timer 时�
     }
     return _endYear;
 }
+
 -(NSMutableArray *)yearArray{
     if (_yearArray == nil) {
         _yearArray = [NSMutableArray array];
@@ -268,6 +269,7 @@ static CGFloat selectPickerTimerInterval = 0.1; // pickerview 滚动 timer 时�
 -(void)tapView{
     [self showContentView:NO];
 }
+///////
 -(CheckDateState)checkDateStartDate:(NSDate * )startDate endDate:(NSDate *)endDate{
     if ([startDate compare:endDate] == NSOrderedDescending) {
         return CheckDateState_EndTimeEarly;

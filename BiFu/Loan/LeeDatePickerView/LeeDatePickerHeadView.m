@@ -110,6 +110,7 @@
         [self.delegate leeDatePickerHeadViewSelectedEndTimeView:self];
     }
 }
+//////////
 -(void)setStartDateStr:(NSString *)startDateStr{
     _startDateStr = startDateStr;
     self.startTimeLabel.text = startDateStr;
@@ -119,6 +120,6 @@
     self.endTimeLabel.text = endDateStr;
     
 }
-
+//送ります、送ります、
 
 @end
