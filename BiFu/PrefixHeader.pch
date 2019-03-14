@@ -30,11 +30,12 @@
 /** 第三方  */
 
 #define BASE_URL @"http://bfd.app0411.com/api/"
-
+#define CDN_URL @"http://bfd.app0411.com"
 #import "Masonry.h"
 #import "AFNetworking.h"
 #import "MMProgressHUD.h"
 #import "MBProgressHUD.h"
+#import "UIImageView+WebCache.h"
 
 //工具类
 #import "Base64Verb.h"

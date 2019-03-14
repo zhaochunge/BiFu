@@ -24,7 +24,7 @@
     [self getData];
 }
 -(void)createTable{
-        self.rataTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-SafeAreaBottomHeight-SafeAreaTopHeight-50) style:(UITableViewStyleGrouped)];
+        self.rataTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-SafeAreaBottomHeight-SafeAreaTopHeight) style:(UITableViewStyleGrouped)];
         self.rataTable.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, CGFLOAT_MIN)];
         self.rataTable.delegate = self;
         self.rataTable.dataSource = self;

@@ -11,6 +11,7 @@
 #import "InvestDetialTableCell.h"
 #import "alertTableCell.h"
 #import "OrderDetialVC.h"
+#import "LoginViewController.h"
 
 @interface InvestDetailVC ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UILabel *present;
@@ -38,6 +39,7 @@
 @property(nonatomic,strong)NSArray *orderArr;
 @property(nonatomic,strong)NSArray *borrowArr;
 @property(nonatomic,strong)NSDictionary *dicData;
+@property(nonatomic,strong)NSString *authStatus;
 @end
 
 @implementation InvestDetailVC
@@ -48,7 +50,7 @@
     self.orderArr = @[@"订单号",@"利息",@"实际转账(借款金额-利息)",@"付款方式",@"质押数量",@"质押率",@"平仓价",@"发标时间"];
     self.borrowArr = @[@"借款用户",@"性别/年龄",@"地区",@"注册时间",@"认证等级",@"共发布借款次数",@"近半年有无逾期还款",@"胜/败诉记录",@"质押地址"];
     [self getData];
-    [self initView];
+    [self rzdata];
     [self leftItem];
     
     [self createScroll];
@@ -60,7 +62,7 @@
     [self createBorrower];
     [self createMessage];
     [self bottomBtn];
-    
+    [self initView];
 }
 
 #pragma mark 初始化
@@ -72,9 +74,10 @@
     CGRect rect1 = [@"1.平台暂不支持债权转让功能,确认投资后中途不可退出." boundingRectWithSize:CGSizeMake(WIDTH -40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil];
     _h = rect1.size.height+rect2.size.height+rect3.size.height;
     _orderSpr=true;
-    _bowSpr = true;
+    _bowSpr = false;
     _mesSpr = true;
     _selected = true;
+    [self reloadView];
 }
 #pragma mark 底部滚动
 -(void)createScroll{
@@ -106,11 +109,27 @@
 }
 #pragma mark 立即投资
 -(void)investAction:(UIButton *)btn{
-    OrderDetialVC *vc = [OrderDetialVC new];
-    vc.sn = self.sn;
-    vc.money = self.money;
-    vc.term = self.term;
-    [self.navigationController pushViewController:vc animated:YES];
+    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+    NSString *token=[user objectForKey:@"token"];
+    if(token.length){
+        [self showMessage:self.authStatus];
+        if([self.authStatus isEqualToString:@"Authenticated by real name"]){
+            OrderDetialVC *vc = [OrderDetialVC new];
+            vc.sn = self.sn;
+            vc.money = self.money;
+            vc.term = self.term;
+            [self.navigationController pushViewController:vc animated:YES];
+        }else{
+//            [self showMessage:@"请先实名认证"];
+            [self showMessage:self.authStatus];
+            
+        }
+    }else{
+        LoginViewController *loginVC=[LoginViewController new];
+        [self presentViewController:loginVC animated:YES completion:^{
+        }];
+    }
+    
 }
 #pragma mark 订单模块创建
 -(void)createOrder{
@@ -137,6 +156,7 @@
     self.borrowTable.dataSource = self;
     _borrowTable.tableHeaderView = _borrowHeader;
     _borrowTable.scrollEnabled = NO;
+//    _bowSpr = false;
 }
 #pragma mark 温馨提示模块创建
 -(void)createMessage{
@@ -150,6 +170,7 @@
     self.messageTable.dataSource = self;
     _messageTable.tableHeaderView = _messageHeader;
     _messageTable.scrollEnabled = NO;
+//    _mesSpr = false;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(tableView==self.messageTable){
@@ -353,6 +374,11 @@
     [self reloadView];
 }
 -(void)reloadView{
+    if (_bowSpr) {
+        [_borrowBtn setImage:[UIImage imageNamed:@"投资_打开ICON"] forState:UIControlStateNormal];
+    }else{
+        [_borrowBtn setImage:[UIImage imageNamed:@"投资_关闭ICON"] forState:UIControlStateNormal];
+    }
     CGFloat h1,h2,h3;
     h1 = _orderSpr?370:50;
     h2 = _bowSpr ? 410:50;
@@ -412,7 +438,7 @@
 
 -(void)getData{
     [self loadAnimate:@"数据加载中"];
-    NSString *url=[NSString stringWithFormat:@"%@invest/deals?",BASE_URL];
+    NSString *url=[NSString stringWithFormat:@"%@invest/deals",BASE_URL];
    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
  
@@ -429,6 +455,7 @@
             [self.orderTable reloadData];
             [self.borrowTable reloadData];
             [self.messageTable reloadData];
+            
         }else{
             [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
         }
@@ -437,6 +464,31 @@
     }];
     
 }
+#pragma mark
+-(void)rzdata{
+    NSString *url=[NSString stringWithFormat:@"%@user/getRealnameAuthStatus",BASE_URL];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *token = [ user objectForKey:@"token"];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        self.hud.hidden = YES;
+        if([responseObject[@"code"] isEqual:@1]){
+            NSLog(@"----------%@",responseObject); 
+            if([responseObject[@"msg"] isEqualToString:@"Authenticated by real name"]){
+                self.authStatus = responseObject[@"msg"];
+            }else{
+                self.authStatus = @"请先实名认证";
+            }
+        }else{
+            [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+   
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

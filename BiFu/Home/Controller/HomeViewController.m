@@ -10,13 +10,14 @@
 #import "LIView.h"
 #import "HomeTableCellTableViewCell.h"
 #import "InvestDetailVC.h"
-#import "InvestViewController.h"
+#import "HotListVC.h"
 #import "NoticeListVC.h"
 
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *table;
 @property(nonatomic,strong)UIView *header;
 @property(nonatomic,strong)UIView *footer;
+@property(nonatomic,strong)NSMutableArray *dataArr;
 @end
 
 @implementation HomeViewController
@@ -26,6 +27,8 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor=LINECOLOR;
+    self.dataArr = [NSMutableArray array];
+    [self getData];
     [self createHeader];
     [self createFooter];
     [self creatUI];
@@ -165,7 +168,7 @@
 }
 #pragma mark 热门推荐 更多点击
 -(void)moreClick:(UIButton *)btn{
-    InvestViewController *vc =[InvestViewController new];
+    HotListVC *vc =[HotListVC new];
     [self.navigationController pushViewController:vc animated:YES];
 }
 #pragma mark 创建table
@@ -180,28 +183,55 @@
     _table.tableFooterView = self.footer;
     _table.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.dataArr.count;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HomeTableCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeReuse" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.title.text = @"哈DB231244";
-    cell.present.text = @"23.4%";
+    cell.title.text = self.dataArr[indexPath.row][@"sn"];
+    cell.present.text = [NSString stringWithFormat:@"%@%%",self.dataArr[indexPath.row][@"rate"]];
     cell.type.text = @"高利率";
-    cell.moneyCount.text = @"987664";
-    cell.dateCount.text = @"7天";
+    cell.moneyCount.text = [NSString stringWithFormat:@"%@",self.dataArr[indexPath.row][@"money"]];
+    cell.dateCount.text = [NSString stringWithFormat:@"%@天",self.dataArr[indexPath.row][@"term"]];
     cell.rate.text =@"年化利率";
     cell.moneyTitle.text = @"借款金额(元)";
     cell.dateTitle.text = @"借款期限";
+    
     return cell;
-}
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    InvestDetailVC *vc = [InvestDetailVC new];
-    [self.navigationController pushViewController:vc animated:YES];
-}
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 130;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    InvestDetailVC *vc = [InvestDetailVC new];
+    vc.sn = self.dataArr[indexPath.row][@"sn"];
+    vc.money = self.dataArr[indexPath.row][@"money"];
+    vc.term = self.dataArr[indexPath.row][@"term"];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+-(void)getData{
+    [self loadAnimate:@"数据加载中"];
+    NSString *url=[NSString stringWithFormat:@"%@invest/index?",BASE_URL];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *token = [ user objectForKey:@"token"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        self.hud.hidden = YES;
+        if([responseObject[@"code"] isEqual:@1]){
+            for (NSDictionary *dic in responseObject[@"data"][@"data"]) {
+                [self.dataArr addObject:dic];
+            }
+            [self.table reloadData];
+        }else{
+            [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

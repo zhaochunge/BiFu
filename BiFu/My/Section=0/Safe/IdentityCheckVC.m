@@ -283,7 +283,7 @@
     }else if ([self.imgflag isEqualToString:@"fan"]){
         self.bac4.image = image;
     }else if ([self.imgflag isEqualToString:@"shou"]){
-        self.bac5.image = image;
+        self.bac5.image = image; 
     }
     self.myImg = image;
     [self uploadImg];
@@ -296,7 +296,7 @@
 #pragma mark 上传图片
 -(void)uploadImg{
     [self loadAnimate:@"上传中"];
-    NSString *url=[NSString stringWithFormat:@"%@index/upload",BASE_URL];
+    NSString *url=[NSString stringWithFormat:@"%@common/upload",BASE_URL];
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSString *token = [user objectForKey:@"token"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

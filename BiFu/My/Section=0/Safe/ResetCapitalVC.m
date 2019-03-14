@@ -28,23 +28,23 @@
     [self createView];
 }
 -(void)createView{
-    UIView *bac1 =[UIView new];
-    bac1.frame = CGRectMake(0, 10, WIDTH, 90);
-    bac1.backgroundColor =[UIColor whiteColor];
-    [self.view addSubview:bac1];
-    UILabel *title =[UILabel new];
-    title.frame = CGRectMake(15, 10, WIDTH-30, 40);
-    [bac1 addSubview:title];
-    title.text = @"重置资金密码";
-    title.font = [UIFont systemFontOfSize:21];
-    self.old =[[LTView alloc] initWithFrame:CGRectMake(0, 50, WIDTH, 30)];
-    self.old.titleLab.text = @"旧密码";
-    self.old.pwd.placeholder = @"请输入旧密码";
-    self.old.pwd.delegate = self;
-    [bac1 addSubview:self.old];
+//    UIView *bac1 =[UIView new];
+//    bac1.frame = CGRectMake(0, 10, WIDTH, 90);
+//    bac1.backgroundColor =[UIColor whiteColor];
+//    [self.view addSubview:bac1];
+//    UILabel *title =[UILabel new];
+//    title.frame = CGRectMake(15, 10, WIDTH-30, 40);
+//    [bac1 addSubview:title];
+//    title.text = @"重置资金密码";
+//    title.font = [UIFont systemFontOfSize:21];
+//    self.old =[[LTView alloc] initWithFrame:CGRectMake(0, 50, WIDTH, 30)];
+//    self.old.titleLab.text = @"旧密码";
+//    self.old.pwd.placeholder = @"请输入旧密码";
+//    self.old.pwd.delegate = self;
+//    [bac1 addSubview:self.old];
     
     UIView *bac2 =[UIView new];
-    bac2.frame = CGRectMake(0, bac1.bottom+10, WIDTH, 100);
+    bac2.frame = CGRectMake(0, 10, WIDTH, 100);
     bac2.backgroundColor =[UIColor whiteColor];
     [self.view addSubview:bac2];
     self.pwdNew =[[LTView alloc] initWithFrame:CGRectMake(0, 10, WIDTH, 30)];
@@ -104,9 +104,7 @@
 }
 #pragma mark 确定点击
 -(void)sure:(UIButton *)btn{
-    if (self.old.pwd.text.length==0) {
-        [self showMessage:@"请输入旧密码"];
-    }else if (self.pwdNew.pwd.text.length==0){
+   if (self.pwdNew.pwd.text.length==0){
         [self showMessage:@"请输入新密码"];
     }else if(self.repeat.pwd.text.length==0){
         [self showMessage:@"请输入重复密码"];
@@ -153,10 +151,11 @@
     NSString *url=[NSString stringWithFormat:@"%@user/changepwd?",BASE_URL];
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSString *token = [ user objectForKey:@"token"];
-    NSString *mobile = [user objectForKey:@"mobile"];
+//    NSString *mobile = [user objectForKey:@"mobile"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
-    NSDictionary *dic = @{@"mobile":mobile,@"oldpassword":self.old.pwd.text,@"newpassword":self.pwdNew.pwd.text,@"renewpassword":self.repeat.pwd.text,@"captcha":self.code.pwd.text};
+//    NSDictionary *dic = @{@"mobile":mobile,@"oldpassword":self.old.pwd.text,@"newpassword":self.pwdNew.pwd.text,@"renewpassword":self.repeat.pwd.text,@"captcha":self.code.pwd.text};
+    NSDictionary *dic = @{@"loginpass":self.loginPwd.pwd.text,@"password":self.pwdNew.pwd.text,@"repassword":self.repeat.pwd.text,@"captcha":self.code.pwd.text};
     [manager POST:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         self.hud.hidden = YES;
         NSLog(@"%@",responseObject);

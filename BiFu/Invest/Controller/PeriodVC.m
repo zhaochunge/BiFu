@@ -25,7 +25,7 @@
     [self getData];
 }
 -(void)createTable{
-    self.periodTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-SafeAreaBottomHeight-SafeAreaTopHeight-50) style:(UITableViewStyleGrouped)];
+    self.periodTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-SafeAreaBottomHeight-SafeAreaTopHeight) style:(UITableViewStyleGrouped)];
     self.periodTable.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, CGFLOAT_MIN)];
     self.periodTable.delegate = self;
     self.periodTable.dataSource = self;

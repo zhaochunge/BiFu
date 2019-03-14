@@ -25,7 +25,7 @@
     [self getData];
 }
 -(void)createTable{
-    self.moneyTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-SafeAreaBottomHeight-SafeAreaTopHeight-50) style:(UITableViewStyleGrouped)];
+    self.moneyTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-SafeAreaBottomHeight-SafeAreaTopHeight) style:(UITableViewStyleGrouped)];
     self.moneyTable.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, CGFLOAT_MIN)];
     self.moneyTable.delegate = self;
     self.moneyTable.dataSource = self;

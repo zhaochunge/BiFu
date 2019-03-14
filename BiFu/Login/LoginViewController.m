@@ -47,7 +47,7 @@
             if ([dict[@"code"] isEqual:@1]) {
                 NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
                 [user setObject:dict[@"data"][@"userinfo"][@"token"] forKey:@"token"];
-                [user setObject:dict[@"data"][@"userinfo"][@"mobile"] forKey:@"mobile"];
+                [user setObject:dict[@"data"][@"userinfo"][@"mobile"] forKey:@"mobile"];    
                 
                 if (dict[@"data"][@"userinfo"][@"is_secondaryVerify"]) {//1
                     [self dismissViewControllerAnimated:YES completion:^{

@@ -125,7 +125,7 @@
     }else if (indexPath.section == 4){
         //登录二次验证
         [self creView];
-        
+          
     }else{
         //身份认证
         IdentityCheckVC *vc =[IdentityCheckVC new];

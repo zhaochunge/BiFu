@@ -12,6 +12,7 @@
 #import "OrderMsgTableCell.h"
 #import "ShowAnimationView.h"
 #import "LTView.h"
+#import "LLBView.h"
 
 @interface OrderDetialVC ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *table;
@@ -40,11 +41,13 @@
 @property(nonatomic,strong)UIView *personLine;
 @property(nonatomic,strong)ShowAnimationView *backView;
 @property(nonatomic,strong)LTView *payCodeView;
-@property(nonatomic,strong)LTView *numView;
+@property(nonatomic,strong)LLBView *numView;
 @property(nonatomic,strong)UIButton *leftBtn;
 @property(nonatomic,strong)UIButton *rightBtn;
 @property(nonatomic,strong)UIButton *sureBtn;
 @property(nonatomic,strong)NSDictionary *dicData;
+@property(nonatomic,strong)NSDictionary *payData;
+@property(nonatomic,strong)NSString *oid;
 @end
 
 @implementation OrderDetialVC
@@ -62,7 +65,7 @@
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     self.isSpr= NO;
     [self getData];
-//    [self codeData];
+    [self codeData];
     [self leftItemBlack];
     [self createdHeader];
     [self bottomButton];
@@ -144,7 +147,8 @@
 }
 #pragma 确认取消点击
 -(void)quxiao:(UIButton *)btn {
-    [self.backView dispear];
+    [self closeOrder];
+//    [self.backView dispear];
 }
 #pragma mark 去付款点击
 -(void)pay:(UIButton *)btn{
@@ -183,12 +187,25 @@
     self.payCodeView.pwd.secureTextEntry = NO;
     self.payCodeView.pwd.text = @"1234";
     [heiView addSubview:self.payCodeView];
-    self.numView = [[LTView alloc] initWithFrame:CGRectMake(0, self.payCodeView.bottom, view.width-20, 30)];
+    self.numView = [[LLBView alloc] initWithFrame:CGRectMake(0, self.payCodeView.bottom, view.width-20, 30)];
     self.numView.backgroundColor = LINECOLOR;
-    self.numView.titleLab.text = @"招商银行";
-    self.numView.pwd.secureTextEntry = NO;
-    self.numView.pwd.text = @"1234 213213 21312";
+    
     [heiView addSubview:self.numView];
+    if ([self.payWay isEqualToString:@"bank"]) {
+        self.numView.payWay.text = [NSString stringWithFormat:@"%@",self.payData[@"payment"][@"bank_of_deposit"]];
+        self.numView.numberLab.text = [NSString stringWithFormat:@"%@",self.payData[@"payment"][@"bank_card_number"]];
+        [_btn setBackgroundImage:[UIImage imageNamed:@"复制-icon"] forState:(UIControlStateNormal)];
+        [self.numView.btn addTarget:self action:@selector(copyAct:) forControlEvents:(UIControlEventTouchUpInside)];
+        
+    }else if([self.payWay isEqualToString:@"wechat"]){
+        self.numView.payWay.text = @"微信";
+        self.numView.numberLab.text = [NSString stringWithFormat:@"%@",self.payData[@"payment"][@"wechat_account"]];
+        [self.numView.btn addTarget:self action:@selector(wechatCode:) forControlEvents:(UIControlEventTouchUpInside)];
+    }else{
+        self.numView.payWay.text = @"支付宝";
+        self.numView.numberLab.text = [NSString stringWithFormat:@"%@",self.payData[@"payment"][@"alipay_account"]];
+        [self.numView.btn addTarget:self action:@selector(alipayCode:) forControlEvents:(UIControlEventTouchUpInside)];
+    }
     UILabel *msg = [UILabel new];
     msg.frame = CGRectMake(10, heiView.bottom, view.width-20, 80);
     NSString *str =@"转账”必须备注付款码“,忘记备注请及时联系客服!";
@@ -219,10 +236,30 @@
 }
 #pragma mark 确定付款点击
 -(void)paySure:(UIButton *)btn{
-    self.sureBtn.hidden = NO;
-    [self.leftBtn setEnabled:NO];
-    [self.rightBtn setEnabled:NO];
-    [self.backView dispear];
+    [self loadAnimate:@"提交中"];
+    NSString *url=[NSString stringWithFormat:@"%@invest/confirm?",BASE_URL];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *token = [ user objectForKey:@"token"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    NSDictionary *dic = @{@"sn":self.sn,@"oid":self.oid};
+    [manager POST:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        self.hud.hidden = YES;
+        if([responseObject[@"code"] isEqual:@1]){
+            [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            self.sureBtn.hidden = NO;
+            [self.leftBtn setEnabled:NO];
+            [self.rightBtn setEnabled:NO];
+        }else{
+            [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            NSLog(@"%@",responseObject[@"msg"]);
+        }
+        [self.backView dispear];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self.backView dispear];
+    }];
+    
+    
 }
 #pragma mark 支付码展示
 -(void)creView{
@@ -243,25 +280,31 @@
     [codeView addSubview:codeImg];
     UILabel *title = [UILabel new];
     
-    title.text = @"是的很好看(是假的)";
+    
     title.font = [UIFont systemFontOfSize:19];
     
     title.textAlignment = YES;
     [view addSubview:title];
     if ([self.payWay isEqualToString:@"wechat"]) {
         view.image = [UIImage imageNamed:@"微信"];
+        title.text = [NSString stringWithFormat:@"%@",self.payData[@"payment"][@"wechat_account"]];
         codeView.frame =CGRectMake(view.width/5, view.height/5, view.width/5*3, view.width/5*3);
         title.frame = CGRectMake(view.width/5, codeView.bottom+10, view.width/5*3, 40);
         title.textColor =[UIColor whiteColor];
+        codeImg.frame = CGRectMake(15, 15, codeView.width-30, codeView.width-30);
+        [codeImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",CDN_URL,self.payData[@"payment"][@"wechat_cm_qrcode"]]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
         
     }else if([self.payWay isEqualToString:@"alipay"]){
         view.image = [UIImage imageNamed:@"支付宝"];
+        title.text = [NSString stringWithFormat:@"%@",self.payData[@"payment"][@"alipay_account"]];
         codeView.frame = CGRectMake(view.width/5, view.height/78*27, view.width/5*3, view.width/5*3);
         title.frame = CGRectMake(view.width/5, codeView.bottom-10, view.width/5*3, 60);
         title.backgroundColor = [UIColor whiteColor];
         title.textColor =[UIColor blackColor];
+        codeImg.frame = CGRectMake(15, 15, codeView.width-30, codeView.width-30);
+        [codeImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",CDN_URL,self.payData[@"payment"][@"alipay_cm_qrcode"]]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     }
-    codeImg.frame = CGRectMake(15, 15, codeView.width-30, codeView.width-30);
+    
     
     UIButton *close =[UIButton buttonWithType:UIButtonTypeCustom];
     close.frame = CGRectMake(self.backView.width/2-10, view.bottom+15, 20, 20);
@@ -338,14 +381,11 @@
     [self.btn addTarget:self action:@selector(spr:) forControlEvents:UIControlEventTouchUpInside];
 //银行卡
     self.bankView =[[LLLIView alloc] initWithFrame:CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 65)];
-//    self.bankView.titleLab.text = @"招商银行";
-//    self.bankView.numberLab.text = @"233 3222 22321 212";
-//    self.bankView.userName.text = @"手机壳";
     self.bankView.layer.cornerRadius = 5;
     self.bankView.layer.masksToBounds = YES;
     self.bankView.img.image = [UIImage imageNamed:@"银行卡-icon"];
     [self.bankView.btn setBackgroundImage:[UIImage imageNamed:@"复制-icon"] forState:(UIControlStateNormal)];
-    [self.bankView.btn addTarget:self action:@selector(copyAct:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.bankView.btn addTarget:self action:@selector(copyAct:) forControlEvents:UIControlEventTouchUpInside];
     self.bankView.userInteractionEnabled = true;
     UITapGestureRecognizer* tapGes1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bankClick:)];
     [self.bankView addGestureRecognizer:tapGes1];
@@ -354,11 +394,9 @@
     self.wechatView =[[LLLIView alloc] initWithFrame:CGRectMake(15, self.bankView.bottom, WIDTH-30, 0)];
     self.wechatView.layer.cornerRadius = 5;
     self.wechatView.layer.masksToBounds = YES;
-//    self.wechatView.titleLab.text = @"微信";
-//    self.wechatView.numberLab.text = @"jdhfj-122";
-//    self.wechatView.userName.text = @"手机壳";
+    self.wechatView.titleLab.text = @"微信";
     self.wechatView.img.image = [UIImage imageNamed:@"微信-icon"];
-    [self.wechatView.btn addTarget:self action:@selector(wechatCode:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.wechatView.btn addTarget:self action:@selector(wechatCode:) forControlEvents:UIControlEventTouchUpInside];
     self.wechatView.userInteractionEnabled = true;
     UITapGestureRecognizer* tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(wechatClick:)];
     [self.wechatView addGestureRecognizer:tapGes];
@@ -367,11 +405,9 @@
     self.aliPayView =[[LLLIView alloc] initWithFrame:CGRectMake(15, self.wechatView.bottom, WIDTH-30, 0)];
     self.aliPayView.layer.cornerRadius = 5;
     self.aliPayView.layer.masksToBounds = YES;
-//    self.aliPayView.titleLab.text = @"支付宝";
-//    self.aliPayView.numberLab.text = @"122 1232 1111";
-//    self.aliPayView.userName.text = @"手机壳";
+    self.aliPayView.titleLab.text = @"支付宝";
     self.aliPayView.img.image = [UIImage imageNamed:@"支付宝-icon"];
-    [self.aliPayView.btn addTarget:self action:@selector(alipayCode:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.aliPayView.btn addTarget:self action:@selector(alipayCode:) forControlEvents:UIControlEventTouchUpInside];
     self.aliPayView.userInteractionEnabled = true;
     UITapGestureRecognizer* tapGes2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(alipayClick:)];
     [self.aliPayView addGestureRecognizer:tapGes2];
@@ -483,7 +519,14 @@
 }
 #pragma mark 拷贝卡号
 -(void)copyAct:(UIButton *)btn{
-    
+    UIPasteboard *pab = [UIPasteboard generalPasteboard];
+    pab.string = self.bankView.numberLab.text;
+    if (pab == nil) {
+        [self showMessage:@"复制失败"];
+    }else
+    {
+        [self showMessage:@"已复制"];
+    }
 }
 #pragma mark 显示微信二维码
 -(void)wechatCode:(UIButton *)btn{
@@ -498,16 +541,89 @@
 #pragma mark 借款账户支付方式选择
 -(void)spr:(UIButton *)btn{
     self.isSpr = !self.isSpr;
+    bool bank = ![self.payData[@"payment"][@"bank_of_deposit"] isEqualToString:@""];
+    bool weichat = ![self.payData[@"payment"][@"wechat_account"] isEqualToString:@""];
+    bool alipay = ![self.payData[@"payment"][@"alipay_account"] isEqualToString:@""];
     if (self.isSpr) {
-        self.headerView.frame = CGRectMake(0, 0, WIDTH, 452);
-        self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 65);
-        self.wechatView.frame = CGRectMake(15, self.bankView.bottom+10, WIDTH-30, 65);
-        self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom+10, WIDTH-30, 65);
-    }else{
+        [self.btn setBackgroundImage:[UIImage imageNamed:@"投资_打开ICON"] forState:(UIControlStateNormal)];
+        if (bank) {
+            if (weichat) {
+                if (alipay) {
+                    self.headerView.frame = CGRectMake(0, 0, WIDTH, 452);
+                    self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 65);
+                    self.wechatView.frame = CGRectMake(15, self.bankView.bottom+10, WIDTH-30, 65);
+                    self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom+10, WIDTH-30, 65);
+                }else{
+                    self.headerView.frame = CGRectMake(0, 0, WIDTH, 452-65);
+                    self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 65);
+                    self.wechatView.frame = CGRectMake(15, self.bankView.bottom+10, WIDTH-30, 65);
+                    self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom+10, WIDTH-30, 0);
+                }
+            }else{
+                if (alipay) {
+                    self.headerView.frame = CGRectMake(0, 0, WIDTH, 452-65);
+                    self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 65);
+                    self.wechatView.frame = CGRectMake(15, self.bankView.bottom+10, WIDTH-30, 0);
+                    self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom+10, WIDTH-30, 65);
+                }else{
+                    self.headerView.frame = CGRectMake(0, 0, WIDTH, 452-65-65);
+                    self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 65);
+                    self.wechatView.frame = CGRectMake(15, self.bankView.bottom+10, WIDTH-30, 0);
+                    self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom+10, WIDTH-30, 0);
+                }
+            }
+            
+        }
+        else{
+            if (weichat) {
+                if (alipay) {
+                    self.headerView.frame = CGRectMake(0, 0, WIDTH, 452-65);
+                    self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 0);
+                    self.wechatView.frame = CGRectMake(15, self.bankView.bottom+10, WIDTH-30, 65);
+                    self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom+10, WIDTH-30, 65);
+                }else{
+                    self.headerView.frame = CGRectMake(0, 0, WIDTH, 452-65-65);
+                    self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 0);
+                    self.wechatView.frame = CGRectMake(15, self.bankView.bottom+10, WIDTH-30, 65);
+                    self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom+10, WIDTH-30, 0);
+                }
+                
+            }
+            else{
+                if (alipay) {
+                    self.headerView.frame = CGRectMake(0, 0, WIDTH, 452-65-65);
+                    self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 0);
+                    self.wechatView.frame = CGRectMake(15, self.bankView.bottom+10, WIDTH-30, 0);
+                    self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom+10, WIDTH-30, 65);
+                }else{
+                    self.headerView.frame = CGRectMake(0, 0, WIDTH, 452-65-65);
+                    self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 0);
+                    self.wechatView.frame = CGRectMake(15, self.bankView.bottom+10, WIDTH-30, 0);
+                    self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom+10, WIDTH-30, 0);
+                }
+            }
+            
+        }
+        
+    }
+    else{
+        [self.btn setBackgroundImage:[UIImage imageNamed:@"选择-icon"] forState:(UIControlStateNormal)];
         self.headerView.frame = CGRectMake(0, 0, WIDTH, 302);
-        self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 65);
-        self.wechatView.frame = CGRectMake(15, self.bankView.bottom, WIDTH-30, 0);
-        self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom, WIDTH-30, 0);
+        if (!bank) {
+            if (!weichat) {
+                self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 0);
+                self.wechatView.frame = CGRectMake(15, self.bankView.bottom, WIDTH-30, 0);
+                self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom, WIDTH-30, 65);
+            }{
+                self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 0);
+                self.wechatView.frame = CGRectMake(15, self.bankView.bottom, WIDTH-30, 65);
+                self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom, WIDTH-30, 0);
+            }
+        }else{
+            self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 65);
+            self.wechatView.frame = CGRectMake(15, self.bankView.bottom, WIDTH-30, 0);
+            self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom, WIDTH-30, 0);
+        }
     }
     self.discountLab.frame = CGRectMake(15, self.aliPayView.bottom+10, 100, 30);
     self.discountBtn.frame = CGRectMake(WIDTH-165, self.aliPayView.bottom+10, 150, 30);
@@ -642,15 +758,12 @@
     }
     
 }
+#pragma mark 订单数据获取
 -(void)getData{
     [self loadAnimate:@"数据加载中"];
     NSString *url=[NSString stringWithFormat:@"%@invest/deals?",BASE_URL];
-//    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-//    NSString *token = [ user objectForKey:@"token"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
     NSDictionary *dic = @{@"sn":self.sn};
-//    NSLog(@"%@_______%@",token,self.sn);
     [manager GET:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         self.hud.hidden = YES;
         if([responseObject[@"code"] isEqual:@1]){
@@ -658,9 +771,7 @@
             self.dicData = responseObject[@"data"];
             self.zhuanMoney.text = [NSString stringWithFormat:@"%@",self.dicData[@"deals"][@"arrival_amount"]];
 //             self.payCode.text = @"2211";
-            
             [self.table reloadData];
-            
         }else{
             [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
         }
@@ -669,21 +780,20 @@
     }];
     
 }
+#pragma mark 获取二维码数据
 -(void)codeData{
-    [self loadAnimate:@"数据加载中"];
+//    [self loadAnimate:@"数据加载中"];
     NSString *url=[NSString stringWithFormat:@"%@invest/borrowing?",BASE_URL];
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSString *token = [ user objectForKey:@"token"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
     NSDictionary *dic = @{@"sn":self.sn};
-    NSLog(@"%@_______%@",token,self.sn);
     [manager GET:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         self.hud.hidden = YES;
         if([responseObject[@"code"] isEqual:@1]){
-            if (self.bankView.titleLab.text==nil) {
-                self.bankView.height = 0;
-            }
+            self.payData = responseObject[@"data"];
+            self.oid = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"oid"]];
             self.bankView.titleLab.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"payment"][@"bank_of_deposit"]];
             self.bankView.numberLab.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"payment"][@"bank_card_number"]];
             self.bankView.userName.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"payment"][@"bank_name"]];
@@ -691,15 +801,53 @@
 //            self.aliPayView.userName.text = @"手机壳";
             self.wechatView.numberLab.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"payment"][@"wechat_account"]];
 //            self.wechatView.userName.text = @"手机壳";
+            if ([self.bankView.titleLab.text isEqualToString:@""]) {
+                self.bankView.frame = CGRectMake(15, self.namelab.bottom+10, WIDTH-30, 0);
+                self.wechatView.frame = CGRectMake(15, self.bankView.bottom+10, WIDTH-30, 65);
+                if([self.wechatView.titleLab.text isEqualToString:@""]){
+                    self.wechatView.frame = CGRectMake(15, self.bankView.bottom+10, WIDTH-30, 0);
+                    self.aliPayView.frame = CGRectMake(15, self.wechatView.bottom+10, WIDTH-30, 65);
+                }
+            }
+            
+            
         }else{
             [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            NSLog(@"%@",responseObject[@"msg"]);
+            if ([responseObject[@"msg"] isEqualToString:@"The target has been robbed!"]) {
+                self.sureBtn.hidden = NO;
+                [self.sureBtn setTitle:@"已被其他用户抢单" forState:(UIControlStateNormal)];
+                [self.leftBtn setEnabled:NO];
+                [self.rightBtn setEnabled:NO];
+            }
+            
         }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"+++++%@",error);
+    }];
+   
+}
+#pragma mark  取消提交
+-(void)closeOrder{
+    [self loadAnimate:@"取消中"];
+    NSString *url=[NSString stringWithFormat:@"%@invest/cancel?",BASE_URL];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *token = [ user objectForKey:@"token"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"token"];
+    NSDictionary *dic = @{@"sn":self.sn,@"oid":self.oid};
+    [manager POST:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        self.hud.hidden = YES;
+        if([responseObject[@"code"] isEqual:@1]){
+            [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+        }else{
+            [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
+            NSLog(@"%@",responseObject[@"msg"]);
+        }
+        [self.backView dispear];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
     }];
-    
-    
-    
     
 }
 /*

@@ -5,5 +5,6 @@ target 'BiFu' do
 	pod 'Masonry', '~> 1.1.0'
  	pod 'MMProgressHUD', '~> 0.3.2'
 	pod 'MBProgressHUD', '~> 1.1.0'
+	pod 'SDWebImage', '~> 4.3.3'
 
 end
