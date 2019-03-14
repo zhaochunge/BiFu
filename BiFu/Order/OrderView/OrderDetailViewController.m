@@ -1,35 +1,35 @@
 //
-//  InvestDetailVC.m
+//  OrderDetailViewController.m
 //  BiFu
 //
-//  Created by zcg on 2018/11/13.
-//  Copyright © 2018年 Xue. All rights reserved.
-//
+//  Created by apple on 2019/3/5.
+//  Copyright © 2019年 Xue. All rights reserved.
+//待还款详情+已还款详情
 
-#import "InvestDetailVC.h"
+#import "OrderDetailViewController.h"
 #import "LLView.h"
 #import "InvestDetialTableCell.h"
 #import "alertTableCell.h"
-#import "OrderDetialVC.h"
+//#import "OrderDetialVC.h"
 
-@interface InvestDetailVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface OrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UILabel *present;
-@property(nonatomic,strong)LLView *kindView;
-@property(nonatomic,strong)LLView *borrowView;
-@property(nonatomic,strong)LLView *dayView;
+//@property(nonatomic,strong)LLView *kindView;
+//@property(nonatomic,strong)LLView *borrowView;
+//@property(nonatomic,strong)LLView *dayView;
 @property(nonatomic,strong)UITableView *orderTable;
 @property(nonatomic,strong)UITableView *borrowTable;
-@property(nonatomic,strong)UITableView *messageTable;
+//@property(nonatomic,strong)UITableView *messageTable;
 @property(nonatomic,strong)UIView *header;
 @property(nonatomic,strong)UIView *orderHeader;
 @property(nonatomic,strong)UIView *borrowHeader;
-@property(nonatomic,strong)UIView *messageHeader;
+//@property(nonatomic,strong)UIView *messageHeader;
 @property(nonatomic,strong)UIScrollView *scrollView;
 @property(nonatomic,strong)UIButton *orderBtn;
 @property(nonatomic,strong)UIButton *borrowBtn;
 @property(nonatomic,strong)UIButton *mesBtn;
-@property(nonatomic,strong)UIButton *investBtn;
-@property(nonatomic,assign)double h;
+//@property(nonatomic,strong)UIButton *investBtn;
+//@property(nonatomic,assign)double h;
 @property(nonatomic,assign)BOOL orderSpr;
 @property(nonatomic,assign)BOOL bowSpr;
 @property(nonatomic,assign)BOOL mesSpr;
@@ -38,16 +38,16 @@
 @property(nonatomic,strong)NSArray *orderArr;
 @property(nonatomic,strong)NSArray *borrowArr;
 @property(nonatomic,strong)NSDictionary *dicData;
+
 @end
 
-@implementation InvestDetailVC
+@implementation OrderDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.orderArr = @[@"订单号",@"利息",@"实际转账(借款金额-利息)",@"付款方式",@"质押数量",@"质押率",@"平仓价",@"发标时间"];
-    self.borrowArr = @[@"借款用户",@"性别/年龄",@"地区",@"注册时间",@"认证等级",@"共发布借款次数",@"近半年有无逾期还款",@"胜/败诉记录",@"质押地址"];
-    [self getData];
+    self.borrowArr = @[@"借款用户",@"支付宝",@"微信",@"还款码"];
     [self initView];
     [self leftItem];
     
@@ -55,22 +55,14 @@
     [self headerView];
     [self createOrderHeater];
     [self createBorrowHeader];
-    [self createMessageHeader];
     [self createOrder];
     [self createBorrower];
-    [self createMessage];
-    [self bottomBtn];
     
 }
 
 #pragma mark 初始化
 -(void)initView{
-    self.navigationItem.title = @"投资详情";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    CGRect rect3 = [@"3.确认投资后,请务必仔细核实收款信息,尽快完成付款." boundingRectWithSize:CGSizeMake(WIDTH -40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil];
-    CGRect rect2 = [@"2当日取消投资超过5次将被限制投资操作,需等24小时后方可继续操作." boundingRectWithSize:CGSizeMake(WIDTH -40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil];
-    CGRect rect1 = [@"1.平台暂不支持债权转让功能,确认投资后中途不可退出." boundingRectWithSize:CGSizeMake(WIDTH -40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]} context:nil];
-    _h = rect1.size.height+rect2.size.height+rect3.size.height;
     _orderSpr=true;
     _bowSpr = true;
     _mesSpr = true;
@@ -80,7 +72,7 @@
 -(void)createScroll{
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     _scrollView.backgroundColor = LINECOLOR;
-    _scrollView.contentSize = CGSizeMake(0, 180+370+15+370+15+_h+150+40+40+40+40);
+    _scrollView.contentSize = CGSizeMake(0, 180+370+200+40);
     _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
@@ -88,30 +80,7 @@
     _scrollView.delegate = self;
     [self.view addSubview:_scrollView];
 }
-#pragma mark 底部button
--(void)bottomBtn{
-    self.investBtn =[UIButton buttonWithType:UIButtonTypeSystem];
-    _investBtn.frame = CGRectMake(10, _messageTable.bottom+40, WIDTH-20, 40);
-    [_investBtn setTitle:@"立即投资" forState:(UIControlStateNormal)];
-    _investBtn.backgroundColor =REDCOLOR;
-    [_investBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_scrollView addSubview:_investBtn];
-    _investBtn.layer.masksToBounds = YES;
-    _investBtn.layer.cornerRadius = 20;
-    [_investBtn setFont:[UIFont systemFontOfSize:17]];
-    [_investBtn addTarget:self action:@selector(investAction:) forControlEvents:(UIControlEventTouchUpInside)];
-//    if (!_selected) {
-//        [_investBtn setUserInteractionEnabled:NO];
-//    }
-}
-#pragma mark 立即投资
--(void)investAction:(UIButton *)btn{
-    OrderDetialVC *vc = [OrderDetialVC new];
-    vc.sn = self.sn;
-    vc.money = self.money;
-    vc.term = self.term;
-    [self.navigationController pushViewController:vc animated:YES];
-}
+
 #pragma mark 订单模块创建
 -(void)createOrder{
     self.orderTable=[[UITableView alloc] initWithFrame:CGRectMake(10, _header.bottom-40, WIDTH-20, 370) style:(UITableViewStylePlain)];
@@ -127,7 +96,7 @@
 }
 #pragma mark 借款人模块创建
 -(void)createBorrower{
-    self.borrowTable=[[UITableView alloc] initWithFrame:CGRectMake(10, _orderTable.bottom+15, WIDTH-20, 410) style:(UITableViewStylePlain)];
+    self.borrowTable=[[UITableView alloc] initWithFrame:CGRectMake(10, _orderTable.bottom+15, WIDTH-20, 210) style:(UITableViewStylePlain)];
     self.borrowTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.borrowTable registerClass:[InvestDetialTableCell class] forCellReuseIdentifier:@"borrowerReuse"];
     [self.scrollView addSubview:_borrowTable];
@@ -138,29 +107,13 @@
     _borrowTable.tableHeaderView = _borrowHeader;
     _borrowTable.scrollEnabled = NO;
 }
-#pragma mark 温馨提示模块创建
--(void)createMessage{
-    self.messageTable=[[UITableView alloc] initWithFrame:CGRectMake(10, _borrowTable.bottom+15, WIDTH-20, _h+100+50) style:(UITableViewStylePlain)];
-    self.messageTable.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.messageTable registerClass:[alertTableCell class] forCellReuseIdentifier:@"messageReuse"];
-    [self.scrollView addSubview:_messageTable];
-    _messageTable.layer.cornerRadius = 10;
-    _messageTable.layer.masksToBounds = YES;
-    self.messageTable.delegate = self;
-    self.messageTable.dataSource = self;
-    _messageTable.tableHeaderView = _messageHeader;
-    _messageTable.scrollEnabled = NO;
-}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(tableView==self.messageTable){
-        return 1;
-    }
     if(tableView == self.orderTable){
         return 8;
     }
-   
     else{
-        return 9;
+        return 4;
     }
     
 }
@@ -172,10 +125,10 @@
         if (indexPath.row == 0) {
             cell.mesLab.text =[NSString stringWithFormat:@"%@",self.dicData[@"deals"][@"sn"]];
         }else if (indexPath.row == 1){
-             cell.mesLab.text =[NSString stringWithFormat:@"%@",self.dicData[@"deals"][@"interest"]];
-             cell.mesLab.textColor = REDCOLOR;
+            cell.mesLab.text =[NSString stringWithFormat:@"%@",self.dicData[@"deals"][@"interest"]];
+            cell.mesLab.textColor = REDCOLOR;
         }else if (indexPath.row == 2){
-             cell.mesLab.text =[NSString stringWithFormat:@"%@",self.dicData[@"deals"][@"arrival_amount"]];
+            cell.mesLab.text =[NSString stringWithFormat:@"%@",self.dicData[@"deals"][@"arrival_amount"]];
             cell.mesLab.textColor = REDCOLOR;
         }else if (indexPath.row == 3){
             
@@ -206,8 +159,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor =[UIColor whiteColor];
         return cell;
-    }
-    else if (tableView == self.borrowTable){
+    }else{
         InvestDetialTableCell *cell=[tableView dequeueReusableCellWithIdentifier:@"borrowerReuse" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor =[UIColor whiteColor];
@@ -220,52 +172,17 @@
         }else if (indexPath.row == 2){
             cell.mesLab.text =[NSString stringWithFormat:@"%@",SafeValue(self.dicData[@"user"][@"region"])];
             cell.mesLab.textColor = REDCOLOR;
-        }else if (indexPath.row == 3){
-            cell.mesLab.text =[NSString stringWithFormat:@"%@",SafeValue(self.dicData[@"user"][@"createtime"])];
-        }else if (indexPath.row == 4){
-            cell.mesLab.text =[NSString stringWithFormat:@"%@",SafeValue(self.dicData[@"user"][@"auth"])];
-        }else if (indexPath.row == 5){
-            cell.mesLab.text =[NSString stringWithFormat:@"%@",SafeValue(self.dicData[@"user"][@"loan"])];
-        }else if (indexPath.row == 6){
-            cell.mesLab.text =[NSString stringWithFormat:@"%@",SafeValue(self.dicData[@"user"][@"overdue"])];
-        }else if (indexPath.row == 7){
-            cell.mesLab.text =[NSString stringWithFormat:@"%@/%@",SafeValue(self.dicData[@"user"][@"recover"]),SafeValue(self.dicData[@"user"][@"lose_lawsuit"])];
         }else{
-            //            cell.mesLab.text =[NSString stringWithFormat:@"%@",self.dicData[@"deals"][@""]];
+            cell.mesLab.text =[NSString stringWithFormat:@"%@",self.dicData[@"deals"][@""]];
         }
-        return cell;
-    }else{
-        alertTableCell *cell=[tableView dequeueReusableCellWithIdentifier:@"messageReuse" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor =[UIColor whiteColor];
-        [cell.readBtn addTarget:self action:@selector(readAction:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if(tableView==self.messageTable){
-        return _h+60;
-    }else{
-        return 40;
-    }
-        
-    
+    return 40;
 }
-#pragma mark 已阅读选中
--(void)readAction:(UIButton *)btn{
-    _selected = !_selected;
-    if (_selected) {
-        [btn setImage:[UIImage imageNamed:@"选中ICON"] forState:UIControlStateNormal];
-        [_investBtn setUserInteractionEnabled:YES];
-        _investBtn.backgroundColor = REDCOLOR;
-    }else{
-        [btn setImage:[UIImage imageNamed:@"未选中ICON"] forState:UIControlStateNormal];
-        [_investBtn setUserInteractionEnabled:NO];
-        [_investBtn setBackgroundColor:[UIColor lightGrayColor]];
-    }
-}
+
 #pragma mark tableHeader
 -(void)createOrderHeater{
     _orderHeader = [UIView new];
@@ -304,23 +221,7 @@
     [_borrowBtn addTarget:self action:@selector(borrowSpr:) forControlEvents:(UIControlEventTouchUpInside)];
     [_borrowHeader addSubview:_borrowBtn];
 }
--(void)createMessageHeader{
-    _messageHeader = [UIView new];
-    _messageHeader.frame = CGRectMake(0, 0, WIDTH, 50);
-    UIView *line =[UIView new];
-    line.frame = CGRectMake(0, 15, 3, 20);
-    line.backgroundColor =REDCOLOR;
-    [_messageHeader addSubview:line];
-    UILabel *lab = [UILabel new];
-    lab.text = @"借款人信息";
-    lab.frame = CGRectMake(line.right+10, 0, 200, 50);
-    [_messageHeader addSubview:lab];
-    _mesBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-    _mesBtn.frame = CGRectMake(WIDTH-60, 10, 30, 30);
-    [_mesBtn setImage:[UIImage imageNamed:@"投资_打开ICON"] forState:(UIControlStateNormal)];
-    [_mesBtn addTarget:self action:@selector(mesSpr:) forControlEvents:(UIControlEventTouchUpInside)];
-    [_messageHeader addSubview:_mesBtn];
-}
+
 #pragma mark 订单信息展开点击
 -(void)orderSpr:(UIButton *)btn{
     _orderSpr =!_orderSpr;
@@ -352,27 +253,24 @@
     }
     [self reloadView];
 }
+
 -(void)reloadView{
-    CGFloat h1,h2,h3;
+    CGFloat h1,h2;
     h1 = _orderSpr?370:50;
-    h2 = _bowSpr ? 410:50;
-    h3 = _mesSpr ? _h+150:50;
+    h2 = _bowSpr ? 210:50;
     _orderTable.frame = CGRectMake(10, _header.bottom-40, WIDTH-20, h1);
     _borrowTable.frame = CGRectMake(10, _orderTable.bottom+15, WIDTH-20, h2);
-    _messageTable.frame = CGRectMake(10, _borrowTable.bottom+15, WIDTH-20, h3);
-    _scrollView.contentSize = CGSizeMake(0, 180+_orderTable.height+15+_borrowTable.height+15+_messageTable.height+120);
-    _investBtn.frame = CGRectMake(10, _messageTable.bottom+40, WIDTH-20, 40);
+    _scrollView.contentSize = CGSizeMake(0, 180+_orderTable.height+15+_borrowTable.height+15+120);
     [_orderTable reloadData];
     [_borrowTable reloadData];
-    [_messageTable reloadData];
 }
-#pragma mark 上部分视图
+
 -(void)headerView{
     self.header =[UIView new];
     _header.frame = CGRectMake(0, 0, WIDTH, 220);
     [_scrollView addSubview:_header];
     _header.backgroundColor =REDCOLOR;
-    //
+    
     self.present=[UILabel new];
     _present.frame = CGRectMake(0, 10, WIDTH, 40);
     _present.textAlignment = YES;
@@ -380,7 +278,7 @@
     _present.textColor =[UIColor whiteColor];
     [_header addSubview:_present];
     _present.text = [NSString stringWithFormat:@"%@%%",self.dicData[@"deals"][@"rate"]];
-    //
+    
     UILabel *rate =[UILabel new];
     rate.frame = CGRectMake(0, _present.bottom+10, WIDTH, 30);
     rate.textColor = [UIColor whiteColor];
@@ -389,7 +287,7 @@
     rate.text =@"年化利率";
     //
     NSArray * titleArr = @[@"币种",@"借款金额",@"借款期限"];
-    NSArray *labArr = @[@"",self.money,self.term];
+    NSArray *labArr = @[@"",@"self.money",@"self.term"];
     for (int i = 0; i<3; i++) {
         LLView *view = [[LLView alloc] initWithFrame:CGRectMake(WIDTH/3*i, rate.bottom, WIDTH/3, 60)];
         view.countLab.text = [NSString stringWithFormat:@"%@",labArr[i]];
@@ -410,33 +308,6 @@
     [self.navigationController.navigationBar setBarTintColor:[UIColor whiteColor]];
 }
 
--(void)getData{
-    [self loadAnimate:@"数据加载中"];
-    NSString *url=[NSString stringWithFormat:@"%@invest/deals?",BASE_URL];
-   
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
- 
-    NSDictionary *dic = @{@"sn":self.sn};
-    NSLog(@"%@",self.sn);
-    [manager GET:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        self.hud.hidden = YES;
-        if([responseObject[@"code"] isEqual:@1]){
-            
-            self.dicData = responseObject[@"data"];
-            _present.text = [NSString stringWithFormat:@"%@%%",self.dicData[@"deals"][@"rate"]];
-            LLView *view = [self.view viewWithTag:2121];
-            view.countLab.text = [NSString stringWithFormat:@"%@",self.dicData[@"deals"][@"type"]];
-            [self.orderTable reloadData];
-            [self.borrowTable reloadData];
-            [self.messageTable reloadData];
-        }else{
-            [self showMessage:[NSString stringWithFormat:@"%@",responseObject[@"msg"]]];
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
-    
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -444,7 +315,7 @@
 
 /*
 #pragma mark - Navigation
-haojinzhanga~~day2~~
+
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].

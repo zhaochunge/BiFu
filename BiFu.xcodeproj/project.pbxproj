@@ -7,32 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18183CBF22320493002CB374 /* LabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18183CBE22320493002CB374 /* LabelView.m */; };
 		1820226E21A79808006C97DF /* ForgotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820226D21A79808006C97DF /* ForgotViewController.m */; };
 		1820227121A7CC83006C97DF /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820227021A7CC83006C97DF /* FindViewController.m */; };
 		1820227421A7DED9006C97DF /* ZhuceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820227321A7DED9006C97DF /* ZhuceViewController.m */; };
 		18353B9821A4E62B00DFC6C0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18353B9721A4E62B00DFC6C0 /* LoginViewController.m */; };
+		183A333F22379D64003322F3 /* BLoanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183A333E22379D64003322F3 /* BLoanDetailViewController.m */; };
+		18461824222F504000E5A3B2 /* AuditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18461823222F504000E5A3B2 /* AuditCell.m */; };
+		18461827222F50B400E5A3B2 /* ConfirmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18461826222F50B400E5A3B2 /* ConfirmCell.m */; };
+		1846182A222F50CC00E5A3B2 /* WaitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18461829222F50CC00E5A3B2 /* WaitCell.m */; };
+		1846182D222F510F00E5A3B2 /* CancelledCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1846182C222F510F00E5A3B2 /* CancelledCell.m */; };
+		18461830222F512D00E5A3B2 /* CompletedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1846182F222F512D00E5A3B2 /* CompletedCell.m */; };
+		18461833222F5D4200E5A3B2 /* LoanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18461832222F5D4200E5A3B2 /* LoanDetailViewController.m */; };
+		18461836222FA5DA00E5A3B2 /* InvestOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18461835222FA5DA00E5A3B2 /* InvestOrderViewController.m */; };
 		1850774921ABCE820093B283 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850774721ABCE820093B283 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1851C9222199273B00B84513 /* YXButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C9212199273B00B84513 /* YXButton.m */; };
 		1851C92521994DF500B84513 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C92421994DF500B84513 /* OrderCell.m */; };
-		1851C9282199606D00B84513 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C9272199606D00B84513 /* PayViewController.m */; };
-		1851C92B2199608000B84513 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C92A2199608000B84513 /* ConfirmViewController.m */; };
-		1851C92E2199608C00B84513 /* RepayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C92D2199608C00B84513 /* RepayViewController.m */; };
-		1851C9312199609A00B84513 /* InvViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C9302199609A00B84513 /* InvViewController.m */; };
-		1851C934219960A600B84513 /* RechargeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C933219960A600B84513 /* RechargeViewController.m */; };
-		1851C937219960B200B84513 /* AllInvViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C936219960B200B84513 /* AllInvViewController.m */; };
-		1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C939219960BE00B84513 /* AllLoanViewController.m */; };
-		1851C93E2199675600B84513 /* HandleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1851C93D2199675600B84513 /* HandleViewController.m */; };
 		185369A4219D577C00E26FDB /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185369A3219D577C00E26FDB /* AboutViewController.m */; };
 		185369AA219D57B700E26FDB /* ShareAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185369A9219D57B700E26FDB /* ShareAppViewController.m */; };
 		185369AE219D69E100E26FDB /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185369AD219D69E100E26FDB /* HelpViewController.m */; };
-		185578692223769500D72B6B /* PDisposalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185578682223769500D72B6B /* PDisposalViewController.m */; };
-		1855786C222376CA00D72B6B /* PRepaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855786B222376CA00D72B6B /* PRepaymentViewController.m */; };
-		1855786F222376EB00D72B6B /* ReimbursementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855786E222376EB00D72B6B /* ReimbursementViewController.m */; };
-		185578722223770400D72B6B /* CancelledViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185578712223770400D72B6B /* CancelledViewController.m */; };
-		185578762223828F00D72B6B /* PDisposalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185578752223828F00D72B6B /* PDisposalTableViewCell.m */; };
-		185578792223B3BF00D72B6B /* PRepaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185578782223B3BF00D72B6B /* PRepaymentCell.m */; };
-		1855787C2223B81500D72B6B /* ReimbursementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855787B2223B81500D72B6B /* ReimbursementCell.m */; };
-		1855787F2223BB8300D72B6B /* CancelledCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1855787E2223BB8300D72B6B /* CancelledCell.m */; };
 		185578822223BE3600D72B6B /* NailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185578812223BE3600D72B6B /* NailViewController.m */; };
 		1863D0A72195785200316AFE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D0A62195785200316AFE /* AppDelegate.m */; };
 		1863D0AA2195785200316AFE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D0A92195785200316AFE /* ViewController.m */; };
@@ -60,6 +53,11 @@
 		1863D11021957CBD00316AFE /* UIView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D10621957CBD00316AFE /* UIView+Size.m */; };
 		1863D11121957CBD00316AFE /* UIColor+ColorChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 1863D10821957CBD00316AFE /* UIColor+ColorChange.m */; };
 		18687D162224D312008C9B58 /* LoanOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18687D152224D312008C9B58 /* LoanOrderViewController.m */; };
+		1881663C222E0C6300981537 /* OrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1881663B222E0C6300981537 /* OrderModel.m */; };
+		1881663F222E182A00981537 /* RepayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1881663E222E182A00981537 /* RepayCell.m */; };
+		18816642222E197D00981537 /* CancelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18816641222E197D00981537 /* CancelCell.m */; };
+		18816645222E19AB00981537 /* ReimbursementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18816644222E19AB00981537 /* ReimbursementCell.m */; };
+		1881664B222E215F00981537 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1881664A222E215F00981537 /* OrderDetailViewController.m */; };
 		18B23635219A9C6D00E2594C /* WLoanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B23634219A9C6D00E2594C /* WLoanViewController.m */; };
 		18B23638219AB1DE00E2594C /* AssetCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B23637219AB1DE00E2594C /* AssetCenterViewController.m */; };
 		18B2363D219AB55500E2594C /* AssetCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B2363C219AB55500E2594C /* AssetCenterCell.m */; };
@@ -151,6 +149,8 @@
 
 /* Begin PBXFileReference section */
 		1333DAAC088F1EE5842326C4 /* Pods-BiFu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BiFu.release.xcconfig"; path = "Pods/Target Support Files/Pods-BiFu/Pods-BiFu.release.xcconfig"; sourceTree = "<group>"; };
+		18183CBD22320493002CB374 /* LabelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LabelView.h; sourceTree = "<group>"; };
+		18183CBE22320493002CB374 /* LabelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LabelView.m; sourceTree = "<group>"; };
 		1820226C21A79808006C97DF /* ForgotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgotViewController.h; sourceTree = "<group>"; };
 		1820226D21A79808006C97DF /* ForgotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgotViewController.m; sourceTree = "<group>"; };
 		1820226F21A7CC83006C97DF /* FindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
@@ -159,6 +159,22 @@
 		1820227321A7DED9006C97DF /* ZhuceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZhuceViewController.m; sourceTree = "<group>"; };
 		18353B9621A4E62B00DFC6C0 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		18353B9721A4E62B00DFC6C0 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		183A333D22379D64003322F3 /* BLoanDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLoanDetailViewController.h; sourceTree = "<group>"; };
+		183A333E22379D64003322F3 /* BLoanDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLoanDetailViewController.m; sourceTree = "<group>"; };
+		18461822222F504000E5A3B2 /* AuditCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuditCell.h; sourceTree = "<group>"; };
+		18461823222F504000E5A3B2 /* AuditCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuditCell.m; sourceTree = "<group>"; };
+		18461825222F50B400E5A3B2 /* ConfirmCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmCell.h; sourceTree = "<group>"; };
+		18461826222F50B400E5A3B2 /* ConfirmCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmCell.m; sourceTree = "<group>"; };
+		18461828222F50CC00E5A3B2 /* WaitCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaitCell.h; sourceTree = "<group>"; };
+		18461829222F50CC00E5A3B2 /* WaitCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaitCell.m; sourceTree = "<group>"; };
+		1846182B222F510F00E5A3B2 /* CancelledCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CancelledCell.h; sourceTree = "<group>"; };
+		1846182C222F510F00E5A3B2 /* CancelledCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CancelledCell.m; sourceTree = "<group>"; };
+		1846182E222F512D00E5A3B2 /* CompletedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompletedCell.h; sourceTree = "<group>"; };
+		1846182F222F512D00E5A3B2 /* CompletedCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompletedCell.m; sourceTree = "<group>"; };
+		18461831222F5D4200E5A3B2 /* LoanDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoanDetailViewController.h; sourceTree = "<group>"; };
+		18461832222F5D4200E5A3B2 /* LoanDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoanDetailViewController.m; sourceTree = "<group>"; };
+		18461834222FA5DA00E5A3B2 /* InvestOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvestOrderViewController.h; sourceTree = "<group>"; };
+		18461835222FA5DA00E5A3B2 /* InvestOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestOrderViewController.m; sourceTree = "<group>"; };
 		1850774621ABCE820093B283 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		1850774721ABCE820093B283 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		1850774821ABCE820093B283 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -166,44 +182,12 @@
 		1851C9212199273B00B84513 /* YXButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXButton.m; sourceTree = "<group>"; };
 		1851C92321994DF500B84513 /* OrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderCell.h; sourceTree = "<group>"; };
 		1851C92421994DF500B84513 /* OrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderCell.m; sourceTree = "<group>"; };
-		1851C9262199606D00B84513 /* PayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayViewController.h; sourceTree = "<group>"; };
-		1851C9272199606D00B84513 /* PayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayViewController.m; sourceTree = "<group>"; };
-		1851C9292199608000B84513 /* ConfirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmViewController.h; sourceTree = "<group>"; };
-		1851C92A2199608000B84513 /* ConfirmViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmViewController.m; sourceTree = "<group>"; };
-		1851C92C2199608C00B84513 /* RepayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepayViewController.h; sourceTree = "<group>"; };
-		1851C92D2199608C00B84513 /* RepayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepayViewController.m; sourceTree = "<group>"; };
-		1851C92F2199609A00B84513 /* InvViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvViewController.h; sourceTree = "<group>"; };
-		1851C9302199609A00B84513 /* InvViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvViewController.m; sourceTree = "<group>"; };
-		1851C932219960A600B84513 /* RechargeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RechargeViewController.h; sourceTree = "<group>"; };
-		1851C933219960A600B84513 /* RechargeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RechargeViewController.m; sourceTree = "<group>"; };
-		1851C935219960B200B84513 /* AllInvViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllInvViewController.h; sourceTree = "<group>"; };
-		1851C936219960B200B84513 /* AllInvViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllInvViewController.m; sourceTree = "<group>"; };
-		1851C938219960BE00B84513 /* AllLoanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllLoanViewController.h; sourceTree = "<group>"; };
-		1851C939219960BE00B84513 /* AllLoanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllLoanViewController.m; sourceTree = "<group>"; };
-		1851C93C2199675600B84513 /* HandleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandleViewController.h; sourceTree = "<group>"; };
-		1851C93D2199675600B84513 /* HandleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandleViewController.m; sourceTree = "<group>"; };
 		185369A2219D577C00E26FDB /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		185369A3219D577C00E26FDB /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		185369A8219D57B700E26FDB /* ShareAppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareAppViewController.h; sourceTree = "<group>"; };
 		185369A9219D57B700E26FDB /* ShareAppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareAppViewController.m; sourceTree = "<group>"; };
 		185369AC219D69E100E26FDB /* HelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		185369AD219D69E100E26FDB /* HelpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
-		185578672223769500D72B6B /* PDisposalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDisposalViewController.h; sourceTree = "<group>"; };
-		185578682223769500D72B6B /* PDisposalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDisposalViewController.m; sourceTree = "<group>"; };
-		1855786A222376CA00D72B6B /* PRepaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PRepaymentViewController.h; sourceTree = "<group>"; };
-		1855786B222376CA00D72B6B /* PRepaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRepaymentViewController.m; sourceTree = "<group>"; };
-		1855786D222376EB00D72B6B /* ReimbursementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReimbursementViewController.h; sourceTree = "<group>"; };
-		1855786E222376EB00D72B6B /* ReimbursementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReimbursementViewController.m; sourceTree = "<group>"; };
-		185578702223770400D72B6B /* CancelledViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CancelledViewController.h; sourceTree = "<group>"; };
-		185578712223770400D72B6B /* CancelledViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CancelledViewController.m; sourceTree = "<group>"; };
-		185578742223828F00D72B6B /* PDisposalTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDisposalTableViewCell.h; sourceTree = "<group>"; };
-		185578752223828F00D72B6B /* PDisposalTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDisposalTableViewCell.m; sourceTree = "<group>"; };
-		185578772223B3BF00D72B6B /* PRepaymentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PRepaymentCell.h; sourceTree = "<group>"; };
-		185578782223B3BF00D72B6B /* PRepaymentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRepaymentCell.m; sourceTree = "<group>"; };
-		1855787A2223B81500D72B6B /* ReimbursementCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReimbursementCell.h; sourceTree = "<group>"; };
-		1855787B2223B81500D72B6B /* ReimbursementCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReimbursementCell.m; sourceTree = "<group>"; };
-		1855787D2223BB8300D72B6B /* CancelledCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CancelledCell.h; sourceTree = "<group>"; };
-		1855787E2223BB8300D72B6B /* CancelledCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CancelledCell.m; sourceTree = "<group>"; };
 		185578802223BE3600D72B6B /* NailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NailViewController.h; sourceTree = "<group>"; };
 		185578812223BE3600D72B6B /* NailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NailViewController.m; sourceTree = "<group>"; };
 		1863D0A22195785200316AFE /* BiFu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiFu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,6 +243,16 @@
 		1863D10821957CBD00316AFE /* UIColor+ColorChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorChange.m"; sourceTree = "<group>"; };
 		18687D142224D312008C9B58 /* LoanOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoanOrderViewController.h; sourceTree = "<group>"; };
 		18687D152224D312008C9B58 /* LoanOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoanOrderViewController.m; sourceTree = "<group>"; };
+		1881663A222E0C6300981537 /* OrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderModel.h; sourceTree = "<group>"; };
+		1881663B222E0C6300981537 /* OrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderModel.m; sourceTree = "<group>"; };
+		1881663D222E182A00981537 /* RepayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RepayCell.h; sourceTree = "<group>"; };
+		1881663E222E182A00981537 /* RepayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RepayCell.m; sourceTree = "<group>"; };
+		18816640222E197D00981537 /* CancelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CancelCell.h; sourceTree = "<group>"; };
+		18816641222E197D00981537 /* CancelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CancelCell.m; sourceTree = "<group>"; };
+		18816643222E19AB00981537 /* ReimbursementCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReimbursementCell.h; sourceTree = "<group>"; };
+		18816644222E19AB00981537 /* ReimbursementCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReimbursementCell.m; sourceTree = "<group>"; };
+		18816649222E215F00981537 /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
+		1881664A222E215F00981537 /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		18B23633219A9C6D00E2594C /* WLoanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLoanViewController.h; sourceTree = "<group>"; };
 		18B23634219A9C6D00E2594C /* WLoanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WLoanViewController.m; sourceTree = "<group>"; };
 		18B23636219AB1DE00E2594C /* AssetCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetCenterViewController.h; sourceTree = "<group>"; };
@@ -444,6 +438,43 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		1846181F222F4FCE00E5A3B2 /* LoanCell */ = {
+			isa = PBXGroup;
+			children = (
+				18461822222F504000E5A3B2 /* AuditCell.h */,
+				18461823222F504000E5A3B2 /* AuditCell.m */,
+				18461825222F50B400E5A3B2 /* ConfirmCell.h */,
+				18461826222F50B400E5A3B2 /* ConfirmCell.m */,
+				18461828222F50CC00E5A3B2 /* WaitCell.h */,
+				18461829222F50CC00E5A3B2 /* WaitCell.m */,
+				1846182B222F510F00E5A3B2 /* CancelledCell.h */,
+				1846182C222F510F00E5A3B2 /* CancelledCell.m */,
+				1846182E222F512D00E5A3B2 /* CompletedCell.h */,
+				1846182F222F512D00E5A3B2 /* CompletedCell.m */,
+			);
+			path = LoanCell;
+			sourceTree = "<group>";
+		};
+		18461820222F4FD700E5A3B2 /* LoanModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoanModel;
+			sourceTree = "<group>";
+		};
+		18461821222F4FE600E5A3B2 /* LoanView */ = {
+			isa = PBXGroup;
+			children = (
+				18461831222F5D4200E5A3B2 /* LoanDetailViewController.h */,
+				18461832222F5D4200E5A3B2 /* LoanDetailViewController.m */,
+				183A333D22379D64003322F3 /* BLoanDetailViewController.h */,
+				183A333E22379D64003322F3 /* BLoanDetailViewController.m */,
+				18183CBD22320493002CB374 /* LabelView.h */,
+				18183CBE22320493002CB374 /* LabelView.m */,
+			);
+			path = LoanView;
+			sourceTree = "<group>";
+		};
 		1850774521ABCE820093B283 /* Base64 */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,31 +483,6 @@
 				1850774821ABCE820093B283 /* GTMDefines.h */,
 			);
 			path = Base64;
-			sourceTree = "<group>";
-		};
-		1851C93B219960CC00B84513 /* VC */ = {
-			isa = PBXGroup;
-			children = (
-				1851C93C2199675600B84513 /* HandleViewController.h */,
-				1851C93D2199675600B84513 /* HandleViewController.m */,
-				1851C9262199606D00B84513 /* PayViewController.h */,
-				1851C9272199606D00B84513 /* PayViewController.m */,
-				1851C9292199608000B84513 /* ConfirmViewController.h */,
-				1851C92A2199608000B84513 /* ConfirmViewController.m */,
-				1851C92C2199608C00B84513 /* RepayViewController.h */,
-				1851C92D2199608C00B84513 /* RepayViewController.m */,
-				1851C92F2199609A00B84513 /* InvViewController.h */,
-				1851C9302199609A00B84513 /* InvViewController.m */,
-				1851C932219960A600B84513 /* RechargeViewController.h */,
-				1851C933219960A600B84513 /* RechargeViewController.m */,
-				1851C935219960B200B84513 /* AllInvViewController.h */,
-				1851C936219960B200B84513 /* AllInvViewController.m */,
-				1851C938219960BE00B84513 /* AllLoanViewController.h */,
-				1851C939219960BE00B84513 /* AllLoanViewController.m */,
-				185578732223824D00D72B6B /* Cell */,
-				18557863222374E600D72B6B /* DetailVC */,
-			);
-			path = VC;
 			sourceTree = "<group>";
 		};
 		185369A1219D576600E26FDB /* Section=1 */ = {
@@ -506,36 +512,6 @@
 				F5C9907921A3931600F755FC /* AccouentSafeVC.m */,
 			);
 			path = "Section=0";
-			sourceTree = "<group>";
-		};
-		18557863222374E600D72B6B /* DetailVC */ = {
-			isa = PBXGroup;
-			children = (
-				185578672223769500D72B6B /* PDisposalViewController.h */,
-				185578682223769500D72B6B /* PDisposalViewController.m */,
-				1855786A222376CA00D72B6B /* PRepaymentViewController.h */,
-				1855786B222376CA00D72B6B /* PRepaymentViewController.m */,
-				1855786D222376EB00D72B6B /* ReimbursementViewController.h */,
-				1855786E222376EB00D72B6B /* ReimbursementViewController.m */,
-				185578702223770400D72B6B /* CancelledViewController.h */,
-				185578712223770400D72B6B /* CancelledViewController.m */,
-			);
-			path = DetailVC;
-			sourceTree = "<group>";
-		};
-		185578732223824D00D72B6B /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				185578742223828F00D72B6B /* PDisposalTableViewCell.h */,
-				185578752223828F00D72B6B /* PDisposalTableViewCell.m */,
-				185578772223B3BF00D72B6B /* PRepaymentCell.h */,
-				185578782223B3BF00D72B6B /* PRepaymentCell.m */,
-				1855787A2223B81500D72B6B /* ReimbursementCell.h */,
-				1855787B2223B81500D72B6B /* ReimbursementCell.m */,
-				1855787D2223BB8300D72B6B /* CancelledCell.h */,
-				1855787E2223BB8300D72B6B /* CancelledCell.m */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		1863D0992195785100316AFE = {
@@ -673,17 +649,22 @@
 		1863D11221957FBE00316AFE /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				18461821222F4FE600E5A3B2 /* LoanView */,
+				18461820222F4FD700E5A3B2 /* LoanModel */,
+				1846181F222F4FCE00E5A3B2 /* LoanCell */,
+				18816648222E213A00981537 /* OrderView */,
+				18816647222E212600981537 /* OrderModel */,
+				18816646222E211300981537 /* OrderCell */,
 				1851C9202199273B00B84513 /* YXButton.h */,
 				1851C9212199273B00B84513 /* YXButton.m */,
-				1851C92321994DF500B84513 /* OrderCell.h */,
-				1851C92421994DF500B84513 /* OrderCell.m */,
 				1863D0EE219579EE00316AFE /* OrderViewController.h */,
 				1863D0EF219579EE00316AFE /* OrderViewController.m */,
+				18461834222FA5DA00E5A3B2 /* InvestOrderViewController.h */,
+				18461835222FA5DA00E5A3B2 /* InvestOrderViewController.m */,
 				18687D142224D312008C9B58 /* LoanOrderViewController.h */,
 				18687D152224D312008C9B58 /* LoanOrderViewController.m */,
 				185578802223BE3600D72B6B /* NailViewController.h */,
 				185578812223BE3600D72B6B /* NailViewController.m */,
-				1851C93B219960CC00B84513 /* VC */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -715,6 +696,39 @@
 				F5396B79219A553B00EFBF95 /* View */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		18816646222E211300981537 /* OrderCell */ = {
+			isa = PBXGroup;
+			children = (
+				1851C92321994DF500B84513 /* OrderCell.h */,
+				1851C92421994DF500B84513 /* OrderCell.m */,
+				1881663D222E182A00981537 /* RepayCell.h */,
+				1881663E222E182A00981537 /* RepayCell.m */,
+				18816643222E19AB00981537 /* ReimbursementCell.h */,
+				18816644222E19AB00981537 /* ReimbursementCell.m */,
+				18816640222E197D00981537 /* CancelCell.h */,
+				18816641222E197D00981537 /* CancelCell.m */,
+			);
+			path = OrderCell;
+			sourceTree = "<group>";
+		};
+		18816647222E212600981537 /* OrderModel */ = {
+			isa = PBXGroup;
+			children = (
+				1881663A222E0C6300981537 /* OrderModel.h */,
+				1881663B222E0C6300981537 /* OrderModel.m */,
+			);
+			path = OrderModel;
+			sourceTree = "<group>";
+		};
+		18816648222E213A00981537 /* OrderView */ = {
+			isa = PBXGroup;
+			children = (
+				18816649222E215F00981537 /* OrderDetailViewController.h */,
+				1881664A222E215F00981537 /* OrderDetailViewController.m */,
+			);
+			path = OrderView;
 			sourceTree = "<group>";
 		};
 		18B23639219AB4FF00E2594C /* VC */ = {
@@ -1165,31 +1179,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18183CBF22320493002CB374 /* LabelView.m in Sources */,
 				F53D89A3219D62F100023EB0 /* TotalMoneyVC.m in Sources */,
-				1855787F2223BB8300D72B6B /* CancelledCell.m in Sources */,
+				1846182D222F510F00E5A3B2 /* CancelledCell.m in Sources */,
 				F525EE5E219C0FC800AD5ACE /* YzcLabel.m in Sources */,
 				1863D0F321957A0400316AFE /* MyViewController.m in Sources */,
 				1863D11121957CBD00316AFE /* UIColor+ColorChange.m in Sources */,
 				F554796B21A63A1400AFE48B /* NoticeListVC.m in Sources */,
+				1881663F222E182A00981537 /* RepayCell.m in Sources */,
 				F5396B8A219A55C900EFBF95 /* LIView.m in Sources */,
 				1863D0AA2195785200316AFE /* ViewController.m in Sources */,
 				F5396B9C219AB41100EFBF95 /* LLView.m in Sources */,
-				185578692223769500D72B6B /* PDisposalViewController.m in Sources */,
 				F56A8E0121A28AC400659418 /* CustomerTilCell.m in Sources */,
 				1863D0F0219579EE00316AFE /* OrderViewController.m in Sources */,
 				F525EE5D219C0FC800AD5ACE /* YzcConst.m in Sources */,
 				1863D11021957CBD00316AFE /* UIView+Size.m in Sources */,
-				185578762223828F00D72B6B /* PDisposalTableViewCell.m in Sources */,
 				1863D0EA219579C000316AFE /* InvestViewController.m in Sources */,
 				F56A398321AB941B00B39E13 /* ResetCapitalVC.m in Sources */,
-				185578722223770400D72B6B /* CancelledViewController.m in Sources */,
 				F56A8DF121A23BC400659418 /* LeeDatePickerHeadView.m in Sources */,
 				F53D8993219CFE0B00023EB0 /* UIView+LLSegmentBar.m in Sources */,
 				1863D10F21957CBD00316AFE /* UIButton+Edge.m in Sources */,
+				1846182A222F50CC00E5A3B2 /* WaitCell.m in Sources */,
 				F5C9908421A3B75200F755FC /* ChangeLoginPwdVC.m in Sources */,
 				F56754F021AD1EC10060A369 /* ShowAnimationView.m in Sources */,
 				F525EE5B219C0FC800AD5ACE /* YzcBarChart.m in Sources */,
-				1851C934219960A600B84513 /* RechargeViewController.m in Sources */,
 				F56A8DFB21A286F100659418 /* customerVC.m in Sources */,
 				18F0769C219E970C00B42D98 /* RecordViewController.m in Sources */,
 				F53D899C219CFF0100023EB0 /* PeriodVC.m in Sources */,
@@ -1197,11 +1210,11 @@
 				F5342E3C219E6E7900853EA1 /* CardTableCell.m in Sources */,
 				F5396B9F219AC72500EFBF95 /* InvestDetialTableCell.m in Sources */,
 				F525EE48219BB1AF00AD5ACE /* alertTableCell.m in Sources */,
+				18461827222F50B400E5A3B2 /* ConfirmCell.m in Sources */,
 				1863D0E0219578E200316AFE /* CDTabbarVC.m in Sources */,
 				F56A8DF821A2479600659418 /* myInterviewVC.m in Sources */,
 				1820227121A7CC83006C97DF /* FindViewController.m in Sources */,
 				1851C92521994DF500B84513 /* OrderCell.m in Sources */,
-				1855786F222376EB00D72B6B /* ReimbursementViewController.m in Sources */,
 				F53D8990219CFE0B00023EB0 /* LLSegmentBar.m in Sources */,
 				18F0769F219EA5A900B42D98 /* PayStyleViewController.m in Sources */,
 				F525EE5A219C0FC800AD5ACE /* YzcBar.m in Sources */,
@@ -1217,34 +1230,34 @@
 				1863D0A72195785200316AFE /* AppDelegate.m in Sources */,
 				185369A4219D577C00E26FDB /* AboutViewController.m in Sources */,
 				18FFD17A21A248FC00669E2B /* CardViewController.m in Sources */,
+				18816642222E197D00981537 /* CancelCell.m in Sources */,
 				18FFD17D21A2491500669E2B /* AliPayViewController.m in Sources */,
 				185578822223BE3600D72B6B /* NailViewController.m in Sources */,
 				F5396B8F219A5AAC00EFBF95 /* myBaseVC.m in Sources */,
+				1881664B222E215F00981537 /* OrderDetailViewController.m in Sources */,
 				F5C9908021A3B49200F755FC /* CheckSecondTableCell.m in Sources */,
 				F554797421A659E500AFE48B /* InterviewTableCell.m in Sources */,
-				1851C93A219960BE00B84513 /* AllLoanViewController.m in Sources */,
 				F56A8DFE21A28A9500659418 /* CustomerTableCell.m in Sources */,
 				1820226E21A79808006C97DF /* ForgotViewController.m in Sources */,
 				F56754ED21AD11EC0060A369 /* IdentityCheckVC.m in Sources */,
+				18816645222E19AB00981537 /* ReimbursementCell.m in Sources */,
 				1850774921ABCE820093B283 /* GTMBase64.m in Sources */,
-				1855786C222376CA00D72B6B /* PRepaymentViewController.m in Sources */,
 				18E7EB47219BB0F5004EDE91 /* TixianViewController.m in Sources */,
+				183A333F22379D64003322F3 /* BLoanDetailViewController.m in Sources */,
 				18B23638219AB1DE00E2594C /* AssetCenterViewController.m in Sources */,
 				1863D0DF219578E200316AFE /* CDTabBar.m in Sources */,
 				1863D0E72195796900316AFE /* HomeViewController.m in Sources */,
-				1851C9282199606D00B84513 /* PayViewController.m in Sources */,
-				1851C92B2199608000B84513 /* ConfirmViewController.m in Sources */,
+				18461833222F5D4200E5A3B2 /* LoanDetailViewController.m in Sources */,
 				18B2363D219AB55500E2594C /* AssetCenterCell.m in Sources */,
 				F530C87921CCBC4800BD482D /* OrderDetialVC.m in Sources */,
-				1851C93E2199675600B84513 /* HandleViewController.m in Sources */,
+				1881663C222E0C6300981537 /* OrderModel.m in Sources */,
 				1863D0DE219578E200316AFE /* CDNavigationVC.m in Sources */,
 				F589A47C21D0A8930004F092 /* OrderMsgTableCell.m in Sources */,
 				1820227421A7DED9006C97DF /* ZhuceViewController.m in Sources */,
+				18461824222F504000E5A3B2 /* AuditCell.m in Sources */,
 				F5396B8B219A55C900EFBF95 /* HomeTableCellTableViewCell.m in Sources */,
 				F525EE5C219C0FC800AD5ACE /* YzcChartView.m in Sources */,
-				1851C937219960B200B84513 /* AllInvViewController.m in Sources */,
 				F5C9907A21A3931600F755FC /* AccouentSafeVC.m in Sources */,
-				185578792223B3BF00D72B6B /* PRepaymentCell.m in Sources */,
 				F53D8991219CFE0B00023EB0 /* LLSegmentBarConfig.m in Sources */,
 				F5396B95219AA9FC00EFBF95 /* InvestDetailVC.m in Sources */,
 				F525EE4B219BF1DA00AD5ACE /* MarketVC.m in Sources */,
@@ -1254,10 +1267,11 @@
 				F56A8DF221A23BC400659418 /* LeeDatePickerView.m in Sources */,
 				1863D10A21957CBD00316AFE /* cerTools.m in Sources */,
 				1863D0ED219579DB00316AFE /* LoanViewController.m in Sources */,
+				18461830222F512D00E5A3B2 /* CompletedCell.m in Sources */,
 				F5C9907D21A3940700F755FC /* SafeTableCell.m in Sources */,
 				F554796E21A63D5F00AFE48B /* NoticeListTableCell.m in Sources */,
-				1851C92E2199608C00B84513 /* RepayViewController.m in Sources */,
 				1863D10C21957CBD00316AFE /* LineBtn.m in Sources */,
+				18461836222FA5DA00E5A3B2 /* InvestOrderViewController.m in Sources */,
 				185369AE219D69E100E26FDB /* HelpViewController.m in Sources */,
 				18E7EB41219BA9C5004EDE91 /* ASDetailViewController.m in Sources */,
 				1863D10D21957CBD00316AFE /* NetTools.m in Sources */,
@@ -1270,10 +1284,8 @@
 				F5342E38219E6A8400853EA1 /* DCNavTabBarController.m in Sources */,
 				18687D162224D312008C9B58 /* LoanOrderViewController.m in Sources */,
 				185369AA219D57B700E26FDB /* ShareAppViewController.m in Sources */,
-				1851C9312199609A00B84513 /* InvViewController.m in Sources */,
 				F525EE4E219BF97C00AD5ACE /* MarketTableCell.m in Sources */,
 				F56A397D21AB80AB00B39E13 /* LTTableCell.m in Sources */,
-				1855787C2223B81500D72B6B /* ReimbursementCell.m in Sources */,
 				1863D10921957CBD00316AFE /* Base64Verb.m in Sources */,
 				F53D8992219CFE0B00023EB0 /* LLSegmentBarVC.m in Sources */,
 				F5342E2E219E637E00853EA1 /* UnusedVC.m in Sources */,

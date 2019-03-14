@@ -12,6 +12,9 @@
 
 @interface LoanViewController ()
 
+@property(nonatomic,strong)NSString * messageStr;
+@property(nonatomic,strong)NSString *okStr;
+
 @end
 
 @implementation LoanViewController
@@ -21,6 +24,8 @@
     
     self.view.backgroundColor=[UIColor whiteColor];
     self.navigationItem.title=@"借款";
+    self.messageStr = @"xxx没有^^";
+    self.okStr = @"确定";
    
     [self setupUI];
 }
@@ -72,9 +77,62 @@
 }
 -(void)loanBtnClick:(UIButton *)btn{
     NSLog(@"loanBtnClick");
-    WLoanViewController *wloanVC=[WLoanViewController new];
-    [self.navigationController pushViewController:wloanVC animated:YES];
+    
+    /*
+     在跳转之前判断“必要条件检测”
+     */
+    [self loadLoanCheck];
+    
 }
+
+-(void)loadLoanCheck{
+    
+    NSString *url=[NSString stringWithFormat:@"%@loan/loanChecking",BASE_URL];
+    NSLog(@"");
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSUserDefaults * user = [NSUserDefaults standardUserDefaults];
+    NSString *token = [user objectForKey:@"token"];
+    NSDictionary *dic = @{
+                          @"token":token
+                          };
+    [manager GET:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"res:%@",responseObject);
+        if ([responseObject[@"code"] isEqual:@1]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                WLoanViewController *wloanVC=[WLoanViewController new];
+                [self.navigationController pushViewController:wloanVC animated:YES];
+
+                
+            });
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self tantantan];
+                
+            });
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error:%@",error);
+    }];
+    
+}
+
+-(void)tantantan{
+    UIAlertController * alVC = [UIAlertController alertControllerWithTitle:@"提示" message:self.messageStr preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"cancel");
+    }];
+    UIAlertAction * okAction = [UIAlertAction actionWithTitle:self.okStr style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"ok");
+    }];
+    [alVC addAction:cancelAction];
+    [alVC addAction:okAction];
+    [self presentViewController:alVC animated:YES completion:nil];
+}
+
 - (void)setStatusBarBackgroundColor:(UIColor *)color {
     
     UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
